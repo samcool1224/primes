@@ -1,0 +1,2702 @@
+% =========================
+% main.tex
+% =========================
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy,noauthor,american]{evan}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% --- STYLE 1: PYTHON ---
+\lstdefinestyle{pythonStyle}{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{gray}\itshape,
+	stringstyle=\color{purple},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	breaklines=true,
+	showstringspaces=false
+}
+
+\lstdefinestyle{pseudoStyle}{
+	basicstyle=\rmfamily\small,       % Using a clean roman font often looks better for pseudo
+	keywordstyle=\bfseries\color{darkgray},
+	keywords={IF, THEN, ELSE, WHILE, DO, FOR, EACH, RETURN, FUNCTION}, % Define custom keywords
+	mathescape=true,                  
+	frame=tb,                         
+	numbers=none,               
+	breaklines=true
+}
+
+\title{MIT Primes Solution}
+\subtitle{MIT Primes}
+\author{Samaksh Bhargav}
+
+\begin{document}
+	
+	\maketitle
+	\hrulebar
+	
+\section{Problem 1}
+
+% ============================================================
+% Part (a)
+% ============================================================
+
+\subsection{(a)}
+
+\begin{soln}
+	
+	We prove that the necessary and sufficient condition for the two lines
+	not to lie in a common affine plane is
+	\[
+	\boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
+	\]
+	We first prove the equivalent statement that they lie in a common affine
+	plane if and only if the determinant is zero.
+	
+	\begin{claim*}
+		First we prove that if $\mathcal{L}_1$ and $\mathcal{L}_2$ lie on a plane then
+		\[
+		\det(v_2-v_1,d_1,d_2)=0.
+		\]
+	\end{claim*}
+	
+	\begin{proof}
+		Call the affine plane $P$ the one that contains both
+		$\mathcal{L}_1$ and $\mathcal{L}_2$.
+		
+		We have that since $v_2$ and $v_1$ are affine points lying on
+		$\mathcal{L}_2$ and $\mathcal{L}_1$, subtracting them leads to a vector
+		parallel to $P$.
+		
+		$d_1$ is the direction of $\mathcal{L}_1$ and $d_2$ the direction of
+		$\mathcal{L}_2$ so they are obviously parallel to $P$.
+		
+		Therefore all three vectors are parallel to $P$ so if $P$ exists then
+		the three vectors must lie on a plane which is equivalent to saying that
+		\[
+		\boxed{\det(v_2-v_1,d_1,d_2)=0}.
+		\]
+	\end{proof}
+	
+	
+	\begin{claim*}
+		Next we prove sufficiency if
+		\[
+		\det(v_2-v_1,d_1,d_2)=0.
+		\]
+	\end{claim*}
+	
+	\begin{proof}
+		By this the three vectors $v_2-v_1,d_1,d_2$ are linearly dependent.
+		
+		So let $W$ be a vector plane containing all three of them. If their
+		span has dimension less than two, we extend it to a vector plane.
+		
+		Let $P$ be a affine plane that is
+		\[
+		P=W+v_1.
+		\]
+		
+		We set this up so that we now know that $\mathcal{L}_1$ lies on this
+		affine plane since $d_1\in W$ and it contains the affine point
+		$v_1$.
+		
+		\begin{claim*}
+			We claim $v_2-v_1$ is on $W$.
+		\end{claim*}
+		
+		\begin{subproof}
+			This follows directly from the choice of $W$, since $W$ was chosen
+			to contain all three vectors
+			\[
+			v_2-v_1,
+			\qquad
+			d_1,
+			\qquad
+			d_2.
+			\]
+			Therefore
+			\[
+			v_2-v_1\in W.
+			\]
+		\end{subproof}
+		
+		Since $v_2=v_1+(v_2-v_1)$, we know that $v_2$ is on $P$. Since $d_2$
+		is on $W$, we know that the
+		affine plane $P$ has $v_2$ and contains the direction vector $d_2$ so
+		it contains $\mathcal{L}_2$.
+		
+		Thus the lines lie in a common affine plane if and only if
+		\[
+		\det(v_2-v_1,d_1,d_2)=0,
+		\]
+		and therefore they do not lie in a common affine plane if and only if
+		\[
+		\boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
+		\]
+	\end{proof}
+	
+	
+	\subsubsection*{\vocab{Perpendicular Section}}
+	
+	Next we move onto the perpendicular section.
+	
+	We first consider the fact that if the two lines $\mathcal{L}_1$ and
+	$\mathcal{L}_2$ are lying in the same plane, then either there is
+	exactly one common perpendicular or infinitely many.
+	
+	If the two lines intersect and are not parallel, then the line through
+	the intersection point in the direction $d_1\times d_2$ is the unique
+	line perpendicular to both. If they are parallel, then there are
+	infinitely many lines that are perpendicular to both.
+	
+	Both of these are easy to see.
+	
+	\begin{claim*}
+		If $\mathcal{L}_1$ and $\mathcal{L}_2$ are not coplanar then
+		there is a unique common perpendicular.
+	\end{claim*}
+	
+	\begin{proof}
+		We first define
+		\[
+		n=d_1\times d_2,
+		\]
+		where $\times$ is the cross product and therefore $n$ is perpendicular
+		to $d_1$ and $d_2$.
+		
+		The vectors $d_1$ and $d_2$ cannot be parallel, since two parallel
+		affine lines always lie in a common affine plane. Therefore $n\neq0$.
+		Since $d_1$ and $d_2$ are linearly independent and $n$ is perpendicular
+		to both of them, the vectors $n,d_1,d_2$ are linearly independent.
+		
+		Therefore, we have that
+		\[
+		v_2-v_1=-d_2g+fd_1+cn
+		\]
+		for only one unique values for $f,g,c$.
+		
+		Furthermore, $c\neq0$. Indeed, taking the dot product with $n$ gives
+		\[
+		(v_2-v_1)\cdot n=c\|n\|^2,
+		\]
+		and the left-hand side is nonzero by the noncoplanarity condition.
+		
+		Rearranging we obtain
+		\[
+		v_2+gd_2-v_1-fd_1=cn.
+		\]
+		
+		Therefore two unique and existing affine points
+		\[
+		\boxed{v_2+gd_2}
+		\qquad\text{and}\qquad
+		\boxed{v_1+fd_1}
+		\]
+		are such that when you subtract them they are in the direction of $n$
+		and obviously lie on $\mathcal{L}_1$ and $\mathcal{L}_2$.
+		
+		Let
+		\[
+		p_1=v_1+fd_1
+		\qquad\text{and}\qquad
+		p_2=v_2+gd_2.
+		\]
+		Then $p_2-p_1=cn$, where $c\neq0$, so the line
+		\[
+		\mathcal M=\{p_1+sn:s\in\mathbb R\}
+		\]
+		passes through both $p_1$ and $p_2$. Since its direction is $n$, it is
+		perpendicular to both $\mathcal L_1$ and $\mathcal L_2$. Thus it is a
+		common perpendicular.
+		
+		It remains to prove uniqueness. Suppose another common perpendicular
+		meets $\mathcal L_1$ and $\mathcal L_2$ at
+		\[
+		v_1+f'd_1
+		\qquad\text{and}\qquad
+		v_2+g'd_2,
+		\]
+		respectively. Its direction must be perpendicular to both $d_1$ and
+		$d_2$, so it must be a nonzero scalar multiple of $n$. Therefore, for
+		some $c'\in\mathbb R$,
+		\[
+		v_2+g'd_2-v_1-f'd_1=c'n,
+		\]
+		or equivalently,
+		\[
+		v_2-v_1=-d_2g'+f'd_1+c'n.
+		\]
+		By the uniqueness of the coordinates of $v_2-v_1$ in the basis
+		$d_1,d_2,n$, we have
+		\[
+		f'=f,
+		\qquad
+		g'=g,
+		\qquad
+		c'=c.
+		\]
+		Thus the second common perpendicular has the same two intersection
+		points, and hence it is the same line $\mathcal M$.
+	\end{proof}
+	
+\end{soln}
+
+
+% ============================================================
+% Part (b)
+% ============================================================
+
+\subsection{(b)}
+
+\begin{soln}
+
+	For where I learned the background on this representation and its invariance under
+	a change of base point and common nonzero scaling, see \cite[Section~1]{jia-plucker}.
+	Overall, the goal of this problem is to encode one affine line into using two vectors.
+	The first vector $\vec d$ should remember the direction of said line while the other
+	vector will remember where exactly the line is located similar to the definition of
+	an affine line.
+	
+	To complete this problem we first prove that this gives a unique well defined singular
+	equivalence class, and then work in the reverse direction to obtain an affine line
+	from a class.
+	
+	As mentioned in the problem we use the same notation of defining an affine line as
+	\[
+	\mathcal L
+	=
+	\{\vec u+t\vec d:t\in\RR\},
+	\qquad
+	\vec d\neq\vec 0.
+	\]
+	
+	Our goal is associate this line with an equivalence class of
+	\[
+	(\vec d,\vec u\times\vec d).
+	\]
+	
+	Before starting anything related to these classes we should check if the problem
+	makes any sense and the pair belongs to the set
+	\[
+	\mathcal P
+	=
+	\left\{
+	(\vec d,\vec m)\in\RR^3\times\RR^3:
+	\vec d\neq\vec 0,\;
+	\vec d\cdot\vec m=0
+	\right\}.
+	\]
+	
+	\begin{claim*}
+		The pair
+		\[
+		(\vec d,\vec u\times\vec d)
+		\]
+		belongs to $\mathcal P$.
+	\end{claim*}
+	
+	\begin{proof}
+		We know
+		\[
+		\vec m=\vec u\times\vec d.
+		\]
+		
+		A cross product is always perpendicular to the two vectors that are
+		being crossed. This means $\vec m$ is perpendicular to both $\vec u$
+		and $\vec d$.
+		
+		Therefore
+		\[
+		\vec d\cdot\vec m=0.
+		\]
+		
+		Hence
+		\[
+		(\vec d,\vec u\times\vec d)\in\mathcal P,
+		\]
+		so it makes sense to consider the equivalence class
+		\[
+		\boxed{[\vec d:\vec u\times\vec d]}.
+		\]
+	\end{proof}
+	
+	
+	\subsubsection*{\vocab{Independence of the Base Point}}
+	
+	The first problem proposed in part (b) is that we have to prove that
+	this class is independent of a chosen base point $\vec u$.
+	
+	\begin{claim*}
+		Choosing a different base point on the same affine line does not change
+		$\vec u\times\vec d$.
+	\end{claim*}
+	
+	\begin{proof}
+		We name a different point on the affine line $\vec u'$.
+		
+		Since this lies on line $\mathcal L$, there must exist some
+		$s\in\RR$ such that
+		\[
+		\vec u'=\vec u+s\vec d.
+		\]
+		
+		We were motivated to do this because it is a natural way to get back
+		some of the terms we know how to handle and we expect to have a
+		$\vec d\times\vec d=0$ term somewhere to clean stuff out.
+		
+		Indeed,
+		\begin{align*}
+			\vec u'\times\vec d
+			&=(\vec u+s\vec d)\times\vec d\\
+			&=\vec u\times\vec d+s(\vec d\times\vec d)\\
+			&=\vec u\times\vec d.
+		\end{align*}
+		
+		Since the two cross products are the same,
+		\[
+		(\vec d,\vec u'\times\vec d)
+		=
+		(\vec d,\vec u\times\vec d).
+		\]
+	\end{proof}
+	
+	
+	\subsubsection*{\vocab{Independence of the Direction Vector}}
+	
+	Next we move onto the harder of the two options regarding the class
+	being independent of the direction vector.
+	
+	\begin{claim*}
+		Choosing a different nonzero direction vector for the same affine line
+		does not change the equivalence class.
+	\end{claim*}
+	
+	\begin{proof}
+		Define $\vec d'$ to be another nonzero direction vector for $\mathcal L$.
+		
+		Since $\vec d$ and $\vec d'$ are directions of the same line, there must
+		exist some
+		\[
+		\lambda\in\RR\setminus\{0\}
+		\]
+		such that
+		\[
+		\vec d'=\lambda\vec d.
+		\]
+		
+		We aim to prove that
+		\[
+		(\vec d',\vec u\times\vec d')
+		\]
+		is in the same equivalence class.
+		
+		Substituting $\vec d'=\lambda\vec d$, we obtain
+		\begin{align*}
+			(\vec d',\vec u\times\vec d')
+			&=
+			(\lambda\vec d,\vec u\times(\lambda\vec d))\\
+			&=
+			(\lambda\vec d,\lambda(\vec u\times\vec d)).
+		\end{align*}
+		
+		By the definition of the equivalence relation,
+		\[
+		(\vec d,\vec m)
+		\sim
+		(\lambda\vec d,\lambda\vec m)
+		\]
+		for every nonzero $\lambda$.
+		
+		Therefore
+		\[
+		[\vec d':\vec u\times\vec d']
+		=
+		[\vec d:\vec u\times\vec d].
+		\]
+	\end{proof}
+	
+	
+	\subsubsection*{\vocab{Conversely}}
+	
+	Now we move onto the more in depth part.
+	
+	We have
+	\[
+	[\vec d:\vec m]\in\mathcal P/\sim.
+	\]
+	
+	We are given by definition that
+	\[
+	\vec d\neq\vec 0
+	\qquad\text{and}\qquad
+	\vec d\cdot\vec m=0.
+	\]
+	
+	To find an affine line the main thing we are missing is our base point
+	$\vec u$.
+	
+	Our main formula containing $\vec u$ was
+	\[
+	\vec m=\vec u\times\vec d.
+	\]
+	
+	This means that in order to recover our specific affine line we need to
+	describe every $\vec u$ that satisfies the above operation.
+	
+	Although there are many well studied ways to complete this problem,
+	the first that came to mind was coordinates.
+	
+	Define
+	\[
+	\vec d=(a,b,c),
+	\qquad
+	\vec m=(p,q,r),
+	\qquad
+	\vec u=(x,y,z).
+	\]
+	
+	Our condition
+	\[
+	\vec d\cdot\vec m=0
+	\]
+	becomes
+	\[
+	\boxed{ap+bq+cr=0}.
+	\tag{1}
+	\]
+	
+	Next,
+	\[
+	\vec u\times\vec d
+	=
+	\begin{vmatrix}
+		\mathbf i & \mathbf j & \mathbf k\\
+		x & y & z\\
+		a & b & c
+	\end{vmatrix}
+	=
+	(yc-zb,\;za-xc,\;xb-ya).
+	\]
+	
+	So
+	\[
+	\vec u\times\vec d=\vec m
+	\]
+	when
+	\[
+	\boxed{
+		\begin{cases}
+			yc-zb=p,\\
+			za-xc=q,\\
+			xb-ya=r.
+	\end{cases}}
+	\tag{2}
+	\]
+	
+	Since
+	\[
+	\vec d=(a,b,c)\neq\vec 0,
+	\]
+	at least one of $a,b,c$ is nonzero.
+	
+	Now we have some casework.
+	
+	
+	\begin{claim*}
+		Case 1 is when $a\neq0$.
+	\end{claim*}
+	
+	\begin{proof}
+		We choose
+		\[
+		x=0.
+		\]
+		
+		Then the second and third equations of (2) become
+		\[
+		za=q
+		\qquad\text{and}\qquad
+		-ya=r.
+		\]
+		
+		Hence
+		\[
+		z=\frac qa,
+		\qquad
+		y=-\frac ra.
+		\]
+		
+		So we try
+		\[
+		\vec u_0
+		=
+		\left(
+		0,-\frac ra,\frac qa
+		\right).
+		\]
+		
+		We only need to check the first equation of (2). We have
+		\begin{align*}
+			yc-zb
+			&=
+			-\frac{rc}{a}
+			-\frac{qb}{a}\\
+			&=
+			-\frac{bq+cr}{a}.
+		\end{align*}
+		
+		But by (1),
+		\[
+		ap+bq+cr=0,
+		\]
+		so
+		\[
+		bq+cr=-ap.
+		\]
+		
+		Therefore
+		\[
+		-\frac{bq+cr}{a}
+		=
+		-\frac{-ap}{a}
+		=
+		p.
+		\]
+		
+		Thus
+		\[
+		\vec u_0\times\vec d=\vec m.
+		\]
+	\end{proof}
+	
+	
+	\begin{claim*}
+		Case 2 is that we have $a=0$ but $b\neq0$.
+	\end{claim*}
+	
+	\begin{proof}
+		Now we can choose
+		\[
+		y=0.
+		\]
+		
+		The first and third equations of (2) become
+		\[
+		-zb=p
+		\qquad\text{and}\qquad
+		xb=r.
+		\]
+		
+		Hence
+		\[
+		z=-\frac pb,
+		\qquad
+		x=\frac rb.
+		\]
+		
+		So we take
+		\[
+		\vec u_0
+		=
+		\left(
+		\frac rb,0,-\frac pb
+		\right).
+		\]
+		
+		The remaining equation requires
+		\[
+		za-xc=q.
+		\]
+		
+		Since $a=0$,
+		\[
+		za-xc
+		=
+		-\frac{rc}{b}.
+		\]
+		
+		But (1), with $a=0$, becomes
+		\[
+		bq+cr=0.
+		\]
+		
+		Therefore
+		\[
+		q=-\frac{cr}{b},
+		\]
+		and hence
+		\[
+		za-xc=q.
+		\]
+		
+		So yet again in this case,
+		\[
+		\vec u_0\times\vec d=\vec m.
+		\]
+	\end{proof}
+	
+	
+	\begin{claim*}
+		Case 3 is that we have $a=b=0$.
+	\end{claim*}
+	
+	\begin{proof}
+		Since
+		\[
+		\vec d\neq\vec 0,
+		\]
+		we must have
+		\[
+		c\neq0.
+		\]
+		
+		We choose
+		\[
+		z=0.
+		\]
+		
+		Then the first two equations of (2) become
+		\[
+		yc=p
+		\qquad\text{and}\qquad
+		-xc=q.
+		\]
+		
+		Therefore
+		\[
+		y=\frac pc,
+		\qquad
+		x=-\frac qc.
+		\]
+		
+		So take
+		\[
+		\vec u_0
+		=
+		\left(
+		-\frac qc,\frac pc,0
+		\right).
+		\]
+		
+		The third equation requires
+		\[
+		xb-ya=r.
+		\]
+		
+		Since $a=b=0$, its left-hand side is $0$.
+		
+		Also, (1) becomes
+		\[
+		cr=0.
+		\]
+		
+		Since $c\neq0$, we obtain
+		\[
+		r=0.
+		\]
+		
+		Thus the third equation also holds, and again
+		\[
+		\vec u_0\times\vec d=\vec m.
+		\]
+	\end{proof}
+	
+	
+	\begin{claim*}
+		All possible solutions $\vec u$ lie on one affine line.
+	\end{claim*}
+	
+	\begin{proof}
+		We have proved that there exists at least one vector $\vec u_0$
+		satisfying
+		\[
+		\vec u_0\times\vec d=\vec m.
+		\]
+		
+		Suppose $\vec u$ is any other solution. Then
+		\[
+		\vec u\times\vec d=\vec m
+		\]
+		and
+		\[
+		\vec u_0\times\vec d=\vec m.
+		\]
+		
+		Subtracting gives
+		\begin{align*}
+			\vec u\times\vec d
+			-
+			\vec u_0\times\vec d
+			&=\vec 0,\\
+			(\vec u-\vec u_0)\times\vec d
+			&=\vec 0.
+		\end{align*}
+		
+		Since $\vec d\neq\vec 0$, the cross product is zero exactly when the
+		two vectors are parallel. Therefore
+		\[
+		\vec u-\vec u_0=t\vec d
+		\]
+		for some $t\in\RR$.
+		
+		Hence
+		\[
+		\boxed{
+			\vec u=\vec u_0+t\vec d
+		}.
+		\]
+		
+		Thus every possible solution lies on the affine line
+		\[
+		\mathcal L
+		=
+		\{\vec u_0+t\vec d:t\in\RR\}.
+		\]
+		
+		Conversely, every point on this line is a solution, because
+		\begin{align*}
+			(\vec u_0+t\vec d)\times\vec d
+			&=
+			\vec u_0\times\vec d
+			+
+			t(\vec d\times\vec d)\\
+			&=
+			\vec m+\vec 0\\
+			&=
+			\vec m.
+		\end{align*}
+	\end{proof}
+	
+	
+	\begin{claim*}
+		Equivalent representatives determine the same affine line.
+	\end{claim*}
+	
+	\begin{proof}
+		Suppose we instead have a representative
+		\[
+		(\lambda\vec d,\lambda\vec m),
+		\qquad
+		\lambda\neq0.
+		\]
+		
+		Then the equation defining the possible base points becomes
+		\[
+		\vec u\times(\lambda\vec d)
+		=
+		\lambda\vec m.
+		\]
+		
+		Pulling out the scalar gives
+		\[
+		\lambda(\vec u\times\vec d)
+		=
+		\lambda\vec m.
+		\]
+		
+		Since $\lambda\neq0$, we may divide by $\lambda$ and obtain
+		\[
+		\vec u\times\vec d=\vec m.
+		\]
+		
+		Thus the same set of base points, and therefore the same affine line,
+		is obtained.
+	\end{proof}
+	
+	We have now proved all necessary parts to complete the problem.
+	
+\begin{remark}
+The representation used here is the direction--moment form of
+Pl\"ucker coordinates: $\vec d$ specifies the direction and
+$\vec m=\vec u\times\vec d$ is the moment vector.
+For background from where I learned on this representation and its invariance under
+a change of base point and common nonzero scaling, see
+\cite[Section~1]{jia-plucker}.
+\end{remark}
+	
+\end{soln}
+
+
+% ============================================================
+% Part (c)
+% ============================================================
+
+\subsection{(c)}
+
+\begin{soln}
+	
+	Our first goal is to translate the condition from part (a) into
+	Pl\"ucker coordinates. Once this is done, we will try to construct the
+	common perpendicular directly in Pl\"ucker coordinates as well.
+	
+	The main difficulty is that the vectors $\vec v_1$ and $\vec v_2$ from
+	part (a) no longer appear explicitly, so we need to recover all of the
+	necessary information from $\vec d_i$ and $\vec m_i$.
+	
+	
+	\subsubsection*{\vocab{Coplanarity}}
+	
+	For another time we let
+	\[
+	[\vec d_i:\vec m_i]
+	\]
+	represent $\mathcal L_i$.
+	
+	By part (b), we pick $\vec v_i$ on $\mathcal L_i$ so that
+	\[
+	\vec m_i=\vec v_i\times\vec d_i.
+	\]
+	
+	From part (a), we know $\mathcal L_1$ and $\mathcal L_2$
+	do not lie in a common affine plane precisely when
+	\[
+	\det(\vec v_2-\vec v_1,\vec d_1,\vec d_2)\neq0.
+	\]
+	
+	Put another way we can instead write this as a triple scalar product:
+	\[
+	(\vec v_2-\vec v_1)
+	\cdot
+	(\vec d_1\times\vec d_2)
+	\neq0.
+	\]
+	
+	The problem is that this still involves $\vec v_1$ and $\vec v_2$.
+	We therefore look for an expression involving only the Pl\"ucker
+	coordinates.
+	
+	Something we can look at is
+	\[
+	\vec d_1\cdot\vec m_2
+	+
+	\vec d_2\cdot\vec m_1,
+	\]
+	since each $\vec m_i$ already contains the corresponding $\vec v_i$.
+	
+	
+	\begin{claim*}
+		The two affine lines do not lie in a common affine plane iff
+		\[
+		\boxed{
+			\vec d_1\cdot\vec m_2
+			+
+			\vec d_2\cdot\vec m_1
+			\neq0.
+		}
+		\]
+	\end{claim*}
+	
+	\begin{proof}
+		Using
+		\[
+		\vec m_1=\vec v_1\times\vec d_1
+		\qquad\text{and}\qquad
+		\vec m_2=\vec v_2\times\vec d_2,
+		\]
+		we have
+		\begin{align*}
+			\vec d_1\cdot\vec m_2
+			+
+			\vec d_2\cdot\vec m_1
+			&=
+			\vec d_1\cdot(\vec v_2\times\vec d_2)
+			+
+			\vec d_2\cdot(\vec v_1\times\vec d_1).
+		\end{align*}
+		
+		Rearranging the scalar triple products,
+		\[
+		\vec d_1\cdot(\vec v_2\times\vec d_2)
+		=
+		-\vec v_2\cdot(\vec d_1\times\vec d_2),
+		\]
+		and
+		\[
+		\vec d_2\cdot(\vec v_1\times\vec d_1)
+		=
+		\vec v_1\cdot(\vec d_1\times\vec d_2).
+		\]
+		
+		Therefore
+		\begin{align*}
+			\vec d_1\cdot\vec m_2
+			+
+			\vec d_2\cdot\vec m_1
+			&=
+			\vec v_1\cdot(\vec d_1\times\vec d_2)
+			-
+			\vec v_2\cdot(\vec d_1\times\vec d_2)\\
+			&=
+			-(\vec v_2-\vec v_1)
+			\cdot
+			(\vec d_1\times\vec d_2).
+		\end{align*}
+		
+		Although the sign has changed, zero remains zero in a sign change.
+		
+		There is one small point to check. The vectors $\vec d_i,\vec m_i$
+		are representatives of equivalence classes.
+		
+		Replacing
+		\[
+		(\vec d_1,\vec m_1)
+		\mapsto
+		(\lambda_1\vec d_1,\lambda_1\vec m_1)
+		\]
+		and
+		\[
+		(\vec d_2,\vec m_2)
+		\mapsto
+		(\lambda_2\vec d_2,\lambda_2\vec m_2)
+		\]
+		multiplies the expression by $\lambda_1\lambda_2\neq0$.
+		
+		Therefore its being zero or nonzero does not depend on the chosen
+		representatives.
+	\end{proof}
+	
+	
+	\subsubsection*{\vocab{Two Pl\"ucker Lines}}
+	
+	We quickly prove the other direction of the same calculation.
+	
+	\begin{claim*}
+		Suppose
+		\[
+		[\vec a:\vec b]
+		\qquad\text{and}\qquad
+		[\vec c:\vec e]
+		\]
+		represent two affine lines. Then the two lines are coplanar iff
+		\[
+		\boxed{
+			\vec a\cdot\vec e+\vec c\cdot\vec b=0.
+		}
+		\]
+	\end{claim*}
+	
+	\begin{subproof}
+		We can choose points $\vec x$ and $\vec y$ on the above lines so that
+		\[
+		\vec b=\vec x\times\vec a
+		\qquad\text{and}\qquad
+		\vec e=\vec y\times\vec c.
+		\]
+		
+		Once again using part (a), the two lines are coplanar if and only if
+		\[
+		(\vec y-\vec x)\cdot(\vec a\times\vec c)=0.
+		\]
+		
+		Also,
+		\begin{align*}
+			\vec a\cdot\vec e+\vec c\cdot\vec b
+			&=
+			\vec a\cdot(\vec y\times\vec c)
+			+
+			\vec c\cdot(\vec x\times\vec a)\\
+			&=
+			-\vec y\cdot(\vec a\times\vec c)
+			+
+			\vec x\cdot(\vec a\times\vec c)\\
+			&=
+			-(\vec y-\vec x)\cdot(\vec a\times\vec c).
+		\end{align*}
+		
+		So we have proved our claim.
+	\end{subproof}
+	
+	This is extremely useful in the future steps. Mainly because if the
+	two lines are coplanar and their direction vectors are not parallel, then
+	that will imply that they intersect. Therefore the algebra above will
+	become an intersection condition.
+	
+	
+	\subsubsection*{\vocab{Finding a Direction}}
+	
+	We now assume
+	\[
+	\vec d_1\cdot\vec m_2
+	+
+	\vec d_2\cdot\vec m_1
+	\neq0.
+	\]
+	
+	Hence the two lines are not coplanar.
+	
+	Just the geometry of the problem forces us to make
+	\[
+	\vec n=\vec d_1\times\vec d_2.
+	\]
+	
+	The vectors $\vec d_1$ and $\vec d_2$ cannot be parallel, since two
+	parallel affine lines always lie in a common affine plane.
+	
+	Therefore
+	\[
+	\vec n\neq\vec 0.
+	\]
+	
+	Furthermore,
+	\[
+	\vec n\cdot\vec d_1=0
+	\qquad\text{and}\qquad
+	\vec n\cdot\vec d_2=0.
+	\]
+	
+	Thus any line with direction $\vec n$ is perpendicular to the
+	directions of both $\mathcal L_1$ and $\mathcal L_2$.
+	
+	So the only remaining problem is to determine the second Pl\"ucker
+	coordinate $\vec m$.
+	
+	
+	\subsubsection*{\vocab{Finding \(m\)}}
+	
+	We want
+	\[
+	[\vec n:\vec m].
+	\]
+	
+	For this to be a valid Pl\"ucker coordinate, we need
+	\[
+	\vec n\cdot\vec m=0.
+	\tag{1}
+	\]
+	
+	We also want this line to meet $\mathcal L_1$. Since $\vec n$ is not
+	parallel to $\vec d_1$, this is equivalent to the two lines being
+	coplanar, so our coplanarity test gives
+	\[
+	\vec d_1\cdot\vec m
+	=
+	-\vec n\cdot\vec m_1.
+	\tag{2}
+	\]
+	
+	Similarly, meeting $\mathcal L_2$ is equivalent to being coplanar with
+	$\mathcal L_2$, so
+	\[
+	\vec d_2\cdot\vec m
+	=
+	-\vec n\cdot\vec m_2.
+	\tag{3}
+	\]
+	
+	Thus $\vec m$ must satisfy
+	\[
+	\boxed{
+		\begin{cases}
+			\vec d_1\cdot\vec m=-\vec n\cdot\vec m_1,\\[2mm]
+			\vec d_2\cdot\vec m=-\vec n\cdot\vec m_2,\\[2mm]
+			\vec n\cdot\vec m=0.
+	\end{cases}}
+	\tag{4}
+	\]
+	
+	
+	\begin{claim*}
+		The system above determines exactly one vector $\vec m$.
+	\end{claim*}
+	
+	\begin{proof}
+		Since
+		\[
+		\vec d_1,\vec d_2,\vec n
+		\]
+		form three independent directions in $\RR^3$, write
+		\[
+		\vec m
+		=
+		\alpha\vec d_1
+		+
+		\beta\vec d_2
+		+
+		\gamma\vec n.
+		\]
+		
+		Taking the dot product with $\vec n$ gives
+		\[
+		\gamma\|\vec n\|^2=0.
+		\]
+		
+		Since $\vec n\neq\vec0$,
+		\[
+		\gamma=0.
+		\]
+		
+		Thus
+		\[
+		\vec m=\alpha\vec d_1+\beta\vec d_2.
+		\]
+		
+		Substituting into (2) and (3), we obtain
+		\[
+		\begin{pmatrix}
+			\|\vec d_1\|^2 & \vec d_1\cdot\vec d_2\\
+			\vec d_1\cdot\vec d_2 & \|\vec d_2\|^2
+		\end{pmatrix}
+		\begin{pmatrix}
+			\alpha\\
+			\beta
+		\end{pmatrix}
+		=
+		-
+		\begin{pmatrix}
+			\vec n\cdot\vec m_1\\
+			\vec n\cdot\vec m_2
+		\end{pmatrix}.
+		\]
+		
+		The determinant of the coefficient matrix is
+		\begin{align*}
+			\Delta
+			&=
+			\|\vec d_1\|^2\|\vec d_2\|^2
+			-
+			(\vec d_1\cdot\vec d_2)^2\\
+			&=
+			\|\vec d_1\times\vec d_2\|^2\\
+			&=
+			\|\vec n\|^2>0.
+		\end{align*}
+		
+		Thus the system has exactly one solution $(\alpha,\beta)$ and therefore
+		exactly one $\vec m$.
+	\end{proof}
+	
+	
+	\begin{claim*}
+		The class
+		\[
+		[\vec n:\vec m]
+		=
+		[\vec d_1\times\vec d_2:\vec m]
+		\]
+		represents a common perpendicular to $\mathcal L_1$ and
+		$\mathcal L_2$.
+	\end{claim*}
+	
+	\begin{proof}
+		Equation (1) shows that
+		\[
+		(\vec n,\vec m)\in\mathcal P,
+		\]
+		so it represents an affine line.
+		
+		Equations (2) and (3), together with our coplanarity test, show that
+		this line is coplanar with each $\mathcal L_i$.
+		
+		Its direction $\vec n$ is not parallel to either $\vec d_1$ or
+		$\vec d_2$, so in each of these two affine planes the corresponding
+		lines must intersect.
+		
+		Finally,
+		\[
+		\vec n\perp\vec d_1
+		\qquad\text{and}\qquad
+		\vec n\perp\vec d_2,
+		\]
+		so it is a common perpendicular.
+	\end{proof}
+	
+	
+	\subsubsection*{\vocab{Only One?}}
+	
+	It remains to show that we did not merely construct one common
+	perpendicular, but the only one.
+	
+	\begin{claim*}
+		The class representing the common perpendicular is unique.
+	\end{claim*}
+	
+	\begin{proof}
+		Suppose
+		\[
+		[\vec d':\vec m']
+		\]
+		represents some common perpendicular.
+		
+		Because its direction is perpendicular to both $\vec d_1$ and
+		$\vec d_2$, the only possible direction is a nonzero scalar multiple
+		of their cross product.
+		
+		Thus
+		\[
+		\vec d'=\lambda\vec n
+		\]
+		for some $\lambda\neq0$.
+		
+		Using the equivalence relation, we may write the same class as
+		\[
+		[\vec n:\widetilde{\vec m}],
+		\qquad
+		\widetilde{\vec m}
+		=
+		\frac{1}{\lambda}\vec m'.
+		\]
+		
+		Since this line is valid,
+		\[
+		\vec n\cdot\widetilde{\vec m}=0.
+		\]
+		
+		Since it meets $\mathcal L_1$ and $\mathcal L_2$,
+		\[
+		\vec d_1\cdot\widetilde{\vec m}
+		=
+		-\vec n\cdot\vec m_1
+		\]
+		and
+		\[
+		\vec d_2\cdot\widetilde{\vec m}
+		=
+		-\vec n\cdot\vec m_2.
+		\]
+		
+		Therefore $\widetilde{\vec m}$ satisfies exactly the same system (4)
+		as $\vec m$.
+		
+		But that system has exactly one solution. Hence
+		\[
+		\widetilde{\vec m}=\vec m.
+		\]
+		
+		Therefore
+		\[
+		[\vec d':\vec m']
+		=
+		[\vec n:\vec m].
+		\]
+	\end{proof}
+	
+\begin{remark}
+	Several of the items used in here were inspired by \cite[Section~2]{jia-plucker}. From this I took
+	$\vec d_1\cdot\vec m_2+\vec d_2\cdot\vec m_1$
+	is called the reciprocal product of the Pl\"ucker coordinates
+	The equivalence just proved is the standard coplanarity criterion
+	for these coordinates; see \cite[Corollary~2]{jia-plucker}. Additionally, note that the same article also has a solution to parts of this problem. None of those parts were read by me or were used towards my solution.
+\end{remark}
+	
+\end{soln}
+	
+	\section{Problem 2}
+	
+	\subsection{(a)}
+	
+	\begin{soln}
+		
+		We have an insane amount of configurations. To analyze them in a good
+		way we sort them only by the number of occupied sites.
+		
+		This idea was motivated by the fact that, conditioned on exactly $k$
+		occupied sites, every $k$-element subset of $V_n$ is equally likely.
+		This makes it natural to group configurations according to the number
+		of occupied sites.
+		
+		
+		\subsubsection*{\vocab{Occupancy}}
+		
+		We use
+		\[
+		N=n^2
+		\]
+		to be the total number of sites in $V_n$.
+		
+		For each $k\in\{0,1,\dots,N\}$, define $c_k$ to be the number of
+		subsets of $V_n$ consisting of exactly $k$ sites which contain a
+		left-to-right occupied crossing.
+		
+		For example,
+		\[
+		c_0=0
+		\qquad\text{and}\qquad
+		c_N=1.
+		\]
+		
+		
+		\begin{claim*}
+			We have
+			\[
+			\theta_n(p)
+			=
+			\sum_{k=0}^{N}
+			c_k p^k(1-p)^{N-k}.
+			\]
+		\end{claim*}
+		
+		\begin{subproof}
+			This almost immediately follows using our definition of $k$.
+			
+			Any configuration with exactly $k$ occupied sites has probability
+			\[
+			p^k(1-p)^{N-k},
+			\]
+			because each of its $k$ occupied sites contributes a factor of $p$ and
+			the rest contribute a factor of $1-p$.
+			
+			Only $c_k$ of the configurations with $k$ occupied sites have a
+			left-to-right crossing, so their total probability is
+			\[
+			c_kp^k(1-p)^{N-k}.
+			\]
+			
+			Configurations are disjoint as $k$ ranges from $0$ to $N$, so summing
+			gives
+			\[
+			\theta_n(p)
+			=
+			\sum_{k=0}^{N}
+			c_kp^k(1-p)^{N-k}.
+			\]
+		\end{subproof}
+		
+		
+		Something useful to note is that we can define
+		\[
+		a_k=\frac{c_k}{\binom Nk}.
+		\]
+		
+		Then $a_k$ is the probability of crossing conditioned on there being
+		exactly $k$ occupied sites.
+		
+		Thus
+		\[
+		\theta_n(p)
+		=
+		\sum_{k=0}^{N}
+		a_k\binom Nk p^k(1-p)^{N-k}.
+		\]
+		
+		This separates the problem into the numbers $a_k$, which contain the
+		geometry of the grid, and
+		\[
+		\binom Nk p^k(1-p)^{N-k},
+		\]
+		which is the probability that the grid contains $k$ occupied sites.
+		
+		I found this decomposition was also used in percolation research.
+		Newman and Ziff \cite[Section~I, equation~(2)]{newman-ziff}
+		had probabilities at a fixed occupation probability by
+		averaging over configurations with a fixed number of occupied
+		sites. Here, the quantities being averaged are precisely the
+		conditional crossing probabilities $a_k$.
+		
+		
+		Next we finish the first part of this part by proving it is a polynomial.
+		\begin{claim*}
+			The function $\theta_n(p)$ is a polynomial in $p$.
+		\end{claim*}
+		
+		\begin{subproof}
+			Obviously, we know that for every fixed $k$ we have that
+			\[
+			p^k(1-p)^{N-k}
+			\]
+			is a polynomial in $p$.
+			To prove this rigorously we can just use the fact that by the binomial theorem,
+			\[
+			(1-p)^{N-k}
+			=
+			\sum_{j=0}^{N-k}
+			\binom{N-k}{j}(-1)^j p^j,
+			\]
+			so
+			\[
+			p^k(1-p)^{N-k}
+			=
+			\sum_{j=0}^{N-k}
+			\binom{N-k}{j}(-1)^j p^{j+k}.
+			\]
+			
+			So each of the terms 
+			\[
+			c_kp^k(1-p)^{N-k}
+			\]
+			is a polynomial, and there are only finitely many such terms.
+			
+			Consequently,
+			\[
+			\boxed{
+				\theta_n(p)
+				=
+				\sum_{k=0}^{N}
+				c_kp^k(1-p)^{N-k}
+			}
+			\]
+			is itself a polynomial.
+		\end{subproof}
+		
+		
+		\subsubsection*{\vocab{Finding $\frac{1}{2}$}}
+		
+		Our goal of this section is to find some value of $p_n$that has 
+		\[
+		\theta_n(p_n)=\frac12.
+		\]
+		
+		\begin{claim*}
+			There exists a unique $p_n\in(0,1)$ such that
+			\[
+			\theta_n(p_n)=\frac12.
+			\]
+		\end{claim*}
+		
+		\begin{proof}
+			We know that, from our previous proof, that $\theta_n$ is a polynomial. Therefore, it is continuous on $[0,1]$.
+			We aim to use the intermediate value theorem here. 
+			To do this we calculate that at $p=0$ every site must be unoccupied so there is no path so 
+			\[
+			\theta_n(0)=0.
+			\]
+			
+			In a similar way at $p=1$ we have that the chance of crossing is $1$, since every row is filled, so
+			\[
+			\theta_n(1)=1.
+			\]
+			
+			Therefore
+			\[
+			\theta_n(0)=0
+			<
+			\frac12
+			<
+			1=\theta_n(1).
+			\]
+			
+			By the Intermediate Value Theorem, there exists some
+			\[
+			p_n\in(0,1)
+			\]
+			such that
+			\[
+			\theta_n(p_n)=\frac12.
+			\]
+			
+			We are (gratefully) given that $\theta_n$ is strictly increasing. Hence two distinct values of $p$ cannot both give the same
+			value $\frac12$.
+			
+			Which then gives us that $p_n$ is unique.
+		\end{proof}
+	\end{soln}
+		\subsection{(b)}
+		
+		\begin{soln}
+			
+			The goal of the simulation is straightforward. For a fixed $n$ and
+			$p$, we generate many random $n\times n$ grids. For each grid we check
+			whether there is an occupied path connecting the leftmost column to the
+			rightmost column. The proportion of successful grids should then
+			approximate the true probability $\theta_n(p)$.
+			Simulating the problem is pretty straightforward. We can create a $n$ by $n$ grid and use our given $p$ to generate a grid that has some number of occupied squares independently occupying each square with probability $p$. Then using the DFS concept introduced in the reading to find a path from left to right. Then the proportion of these grids that are successful is a good way to estimate our $\theta_n(p)$.
+			\subsubsection*{\vocab{Algo Sim Pseudocode}}
+			
+			For each generated grid, I search from every occupied site in the
+			leftmost column. There are many depth first implementations that I have learned about but a iterative one seemed like the best fit tor this project (rather than say a recursive one).
+			For background on depth-first search using an explicit stack,
+			I used Sedgewick and Wayne \cite{sedgewick-wayne-dfs}.
+			Here, occupied sites are the vertices of a graph, with edges
+			between horizontal or vertical neighbors. The search determines
+			whether any occupied site in the rightmost column is reachable
+			from the occupied sites in the leftmost column.
+			\begin{lstlisting}[style=pseudoStyle]
+FUNCTION TryToFindTheta(n, p, M)
+
+numofsuccess = 0
+
+REPEAT M times:
+
+Create a empty n by n grid
+Loop through each square and occupy it independently with probabilty p
+visited = n by n array filled with FALSE
+crossing =FALSE
+
+FOR each square in leftmost column
+
+IF site (r, 0) is occupied AND not visited:
+
+stack = [(r, 0)]
+mark (r, 0) visited
+
+WHILE stack not = []
+
+remove last site in stack call it (x,y)
+
+IF y = n - 1:
+crossing = TRUE
+BREAK
+
+IF (x+1, y) is inside the grid AND occupied AND not visited:
+mark (x+1, y) visited
+add (x+1, y) to stack
+IF (x, y+1) is inside the grid AND occupied AND not visited:
+mark (x, y+1) visited
+add (x, y+1) to stack
+IF (x-1, y) is inside the grid AND occupied AND not visited:
+mark (x-1, y)  visited
+add (x-1, y)  to stack
+IF (x, y-1) is inside the grid AND occupied AND not visited:
+mark (x, y-1) visited
+add (x, y-1) to stack
+
+IF crossing:
+BREAK
+
+IF crossing:
+numofsuccess = numofsuccess + 1
+
+RETURN successes / M
+			\end{lstlisting}
+			
+			The returned value of our above code is our estimator of the function which we will denote as
+			\[
+			\widehat{\theta}_n(p).
+			\]
+			
+			
+			
+			\subsubsection*{\vocab{Python Code}}
+			
+			The pseudocode above can be implemented into python as well. Also, the stack works for the DFS so we don't need any new libraries.
+			
+			\begin{lstlisting}[style=pythonStyle]
+import random
+
+def try_to_find_theta(n, p, M):
+	rng = random.Random(20260919)
+	successes = 0
+	
+	for trial in range(M):
+	
+		grid = []
+		
+		for row in range(n):
+			new_row = []
+		
+			for column in range(n):
+				if rng.random() < p:
+					new_row.append(True)
+				else:
+					new_row.append(False)
+		
+			grid.append(new_row)
+		
+		
+		visited = []
+		
+		for row in range(n):
+			new_row = []
+		
+			for column in range(n):
+				new_row.append(False)
+		
+			visited.append(new_row)
+		
+		
+		crossing = False
+
+		for start_row in range(n):
+		
+			if not grid[start_row][0]:
+				continue
+		
+			if visited[start_row][0]:
+				continue
+		
+			stack = [(start_row, 0)]
+			visited[start_row][0] = True
+			
+			while stack:
+				row, column = stack.pop()
+	
+				if column == n - 1:
+					crossing = True
+					break
+			
+			
+				new_row = row + 1
+				new_column = column
+			
+				if (0 <= new_row < n and 0 <= new_column < n and grid[new_row][new_column] and not visited[new_row][new_column]):
+					visited[new_row][new_column] = True
+					stack.append((new_row, new_column))
+			
+				new_row = row - 1
+				new_column = column
+			
+				if (0 <= new_row < n and 0 <= new_column < n and grid[new_row][new_column] and not visited[new_row][new_column]):
+					visited[new_row][new_column] = True
+					stack.append((new_row, new_column))
+			
+	
+				new_row = row
+				new_column = column + 1
+			
+				if (0 <= new_row < n and 0 <= new_column < n and grid[new_row][new_column] and not visited[new_row][new_column]):
+					visited[new_row][new_column] = True
+					stack.append((new_row, new_column))
+				
+			
+				new_row = row
+				new_column = column - 1
+			
+				if (0 <= new_row < n and 0 <= new_column < n and grid[new_row][new_column] and not visited[new_row][new_column]):
+					visited[new_row][new_column] = True
+					stack.append((new_row, new_column))
+				
+			
+			if crossing:
+				break
+			
+			
+		if crossing:
+			successes += 1
+		
+	
+	return successes / M
+
+
+			\end{lstlisting}
+			
+			
+			\subsubsection*{\vocab{How Many Sims?}}
+			
+			We get the bound from the problem that we have that
+			\[
+			\Pr\left(
+			\left|
+			\widehat{\theta}_n(p)-\theta_n(p)
+			\right|>\varepsilon
+			\right)
+			\le
+			2e^{-2M\varepsilon^2}.
+			\]
+			Doing a bit of researching from where this bound given to use came from, apparently it is a consequence of Hoeffding's inequalily \cite[Theorem~1, equation~(2.3)]{hoeffding}.
+			Indeed, let $X_j$ be the indicator that the $j$th independently
+			generated grid has a left-to-right crossing. Then
+			$0\le X_j\le1$, $\mathbb E[X_j]=\theta_n(p)$, and
+			\[
+			\widehat{\theta}_n(p)=\frac1M\sum_{j=1}^{M}X_j.
+			\]
+			Applying the inequality to the upper and lower tails and adding
+			their bounds gives the stated two-sided estimate.
+			The event inside the probabilty is the bad event that occurs when our estimate is different from the actual probabilty by a amount of more than $\varepsilon$.
+			We want this to be at most $\delta$.
+			Therefore it is sufficient to require
+			\[
+			2e^{-2M\varepsilon^2}
+			\le
+			\delta.
+			\]
+			
+			\begin{claim*}
+				It is sufficient to choose
+				\[
+				\boxed{
+					M
+					\ge
+					\frac{\ln(2/\delta)}{2\varepsilon^2}.
+				}
+				\]
+			\end{claim*}
+			
+			\begin{proof}
+				This is simple by using a couple of simple math operations. We can 
+				we divide by $2$ from what we started with to obtain
+				\[
+				e^{-2M\varepsilon^2}
+				\le
+				\frac{\delta}{2}.
+				\]
+				
+			Natural log of each side gets us
+				\[
+				-2M\varepsilon^2
+				\le
+				\ln\left(\frac{\delta}{2}\right).
+				\]
+				
+				Multiplying by $-1$ and reverse the inequality
+				\[
+				2M\varepsilon^2
+				\ge
+				-\ln\left(\frac{\delta}{2}\right)
+				=
+				\ln\left(\frac{2}{\delta}\right).
+				\]
+				
+				Therefore
+				\[
+				M
+				\ge
+				\frac{\ln(2/\delta)}{2\varepsilon^2}.
+				\]
+				
+				Since $M$ must be an integer, one sufficient choice is
+				\[
+				\boxed{
+					M=
+					\left\lceil
+					\frac{\ln(2/\delta)}{2\varepsilon^2}
+					\right\rceil.
+				}
+				\]
+			\end{proof}
+			
+			
+			\subsubsection*{\vocab{Specific Values}}
+			
+			We are given to specialize to values that are useful which are
+			\[
+			\varepsilon=\delta=0.05.
+			\]
+			
+			So we have
+			\begin{align*}
+				M
+				&\ge
+				\frac{\ln(2/0.05)}
+				{2(0.05)^2}\\
+				&=
+				\frac{\ln(40)}{0.005}\\
+				&\approx
+				737.776.
+			\end{align*}
+			
+			Therefore
+			\[
+			\boxed{M=738}
+			\]
+			simulations are enough
+			
+			In other words, with $738$ simulations then we have
+			\[
+			\Pr\left(
+			\left|
+			\widehat{\theta}_n(p)-\theta_n(p)
+			\right|
+			\le0.05
+			\right)
+			\ge0.95.
+			\]
+			
+			
+			\subsubsection*{\vocab{Exact Values}}
+			
+			\begin{claim*}
+				For $n=1$,
+				\[
+				\boxed{\theta_1(p)=p}.
+				\]
+			\end{claim*}
+			
+			\begin{proof}
+				There is only one square. This means the leftmost and rightmost column are the same column with only one square. This square has to be occupied for a corssing to exist which occurs with probabilty $p$ so 			
+				\[
+				\boxed{\theta_1(p)=p}.
+				\]
+			\end{proof}
+			
+			
+			
+			Let's say the matrix for when $n=2$ is 
+			\[
+			\begin{matrix}
+				A & C\\
+				B & D
+			\end{matrix}
+			\]
+			where $A,B$ are in the left column and $C,D$ are in the right column.
+			If there is a crossing that exists then there must be a crossing between the two columns. In this case, that means one row must be completely filled so 
+
+			\[
+			A-C
+			\qquad\text{or}\qquad
+			B-D.
+			\]
+			must be occupied for a crossing to exist.
+			
+			\begin{claim*}
+				For $n=2$,
+				\[
+				\boxed{
+					\theta_2(p)=2p^2-p^4.
+				}
+				\]
+			\end{claim*}
+			
+			\begin{proof}
+				We can use complementary counting. The chance that $A-C$ and $B-D$ are not occupied is $(1-p^2)^2$. Therefore, the chance that at least one of them are occupied is just 
+				
+				Therefore
+				\begin{align*}
+					\theta_2(p)
+					&=
+					1-(1-p^2)^2\\
+					&=
+					1-\left(1-2p^2+p^4\right)\\
+					&=
+					\boxed{2p^2-p^4}.
+				\end{align*}
+			\end{proof}
+			
+			
+\subsubsection*{\vocab{Testing the Implementation}}
+
+To test our mathematical analysis with our coding simulation we use exactly
+\[
+M=738,
+\]
+which was the amount we obtained with values of
+\[
+\varepsilon=\delta=0.05.
+\]
+
+I used the fixed random seed
+\[
+20260919
+\]
+so that the results are reproducible.
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.25}
+	\begin{tabular}{cccccc}
+		\toprule
+		$n$ & $p$ & $M$
+		& $\widehat{\theta}_n(p)$
+		& Exact $\theta_n(p)$
+		& Absolute Error\\
+		\midrule
+		
+		1 & $0.25$ & 738
+		& $0.25068$
+		& $0.25000$
+		& $0.00068$\\
+		
+		1 & $0.70$ & 738
+		& $0.68835$
+		& $0.70000$
+		& $0.01165$\\
+		
+		2 & $0.25$ & 738
+		& $0.11518$
+		& $$0.12109375$$
+		& $0.00592$\\
+		
+		2 & $0.70$ & 738
+		& $0.73984$
+		& $0.73990$
+		& $0.00006$\\
+		
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+In each of these tests, our simluated value is extremely close to the exactly probability. One example of this is when $n=2$ and $p=0.70$, the exact value is
+\[
+\theta_2(0.70)
+=
+2(0.70)^2-(0.70)^4
+=
+0.7399,
+\]
+while the simulation returned
+\[
+\widehat{\theta}_2(0.70)
+=
+\frac{546}{738}
+\approx
+0.73984.
+\]
+So the error we saw was
+\[
+\left|
+0.73984-0.73990
+\right|
+\approx
+0.00006.
+\]
+
+Also, the largest error out of all of these tests was 
+for $n=1$ and $p=0.70$, where
+\[
+\left|
+0.68835-0.70000
+\right|
+\approx
+0.01165.
+\]
+
+All of these are well below the tolerance of
+\[
+\varepsilon=0.05.
+\]
+
+Thus the implementation behaves consistently with the exact values in
+the cases $n=1$ and $n=2$.
+			
+			
+		\end{soln}
+		
+% Uses the existing evan.sty commands and environments:
+% soln, claim*, proof, remark*, \vocab, and \keyeq.
+% If the main document already has a bibliography, move the two
+% \bibitem entries below into that bibliography.
+
+\section{Problem 3}
+
+\subsection{(a)}
+
+\begin{soln}
+	
+	\subsubsection*{\vocab{Connection with Optimal Quantization}}
+	
+	The useful research connection is with \emph{scalar quantization}:
+	choosing $n$ points so that the distance from a typical point of an
+	interval to its nearest chosen point is as small as possible.
+	For the uniform distribution on $[0,1]$, the classical result is that,
+	for every exponent $r>1$, the unique optimal set consists of the
+	midpoints of $n$ equal intervals. The midpoint description is
+	Graf and Luschgy \cite[Example~5.5]{graf-luschgy}. Uniqueness follows
+	from Kreitmeier \cite{p3-kreitmeier}: by Remark~1.3 there, for the
+	uniform distribution on $[0,1]$ and every $r>1$ the optimal quantizers
+	coincide with the Gersho quantizers, and by Proposition~2.5 there is
+	exactly one Gersho quantizer when the support is an interval.
+	In the notation needed here, it says that
+	\[
+	\inf_{a_1,\ldots,a_n\in[0,1]}
+	\int_0^1 \min_{1\le i\le n}|x-a_i|^r\,dx
+	\]
+	is attained uniquely, up to reordering, at
+	\[
+	a_i=\frac{2i-1}{2n},
+	\qquad 1\le i\le n.
+	\]
+	
+	To apply this result, we first identify the error made by a tangent.
+	For $f(x)=x^2$,
+	\[
+	L_a(x)=a^2+2a(x-a)=2ax-a^2,
+	\qquad
+	f(x)-L_a(x)=(x-a)^2.
+	\]
+	Taking the largest tangent is therefore equivalent to taking the
+	smallest squared distance:
+	\[
+	f(x)-L_{a_1,\ldots,a_n}(x)
+	=\min_{1\le i\le n}(x-a_i)^2.
+	\]
+	Consequently,
+	\[
+	E_{n,p}(x^2)^p
+	=\inf_{a_1,\ldots,a_n\in[0,1]}
+	\int_0^1\min_{1\le i\le n}|x-a_i|^{2p}\,dx.
+	\]
+	This is precisely the cited quantization problem with $r=2p>1$.
+	Thus the unique optimal multiset is
+	\keyeq{
+		\left\{\frac{1}{2n},\frac{3}{2n},\ldots,
+		\frac{2n-1}{2n}\right\}.
+	}
+	Each point occurs once, and the answer is independent of $p$.
+	
+	\subsubsection*{\vocab{Evaluating the Optimal Error}}
+	
+	The cited result has already determined the optimizer. To compute the
+	error, each of the $n$ equal intervals contributes the same integral
+	about its midpoint. Hence
+	\begin{align*}
+		E_{n,p}(x^2)^p
+		&=2n\int_0^{1/(2n)}u^{2p}\,du\\
+		&=\frac{1}{2^{2p}(2p+1)n^{2p}}.
+	\end{align*}
+	Taking the $p$-th root gives the exact value
+	\keyeq{
+		E_{n,p}(x^2)
+		=\frac{1}{4(2p+1)^{1/p}}\,n^{-2}.
+	}
+	
+\end{soln}
+
+\subsection{(b)}
+
+\begin{soln}
+	
+	\subsubsection*{\vocab{Comparing Tangent Errors with Quadratics}}
+	
+	The quadratic case suggests comparing a general tangent error with
+	$(x-a)^2$. The relevant tools are the first- and second-order
+	characterizations of convexity and the quadratic bound for strongly
+	convex functions; see Boyd and Vandenberghe
+	\cite[slides~3.9--3.10 and ``Strong convexity and implications'']{p3-convex-slides}.
+	In one dimension, these give the following comparison on an interval $J$:
+	\[
+	\mu\le f''\le M\text{ on }J
+	\quad\Longrightarrow\quad
+	\frac{\mu}{2}(x-a)^2
+	\le f(x)-L_a(x)
+	\le\frac{M}{2}(x-a)^2,
+	\qquad a,x\in J.
+	\tag{1}\label{eq:p3-curvature}
+	\]
+	Indeed, the two inequalities are the tangent-support inequalities for
+	the convex functions $f(x)-\mu x^2/2$ and $Mx^2/2-f(x)$,
+	respectively. The statements extend to the interval endpoints by
+	continuity.
+	
+	We will use the upper comparison on all of $[0,1]$. For the lower
+	comparison, it will be enough to find one interval on which the
+	curvature is bounded below by a positive constant.
+	
+	\subsubsection*{\vocab{An Upper Bound from Equally Spaced Tangents}}
+	
+	Convexity and the continuity of $f''$ give
+	\[
+	0\le f''(x)\le M,
+	\qquad
+	M:=\max_{x\in[0,1]}f''(x)<\infty.
+	\]
+	Choose the same tangency points as in part~(a),
+	\[
+	a_i=\frac{2i-1}{2n},
+	\qquad 1\le i\le n.
+	\]
+	By \eqref{eq:p3-curvature},
+	\[
+	0\le f(x)-L_{a_1,\ldots,a_n}(x)
+	\le\frac{M}{2}\min_{1\le i\le n}|x-a_i|^2.
+	\]
+	Part~(a) has already evaluated the norm on the right, so
+	\keyeq{
+		E_{n,p}(f)
+		\le\frac{M}{8(2p+1)^{1/p}}\,n^{-2}.
+	}
+	Thus equally spaced tangents already achieve the required upper rate.
+	
+	\subsubsection*{\vocab{Finding an Interval with Positive Curvature}}
+	
+	Strict convexity does not require $f''$ to be positive everywhere.
+	However, $f''$ cannot vanish identically, since that would make $f$
+	affine. As $f''\ge0$ and $f''$ is continuous, there are an interval
+	\[
+	I=[u,v]\subseteq[0,1],
+	\qquad \ell:=v-u>0,
+	\]
+	and a constant $m>0$ such that
+	\[
+	f''(x)\ge m
+	\qquad (x\in I).
+	\]
+	Both $I$ and $m$ are fixed independently of $n$. An unavoidable error
+	on this interval gives a lower bound for the error on the whole domain.
+	
+	The tangency points may lie outside $I$, so we must first account for
+	those tangents. The following observation makes the local curvature
+	bound applicable to every choice of tangency points.
+	
+	\begin{claim*}[Moving an outside tangency point to the boundary]
+		For $a\in[0,1]$, define its projection onto $I$ by
+		\[
+		b=\pi_I(a):=
+		\begin{cases}
+			u,&a<u,\\
+			a,&u\le a\le v,\\
+			v,&a>v.
+		\end{cases}
+		\]
+		Then, for every $x\in I$,
+		\[
+		f(x)-L_a(x)
+		\ge f(x)-L_b(x)
+		\ge\frac{m}{2}|x-b|^2.
+		\]
+	\end{claim*}
+	
+	\begin{proof}
+		The tangent-support inequality gives $f(b)-L_a(b)\ge0$.
+		Also, $f'$ is nondecreasing, so
+		\[
+		L_b(x)-L_a(x)
+		=\bigl(f(b)-L_a(b)\bigr)
+		+\bigl(f'(b)-f'(a)\bigr)(x-b)
+		\ge0.
+		\]
+		For the second term, both factors are nonnegative if $a<u$, both are
+		nonpositive if $a>v$, and the term is zero if $a\in I$.
+		This proves the first inequality. The second follows from
+		\eqref{eq:p3-curvature}, since $b,x\in I$ and $f''\ge m$ there.
+	\end{proof}
+	
+	\subsubsection*{\vocab{Applying the Quantization Bound Again}}
+	
+	Now take any $a_1,\ldots,a_n\in[0,1]$, and put $b_i=\pi_I(a_i)$.
+	The claim gives, for $x\in I$,
+	\[
+	f(x)-L_{a_1,\ldots,a_n}(x)
+	\ge\frac{m}{2}\min_{1\le i\le n}|x-b_i|^2.
+	\]
+	We can therefore reuse the optimal quantization value from part~(a).
+	The change of variables $x=u+\ell y$ multiplies the integral of the
+	$2p$-th power of distance by $\ell^{2p+1}$, so
+	\[
+	\inf_{b_1,\ldots,b_n\in I}
+	\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx
+	=\frac{\ell^{2p+1}}{2^{2p}(2p+1)n^{2p}}.
+	\]
+	This infimum allows repeated points, as in part~(a), so it also applies
+	when several of the projections $b_i$ coincide. It follows that
+	\begin{align*}
+		\bigl\|f-L_{a_1,\ldots,a_n}\bigr\|_p^p
+		&\ge\left(\frac{m}{2}\right)^p
+		\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx\\
+		&\ge\frac{m^p\ell^{2p+1}}{8^p(2p+1)n^{2p}}.
+	\end{align*}
+	Taking the $p$-th root and then the infimum over all tangency points
+	yields
+	\keyeq{
+		E_{n,p}(f)
+		\ge\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}}\,n^{-2}.
+	}
+	
+	Combining the two bounds, we may take
+	\[
+	c_{f,p}:=\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}},
+	\qquad
+	C_{f,p}:=\frac{M}{8(2p+1)^{1/p}}.
+	\]
+	These satisfy $0<c_{f,p}\le C_{f,p}<\infty$ and are independent of $n$.
+	Therefore the sharp decay exponent is
+	\keyeq{
+		\alpha=2,
+		\qquad
+		E_{n,p}(f)=\Theta(n^{-2}).
+	}
+	
+\end{soln}
+
+\section{Problem 5}
+\subsection{(a)}
+
+\begin{soln}
+	
+	Our three main ideas or references that we will combine in this problem are as follows. The first and most simple comes  as Stanley \cite[Section~1.2]{stanley-ec1}. Second, a local central limit theorem predicts probabilities of order $n^{-1}$ in dimension two; see, for example, Lawler and Limic
+	\cite[Chapter~2]{lawler-limic}. Finally, coefficients of order $1/n$
+	correspond to a logarithmic singularity of the generating function, one
+	of the standard correspondences in singularity analysis
+	\cite[Section~VI.2, Figure~VI.5]{flajolet-sedgewick}.
+	 These 3 therioes I found out after doing a bit of research were the main things that shaped this parts solution.
+	\subsubsection*{\vocab{Staying EXACT}}
+	For now, we just do some nice notation simplification and counting arguments. 
+	We use the fact that 	\[
+	1+\omega+\omega^2=0
+	\] freely.
+ 	Then we just write
+	\[
+	\alpha=a+b\omega,
+	\qquad a,b\in\mathbb Z.
+	\]
+	We know that this a completely unique representation for $\alpha$ since $1$ and
+	$\omega$ are linearly independent over $\mathbb R$.
+	We identify a walk as using $i$ steps of $1$, $j$ of $\omega$ and $l$ of $\omega^2$, therefore we know that 
+	\[
+	i+j\omega+\ell\omega^2
+	=(i-\ell)+(j-\ell)\omega.
+	\]
+	from our first pointed out relation.
+	Consequently, the endpoint is $\alpha$ exactly when
+	\[
+	i-\ell=a,
+	\qquad
+	j-\ell=b.
+	\]
+	
+	Define
+	\[
+	h=\max\{0,-a,-b\},
+	\qquad
+	r=a+h,\quad s=b+h,\quad u=h,
+	\]
+	and let
+	\[
+	N=r+s+u.
+	\]
+	These are fixed nonnegative integers depending only on $\alpha$. These are extremely important since $N$ is the length of a walk to $\alpha$, $h$ is the least possible value of $\ell$ using our fact thall all of $a,i,\ell,j,b$ must be non-negative.
+	With all of this setup our big counting argument just falls into place.
+	\begin{claim*}
+		The lengths for a possible walk is $N+3k$, where $k\ge0$, and
+		\[
+		\boxed{
+			c_{N+3k}(\alpha;S_+)
+			=\frac{(3k+N)!}{(k+r)!(k+s)!(k+u)!}.
+		}
+		\tag{1}
+		\]
+		For every other nonnegative length, the coefficient is zero.
+	\end{claim*}
+	
+	\begin{proof}
+		By our definitions we have that $i=a+\ell$ and $j=b+\ell$. All three
+		step counts are nonnegative exactly when $\ell\ge h$, therefore that must be the case. Using this we can write that
+		$\ell=h+k$, we obtain
+		\[
+		(i,j,\ell)=(k+r,k+s,k+u),
+		\qquad k\ge0.
+		\]
+		Their sum is $3k+N$. Conversely, every such triple has endpoint
+		$\alpha$, so this describes all possible lengths and step counts.
+		To count this, for a fixed $k$ it is equivalent to cou nting the different orderings of a multiset containing $k+r$, $k+s$, and $k+u$ copies of each of the steps. Using the formula as given in Stanley \cite[Section~1.2]{stanley-ec1} we obtain our answer.
+			\end{proof}
+	
+Therefore we can create the series of 
+	\[
+	G_\alpha(t)
+	=\sum_{k=0}^{\infty}
+	\frac{(3k+N)!}{(k+r)!(k+s)!(k+u)!}\,t^{3k+N}.
+	\tag{2}
+	\]
+	
+	
+	\subsubsection*{\vocab{Limits?}}
+	A natural direction to go to is to convert this into probabilities. 
+	To do this we can normalize the coefficient in (1) by the total number of walks and set
+	\[
+	b_k=
+	\frac{(3k+N)!}
+	{3^{3k+N}(k+r)!(k+s)!(k+u)!}.
+	\tag{3}
+	\]
+	This value of $b_k$ is the probalityh that a random walk lands at  $\alpha$ after $3k+N$ steps.
+	The general local-limit viewpoint predicts the order $k^{-1}$.To get a summable error we use Robbins's refinement of
+	Stirling's formula \cite[equations~(1)--(2)]{robbins-stirling}:
+	\[
+	m!=\sqrt{2\pi m}\left(\frac{m}{e}\right)^m e^{\rho_m},
+	\qquad
+	\frac{1}{12m+1}<\rho_m<\frac{1}{12m}
+	\quad(m\ge1).
+	\tag{4}
+	\]
+	Where in particular, $\rho_m=O(m^{-1})$.
+	Now we quickly analyze the case of $\alpha = 0$ and where we take $k$ steps in each direction. This was originally meant to be just for insight into the problem but we can prove that our answer in this turns out not to be so different for this against a general alpha. We have that, applying (4) to
+	$(3k)!$ and $k!$ gives
+	\begin{align*}
+		\frac{(3k)!}{3^{3k}(k!)^3}
+		&=
+		\frac{
+			\sqrt{6\pi k}(3k/e)^{3k}e^{\rho_{3k}}
+		}{
+			3^{3k}(2\pi k)^{3/2}(k/e)^{3k}e^{3\rho_k}
+		}\\
+		&=\frac{\sqrt3}{2\pi k}
+		e^{\rho_{3k}-3\rho_k}\\
+		&=\frac{\sqrt3}{2\pi k}+O(k^{-2}).
+		\tag{5}
+	\end{align*}
+	The last equality follows because
+	$\rho_{3k}-3\rho_k=O(k^{-1})$ and therefore
+	$e^{\rho_{3k}-3\rho_k}=1+O(k^{-1})$.
+	
+	Now using this we can figure out the effect of a fixed endpoint
+	\begin{align*}
+		\frac{b_k}{(3k)!/(3^{3k}(k!)^3)}
+		&=
+		\frac{(3k+N)!}{(3k)!}
+		\frac{(k!)^3}{(k+r)!(k+s)!(k+u)!}
+		\frac1{3^N}\\
+		&=
+		\frac{
+			\displaystyle\prod_{j=1}^{N}\left(1+\frac{j}{3k}\right)
+		}{
+			\displaystyle
+			\prod_{j=1}^{r}\left(1+\frac{j}{k}\right)
+			\prod_{j=1}^{s}\left(1+\frac{j}{k}\right)
+			\prod_{j=1}^{u}\left(1+\frac{j}{k}\right)
+		}.
+		\tag{6}
+	\end{align*}
+	Empty products are interpreted as $1$. Since $r+s+u=N$, all powers
+	of $k$ and $3$ have canceled. Each remaining product has a fixed number
+	of factors, so the right side of (6) is
+	\[
+	1+O_\alpha(k^{-1}).
+	\]
+	Combining this with (5) proves the coefficient estimate
+	\[
+	\boxed{
+		b_k=\frac{\sqrt3}{2\pi k}+O_\alpha(k^{-2}).
+	}
+	\tag{7}
+	\]
+	
+	Formula (7) will be quite important for the next steps.
+	\subsubsection*{\vocab{Expansion}}
+	
+	After trying the math without any substituions and having a hard time, we decide to substitute. 
+	\[
+	x=3t,
+	\qquad
+	K=\frac{\sqrt3}{2\pi}.
+	\]
+	Equation (2) and the definition of $b_k$ give, for $0\le x<1$,
+	\[
+	G_\alpha(x/3)=x^N\sum_{k=0}^{\infty}b_kx^{3k}.
+	\tag{8}
+	\]
+	By (7), we may write
+	\[
+	b_k=\frac{K}{k}+e_k
+	\qquad(k\ge1),
+	\]
+	where, after increasing a constant to absorb finitely many initial
+	indices,
+	\[
+	|e_k|\le\frac{C_\alpha}{k^2}
+	\qquad(k\ge1).
+	\tag{9}
+	\]
+	It follows uniformly for $0\le x<1$ that
+	\[
+	\left|\sum_{k=1}^{\infty}e_kx^{3k}\right|
+	\le C_\alpha\sum_{k=1}^{\infty}\frac1{k^2}
+	<\infty.
+	\]
+	Thus the $k=0$ term and the entire error series in (8) contribute
+	$O_\alpha(1)$, and
+	\[
+	G_\alpha(x/3)
+	=Kx^N\sum_{k=1}^{\infty}\frac{x^{3k}}{k}
+	+O_\alpha(1).
+	\tag{10}
+	\]
+	
+	By the Maclaurin series of the logarithm \cite[(4.6.1)]{dlmf}
+(with $z=-y$), $\sum_{k=1}^{\infty}y^k/k=-\log(1-y)$ for $0\le y<1$.
+Taking $y=x^3$ in (10) yields
+	
+	To put this in the form requested in the problem, factor
+	\[
+	1-x^3=(1-x)(1+x+x^2).
+	\]
+	Then
+	\begin{align*}
+		x^N\log(1-x^3)
+		&=\log(1-x)+(x^N-1)\log(1-x)\\
+		&\qquad+x^N\log(1+x+x^2).
+		\tag{12}
+	\end{align*}
+	The last term is bounded as $x\to1^-$. If $N\ge1$, then
+	\[
+	0\le1-x^N\le N(1-x),
+	\]
+	and consequently
+	\[
+	|(x^N-1)\log(1-x)|
+	\le N(1-x)|\log(1-x)|\longrightarrow0.
+	\]
+	For $N=0$ this term vanishes identically. Therefore (12) implies
+	\[
+	x^N\log(1-x^3)=\log(1-x)+O_\alpha(1).
+	\tag{13}
+	\]
+	Substituting (13) into (11), and then returning to $x=3t$, gives
+	\[
+	\boxed{
+		G_\alpha(t)
+		=-\frac{\sqrt3}{2\pi}\log(1-3t)+O_\alpha(1)
+		\qquad\text{as }t\to(1/3)^-.
+	}
+	\tag{14}
+	\]
+	
+	For the radius of convergence, note that $c_{3k+N}(\alpha;S_+)=3^{3k+N}b_k$
+with $b_k\sim\sqrt3/(2\pi k)$ by (7), and every other coefficient is zero.
+Hence $\limsup_{n\to\infty}c_n(\alpha;S_+)^{1/n}=3$, and by the
+Cauchy--Hadamard formula (the radius of convergence is the reciprocal of
+the exponential growth rate of the coefficients; see
+\cite[Section~IV.3.2, equation~(17) and Note~IV.14]{flajolet-sedgewick}),
+\[
+\boxed{R_\alpha=\frac13}.
+\]
+	
+	The proof also identifies the source of the endpoint independence:
+	the endpoint affects only the fixed factorial shifts in (6), whereas
+	the logarithmic coefficient is determined by the balanced local-limit
+	term in (5).
+	
+\end{soln}
+
+\subsection{(b)}
+
+\begin{soln}
+	We have a restriction on the sublattice which suggests to take a walk which has$\pmod \lambda=1-\omega$. 
+
+	\subsubsection*{\vocab{Remove it}}
+	
+	Our first goal is to turn membership in $\lambda\mathbb Z[\omega]$ into something we can more better work with. This leads us to use that, since $\omega$ is nonreal, there is a value for $a+b\omega$ with $a,b\in\mathbb Z$. Define the additive map
+	\[
+	\chi:\mathbb Z[\omega]\longrightarrow\mathbb Z/3\mathbb Z,
+	\qquad
+	\chi(a+b\omega)=a+b\pmod 3.
+	\]
+		Obviously, since it is modulo $3$ it can only output values $0,1,2$.
+	
+	\begin{claim*}
+		The "forbidden" part of the lattice is just the residue class that
+		\[
+		\lambda\mathbb Z[\omega]
+		=\ker\chi
+		=\{a+b\omega: a+b\equiv0\pmod3\}.
+		\]
+	\end{claim*}
+	
+	\begin{proof}
+		We use, once again, that $\omega^2=-1-\omega$, and then we can obtain that
+		\[
+		(1-\omega)(c+d\omega)
+-c)\omega.
+		\]
+		The sum of the two coefficients on the right is $3d$, so every multiple
+		of $\lambda$ lies in $\ker\chi$.
+		
+		Conversely, suppose that $a+b$ is divisible by $3$. Set
+		\[
+		d=\frac{a+b}{3},
+		\qquad
+		c=a-d.
+		\]
+		Since both are integers and since $c+d=a$ and $2d-c=3d-a=b$. We can do
+		\[
+		a+b\omega=(1-\omega)(c+d\omega),
+		\]
+		proving the reverse inclusion.
+	\end{proof}
+	
+Now our avoidance condition is just that throughout our walk this residue class must be $1$ or $2$.
+	
+	\subsubsection*{\vocab{Equal Numbers}}
+	We will now call a step in the "positive" direction if it belongs to $\{1,\omega,\omega^2\}$ and negative if it belongs to the negative of that set, which is $\{-1,-\omega,-\omega^2\}$. 
+	
+	Now we expectedly have that, since $\omega^2=-1-\omega$
+	\[
+	\chi(1)=\chi(\omega)=\chi(\omega^2)=1.
+	\]
+	Hence positive steps increase the residue by $1$, and negative steps
+	decrease it by $1$, all modulo $3$.
+	
+	This means that if we are currently in a residue class of $2$ we must take a negative step and if we are in a residue class of $1$ currently then we must take a positive step. We should never be in a residue class of $0$ since that is forbidden (until the last step).
+	Put more formally, due to the fact we are looking for $p_{2n}$ we can fix $n\ge1$ and first consider a primitive walk of length $2n$ whose first step is positive. Its first residue is $1$. To avoid residue $0$,
+	the subsequent intermediate residues must alternate:
+	\[
+	\chi(z_k)=
+	\begin{cases}
+		1,& k\text{ odd},\\
+		2,& k\text{ even},
+	\end{cases}
+	\qquad 1\le k\le2n-1.
+	\]
+
+	All other intermediate steps are negative, and the final step must also
+	be negative to take residue $1$ back to $0$. Consequently, there are
+	exactly $n$ positive and $n$ negative positions. This description also
+	includes $n=1$, when the second set of positions is empty.
+	All other steps in the intermediate must be negative and the final step must also be negative. This is almost giving us a exact way to count for the number of paths, however we still have considered one condition. We must still impose
+	the stronger condition that the final point is the origin
+	not merely some point of $\lambda\mathbb Z[\omega]$.
+	
+	\subsubsection*{\vocab{Fixing the end and finishing}}
+		
+	\begin{claim}
+		The value of $p_{2n}$, as defined in the problem statement, is 	\keyeq{
+			p_{2n}
+			=2\sum_{\substack{a,b,c\ge0\\a+b+c=n}}
+			\left(\frac{n!}{a!\,b!\,c!}\right)^2,
+			\qquad n\ge1.
+		}
+	\end{claim}
+	\begin{proof}
+		
+		To get the endpoint to be the origin we can define the number of times we can take each positive and negative step to be
+		\[
+		(a,b,c)\quad\text{for }(1,\omega,\omega^2),
+		\qquad
+		(a',b',c')\quad\text{for }(-1,-\omega,-\omega^2).
+		\]
+		We note that all $3$ are non-negative and that
+		\[
+		a+b+c=a'+b'+c'=n.
+		\]
+		Finally, we are at the origin iff
+		\begin{align*}
+			0
+			&=(a-a')+(b-b')\omega+(c-c')\omega^2\\
+			&=\bigl((a-a')-(c-c')\bigr)
+			+\bigl((b-b')-(c-c')\bigr)\omega.
+		\end{align*}
+		Which implies
+		\[
+		a-a'=b-b'=c-c'.
+		\]
+		These three differences sum to zero, since both triples sum to $n$ we have 		\[
+		a-a'=b-b'=c-c'=0
+		\]
+		Conversely, identical triples clearly
+		give endpoint zero. Thus
+		\[
+		z_{2n}=0
+		\quad\Longleftrightarrow\quad
+		(a,b,c)=(a',b',c').
+		\]
+		
+
+		Now we can count these directly.  For a fixed triple $(a,b,c)$, the $n$ positive positions can be filled
+		in
+		\[
+		\binom{n}{a}\binom{n-a}{b}
+		=\frac{n!}{a!\,b!\,c!}
+		\]
+		ways. Independently, the negative positions can be filled in the same
+		number of ways. Due to our previous seturp each of these walks are $\lambda$ primitive.
+		
+		Finally, negating every vertex gives a bijection between the primitive
+		walks whose first step is positive and those whose first step is
+		negative. These two classes are disjoint and exhaust all possibilities.
+		To finish off, we can negate every vertex and this will give a bijection between primitive walks whose first step is positive and oens whose first step is negative. These two classes are disjoint and are exhaustive of all possible possibilities.
+		Combining all of this we obtain the equality
+		\keyeq{
+			p_{2n}
+			=2\sum_{\substack{a,b,c\ge0\\a+b+c=n}}
+			\left(\frac{n!}{a!\,b!\,c!}\right)^2,
+			\qquad n\ge1.
+		}
+	\end{proof}
+	
+	We could have also connected this via our results from part (a). Finding the values for the positive steps and seperately finding the ones for the negatives of the negative steps, we have two lists of n steps. Coming back to the origin just means that both of these will hae teh same sum.  Which means that, equivalently,
+	\[
+	p_{2n}
+	=2\sum_{\alpha\in\mathbb Z[\omega]}
+	c_n(\alpha;S_+)^2,
+	\]
+	where only finitely many terms are nonzero.
+	
+To finish, define
+\[
+a(n)=\sum_{\substack{a,b,c\ge0\\a+b+c=n}}
+\left(\frac{n!}{a!\,b!\,c!}\right)^2.
+\]
+This is OEIS sequence A002893 \cite{oeis_A002893}.
+Richmond and Shallit's asymptotic formula
+\cite[Theorem~4]{richmond-shallit}, specialized to three letters, gives
+\[
+a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
+\]
+	
+\end{soln}
+
+		
+\begin{thebibliography}{99}
+
+	\bibitem{stanley-ec1}
+	Richard P. Stanley.
+	\newblock \emph{Enumerative Combinatorics}, Volume~1, second edition.
+	\newblock Cambridge Studies in Advanced Mathematics, Volume~49.
+	Cambridge University Press, 2012.
+	\newblock \url{https://math.mit.edu/~rstan/ec/ec1/}.
+
+	\bibitem{oeis_A002893}
+	OEIS Foundation Inc.
+	\newblock Sequence A002893:
+	$a(n)=\sum_{k=0}^{n}\binom{n}{k}^2\binom{2k}{k}$.
+	\newblock \emph{The On-Line Encyclopedia of Integer Sequences}, 2026.
+	\newblock \url{https://oeis.org/A002893}.
+	\newblock Accessed September 29, 2026.
+
+	\bibitem{richmond-shallit}
+	L.~Bruce Richmond and Jeffrey Shallit.
+	\newblock Counting abelian squares.
+	\newblock \emph{The Electronic Journal of Combinatorics}, 16(1):\#R72, 2009.
+	\newblock \url{https://www.combinatorics.org/ojs/index.php/eljc/article/view/v16i1r72}.
+
+	\bibitem{lawler-limic}
+	Gregory F. Lawler and Vlada Limic.
+	\newblock \emph{Random Walk: A Modern Introduction}.
+	\newblock Cambridge Studies in Advanced Mathematics, Volume~123.
+	Cambridge University Press, 2010.
+	\newblock \url{https://www.math.uchicago.edu/~lawler/srwbook.pdf}.
+
+	\bibitem{flajolet-sedgewick}
+	Philippe Flajolet and Robert Sedgewick.
+	\newblock \emph{Analytic Combinatorics}.
+	\newblock Cambridge University Press, 2009.
+	\newblock \url{https://ac.cs.princeton.edu/home/}.
+
+	\bibitem{robbins-stirling}
+	Herbert Robbins.
+	\newblock A remark on Stirling's formula.
+	\newblock \emph{The American Mathematical Monthly},
+	62(1):26--29, 1955.
+	\newblock \url{https://doi.org/10.2307/2308012}.
+
+	\bibitem{jia-plucker}
+	Yan-Bin Jia.
+	\newblock \emph{Pl\"ucker Coordinates for Lines in the Space}.
+	\newblock COMS 4770/5770 course notes, Iowa State University,
+	September~3, 2024.
+	\newblock
+	\url{https://faculty.sites.iastate.edu/jia/files/inline-files/plucker-coordinates.pdf}.
+
+	\bibitem{newman-ziff}
+	M.~E.~J. Newman and R.~M. Ziff.
+	\newblock Fast Monte Carlo algorithm for site or bond percolation.
+	\newblock \emph{Physical Review E}, 64:016706, 2001.
+	\newblock \url{https://doi.org/10.1103/PhysRevE.64.016706}.
+	\newblock Preprint: \url{https://arxiv.org/abs/cond-mat/0101295}.
+
+	\bibitem{sedgewick-wayne-dfs}
+	Robert Sedgewick and Kevin Wayne.
+	\newblock \emph{Algorithms}, fourth edition, online companion,
+	Section~4.1: documentation for \texttt{NonrecursiveDFS}.
+	\newblock
+	\url{https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/NonrecursiveDFS.html}.
+
+	\bibitem{hoeffding}
+	Wassily Hoeffding.
+	\newblock Probability inequalities for sums of bounded random variables.
+	\newblock \emph{Journal of the American Statistical Association},
+	58(301):13--30, 1963.
+	\newblock \url{https://doi.org/10.1080/01621459.1963.10500830}.
+
+	\bibitem{dlmf}
+	F.~W.~J. Olver et al., editors.
+	\newblock \emph{NIST Digital Library of Mathematical Functions},
+	Release~1.2.8 of 2026-09-15.
+	\newblock \url{https://dlmf.nist.gov/4.6}.
+
+	\bibitem{graf-luschgy}
+	Siegfried Graf and Harald Luschgy.
+	\newblock \emph{Foundations of Quantization for Probability Distributions}.
+	\newblock Lecture Notes in Mathematics, Volume~1730. Springer, 2000.
+	\newblock \url{https://doi.org/10.1007/BFb0103945}.
+
+	\bibitem{p3-kreitmeier}
+	Wolfgang Kreitmeier.
+	\newblock Asymptotic optimality of scalar Gersho quantizers.
+	\newblock arXiv:1203.4139v2.
+	\newblock \url{https://arxiv.org/abs/1203.4139v2}.
+
+	\bibitem{p3-convex-slides}
+	Stephen Boyd and Lieven Vandenberghe.
+	\newblock \emph{Convex Optimization: Lecture Slides},
+	revised by Stephen Boyd, Lieven Vandenberghe, and Parth Nobel.
+	\newblock Slides~3.9 (``First-order condition''), 3.10
+	(``Second-order conditions''), and ``Strong convexity and implications.''
+	\newblock \url{https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides.pdf}.
+
+\end{thebibliography}
+\end{document}
