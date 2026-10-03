@@ -8,6 +8,7 @@
 \usepackage{booktabs}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{needspace}
 
 % --- STYLE 1: PYTHON ---
 \lstdefinestyle{pythonStyle}{
@@ -1696,7 +1697,7 @@ def try_to_find_theta(n, p, M):
 			\le
 			\delta.
 			\]
-			
+			\Needspace{14\baselineskip}
 			\begin{claim*}
 				It is sufficient to choose
 				\[
@@ -1943,245 +1944,434 @@ All of these are well below the tolerance of
 Thus the implementation behaves consistently with the exact values in
 the cases $n=1$ and $n=2$.
 			
-			
-		\end{soln}
+\end{soln}
 		
-% Uses the existing evan.sty commands and environments:
-% soln, claim*, proof, remark*, \vocab, and \keyeq.
-% If the main document already has a bibliography, move the two
-% \bibitem entries below into that bibliography.
-
 \section{Problem 3}
-
 \subsection{(a)}
 
 \begin{soln}
-	
-	\subsubsection*{\vocab{Connection with Optimal Quantization}}
-	
-	The useful research connection is with \emph{scalar quantization}:
-	choosing $n$ points so that the distance from a typical point of an
-	interval to its nearest chosen point is as small as possible.
-	For the uniform distribution on $[0,1]$, the classical result is that,
-	for every exponent $r>1$, the unique optimal set consists of the
-	midpoints of $n$ equal intervals. The midpoint description is
-	Graf and Luschgy \cite[Example~5.5]{graf-luschgy}. Uniqueness follows
-	from Kreitmeier \cite{p3-kreitmeier}: by Remark~1.3 there, for the
-	uniform distribution on $[0,1]$ and every $r>1$ the optimal quantizers
-	coincide with the Gersho quantizers, and by Proposition~2.5 there is
-	exactly one Gersho quantizer when the support is an interval.
-	In the notation needed here, it says that
-	\[
-	\inf_{a_1,\ldots,a_n\in[0,1]}
-	\int_0^1 \min_{1\le i\le n}|x-a_i|^r\,dx
-	\]
-	is attained uniquely, up to reordering, at
-	\[
-	a_i=\frac{2i-1}{2n},
-	\qquad 1\le i\le n.
-	\]
-	
-	To apply this result, we first identify the error made by a tangent.
-	For $f(x)=x^2$,
-	\[
-	L_a(x)=a^2+2a(x-a)=2ax-a^2,
-	\qquad
-	f(x)-L_a(x)=(x-a)^2.
-	\]
-	Taking the largest tangent is therefore equivalent to taking the
-	smallest squared distance:
-	\[
-	f(x)-L_{a_1,\ldots,a_n}(x)
-	=\min_{1\le i\le n}(x-a_i)^2.
-	\]
-	Consequently,
-	\[
-	E_{n,p}(x^2)^p
-	=\inf_{a_1,\ldots,a_n\in[0,1]}
-	\int_0^1\min_{1\le i\le n}|x-a_i|^{2p}\,dx.
-	\]
-	This is precisely the cited quantization problem with $r=2p>1$.
-	Thus the unique optimal multiset is
-	\keyeq{
-		\left\{\frac{1}{2n},\frac{3}{2n},\ldots,
-		\frac{2n-1}{2n}\right\}.
-	}
-	Each point occurs once, and the answer is independent of $p$.
-	
-	\subsubsection*{\vocab{Evaluating the Optimal Error}}
-	
-	The cited result has already determined the optimizer. To compute the
-	error, each of the $n$ equal intervals contributes the same integral
-	about its midpoint. Hence
-	\begin{align*}
-		E_{n,p}(x^2)^p
-		&=2n\int_0^{1/(2n)}u^{2p}\,du\\
-		&=\frac{1}{2^{2p}(2p+1)n^{2p}}.
-	\end{align*}
-	Taking the $p$-th root gives the exact value
-	\keyeq{
-		E_{n,p}(x^2)
-		=\frac{1}{4(2p+1)^{1/p}}\,n^{-2}.
-	}
+	After reading some articles, this problem is related to a known problem 
+	called \emph{scalar quantization} so although no thereoms were directly 
+	used for this part some of the motivation remains the same. This problem
+	is of choosing $n$ points so that the distance from a typical point of an
+    interval to its nearest chosen point is as small as possible.
+	\begin{claim}
+	    \[
+    L_a(x)=a^2+2a(x-a)=2ax-a^2,
+    \qquad
+    f(x)-L_a(x)=(x-a)^2.
+    \] and 
+	    \[
+    E_{n,p}(x^2)^p
+    =\inf_{a_1,\ldots,a_n\in[0,1]}
+    \int_0^1\min_{1\le i\le n}|x-a_i|^{2p}\,dx.
+    \]
+	\end{claim}
+	\begin{proof}
+	First, we try to generalize the error made by a singular tangent. To do this is relatively
+	simple. For $f(x)=x^2$, we find the equation of the tangent line at $x=a$ to be
+    \[
+    L_a(x)=a^2+2a(x-a)=2ax-a^2,
+    \qquad
+    f(x)-L_a(x)=(x-a)^2.
+    \]
+    This obviously means that the smallest error, equivalently the largest
+	tangent is just
+    \[
+    f(x)-L_{a_1,\ldots,a_n}(x)
+    =\min_{1\le i\le n}(x-a_i)^2.
+    \]
+    So we end up with,
+    \[
+    E_{n,p}(x^2)^p
+    =\inf_{a_1,\ldots,a_n\in[0,1]}
+    \int_0^1\min_{1\le i\le n}|x-a_i|^{2p}\,dx.
+    \]
+	\end{proof}
+
+    \subsubsection*{\vocab{Figuring out the Points}}
+	Once again looking more at scalar optimization solutions, we get motivated
+	by the fact that each point chosen is simplly responsible for th epart of the graph 
+	it is closest to the $x$. This motivates splitting the interval of $[0,1]$
+	into each of these intervals and finding how much they contribute to the error seperately.
+	\begin{claim}
+		We need to chose points at, for a value of $n$,     \[
+        \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
+        \frac{2n-1}{2n}\right\} \].
+	\end{claim}
+	\begin{proof}
+		
+    We can define the points we chose at 
+    \[
+    a_1<a_2<\cdots<a_m
+    \].
+	Strictly greater since putting two points at the same place is useless. 
+    be the distinct chosen points, where $m\le n$
+	Now we can set the intervals by making
+    \[
+    b_0=0,\qquad b_m=1,\qquad
+    b_i=\frac{a_i+a_{i+1}}2
+    \quad (1\le i<m).
+    \]
+    On $[b_{i-1},b_i]$, the point $a_i$ is a nearest chosen point.
+    Each interval length is $\ell_i=b_i-b_{i-1}$, we therefore have
+    \[
+    \int_0^1\min_{1\le j\le m}|x-a_j|^{2p}\,dx
+    =
+    \sum_{i=1}^m
+    \int_{b_{i-1}}^{b_i}|x-a_i|^{2p}\,dx,
+    \qquad
+    \sum_{i=1}^m\ell_i=1.
+    \]
+
+    Our first observation is that, for an interval of fixed length,
+    its midpoint minimizes this integral. Indeed, since
+    $a_i\in[b_{i-1},b_i]$,
+    \[
+    \int_{b_{i-1}}^{b_i}|x-a_i|^{2p}\,dx
+    =
+    \frac{(a_i-b_{i-1})^{2p+1}
+          +(b_i-a_i)^{2p+1}}{2p+1}.
+    \]
+    The two distances in the numerator sum to $\ell_i$.
+    Strict convexity of $t\mapsto t^{2p+1}$ gives
+    \[
+    \int_{b_{i-1}}^{b_i}|x-a_i|^{2p}\,dx
+    \ge
+    \frac{2(\ell_i/2)^{2p+1}}{2p+1}
+    =
+    \frac{\ell_i^{2p+1}}{2^{2p}(2p+1)},
+    \]
+    with equality exactly when
+    \[
+    a_i=\frac{b_{i-1}+b_i}{2}.
+    \]
+
+    We now compare the interval lengths. Since their sum is $1$,
+    convexity again shows that their total contribution is smallest
+    when they are equal:
+    \[
+    \frac1m\sum_{i=1}^m\ell_i^{2p+1}
+    \ge
+    \left(\frac1m\sum_{i=1}^m\ell_i\right)^{2p+1}
+    =
+    \frac1{m^{2p+1}}.
+    \]
+    Equality holds exactly when
+    $\ell_1=\cdots=\ell_m=1/m$. Combining these inequalities,
+    \[
+    \int_0^1\min_{1\le j\le m}|x-a_j|^{2p}\,dx
+    \ge
+    \frac{1}{2^{2p}(2p+1)m^{2p}}
+    \ge
+    \frac{1}{2^{2p}(2p+1)n^{2p}}.
+    \]
+
+    Choosing the midpoints of $n$ equal intervals makes every
+    inequality an equality. Conversely, equality requires $m=n$,
+    all interval lengths to be $1/n$, and each chosen point to be
+    the midpoint of its interval. Thus the unique optimal multiset is
+    \keyeq{
+        \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
+        \frac{2n-1}{2n}\right\}.
+    }
+	The answer is independent of $p$, because the argument holds regardless of the value of $p$.
+	\end{proof}
+    \subsubsection*{\vocab{Figuring Out the Error}}
+	Finishing from here is straightforward from the way we have set it up.
+	 To compute the error,
+    each of the $n$ equal intervals contributes the same integral
+    about its midpoint. Hence
+    \begin{align*}
+        E_{n,p}(x^2)^p
+        &=2n\int_0^{1/(2n)}u^{2p}\,du\\
+        &=\frac{1}{2^{2p}(2p+1)n^{2p}}.
+    \end{align*}
+	And just taking the $p$th root gives us the final answer
+    \keyeq{
+        E_{n,p}(x^2)
+        =\frac{1}{4(2p+1)^{1/p}}\,n^{-2}.
+    }
 	
 \end{soln}
-
 \subsection{(b)}
 
 \begin{soln}
-	
-	\subsubsection*{\vocab{Comparing Tangent Errors with Quadratics}}
-	
-	The quadratic case suggests comparing a general tangent error with
-	$(x-a)^2$. The relevant tools are the first- and second-order
-	characterizations of convexity and the quadratic bound for strongly
-	convex functions; see Boyd and Vandenberghe
-	\cite[slides~3.9--3.10 and ``Strong convexity and implications'']{p3-convex-slides}.
-	In one dimension, these give the following comparison on an interval $J$:
-	\[
-	\mu\le f''\le M\text{ on }J
-	\quad\Longrightarrow\quad
-	\frac{\mu}{2}(x-a)^2
-	\le f(x)-L_a(x)
-	\le\frac{M}{2}(x-a)^2,
-	\qquad a,x\in J.
-	\tag{1}\label{eq:p3-curvature}
-	\]
-	Indeed, the two inequalities are the tangent-support inequalities for
-	the convex functions $f(x)-\mu x^2/2$ and $Mx^2/2-f(x)$,
-	respectively. The statements extend to the interval endpoints by
-	continuity.
-	
-	We will use the upper comparison on all of $[0,1]$. For the lower
-	comparison, it will be enough to find one interval on which the
-	curvature is bounded below by a positive constant.
-	
-	\subsubsection*{\vocab{An Upper Bound from Equally Spaced Tangents}}
-	
-	Convexity and the continuity of $f''$ give
-	\[
-	0\le f''(x)\le M,
-	\qquad
-	M:=\max_{x\in[0,1]}f''(x)<\infty.
-	\]
-	Choose the same tangency points as in part~(a),
-	\[
-	a_i=\frac{2i-1}{2n},
-	\qquad 1\le i\le n.
-	\]
-	By \eqref{eq:p3-curvature},
-	\[
-	0\le f(x)-L_{a_1,\ldots,a_n}(x)
-	\le\frac{M}{2}\min_{1\le i\le n}|x-a_i|^2.
-	\]
-	Part~(a) has already evaluated the norm on the right, so
-	\keyeq{
-		E_{n,p}(f)
-		\le\frac{M}{8(2p+1)^{1/p}}\,n^{-2}.
-	}
-	Thus equally spaced tangents already achieve the required upper rate.
-	
-	\subsubsection*{\vocab{Finding an Interval with Positive Curvature}}
-	
-	Strict convexity does not require $f''$ to be positive everywhere.
-	However, $f''$ cannot vanish identically, since that would make $f$
-	affine. As $f''\ge0$ and $f''$ is continuous, there are an interval
-	\[
-	I=[u,v]\subseteq[0,1],
-	\qquad \ell:=v-u>0,
-	\]
-	and a constant $m>0$ such that
-	\[
-	f''(x)\ge m
-	\qquad (x\in I).
-	\]
-	Both $I$ and $m$ are fixed independently of $n$. An unavoidable error
-	on this interval gives a lower bound for the error on the whole domain.
-	
-	The tangency points may lie outside $I$, so we must first account for
-	those tangents. The following observation makes the local curvature
-	bound applicable to every choice of tangency points.
-	
-	\begin{claim*}[Moving an outside tangency point to the boundary]
-		For $a\in[0,1]$, define its projection onto $I$ by
-		\[
-		b=\pi_I(a):=
-		\begin{cases}
-			u,&a<u,\\
-			a,&u\le a\le v,\\
-			v,&a>v.
-		\end{cases}
-		\]
-		Then, for every $x\in I$,
-		\[
-		f(x)-L_a(x)
-		\ge f(x)-L_b(x)
-		\ge\frac{m}{2}|x-b|^2.
-		\]
-	\end{claim*}
-	
-	\begin{proof}
-		The tangent-support inequality gives $f(b)-L_a(b)\ge0$.
-		Also, $f'$ is nondecreasing, so
-		\[
-		L_b(x)-L_a(x)
-		=\bigl(f(b)-L_a(b)\bigr)
-		+\bigl(f'(b)-f'(a)\bigr)(x-b)
-		\ge0.
-		\]
-		For the second term, both factors are nonnegative if $a<u$, both are
-		nonpositive if $a>v$, and the term is zero if $a\in I$.
-		This proves the first inequality. The second follows from
-		\eqref{eq:p3-curvature}, since $b,x\in I$ and $f''\ge m$ there.
-	\end{proof}
-	
-	\subsubsection*{\vocab{Applying the Quantization Bound Again}}
-	
-	Now take any $a_1,\ldots,a_n\in[0,1]$, and put $b_i=\pi_I(a_i)$.
-	The claim gives, for $x\in I$,
-	\[
-	f(x)-L_{a_1,\ldots,a_n}(x)
-	\ge\frac{m}{2}\min_{1\le i\le n}|x-b_i|^2.
-	\]
-	We can therefore reuse the optimal quantization value from part~(a).
-	The change of variables $x=u+\ell y$ multiplies the integral of the
-	$2p$-th power of distance by $\ell^{2p+1}$, so
-	\[
-	\inf_{b_1,\ldots,b_n\in I}
-	\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx
-	=\frac{\ell^{2p+1}}{2^{2p}(2p+1)n^{2p}}.
-	\]
-	This infimum allows repeated points, as in part~(a), so it also applies
-	when several of the projections $b_i$ coincide. It follows that
-	\begin{align*}
-		\bigl\|f-L_{a_1,\ldots,a_n}\bigr\|_p^p
-		&\ge\left(\frac{m}{2}\right)^p
-		\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx\\
-		&\ge\frac{m^p\ell^{2p+1}}{8^p(2p+1)n^{2p}}.
-	\end{align*}
-	Taking the $p$-th root and then the infimum over all tangency points
-	yields
-	\keyeq{
-		E_{n,p}(f)
-		\ge\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}}\,n^{-2}.
-	}
-	
-	Combining the two bounds, we may take
-	\[
-	c_{f,p}:=\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}},
-	\qquad
-	C_{f,p}:=\frac{M}{8(2p+1)^{1/p}}.
-	\]
-	These satisfy $0<c_{f,p}\le C_{f,p}<\infty$ and are independent of $n$.
-	Therefore the sharp decay exponent is
-	\keyeq{
-		\alpha=2,
-		\qquad
-		E_{n,p}(f)=\Theta(n^{-2}).
-	}
-	
-\end{soln}
 
+\subsubsection*{\vocab{Looking back earlier at the quadratic case}}
+
+aThe quadratic case suggests comparing a general tangent error with
+$(x-a)^2$. The relevant tools are the first- and second-order
+characterizations of convexity and the quadratic bound for strongly
+convex functions; see Boyd, Vandenberghe, and Nobel
+\cite[PDF pp.~53--54 and~293]{p3-convex-slides}.
+In one dimension, these give the following comparison on an interval $J$:
+\[
+\mu\le f''\le M\text{ on }J
+\quad\Longrightarrow\quad
+\frac{\mu}{2}(x-a)^2
+\le f(x)-L_a(x)
+\le\frac{M}{2}(x-a)^2,
+\qquad a,x\in J.
+\tag{1}\label{eq:p3-curvature}
+\]
+Indeed, the two inequalities are the tangent-support inequalities for
+the convex functions $f(x)-\mu x^2/2$ and $Mx^2/2-f(x)$,
+respectively. The statements extend to the interval endpoints by
+continuity.
+
+We will use the upper comparison on all of $[0,1]$. For the lower
+comparison, it will be enough to find one interval on which the
+curvature is bounded below by a positive constant.
+
+\subsubsection*{\vocab{Finding the upper bound}}
+
+Convexity and the continuity of $f''$ give
+\[
+0\le f''(x)\le M,
+\qquad
+M:=\max_{x\in[0,1]}f''(x)<\infty.
+\]
+Choose the same tangency points as in part~(a),
+\[
+a_i=\frac{2i-1}{2n},
+\qquad 1\le i\le n.
+\]
+By \eqref{eq:p3-curvature},
+\[
+0\le f(x)-L_{a_1,\ldots,a_n}(x)
+\le\frac{M}{2}\min_{1\le i\le n}|x-a_i|^2.
+\]
+Part~(a) has already evaluated the norm on the right, so
+\keyeq{
+E_{n,p}(f)
+\le\frac{M}{8(2p+1)^{1/p}}\,n^{-2}.
+}
+Thus equally spaced tangents already achieve the required upper rate.
+
+\subsubsection*{\vocab{Taking a look at a interval}}
+
+Strict convexity does not require $f''$ to be positive everywhere.
+However, $f''$ cannot vanish identically, since that would make $f$
+affine. As $f''\ge0$ and $f''$ is continuous, there are an interval
+\[
+I=[u,v]\subseteq[0,1],
+\qquad \ell:=v-u>0,
+\]
+and a constant $m>0$ such that
+\[
+f''(x)\ge m
+\qquad (x\in I).
+\]
+Both $I$ and $m$ are fixed independently of $n$. An unavoidable error
+on this interval gives a lower bound for the error on the whole domain.
+
+The tangency points may lie outside $I$, so we must first account for
+those tangents. The following observation makes the local curvature
+bound applicable to every choice of tangency points.
+
+\begin{claim*}[Moving an outside tangency point to the boundary]
+For $a\in[0,1]$, define its projection onto $I$ by
+\[
+b=\pi_I(a):=
+\begin{cases}
+u,&a<u,\\
+a,&u\le a\le v,\\
+v,&a>v.
+\end{cases}
+\]
+Then, for every $x\in I$,
+\[
+f(x)-L_a(x)
+\ge f(x)-L_b(x)
+\ge\frac{m}{2}|x-b|^2.
+\]
+\end{claim*}
+
+\begin{proof}
+The tangent-support inequality gives $f(b)-L_a(b)\ge0$.
+Also, $f'$ is nondecreasing, so
+\[
+L_b(x)-L_a(x)
+=\bigl(f(b)-L_a(b)\bigr)
++\bigl(f'(b)-f'(a)\bigr)(x-b)
+\ge0.
+\]
+For the second term, both factors are nonnegative if $a<u$, both are
+nonpositive if $a>v$, and the term is zero if $a\in I$.
+This proves the first inequality. The second follows from
+\eqref{eq:p3-curvature}, since $b,x\in I$ and $f''\ge m$ there.
+\end{proof}
+
+\subsubsection*{\vocab{Finishing the lower bound}}
+
+Now take any $a_1,\ldots,a_n\in[0,1]$, and put $b_i=\pi_I(a_i)$.
+The claim gives, for $x\in I$,
+\[
+f(x)-L_{a_1,\ldots,a_n}(x)
+\ge\frac{m}{2}\min_{1\le i\le n}|x-b_i|^2.
+\]
+We can therefore reuse the optimal quantization value from part~(a).
+The change of variables $x=u+\ell y$ multiplies the integral of the
+$2p$-th power of distance by $\ell^{2p+1}$, so
+\[
+\inf_{b_1,\ldots,b_n\in I}
+\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx
+=\frac{\ell^{2p+1}}{2^{2p}(2p+1)n^{2p}}.
+\]
+This infimum allows repeated points, as in part~(a), so it also applies
+when several of the projections $b_i$ coincide. It follows that
+\begin{align*}
+\bigl\|f-L_{a_1,\ldots,a_n}\bigr\|_p^p
+&\ge\left(\frac{m}{2}\right)^p
+\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx\\
+&\ge\frac{m^p\ell^{2p+1}}{8^p(2p+1)n^{2p}}.
+\end{align*}
+Taking the $p$-th root and then the infimum over all tangency points
+yields
+\keyeq{
+E_{n,p}(f)
+\ge\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}}\,n^{-2}.
+}
+
+Combining the two bounds, we may take
+\[
+c_{f,p}:=\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}},
+\qquad
+C_{f,p}:=\frac{M}{8(2p+1)^{1/p}}.
+\]
+These satisfy $0<c_{f,p}\le C_{f,p}<\infty$ and are independent of $n$.
+Therefore the sharp decay exponent is
+\keyeq{
+\alpha=2,
+\qquad
+E_{n,p}(f)=\Theta(n^{-2}).
+}
+
+\end{soln}
+\subsection{(c)}
+
+\begin{soln}
+    \subsubsection*{\vocab{From One Cell to a Density}}
+
+    The continuum viewpoint also appears in scalar quantization, where
+    the leading error is expressed through the density of approximation
+    points; see Kreitmeier and Linder
+    \cite[Proposition~4.2, equation~(16)]{p3-kreitmeier-linder}.
+    Here the quadratic approximation reduces each small cell to the
+    midpoint calculation in part~(a). We work throughout under the formal
+    assumptions in the question.
+
+    Consider a cell centered at a tangency point $x$, with length
+    $h=h_n(x)$. The tangent already matches both $f(x)$ and $f'(x)$,
+    so the first error term is quadratic:
+    \[
+    f(x+u)-L_x(x+u)
+    =\frac{f''(x)}2u^2+o(u^2).
+    \]
+    Using the centered-cell integral from part~(a), its formal
+    contribution to the $p$th power of the error is
+    \begin{align*}
+        \int_{-h/2}^{h/2}
+        \left(\frac{f''(x)}2u^2\right)^p\,du
+        &=\left(\frac{f''(x)}2\right)^p
+          \frac{h^{2p+1}}{2^{2p}(2p+1)}\\
+        &=\frac{(f''(x))^p}{2^{3p}(2p+1)}h^{2p+1}.
+    \end{align*}
+
+    To pass from one cell to the whole interval, we must account for
+    how many cells occur near each point. A region of length $dx$ near
+    $x$ contains formally $n\rho(x)\,dx$ cells. Multiplying the
+    contribution of one cell by this number, and using
+    $h_n(x)=1/(n\rho(x))$, gives
+    \begin{align*}
+        &\int_0^1 n\rho(x)
+        \frac{(f''(x))^p}{2^{3p}(2p+1)}
+        \left(\frac1{n\rho(x)}\right)^{2p+1}\,dx\\
+        &\qquad=
+        \frac{n^{-2p}}{2^{3p}(2p+1)}
+        \int_0^1(f''(x))^p\rho(x)^{-2p}\,dx.
+    \end{align*}
+    Thus, for a configuration described by $\rho$, the stated
+    assumptions give the formal expansion
+    \keyeq{
+        \bigl\|f-L_{a_1,\ldots,a_n}\bigr\|_p^p
+        =\frac{n^{-2p}}{2^{3p}(2p+1)}J(\rho)
+        +o(n^{-2p}),
+    }
+    where
+    \[
+    J(\rho)=\int_0^1(f''(x))^p\rho(x)^{-2p}\,dx.
+    \]
+
+    \subsubsection*{\vocab{Choosing the Density}}
+
+    Increasing $\rho$ makes cells shorter and reduces the local error,
+    but the condition $\int_0^1\rho=1$ limits how many tangency points
+    we can allocate. We therefore minimize $J(\rho)$ subject to this
+    normalization.
+
+    This is the same form of density optimization as the fixed-rate
+    case in Kreitmeier and Linder
+    \cite[Remark~4.12]{p3-kreitmeier-linder}, where the number of
+    approximation points is fixed. The H\"older inequality supplied in
+    the problem gives both the minimum and its equality condition
+    directly. Write
+    \[
+    w(x)=(f''(x))^p,
+    \qquad
+    A=\int_0^1w(x)^{1/(2p+1)}\,dx.
+    \]
+    We split the integrand defining $A$ so that one H\"older factor
+    produces $J(\rho)$ and the other produces $\int_0^1\rho$.
+    With conjugate exponents $2p+1$ and $(2p+1)/(2p)$,
+    \begin{align*}
+        A
+        &=\int_0^1
+        \bigl(w(x)\rho(x)^{-2p}\bigr)^{1/(2p+1)}
+        \rho(x)^{2p/(2p+1)}\,dx\\
+        &\le
+        J(\rho)^{1/(2p+1)}
+        \left(\int_0^1\rho(x)\,dx\right)^{2p/(2p+1)}\\
+        &=J(\rho)^{1/(2p+1)}.
+    \end{align*}
+    Hence $J(\rho)\ge A^{2p+1}$. Equality holds precisely when
+    $w\rho^{-2p}$ is proportional to $\rho$. Normalizing therefore
+    gives the unique minimizing density
+    \keyeq{
+        \rho_*(x)
+        =\frac{(f''(x))^{p/(2p+1)}}
+        {\displaystyle\int_0^1(f''(t))^{p/(2p+1)}\,dt}.
+    }
+    Since $f''$ is continuous and strictly positive on $[0,1]$,
+    this density is continuous, positive, and admissible.
+    It places more tangency points where the graph has greater
+    curvature: the smaller cells compensate for the larger quadratic
+    error there.
+
+    \subsubsection*{\vocab{The Predicted Asymptotic}}
+
+    Substituting $J(\rho_*)=A^{2p+1}$ into the formal leading term
+    and taking the $p$th root gives the prediction
+    \keyeq{
+        E_{n,p}(f)\sim\kappa_p(f)n^{-2},
+    }
+    where
+    \keyeq{
+        \kappa_p(f)
+        =\frac{1}{8(2p+1)^{1/p}}
+        \left(\int_0^1(f''(x))^{p/(2p+1)}\,dx\right)^{(2p+1)/p}.
+    }
+    In particular, $\alpha=2$, agreeing with part~(b).
+    This asymptotic equivalence is the prediction of the stipulated
+    continuum model.
+
+    As a check, when $f(x)=x^2$ we have $f''=2$, so $\rho_*=1$ and
+    \[
+    \kappa_p(x^2)=\frac{1}{4(2p+1)^{1/p}},
+    \]
+    recovering the exact constant from part~(a).
+\end{soln}
 \section{Problem 5}
 \subsection{(a)}
 
@@ -2596,7 +2786,6 @@ Richmond and Shallit's asymptotic formula
 \[
 a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
 \]
-	
 \end{soln}
 
 		
@@ -2697,6 +2886,14 @@ a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
 	\newblock Slides~3.9 (``First-order condition''), 3.10
 	(``Second-order conditions''), and ``Strong convexity and implications.''
 	\newblock \url{https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides.pdf}.
+
+	\bibitem{p3-kreitmeier-linder}
+Wolfgang Kreitmeier and Tam\'as Linder.
+\newblock \emph{High-resolution scalar quantization with
+R\'enyi entropy constraint}.
+\newblock arXiv:1008.1744, version~2, July~5, 2011.
+\newblock Proposition~4.2 and Remark~4.12.
+\newblock \url{https://arxiv.org/pdf/1008.1744}.
 
 \end{thebibliography}
 \end{document}
