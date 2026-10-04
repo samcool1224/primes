@@ -1697,7 +1697,7 @@ def try_to_find_theta(n, p, M):
 			\le
 			\delta.
 			\]
-			\Needspace{14\baselineskip}
+			\Needspace{25\baselineskip}
 			\begin{claim*}
 				It is sufficient to choose
 				\[
@@ -2372,6 +2372,326 @@ E_{n,p}(f)=\Theta(n^{-2}).
     \]
     recovering the exact constant from part~(a).
 \end{soln}
+
+\section{Problem 4}
+\subsection{(a)}
+
+\begin{soln}
+    Anonymity suggests fixing the object being scored and asking which
+    edges can be interchanged while that object stays fixed.
+	The orbit sum principle helps convert edge orbits into linear scores. The following
+	viewpoint that helped inspire this is from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
+
+    As mentioned in the problem let us fix $i\in[n]$, and let
+    \[
+    H_i=\{\pi\in S_n:\pi(i)=i\}
+    \]
+    be the subgroup of permutations fixing $i$.
+
+    \begin{claim*}
+	
+        The $H_i$-orbits on $E$ are
+        \[
+        \mathcal O_i^{\mathrm{in}}
+        =\{\{i,j\}:j\ne i\},
+        \qquad
+        \mathcal O_i^{\mathrm{out}}
+        =\{\{a,b\}\in E:i\notin\{a,b\}\}.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+		After fixing $i$ any permutation of the vertices will preserve wheter a edge
+		contains $i$ since $i$ remains as $i$ in the permutation. This means that the
+		two orbits mentioned in the claims do not overlap, or cannot belong to the same 
+		orbit. Now looking that each orbit can map to each other, we see that in the first
+		set, any edge $\{i,j\}$ can be sent to any other edge $\{i,k\}$ by 
+		any permutation that sends $j$ to $k$ and fixes $i$. 
+		Similarly, in the second set, any pair of vertices different from $i$
+        can likewise be sent to any other such pair.
+        Hence each set is one orbit. The sizes are easily calculated as
+        $n-1$ and $\binom{n-1}{2}$ respectively.
+    \end{proof}
+	Now, we want to describe the sums of the two orbits seperately. Instead of doing defining 
+	each as a term we define
+    \[
+    D_i(x)=\sum_{j\ne i}x_{ij},
+    \qquad
+    T(x)=\sum_{\{a,b\}\in E}x_{ab},
+    \qquad
+    \mathbf D=(D_1,\ldots,D_n).
+    \]
+	The first one is the sum of the first orbit, and the second orbit sum can 
+	be expressed as $T-D_i$. Atop of this $T$ stays cosntant under any permutation 
+	of the vertices.
+\Needspace{20\baselineskip}
+
+    \begin{claim*}
+        A rule belongs to $\mathcal A_n^{(1)}$ if and only if it has
+        the form
+        \[
+        F(x)=a\mathbf D(x)+bT(x)\mathbf 1_n
+        \qquad(a,b\in\mathbb R).
+        \]
+    \end{claim*}
+
+    \begin{proof}
+        If $F$ is anonymous, then by the defn given we have that $F_i(\sigma\cdot x)=F_i(x)$ for
+        every $\sigma\in H_i$.
+		All things of degree one are just a scalar times $x_e$, 
+		so using the orbit-sum principle we are given we otbain
+        \[
+        F_i(x)=uD_i(x)+v\bigl(T(x)-D_i(x)\bigr)
+        \qquad(u,v\in\mathbb R).
+        \]
+        To determine another coordinate $F_j$, choose a permutation
+        $\pi$ with $\pi(i)=j$.
+        Anonymity, together with relabeling the edges in the sums,
+        gives
+        \[
+        F_j(x)
+        =F_i(\pi^{-1}\cdot x)
+        =uD_j(x)+v\bigl(T(x)-D_j(x)\bigr).
+        \]
+        Thus the same coefficients work for every object, and taking
+        $a=u-v$ and $b=v$ gives the asserted form.
+        Conversely, relabeling the vertices relabels the coordinates
+        of $\mathbf D$ and leaves $T$ unchanged, so every rule of the
+        displayed form is anonymous and homogeneous of degree one.
+    \end{proof}
+
+    \begin{claim*}[Removing the common score]
+        The class of $\mathbf D$ is a basis of
+        $\mathcal A_n^{(1)}/\mathcal C_n^{(1)}$.
+    \end{claim*}
+
+    \begin{proof}
+		If we consider the full group of $S_n$ on the edges, all of them
+		will be in one orbit and then we can apply the orbit sum principle. Doing
+		that to this will result in the fact that every invariant homogeneous
+		 linear polynomial is a scalar multiple of $T$.This fact will give us
+        \[
+        \mathcal C_n^{(1)}
+        =\operatorname{span}\{T\mathbf 1_n\}.
+        \]
+        Using our prior claim, we know that each of the quotient classes
+		satisfy
+        $[F]=a[\mathbf D]$.
+		All that remains is to check that this is non-zero. Which is trivial by
+		setting $x_{12}=1$ and all other edge weights to zero we can see
+        \[
+        \mathbf D(x)=(1,1,0,\ldots,0),
+        \]
+        so its coordinates are not all equal meaning it isn't a common-score rule and
+        \keyeq{
+            \dim\!\left(
+            \mathcal A_n^{(1)}/\mathcal C_n^{(1)}
+            \right)=1.
+        }
+    \end{proof}
+
+    A spanning rule is therefore the weighted-degree rule
+    \keyeq{
+        D_i(x)=\sum_{j\ne i}x_{ij}.
+    }
+    Equivalently, every anonymous linear rule has score differences
+    \[
+    F_i(x)-F_j(x)=a\bigl(D_i(x)-D_j(x)\bigr).
+    \]
+\end{soln}
+
+
+\subsection{(b)}
+
+\begin{soln}
+    We use the graph-invariant viewpoint of Thi\'ery
+    \cite[Section~1.3]{p4-thiery}: a monomial records a multigraph,
+    and invariant polynomials have an orbit-sum basis.
+    Thus our main task is to identify the possible positions of the
+    scored vertex inside a two-edge pattern.
+
+    \subsubsection*{\vocab{Classifying the Two-Edge Patterns}}
+
+    Fix $i\in[n]$, and write
+    \[
+    H_i=\{\pi\in S_n:\pi(i)=i\},
+    \]
+    as in part~(a).
+    The sums $A_i,B_i,C_i,D_i$ below are those in the question;
+    $U_i,V_i,W_i$ name the remaining orbit sums.
+    Each orbit sum contains each distinct monomial exactly once.
+
+    \begin{claim*}[The seven orbits]
+        The quadratic monomials have exactly the following seven
+        $H_i$-orbits:
+        \begin{center}
+            \begingroup
+            \small
+            \renewcommand{\arraystretch}{1.25}
+            \begin{tabular}{@{}llcc@{}}
+                \hline
+                Edge pattern & Position of $i$
+                & Representative & Orbit sum\\
+                \hline
+                Repeated edge & On the edge
+                & $x_{ia}^{2}$ & $A_i$\\
+                Repeated edge & Outside the edge
+                & $x_{ab}^{2}$ & $U_i$\\
+                Adjacent distinct edges & Common endpoint
+                & $x_{ia}x_{ib}$ & $B_i$\\
+                Adjacent distinct edges & Other endpoint
+                & $x_{ia}x_{ab}$ & $C_i$\\
+                Adjacent distinct edges & Outside both edges
+                & $x_{ab}x_{ac}$ & $V_i$\\
+                Disjoint edges & On either edge
+                & $x_{ia}x_{bc}$ & $D_i$\\
+                Disjoint edges & Outside both edges
+                & $x_{ab}x_{cd}$ & $W_i$\\
+                \hline
+            \end{tabular}
+            \endgroup
+        \end{center}
+        Here the letters $a,b,c,d$, whenever present, are pairwise
+        distinct and different from $i$.
+    \end{claim*}
+
+    \begin{proof}
+        A repeated edge either contains $i$ or avoids it.
+        If the edges are distinct and adjacent, then $i$ is their
+        common endpoint, one of their two other endpoints, or outside
+        their union.
+        If the edges are disjoint, then $i$ lies on one of them or
+        outside both.
+        These properties are preserved by permutations fixing $i$.
+        Conversely, any two monomials in the same row can be related
+        by relabeling their vertices other than $i$ and extending this
+        relabeling to all of $[n]$.
+        Thus each row is one orbit, and different rows give distinct
+        orbits.
+        All seven occur because $n\ge5$, including two disjoint edges
+        that both avoid $i$.
+    \end{proof}
+
+    \subsubsection*{\vocab{Counting Rules and Common Scores}}
+
+    Having classified the patterns, we now count independent scoring
+    rules and the common scores that will be discarded.
+    Write
+    \[
+    U=(U_1,\ldots,U_n),\qquad
+    V=(V_1,\ldots,V_n),\qquad
+    W=(W_1,\ldots,W_n).
+    \]
+
+    \begin{claim*}[The three dimensions]
+        We have
+        \[
+        \dim\mathcal Q_n=7,\qquad
+        \dim\mathcal C_n=3,\qquad
+        \dim(\mathcal Q_n/\mathcal C_n)=4.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}[Anonymous quadratic rules]
+            Anonymity makes $F_i$ invariant under $H_i$.
+            As in part~(a), transporting any such homogeneous
+            quadratic polynomial by relabeling gives a unique
+            anonymous rule; explicitly,
+            \[
+            F_j(x)=F_i(\pi^{-1}\cdot x)
+            \qquad\text{whenever }\pi(i)=j.
+            \]
+            Invariance under $H_i$ makes this definition independent
+            of the chosen permutation.
+            The orbit-sum principle therefore gives a basis of seven
+            polynomials for the possible $F_i$: the row sums span,
+            and they are independent because they contain disjoint
+            sets of monomials.
+            Consequently, the corresponding rules
+            \[
+            A,\ U,\ B,\ C,\ V,\ D,\ W
+            \]
+            form a basis of $\mathcal Q_n$, so $\dim\mathcal Q_n=7$.
+        \end{subproof}
+
+        \begin{subproof}[Common-score rules]
+            For common scores, we allow all vertex labels to be
+            permuted, so only three patterns remain: a repeated edge,
+            adjacent distinct edges, and disjoint edges.
+            Denote their orbit sums by
+            \begin{align*}
+                q_1(x)&=\sum_{e\in E}x_e^2,\\
+                q_2(x)&=
+                \sum_{\substack{\{e,f\}\in\binom{E}{2}\\
+                                |e\cap f|=1}}x_ex_f,\\
+                q_3(x)&=
+                \sum_{\substack{\{e,f\}\in\binom{E}{2}\\
+                                e\cap f=\varnothing}}x_ex_f.
+            \end{align*}
+            Here $\{e,f\}$ is unordered in both sums over edge pairs.
+            The same orbit-sum principle gives
+            \[
+            \mathcal C_n
+            =\operatorname{span}
+            \{q_1\mathbf1_n,q_2\mathbf1_n,q_3\mathbf1_n\},
+            \qquad
+            \dim\mathcal C_n=3.
+            \]
+        \end{subproof}
+
+        Applying the quotient-dimension formula
+        \cite[3.105]{p4-axler}, we obtain
+        \keyeq{
+            \dim(\mathcal Q_n/\mathcal C_n)
+            =\dim\mathcal Q_n-\dim\mathcal C_n
+            =7-3=4.
+        }
+    \end{proof}
+
+    \subsubsection*{\vocab{Identifying the Four Basis Classes}}
+
+    To identify the requested basis, we now express $U,V,W$ using
+    $A,B,C,D$ and these common scores.
+
+    \begin{claim*}[A basis modulo common scores]
+        The four classes $[A],[B],[C],[D]$ form a basis of
+        $\mathcal Q_n/\mathcal C_n$.
+    \end{claim*}
+
+    \begin{proof}
+        Partitioning each global orbit according to the position of
+        $i$ gives, for every $i$,
+        \[
+        q_1=A_i+U_i,\qquad
+        q_2=B_i+C_i+V_i,\qquad
+        q_3=D_i+W_i.
+        \]
+        No multiplicity factors occur, because each distinct monomial
+        is counted exactly once.
+        Since each $q_j\mathbf1_n$ is a common-score rule, these
+        identities become
+        \[
+        [U]=-[A],\qquad
+        [V]=-[B]-[C],\qquad
+        [W]=-[D]
+        \]
+        in the quotient.
+        Every quotient class is a linear combination of the seven
+        orbit-sum classes, so these relations show that
+        $[A],[B],[C],[D]$ span the quotient.
+        The quotient has dimension four, so its four spanning classes
+        form a basis by \cite[2.42]{p4-axler}.
+    \end{proof}
+
+    Equivalently, every anonymous quadratic rule has the form
+    \keyeq{
+        F=aA+bB+cC+dD+h\mathbf1_n,
+    }
+    with uniquely determined real coefficients $a,b,c,d$ and an
+    $S_n$-invariant homogeneous quadratic polynomial $h$.
+\end{soln}
+
 \section{Problem 5}
 \subsection{(a)}
 
@@ -2894,6 +3214,13 @@ R\'enyi entropy constraint}.
 \newblock arXiv:1008.1744, version~2, July~5, 2011.
 \newblock Proposition~4.2 and Remark~4.12.
 \newblock \url{https://arxiv.org/pdf/1008.1744}.
+
+\bibitem{p4-thiery}
+Nicolas M. Thi\'ery.
+\newblock Algebraic invariants of graphs; a study based on computer exploration.
+\newblock \emph{ACM SIGSAM Bulletin}, 34(3):9--20, 2000.
+\newblock Sections~1.1 and~1.3.
+\newblock \url{https://arxiv.org/abs/0812.3082}.
 
 \end{thebibliography}
 \end{document}
