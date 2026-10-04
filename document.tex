@@ -2504,25 +2504,29 @@ E_{n,p}(f)=\Theta(n^{-2}).
 \subsection{(b)}
 
 \begin{soln}
-    We use the graph-invariant viewpoint of Thi\'ery
-    \cite[Section~1.3]{p4-thiery}: a monomial records a multigraph,
-    and invariant polynomials have an orbit-sum basis.
-    Thus our main task is to identify the possible positions of the
-    scored vertex inside a two-edge pattern.
+Following Thi\'ery~\cite[Section~1.3]{p4-thiery}, we view each monomial
+in the edge variables as a multigraph, and we use the fact that the
+invariant polynomials are spanned by the orbit sums of monomials. Thus,
+to describe the invariants, it suffices to enumerate the possible graph
+shapes, that is, the orbits of monomials. In our case, this amounts to
+listing the positions the scored vertex can occupy within a pattern of
+two edges.
+    \subsubsection*{\vocab{Classifying 2 edge patterns}}
 
-    \subsubsection*{\vocab{Classifying the Two-Edge Patterns}}
-
-    Fix $i\in[n]$, and write
+    As in the problem we can put $i\in[n]$, and write
     \[
     H_i=\{\pi\in S_n:\pi(i)=i\},
     \]
     as in part~(a).
-    The sums $A_i,B_i,C_i,D_i$ below are those in the question;
-    $U_i,V_i,W_i$ name the remaining orbit sums.
+
+	We now classify all the sums in a table. $4$ are given in the 
+	question, the rest we classify ourselves based on the fact
+	that $7$ is the dimension we are looking for. 
     Each orbit sum contains each distinct monomial exactly once.
 
-    \begin{claim*}[The seven orbits]
-        The quadratic monomials have exactly the following seven
+    \begin{claim*}
+        Quadratic monomials have the $7$ $H_i$-orbits listed in the 
+		table
         $H_i$-orbits:
         \begin{center}
             \begingroup
@@ -2551,19 +2555,25 @@ E_{n,p}(f)=\Theta(n^{-2}).
             \end{tabular}
             \endgroup
         \end{center}
-        Here the letters $a,b,c,d$, whenever present, are pairwise
-        distinct and different from $i$.
+		The letters above, $a,b,c,d$ are always distinct
+		from each other and are also distinct from $i$ (otherwise 
+		the groups would overlap).
     \end{claim*}
 
     \begin{proof}
+		We now prove two things that there is no overlap between
+		groups and these groups are orbits.
+		The first is easy to see.
         A repeated edge either contains $i$ or avoids it.
         If the edges are distinct and adjacent, then $i$ is their
         common endpoint, one of their two other endpoints, or outside
         their union.
         If the edges are disjoint, then $i$ lies on one of them or
         outside both.
-        These properties are preserved by permutations fixing $i$.
-        Conversely, any two monomials in the same row can be related
+    	If the permutation will fix $i$, then these properties are 
+		preserved.
+
+        Conversely, similar to in part~(a), any two monomials in the same row can be related
         by relabeling their vertices other than $i$ and extending this
         relabeling to all of $[n]$.
         Thus each row is one orbit, and different rows give distinct
@@ -2572,10 +2582,12 @@ E_{n,p}(f)=\Theta(n^{-2}).
         that both avoid $i$.
     \end{proof}
 
-    \subsubsection*{\vocab{Counting Rules and Common Scores}}
+    \subsubsection*{\vocab{More counting and scoring}}
 
     Having classified the patterns, we now count independent scoring
     rules and the common scores that will be discarded.
+	Now that we have found the orbits, we can find the independent 
+	rules and the comomn score rules. 
     Write
     \[
     U=(U_1,\ldots,U_n),\qquad
@@ -2583,7 +2595,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
     W=(W_1,\ldots,W_n).
     \]
 
-    \begin{claim*}[The three dimensions]
+    \begin{claim*}
         We have
         \[
         \dim\mathcal Q_n=7,\qquad
@@ -2591,35 +2603,34 @@ E_{n,p}(f)=\Theta(n^{-2}).
         \dim(\mathcal Q_n/\mathcal C_n)=4.
         \]
     \end{claim*}
-
+	\newpage
     \begin{proof}
-        \begin{subproof}[Anonymous quadratic rules]
-            Anonymity makes $F_i$ invariant under $H_i$.
-            As in part~(a), transporting any such homogeneous
-            quadratic polynomial by relabeling gives a unique
-            anonymous rule; explicitly,
+        \begin{subproof}
+            From part~(a), we know that
+			anonymity makes $F_i$ invariant under $H_i$.
+            Also in part~(a), transporting gives a unique 
+			anyoumous rule under a permutation of the vertices with a
+			fixed $i$. Formally put 
             \[
             F_j(x)=F_i(\pi^{-1}\cdot x)
             \qquad\text{whenever }\pi(i)=j.
             \]
-            Invariance under $H_i$ makes this definition independent
-            of the chosen permutation.
-            The orbit-sum principle therefore gives a basis of seven
-            polynomials for the possible $F_i$: the row sums span,
-            and they are independent because they contain disjoint
-            sets of monomials.
-            Consequently, the corresponding rules
+			Now we can just use the orbit-sum principle that 
+			will give us a basis of the possible $F_i$. The span of 
+			the row sums and they are independent so  the corresponding rules
             \[
             A,\ U,\ B,\ C,\ V,\ D,\ W
             \]
             form a basis of $\mathcal Q_n$, so $\dim\mathcal Q_n=7$.
         \end{subproof}
 
-        \begin{subproof}[Common-score rules]
-            For common scores, we allow all vertex labels to be
-            permuted, so only three patterns remain: a repeated edge,
+        \begin{subproof}
+			Now we move onto the common score rules. For
+			these we set the problem to allow all vertex labels to be
+            permuted. That means there are only $3$ distinct patterns:
+			 a repeated edge,
             adjacent distinct edges, and disjoint edges.
-            Denote their orbit sums by
+			We write their oribit sums as
             \begin{align*}
                 q_1(x)&=\sum_{e\in E}x_e^2,\\
                 q_2(x)&=
@@ -2640,8 +2651,8 @@ E_{n,p}(f)=\Theta(n^{-2}).
             \]
         \end{subproof}
 
-        Applying the quotient-dimension formula
-        \cite[3.105]{p4-axler}, we obtain
+        Now we can directly use the quotient dimesion formula from 
+        \cite[3.105]{p4-axler}, and obtain
         \keyeq{
             \dim(\mathcal Q_n/\mathcal C_n)
             =\dim\mathcal Q_n-\dim\mathcal C_n
@@ -2649,26 +2660,27 @@ E_{n,p}(f)=\Theta(n^{-2}).
         }
     \end{proof}
 
-    \subsubsection*{\vocab{Identifying the Four Basis Classes}}
+    \subsubsection*{\vocab{The final 4 basis classes}}
 
-    To identify the requested basis, we now express $U,V,W$ using
+    The final part of thios problem is to find the basis. 
+	To do this we express $U,V,W$ using
     $A,B,C,D$ and these common scores.
 
-    \begin{claim*}[A basis modulo common scores]
+    \begin{claim*}
         The four classes $[A],[B],[C],[D]$ form a basis of
         $\mathcal Q_n/\mathcal C_n$.
     \end{claim*}
 
     \begin{proof}
-        Partitioning each global orbit according to the position of
-        $i$ gives, for every $i$,
+		We first seperate each orbit using the position of 
+		$i$ which will give
         \[
         q_1=A_i+U_i,\qquad
         q_2=B_i+C_i+V_i,\qquad
         q_3=D_i+W_i.
         \]
-        No multiplicity factors occur, because each distinct monomial
-        is counted exactly once.
+		Each contains a distinct monomials each counted exactly once 
+		so there is no multiplicity factors.
         Since each $q_j\mathbf1_n$ is a common-score rule, these
         identities become
         \[
@@ -2684,12 +2696,12 @@ E_{n,p}(f)=\Theta(n^{-2}).
         form a basis by \cite[2.42]{p4-axler}.
     \end{proof}
 
-    Equivalently, every anonymous quadratic rule has the form
+	We can write the same thing in different form by statig that 
+	every anonymous quadratic rule has a form of
     \keyeq{
         F=aA+bB+cC+dD+h\mathbf1_n,
     }
-    with uniquely determined real coefficients $a,b,c,d$ and an
-    $S_n$-invariant homogeneous quadratic polynomial $h$.
+    with uniquely determined real coefficients $a,b,c,d$.
 \end{soln}
 
 \section{Problem 5}
@@ -3222,5 +3234,11 @@ Nicolas M. Thi\'ery.
 \newblock Sections~1.1 and~1.3.
 \newblock \url{https://arxiv.org/abs/0812.3082}.
 
+\bibitem{p4-axler}
+Sheldon Axler.
+\newblock \emph{Linear Algebra Done Right}.
+\newblock Fourth edition, Springer, 2024.
+\newblock Results~2.42 (p.~46) and~3.105 (p.~102).
+\newblock \url{https://linear.axler.net/LADR4e.pdf}.
 \end{thebibliography}
 \end{document}
