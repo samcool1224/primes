@@ -3333,7 +3333,7 @@ a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
 	We are done with all cases except the trivial one 
 	where $q=1$, which would mean that $m=1$ and $M=\mathbb N_0$.
 	Our condition that we have derived results in $c=1$ so the only automorphism
-	for this case would just be the identiy one.
+	for this case would just be the identity one.
 	To put it all together we can write the equation of
     \keyeq{
         \operatorname{Aut}(M_{S_q})\cong
@@ -3346,6 +3346,155 @@ a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
     where $r$ is the number of distinct prime divisors of $m$ in
     the final case.
 \end{soln}
+
+\subsection{(b)}
+
+\begin{soln}
+    Just like in the previous part, we set $M=M_S$.
+	First, consider the case when $S=\varnothing$. Trivally, we know that 
+	$M$ must be $\{0,\}$ and therefore is just a trivial group. Now 
+	for the rest of the proof we can take that $S\ne\varnothing$ and therefore
+	$M$ will not be just a zero additive submonoid. We use our proof from 
+	the previous part to motivate and conclude the following. We also 
+	use the known theorem (basically a hint) as motivation as well.
+
+    \begin{claim*}
+        We once again write that $\mu_c(x)=cx$. Using this we can 
+		conclude that
+        \[
+        \operatorname{Aut}(M)\cong
+        \Gamma_M:=
+        \{c\in\mathbb Q_{>0}:cM=M\}
+        \le (\mathbb Q_{>0},\cdot).
+        \]
+    \end{claim*}
+
+    \begin{proof}
+		This is completely taken from the previous part and just 
+		adds another group onto it to make notation in the following 
+		parts easier. This comes from since $M$ is a Puiseux monoid, Gotti's
+        Proposition~3.2(1) \cite{p6-gotti} implies that every
+        automorphism is $\mu_c$ for some $c\in\mathbb Q_{>0}$.
+		We also have to note, to prove the isomorphism, that composition satistfies and 
+		the multipler must be unique. Also whenever $cM=M$ is true
+		$\mu_c$ is just a additive bijection with a inverse($/mu{1/c})$. 
+
+        Thus sending an automorphism to its multiplier gives the
+        claimed group isomorphism.
+    \end{proof}
+
+    Once again, we turn to prime factorization here to determine a couple of
+	things.
+
+    \subsubsection*{\vocab{Good use of the hint}}
+	After doing some research on free abelian groups and reading through
+	proofs of the given theorem the following 
+    \begin{claim*}
+        The group $\operatorname{Aut}(M)$ is free abelian, meaning it has a 
+		basis. Additionally, that basis is either finite or countably infinite.
+    \end{claim*}
+
+    \begin{proof}
+		We set $\mathcal P$ as the primes 
+		and make the notation of $v_p(c)$ be the exponent of the prime $p$
+		when $c$ is put into its prime factorization. Negative exponents are allowed
+		since we are working with the group $\mathbb{Q}$. It is a well known
+		rule that the prime factorization for any number is unique. This results
+		in a isomorphism 
+        \[
+        \Theta:(\mathbb Q_{>0},\cdot)
+        \longrightarrow
+        \bigoplus_{p\in\mathcal P}\mathbb Z,
+        \qquad
+        c\longmapsto (v_p(c))_{p\in\mathcal P}.
+        \]
+        Here the direct sum consists of integer families having only
+        finitely many nonzero coordinates.
+		The direct sum will just have finitely many nonzero coordinates which 
+		cooresponds to that each number has finitely number of primes in its factorization.
+
+        $\Theta$ is bijective, once again due to the unique prime factorization
+		rule, and
+        \[
+        v_p(cd)=v_p(c)+v_p(d)
+        \]
+        Meaning it is a homomorphisms on the group.
+		
+		We also know that the ambient group is free abelian. This is because 
+		its basis is countably infinite. Its basis is just all elements consiting 
+		of all $0$'s other than one element. which is a $1$. Meaning it
+		is free abelian on a basis indexed by the primes.
+		Now we can use the theorem, found in 
+        \cite[Theorem~13.6]{p6-drutu-kapovich}, that every subgroup of a free
+		abelian is
+        free abelian of rank at most that of the ambient group,
+        including when the rank is infinite. Where the rank here is defined as
+		the size of the groups basis.
+        Applying this to $\Theta(\Gamma_M)$ proves the claim combining it with the
+		previous claim.
+    \end{proof}
+	This gives us a form for all the $Aut(M)$. However, we need to make sure that
+	the reverse direction of $M$ exists. Meaning that every element in this form is 
+	actually achieveable for some value of $S$. 
+
+    \subsubsection*{\vocab{Construct every possibility}}
+
+    \begin{claim*}
+        Every rank of every free abelian group occurs, that are
+		countably infinite or finite for $\operatorname{Aut}(M_S)$ for some
+        $S\subseteq\mathbb Q_{>0}$.
+    \end{claim*}
+
+    \begin{proof}
+		We split this into the two obvious cases
+        \begin{subproof}
+			First we take the finite rank. Rank $0$ comes from $S=\varnothing$.
+			For another other value of $r$ which is $\ge1$ take $r$ number of distinct 
+			primes (could be any primes) and list them as $p_1,\ldots,p_r$. If we 
+			take a number
+            \[
+            m=p_1\cdots p_r,
+            \qquad
+            S=\{m^k:k\in\mathbb Z\}.
+            \]
+			The set $S$ generated by $m$ is most definitly a subset or equal to $\mathbb{Q}$
+			since $m$ is rational. This means that, due to the fact that $m$ has $r$ prime divisors
+			we can use
+            the integer case of part~(a), and obtain
+            \[
+            \operatorname{Aut}(M_S)\cong\mathbb Z^r.
+            \]
+        \end{subproof}
+
+        \begin{subproof}
+			Now to obtain a countably infinite rank. We can just 
+            take $S=\mathbb Q_{>0}$. This means that  $M_S=\mathbb Q_{\ge0}$.
+			For every $c\in\mathbb Q_{>0}$, multiplication by $c$
+            is an additive bijection of $\mathbb Q_{\ge0}$, with
+            inverse multiplication by $1/c$.
+            Using the first claim and using the prime-exponent isomorphism
+            gives
+            \[
+            \operatorname{Aut}(M_S)
+            \cong(\mathbb Q_{>0},\cdot)
+            \cong\bigoplus_{p\in\mathcal P}\mathbb Z
+            \cong\bigoplus_{j=1}^{\infty}\mathbb Z.
+            \]
+        \end{subproof}
+    \end{proof}
+
+	The previous cases, restrictions and all of the constructions
+	show that our list, up to isomorphism, is
+    \keyeq{
+        \mathbb Z^r\quad(r\in\mathbb N_0),
+        \qquad\text{and}\qquad
+        \bigoplus_{j=1}^{\infty}\mathbb Z.
+    }
+    Here $\mathbb Z^0$ denotes the trivial group ($\{0\}$), and
+	each of the infinite direct sums are just integer sequences
+	with a finite amount of non-zero terms.
+\end{soln}
+
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
@@ -3491,7 +3640,15 @@ Proceedings of the American Mathematical Society
 \href{https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/countingsunitsr.pdf}
 {Author's preprint}.
 See Section~1, opening paragraph.
-\end{thebibliography}
 
+\bibitem{p6-drutu-kapovich}
+Cornelia Dru{\c t}u and Michael Kapovich.
+\newblock \emph{Geometric Group Theory}.
+\newblock American Mathematical Society Colloquium Publications,
+Volume~63.
+\newblock American Mathematical Society, 2018.
+\newblock \url{https://doi.org/10.1090/coll/063}.
+
+\end{thebibliography}
 
 \end{document}
