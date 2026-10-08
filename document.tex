@@ -3213,8 +3213,139 @@ Richmond and Shallit's asymptotic formula
 a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
 \]
 \end{soln}
+\section{Problem 6}
+\subsection{(a)}
 
-		
+\begin{soln}
+	We are dealing with the group $\mathbb{Q}$ so inherently we define 
+	$q = a/b$ where each of $a$ and $b$ are both in the lowest terms
+	, meaning $gcd(a,b)=1$ and 
+	are $\in \mathbb{N}$. We also write $M = M_{S_q}$ just to simplify the 
+	notation. Our generator is positive and since a positive number to a power
+	is always greater than $0$ we know that $M \subseteq \mathbb{Q_{\ge0}}$. We 
+	also know that $q^0=1\in M$. Also, commonly defined is a 
+	puiseux monoid, which 
+	is an additive submonoid composed entirely of nonnegative rational numbers
+
+    \subsubsection*{\vocab{Looking at the scalings}}
+	Our first instinct for the solution is correct in this case. 
+    \begin{claim*}
+		We know that all $Aut(M)$ are in the form of, where 
+		$\mu_c(x)=cx$ 
+        \[
+        \operatorname{Aut}(M)
+        =\{\mu_c:c\in\mathbb Q_{>0},\ cM=M\}.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+		The proof of this isn't too complex, and is also done in a $2017$ paper 
+		(where I originally found it). We know that $M$ is an additive submonoid of $\mathbb Q_{\ge0}$,
+		which is identical to Gotti's characterization of homomorphisms between Puiseux
+        monoids \cite[Proposition~3.2(1)]{p6-gotti}. The proof in the paper provides that
+        $\varphi(x)=cx$, where $c=\varphi(1)>0$ for an automorphism. The converse direction
+		is also mentioned in the paper where if $c>0$ and $cM=M$, multiplication by $c$ is an
+        additive bijection of $M$, with inverse multiplication by $1/c$.
+    \end{proof}
+
+    \subsubsection*{\vocab{Casework to get $c$}}
+
+	Now that we have found a general form, we need to figure out which values 
+	of $c$ that can occur. To start we take the case where both $a,b$ are above $1$.
+    \begin{claim*}
+        If $a,b>1$, then
+        \[
+        \operatorname{Aut}(M)
+        =\{\mu_{q^k}:k\in\mathbb Z\}
+        \cong(\mathbb Z,+).
+        \]
+    \end{claim*}
+
+    \begin{proof}
+		This is also done in prior work. Using Gotti's Proposition~3.5 and its proof
+        \cite{p6-gotti} we can identify precisely these automorphisms
+        of $\langle q^k:k\in\mathbb Z\rangle$ in this case.
+        The isomorphism sends $k$ to $\mu_{q^k}$.
+    \end{proof}
+
+    \subsubsection*{\vocab{Final Two Cases}}
+	Now we go into the unique part of this problem. We have to consider the 
+	part when $a=1$ or $b=1$ (not both yet). To analyze this set $m$ to be the 
+	maximum value of $a,b$. We know that $q=m$ or that $q=1/m$. Using this 
+	we can define the monoid in a simple manner.
+    \begin{claim*}
+        We can write the monoid as 
+        \[
+        M=\left\{\frac{u}{m^j}:u,j\in\mathbb N_0\right\}.
+        \]
+		Additionally, we prove that if $m>1$ and
+		includes divisors of $p_1,\ldots,p_r$, then
+        \[
+        \operatorname{Aut}(M)
+        =
+        \left\{
+            \mu_{p_1^{e_1}\cdots p_r^{e_r}}:
+            (e_1,\ldots,e_r)\in\mathbb Z^r
+        \right\}
+        \cong(\mathbb Z^r,+).
+        \]
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+			We start with justifying that we can write the monoid in this
+			fashion. We know that every sum of integers powers of $m$ can be
+			written as a sum with a common denominator of $m^j$. We also know that
+			$u/m^j$ lies in our monoid since it is just simply summing $m^-j$ $u$ times,
+			with the empty sum giving $0$. This means that the description is valid both ways.
+        \end{subproof}
+
+        \begin{subproof}
+			Now move onto the second claim we made. Following the proofs 
+			of Gotti, we know that since $1 \in M$ and it is closed under multplication 
+			that            \[
+            \mu_c\in\operatorname{Aut}(M)
+            \quad\Longleftrightarrow\quad
+            c\in M\ \text{and}\ c^{-1}\in M.
+            \]
+			Proving this is almost identical as in the previous problems, neccesity
+			comes from appying $\mu_c$ and its
+            inverse to $1$, while sufficiency follows because
+            multiplication by $c$ and by $c^{-1}$.
+
+			A value $c$ and it's inverse only lies in $M$ if every prime in it divides 
+			with $m$. This means that the numerator and the denominator have to use the same 
+			primes of the numerator and denominator of $c$ use only the primes
+            $p_1,\ldots,p_r$. This connects to the paper on positive rational $S$-units for
+            $S=\{p_1,\ldots,p_r\}$ using their standard description
+            \cite[Section~1, opening paragraph]{p6-shparlinski-stewart}
+            it is
+            \[
+            c=p_1^{e_1}\cdots p_r^{e_r},
+            \qquad e_1,\ldots,e_r\in\mathbb Z.
+            \]
+			The fact that each prime factorization is unique and composition
+			work finish this since 
+            $\mu_c\circ\mu_d=\mu_{cd}$.
+        \end{subproof}
+    \end{proof}
+
+	We are done with all cases except the trivial one 
+	where $q=1$, which would mean that $m=1$ and $M=\mathbb N_0$.
+	Our condition that we have derived results in $c=1$ so the only automorphism
+	for this case would just be the identiy one.
+	To put it all together we can write the equation of
+    \keyeq{
+        \operatorname{Aut}(M_{S_q})\cong
+        \begin{cases}
+            \{\operatorname{id}_M\}, & q=1,\\[2pt]
+            \mathbb Z, & a,b>1,\\[2pt]
+            \mathbb Z^r, & \min(a,b)=1,\quad m>1,
+        \end{cases}
+    }
+    where $r$ is the number of distinct prime divisors of $m$ in
+    the final case.
+\end{soln}
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
@@ -3344,7 +3475,22 @@ on Machine Learning}, volume~202 of \emph{Proceedings of Machine
 Learning Research}, pages~28191--28222, 2023.
 \newblock Section~2.1, equation~(4).
 \newblock \url{https://proceedings.mlr.press/v202/puny23a.html}.
+\bibitem{p6-gotti}
+F.~Gotti,
+\emph{Puiseux monoids and transfer homomorphisms},
+Journal of Algebra \textbf{516} (2018), 95--114.
+\url{https://arxiv.org/pdf/1709.01693}.
+Proposition numbering follows arXiv:1709.01693v2;
+see Propositions~3.2(1) and~3.5.
 
+\bibitem{p6-shparlinski-stewart}
+I.~E.~Shparlinski and C.~L.~Stewart,
+\emph{Counting solvable $S$-unit equations},
+Proceedings of the American Mathematical Society
+\textbf{149} (2021), 5119--5129.
+\href{https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/countingsunitsr.pdf}
+{Author's preprint}.
+See Section~1, opening paragraph.
 \end{thebibliography}
 
 
