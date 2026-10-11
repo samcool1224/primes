@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  11 OCT 2026 00:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  11 OCT 2026 15:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1529,29 +1529,88 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 3760.
  [53]
-Underfull \hbox (badness 1371) in paragraph at lines 3849--3853
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3782.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3788.
+
+
+LaTeX Warning: Citation `p7-chapman-gotti-gotti' on page 54 undefined on input line 3826.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3837.
+[54]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3846.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3855.
+
+
+LaTeX Warning: Citation `p7-chapman-gotti-gotti' on page 55 undefined on input line 3857.
+
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3861.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3864.
+
+LaTeX Warning: Citation `p7-chapman-gotti-gotti' on page 55 undefined on input line 3866.
+
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3873.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3885.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3890.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3891.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3896.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3899.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3917.
+[55]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3925.
+ [56]
+Underfull \hbox (badness 1371) in paragraph at lines 4012--4016
 []\OT1/cmr/m/n/10.95 (+20) Wolfgang Kre-it-meier.  Asymp-totic op-ti-mal-ity of scalar Ger-sho quan-tiz-ers.
  []
 
-[54] [55] (./document.aux)
+[57] [58] (./document.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 36423 strings out of 467525
- 715951 string characters out of 5418982
- 1653418 words of memory out of 5000000
- 64225 multiletter control sequences out of 15000+600000
- 654780 words of font info for 236 fonts, out of 8000000 for 9000
+ 36467 strings out of 467525
+ 716775 string characters out of 5418982
+ 1654047 words of memory out of 5000000
+ 64257 multiletter control sequences out of 15000+600000
+ 654894 words of font info for 238 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  145i,21n,143p,11307b,2359s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on document.pdf (55 pages, 634416 bytes).
+Output written on document.pdf (58 pages, 653965 bytes).
 PDF statistics:
- 864 PDF objects out of 1000 (max. 8388607)
- 731 compressed objects within 8 object streams
- 316 named destinations out of 1000 (max. 500000)
- 54557 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 890 PDF objects out of 1000 (max. 8388607)
+ 754 compressed objects within 8 object streams
+ 324 named destinations out of 1000 (max. 500000)
+ 54573 words of extra memory for PDF output out of 61914 (max. 10000000)
 

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1791694112.15429 "/Users/sambhargav/latex creations/primes pray to evb/document.tex" "document.pdf" "document" 1791694123.04116 0
-  "/Users/sambhargav/latex creations/primes pray to evb/document.tex" 1791694100.52693 109533 950852f0611d1073e70afe8568126ae5 ""
+["pdflatex"] 1791746464.79393 "/Users/sambhargav/latex creations/primes pray to evb/document.tex" "document.pdf" "document" 1791746472.6145 0
+  "/Users/sambhargav/latex creations/primes pray to evb/document.tex" 1791746464.95063 115617 37411016105353dc8bb3a3c2983e3183 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -252,8 +252,8 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1789856167 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1774209607 3636776 dc5fa9b6b1453b9d196cd42edf876004 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "document.aux" 1791694122.71194 23104 9700017f74f4bdf87cbff3ec660299b0 "pdflatex"
-  "document.tex" 1791694100.52693 109533 950852f0611d1073e70afe8568126ae5 ""
+  "document.aux" 1791746472.30093 24886 4a41891a63587ed94dd01e5f500e6ead "pdflatex"
+  "document.tex" 1791746464.95063 115617 37411016105353dc8bb3a3c2983e3183 ""
   "evan.sty" 1789858152.62344 36704 715de751fdbcf988928f66fa7fbc115c ""
   (generated)
   "document.aux"

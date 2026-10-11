@@ -3760,7 +3760,170 @@ Put in a table we can see clearly and compare
     }
 
 \end{soln}
+\section{Problem 7}
+\subsection{(a)}
 
+\begin{soln}
+	As always, define $a$ as $a/b$ where each of them are such that $gcd(a,b)$
+	and $a,b \in \mathbb{N}$. We also define the $S$ as $\mathbb{N_0[q]}$.
+	Every positive $q \in \mathbb Q$ will work, we split this into two cases.
+	A easier one and a harder one. We also make use of a couple preivous theorems.
+
+    \subsubsection*{\vocab{Integers and Inverse Integers}}
+	Let's say that one of $a,b$ are $1$. 
+	We can set $S$ as    \[
+    S=\mathbb N_0[1/b]
+    =\left\{\frac{m}{b^k}:m,k\in\mathbb N_0\right\},
+    \]
+	regardless of the case. This is good because if $b=1$ we obtain taht $S=\mathbb{N_0}$
+	which is right and if $a=1$ we have the $q=1/b$ as in the notation.
+	We essentially finish this case with the following claim
+    \begin{claim*}
+        We see that the primes
+		 $p\nmid b$ are pairwise nonassociate irreducibles
+        of $S$.
+    \end{claim*}
+
+    \begin{proof}
+        Using simple prime factorization rules as in 
+        \cite[Proposition~1.6.4 and Theorem~1.6.18]{p6-goodman}
+        gives, for $m\ge1$,
+        \[
+        \frac{m}{b^k}\in S^\times
+        \quad\Longleftrightarrow\quad
+        m\mid b^L\text{ for some }L\in\mathbb N_0.
+        \]
+		Where $S^\times$ is the set of units of $S$. 
+		Both ways are easy to see, a reciprocal in $S$ means the $m$ divides
+		a power of $b$ and id $m \mid b^L$ then
+        \[
+        \left(\frac{m}{b^k}\right)^{-1}
+        =\frac{b^{k+L}/m}{b^L}\in S.
+        \]
+		Moving onto the irreducible part of the question. 
+		A prime that doesn't divide $b$ is not a unit we have that
+        \[
+        p=\frac{m}{b^k}\frac{n}{b^\ell},
+        \qquad m,n\in\mathbb N,\quad k,\ell\in\mathbb N_0,
+        \]
+        from which we get $mn=pb^{k+\ell}$.
+		We know that $p$ is prime so eithier $m$ or $n$ contains the prime factor of $p$.
+		WLOG say it is $n$. Then we know that $m$ must divide $b^{k+l}$. This means 
+		$m$ is a unit meaning the $p$ is irreducible. Additionally, any two primes $p$ and 
+		$p_2$ don't divide $b$, so if we take $p/{p_2}$ we see that the denominator
+		is $p_2$ which means it is not in $S$ and is therefore not in the same 
+		associate class.
+    \end{proof}
+	There are infinite primes, seen in 
+    Euclid's theorem \cite[Theorem~1.6.6]{p6-goodman},
+	 and only finitely many divide $b$ completing this case.
+
+    \subsubsection*{\vocab{The other case}}
+
+	We now assume the other case, which is when $a,b >1$.
+
+    We can use Theorem~2.3(3) of Chapman, Gotti, and Gotti
+    \cite{p7-chapman-gotti-gotti} which states that additie atoms in our 
+	definition of $S$ is just 
+    \[
+    \{q^j:j\in\mathbb N_0\}.
+    \]
+	where a additive atom is defined as a element that can't be written as A
+	sum of two nonzero elements in $S$. 
+	So we can use this to create a polynoimial in form of $P(q)$ 
+	which is a factorization, using addition, into these atoms. 
+	Now begin the heart of the problem, proving statements about $1+q^n$. 
+    \begin{claim*}
+        For $P\in\mathbb N_0[x]$ and $n\ge1$,
+        \[
+        P(q)=1\ \Longrightarrow\ P(x)=1,
+        \qquad
+        P(q)=1+q^n\ \Longrightarrow\ P(x)=1+x^n.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+		$1$ is a additive atom meaning $P(x)=x^j$ if $P(q)=1$ for some nonnegative
+		integer $j$. We prove that $j=0$ since $q^j=1$ and $q \ne 1$. 
+
+		The second implication is much more intricate. 
+        $1+q^n$ has two terms, so we say it has length $2$,
+		 and all its coefficients are
+        strictly less than both $a$ and $b$.
+
+        \begin{subproof}
+			When $q > 1$ use the
+            Lemma~3.2(1) to (4) of
+            \cite{p7-chapman-gotti-gotti} makes this expansion
+            both shortest and longest, with the shortest expansion
+            unique.
+            Hence it is the only additive factorization.
+        \end{subproof}
+
+        \begin{subproof}
+			When $q>0$ and $q<1$ we can use
+            Lemma~3.1(1) to (3) of
+            \cite{p7-chapman-gotti-gotti} makes this the unique
+            shortest expansion and bounds all factorization lengths.
+            Any other expansion would be longer, so part~(1)
+            would force one of its positive-degree coefficients
+            to be at least $b>a$.
+            Part~(3), applied to that expansion, would then make
+            the lengths unbounded, a contradiction.
+        \end{subproof}
+
+        So we have the coefficents of $P$ are the same
+		as of $1+x^n$, proving the claim.
+    \end{proof}
+
+    \subsubsection*{\vocab{Using to prove irreducible}}
+
+    We can use the previous claim to our advatage to create polynoimial
+	idetities from factorization of $1+q^n$.
+
+    \begin{claim*}
+        If $a,b>1$, then $S^\times=\{1\}$ and every element
+        $1+q^n$, with $n\ge1$, is multiplicatively irreducible.
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+			We quickly find the units. If $uv=1$ we can chose a $U,V\in\mathbb N_0[x]$
+            with $u=U(q)$ and $v=V(q)$.
+			Then the previous claims gives $U(x)V(x)=1$, and that gives that
+
+            $U=V=1$ and hence $u=v=1$.
+        \end{subproof}
+
+        \begin{subproof} 
+			We now factor it and show it is irreducible.
+			We fix a value of $n$ and we suppose that
+			$1+q^n=U(q)V(q)$ with $U,V\in\mathbb N_0[x]$.
+            Using the claim to our $P=UV$ yields
+            \[
+            U(x)V(x)=1+x^n.
+            \]
+            Comparing and evaluate at $x=1$
+            to gibe
+            \[
+            U(0)V(0)=1,
+            \qquad
+            U(1)V(1)=2.
+            \]
+            Thus $U(0)=V(0)=1$, and one of $U(1),V(1)$ equals $1$.
+			Since  $U(0)=V(0)=1$ and know that one of $U(1),V(1)$ equals $1$.
+			Meaning $1+q^n>1$ is irreducible.
+
+        \end{subproof}
+    \end{proof}
+	We know that $q$ is not $1$, meaning that as $n$ is changing the value of 
+	$1+q^n$ are diffeernt as $n$ changes meaning they are not associate. 
+	So combining this information with the information we obtained from the previous
+	case gives us.
+	\keyeq{
+        \text{Every }q\in\mathbb Q_{>0}\text{ satisfies part~(a).}
+    }
+\end{soln}
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
