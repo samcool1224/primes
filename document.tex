@@ -3495,6 +3495,272 @@ a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
 	with a finite amount of non-zero terms.
 \end{soln}
 
+\subsection{(c)}
+
+\begin{soln}
+    A monomial has two pieces of data: a coefficient and an exponent.
+    We first separate the corresponding operations, and then use the
+    semidirect-product criterion to describe how they combine.
+    Products of maps below mean composition, with the rightmost map
+    applied first.
+
+	There are two speerate thingas we have to consider for any monomial. 
+	One is the coefficient it has and the second is it exponent. Now 
+	these are relatively independant from each other so we form two seperate
+	transofmrations for each of them as then combine them to form one overall 
+	transformation. This turns out to be a well known way to combine called A
+	semi-direct product. 
+
+    \subsubsection*{\vocab{Looking at seperation}}
+
+    We use a bit of shorthand. 
+	First we can define $H_M=\operatorname{Hom}(M,F^\times)$ and
+    $A_M=\operatorname{Aut}(M)$.
+    There is some 
+	 $\chi\in H_M$ and $\varphi\in A_M$. For each 
+	 of these there are $F$ linear maps which 
+	 are 
+    \[
+    D_\chi(x^q)=\chi(q)x^q,
+    \qquad
+    P_\varphi(x^q)=x^{\varphi(q)}.
+    \]
+    These are automorphisms and have inverses which
+	we define as $D_{\chi^{-1}}$ and
+    $P_{\varphi^{-1}}$, where $\chi^{-1}(q)=\chi(q)^{-1}$.
+
+    \begin{claim*}
+        We find that, with the symbol $\rtimes$ semi-direct product 
+        \keyeq{
+            \operatorname{Aut}_{\mathrm{gr}}(F[M])
+            \cong H_M\rtimes A_M,
+            \qquad
+            \varphi\cdot\chi=\chi\circ\varphi^{-1}.
+        }
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+            The uniqueness property of automorphism prove to be
+			extremely useful while trying to solve this. We 
+			create some 
+            $\Phi\in\operatorname{Aut}_{\mathrm{gr}}(F[M])$. And notice that this will hae a unique notation for each basis monomial. It will come in the form
+            \[
+            \Phi(x^q)=c(q)x^{\varphi(q)},
+            \qquad c(q)\in F^\times,\quad\varphi(q)\in M.
+            \]
+            We know that $\Phi(1)=1$. Using this and multiplicative and 
+			comparison of some simple cases we can find a couple of useful properties of the indivual operations. Including that
+            \[
+            c(0)=1,\quad\varphi(0)=0,\qquad
+            c(q+r)=c(q)c(r),\quad
+            \varphi(q+r)=\varphi(q)+\varphi(r).
+            \]
+            Injectivity of $\Phi$ forces ç to be injective,
+            since otherwise two distinct basis monomials would have
+            proportional images.
+			We also know that injectivety and surjectivity of $\Phi$ will also force 
+			$\varphi$ to be injective and surjective as well. The first is easy to see
+			and the second comes from every image being a linear combination of monomials , and
+			each of those monomials have a exponent in  $\varphi(M)$.
+            Now we can just put
+            $\chi=c\circ\varphi^{-1}$, which comes from the notion 
+			of having to undo $\varphi$ effect on the exponent to retrieve 
+			the true exponenet. And then we get the unique factorization
+            \[
+            \Phi=D_\chi P_\varphi.
+            \]
+        \end{subproof}
+
+        \begin{subproof}
+			We also have to see how changing the exponenet will effect rescaling. 
+			We compute, as a common conjugation techniquem
+			            \[
+            P_\varphi D_\chi P_\varphi^{-1}
+            =D_{\chi\circ\varphi^{-1}}.
+            \]
+
+			So this means the subgroup of  $D_\chi$ is normal and its intersection
+			is empty other then the identiy. With all of this we can call in
+the hypotheses of Goodman's
+            Corollary~3.2.5 \cite{p6-goodman}, which provides 
+			the claim from the displayed conjugation action.
+            In
+            \cite[Proposition~3.2.3]{p6-goodman}, multiplication is 
+            \[
+            (\chi,\varphi)(\eta,\psi)
+            =\bigl(\chi\, (\eta\circ\varphi^{-1}),
+                   \varphi\circ\psi\bigr),
+            \]
+			Each multplication of the characters is point by point.
+        \end{subproof}
+    \end{proof}
+
+    \subsubsection*{\vocab{Dyadic}}
+	We can see that every dyadic rational is just some multiple of  $2^{-m}$.
+	This means that any character will just be determined by its values on
+	all o these elements. We create a group as 
+	    \[
+    H=\left\{
+        (z_m)_{m\ge0}\in(\mathbb C^\times)^{\mathbb N_0}:
+        z_{m+1}^{\,2}=z_m\text{ for all }m\ge0
+    \right\},
+    \]
+
+	This satisfies propeties that we can see throughout the dyadics.
+
+    \begin{claim*}
+        Create a correspondance of 
+        \keyeq{
+            \operatorname{Hom}(D_2,\mathbb C^\times)\cong H,
+            \qquad
+            \chi\longmapsto\bigl(\chi(2^{-m})\bigr)_{m\ge0}
+        }
+        We claim that this has a inverse. Specifically, the inverse of 
+        \[
+        \chi_z\!\left(\frac{n}{2^m}\right)=z_m^{\,n}.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+ 
+	We know	\[
+        \chi(2^{-(m+1)})^2
+        =\chi(2^{-m}).
+        \]
+        Also we see that this still holds for values that are equivalent 
+		yet with a larger denominator since for $\ell\ge m$,
+        \[
+        z_\ell^{\,n2^{\ell-m}}=z_m^{\,n}.
+        \]
+       This means our operation is well defined, 
+	   $\chi_z(0)=1$, and addition over a common denominator
+        gives
+        \[
+        \chi_z\!\left(\frac{n+n'}{2^m}\right)
+        =z_m^{\,n+n'}=z_m^{\,n}z_m^{\,n'}.
+        \]
+        The constructions are inverse to one another and respect
+        multiplication, proving the group isomorphism.
+    \end{proof}
+
+    \subsubsection*{\vocab{Dyadic Automorphisms}}
+
+	This is pretty simple, using our information from part a. Just setting
+	$q=2$, gives
+    \[
+    \operatorname{Aut}(D_2)
+    =\{\varphi_k:q\mapsto2^kq\mid k\in\mathbb Z\}
+    \cong\mathbb Z.
+    \]
+    To finish look at its action on sequences in $H$.
+    The generator $\varphi_1$ acts by $\chi(q)\mapsto\chi(q/2)$,
+    which corresponds to the shift
+    \[
+    \sigma(z_0,z_1,z_2,\ldots)=(z_1,z_2,z_3,\ldots).
+    \]
+	Due to our property of the structure it is possible to invert it 
+	\[
+    \sigma^{-1}(z_0,z_1,z_2,\ldots)
+    =(z_0^2,z_0,z_1,\ldots).
+    \]
+    So
+    \keyeq{
+        \operatorname{Aut}_{\mathrm{gr}}(\mathbb C[D_2])
+        \cong H\rtimes_\sigma\mathbb Z.
+    }
+    Explicitly, its multiplication and its action on monomials are
+    \[
+    (z,k)(w,\ell)
+    =\bigl(z\,\sigma^k(w),k+\ell\bigr),
+    \qquad
+    \Phi_{z,k}(x^q)=\chi_z(2^kq)x^{2^kq},
+    \]
+    \subsubsection*{\vocab{Eval at One}}
+
+    Write $\operatorname{ev}_1(\chi)=\chi(1)$ and let $\mathbf1$ is the one character.
+	This is a group homomorphism.
+
+    \begin{claim*}
+        For $\mathbb N_0$, evaluation at $1$ is an isomorphism
+        onto $\mathbb C^\times$; for $D_2$, it is surjective with
+        kernel
+        \[
+        K=\{z\in H:z_0=1\}
+        \cong(\mathbb Z_2,+),
+        \]
+        where $\mathbb Z_2$ denotes the $2$-adic integers.
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+			The inforation give by evaluation at $1$ is a lot for 
+			the natural numbers. We know that using additivite and homomorphism
+			property
+            \[
+            \chi(n)=\chi(1)^n,
+            \qquad n\in\mathbb N_0.
+            \]
+            Then finally $w\in\mathbb C^\times$ defines such a character
+            by $n\mapsto w^n$, so the image is
+            $\mathbb C^\times$ and the kernel is $\{\mathbf1\}$.
+        \end{subproof}
+
+        \begin{subproof}[The dyadic rationals]
+			Our sequence description of the dyadics really come to use 
+			here. While evaluating at $1$ we note that it returns just the value
+			of the first number in our sequence definition, an extremely useful property. 
+			It is a projection from a  $z\mapsto z_0$. This is pretty easy to see. Now 
+			we first find the image. Take some value of $w=re^{i\theta}\in\mathbb C^\times$, with
+            $r>0$, set $\theta$ and set
+            \[
+            z_m=r^{1/2^m}e^{i\theta/2^m}.
+            \]
+			This gives a perfect value for each term with our squaring rule 
+			that will give a  $z_0=w$. So thsi exists a sequence with 
+			any first term we want and we are surjective, proving our image. 
+            In the kernel, compatibility gives
+            $z_m^{2^m}=z_0=1$, so each $z_m$ is a $2^m$-th root of
+            unity and we may write uniquely
+            \[
+            z_m=\exp\!\left(\frac{2\pi i a_m}{2^m}\right),
+            \qquad
+            a_m\in\mathbb Z/2^m\mathbb Z,\quad m\ge1.
+            \]
+            Here the exponential is independent of the chosen
+            integer representative of $a_m$, and compatibility
+            is equivalent to
+            \[
+            a_{m+1}\equiv a_m\pmod{2^m}.
+            \]
+            Conversely, any such sequence of residue classes
+            defines an element of $K$, and adding residue classes
+            corresponds to multiplying the associated roots of unity.
+            By the inverse-limit definition of the $2$-adic
+            integers \cite[Definitions~4.1 and~4.3]{p6-sutherland},
+            a compatible sequence of residues is precisely a $2$-adic
+            integer, so
+            \[
+            K\cong
+            \varprojlim_{m\ge1}\mathbb Z/2^m\mathbb Z
+            =(\mathbb Z_2,+).
+            \]
+
+        \end{subproof}
+    \end{proof}
+
+Put in a table we can see clearly and compare 
+    \keyeq{
+        \begin{array}{c|c|c}
+            M & \operatorname{im}(\operatorname{ev}_1)
+              & \ker(\operatorname{ev}_1)\\ \hline
+            \mathbb N_0 & \mathbb C^\times & \{\mathbf1\}\\
+            D_2 & \mathbb C^\times & K\cong(\mathbb Z_2,+)
+        \end{array}
+    }
+
+\end{soln}
+
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
@@ -3648,6 +3914,25 @@ Cornelia Dru{\c t}u and Michael Kapovich.
 Volume~63.
 \newblock American Mathematical Society, 2018.
 \newblock \url{https://doi.org/10.1090/coll/063}.
+
+\bibitem{p6-goodman}
+Frederick M. Goodman.
+\newblock \emph{Algebra: Abstract and Concrete}.
+\newblock Edition~2.5.
+\newblock SemiSimple Press, Iowa City, IA, 2006.
+\newblock Online revision dated June~7, 2012.
+See Proposition~3.2.3 and Corollary~3.2.5, pp.~156--157.
+\newblock \url{https://homepage.math.uiowa.edu/~goodman/algebrabook.dir/bookmt.pdf}.
+\newblock Accessed October~8, 2026.
+
+\bibitem{p6-sutherland}
+Andrew V. Sutherland.
+\newblock \emph{18.782 Introduction to Arithmetic Geometry:
+Lecture~4}.
+\newblock Massachusetts Institute of Technology, September~17, 2013.
+\newblock See Definitions~4.1 and~4.3, p.~1.
+\newblock \url{https://math.mit.edu/classes/18.782/2013fa/LectureNotes4.pdf}.
+\newblock Accessed October~8, 2026.
 
 \end{thebibliography}
 
