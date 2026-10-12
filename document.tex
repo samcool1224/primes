@@ -3924,6 +3924,184 @@ Put in a table we can see clearly and compare
         \text{Every }q\in\mathbb Q_{>0}\text{ satisfies part~(a).}
     }
 \end{soln}
+
+\subsection{(b)}
+
+\begin{soln}
+	$q=a/b$ in lowest terms and set $S=\mathbb N_0[q]$.
+
+	Now we are given that the property only holds when one of $a,b$ is 
+	$=1$. Therefore, our first goal was to show why $a,b > 1$ doesn't work.
+	Then we prove the rest. Turns out, this first case is quite a bit easier. 
+    \subsubsection*{\vocab{First Case}}
+	Although some might intially think that having infinitely many irreducibles
+	would result in all eleemnts being able to express by sums of them, this part 
+	shows that it isn't neccesarily the case. 
+    \begin{claim*}
+        If $a,b>1$, then $S$ does not have the Goldbach property.
+    \end{claim*}
+
+    \begin{proof}
+        Part~(a) gives $S^\times=\{1\}$. We use additive atoms here, noting every 
+		$q^n$ is one from  \cite[Theorem~2.3(3)]{p7-chapman-gotti-gotti}.
+        We take one example factorization of $q^n$ as 
+        \[
+        q^n=q\cdot q^{n-1}
+        \]
+		This has two not unit factors, so $q^n$ is not irreducible. 
+
+        Also $q^n$ is an additive atom, it cannot be a sum of
+        two or more nonzero elements of $S$. It can't be a sum of just 
+		itself since it is irreducible. 
+        Thus none of the elements $q^n$, $n\ge2$, is a sum of
+        any positive number of multiplicative irreducibles.
+		All of these are distinct, because $q$ is not $1$ and also we 
+		know the set of units in $S$ is just $1$. That means that each of $q^n$
+		is their own associate class. There are infinte number of these associate 
+		classes, therefore no finite collection of associate classes will be able to hold
+		 them all. This means that the Goldbach property doesn't hold.
+    \end{proof}
+
+    \subsubsection*{\vocab{Tricky Prime Sums}}
+
+	The other case requires much more thought. This is when one of $a,b$ 
+	is $1$. The main reason we cannot use the theorem given in the problem,
+	known as Vinogradov's theorem is due to the fact that we don't know what 
+	primes divide $d$. Luckily, we can calculate a "density" of primes to be $1$
+	and use a previously proven theorem to finish. 
+	First we prove the following claim
+
+    \begin{claim*}
+        For every $d\in\mathbb N$, there is an integer $L\ge2$
+        such that every integer $N\ge L$ is a sum of at most
+        four primes, none of which divides $d$.
+    \end{claim*}
+
+    \begin{proof}
+
+        Let $\mathbb P$ denote the set of ODD primes and put
+        \[
+        A_d=\{p\in\mathbb P:p\nmid d\}.
+        \]
+		The set of $A_d$ is infinite since only a finite number 
+		of primes have been removed from the set of primes. Now we can 
+		call a relative lower desnity defined as 
+        \[
+        \lim_{X\to\infty}
+        \frac{\#(A_d\cap[1,X])}{\#(\mathbb P\cap[1,X])}
+        =1>\frac58.
+        \]
+		This is because after  $d$ the set of $A_d$ is equal to $\mathbb P$ 
+		for all values above $d$, and since there is. infinite number of primes it approaches 
+		$1$. With 
+		this condition 
+		we can use Shao's theorem \cite[Theorem~1.1]{p7-shao-density} to finish the claim 
+		we states
+
+        \begin{subproof}
+            The theorem gives an integer $T_d\ge2$ such that
+            every odd integer $N\ge T_d$ is a sum of three
+            primes from $A_d$.
+        \end{subproof}
+
+        \begin{subproof}
+			For even integers this requires a bit more calculations. This is 
+			because parity forces us to use $2$, $4$, $6$ or some other even
+			number  primes, since our set only 
+			contains odd primes. The current status of the $2$ prime case hasn't been proved
+			and is the well known binary Goldbach conjecture. So we move onto $4$ odd primes. 
+            We chose some large prime $p_*\in A_d$. 
+            such that  $N\ge T_d+p_*$. Then $N-p_*$ is odd
+            and at least $T_d$, so
+            \[
+            N-p_*=p_1+p_2+p_3,
+            \qquad p_1,p_2,p_3\in A_d.
+            \]
+            Then 
+            \[
+            N=p_*+p_1+p_2+p_3.
+            \]
+        \end{subproof}
+
+        Finally we can take a $B_d=T_d+p_*$ which 
+		handles both parities and proves
+        the claim.
+    \end{proof}
+
+    \subsubsection*{\vocab{Using the claim for fractions}}
+
+	Now we finish with the main goal. 
+	Set    \[
+    S_d:=\mathbb N_0[1/d]
+    =\left\{\frac{m}{d^k}:m,k\in\mathbb N_0\right\},
+    \qquad d\in\mathbb N.
+    \]
+This is a valid representaiton for all cases as 
+in the previous part. 
+    \begin{claim*}
+        Every $S_d$ has the $4$-Goldbach property.
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+			Begin by proving that $p/d^k$ is irreducible. 
+            By part~(a), every prime $p\nmid d$ is irreducible
+            in $S_d$.
+			We know that $d^k$ is aunit with inverse $d^{-k}$ and vice verse.
+			Multiply by a unit keeps it irreducible, which is easy to see. Also 
+			if $u$ is a unit and $t$ is irreducible it is also easy to see that 
+			$ut$ is not a unit. 
+			Say that 
+            \[
+            ut=vw
+            \quad\Longrightarrow\quad
+            t=(u^{-1}v)w
+            \]
+            This means that either $v$ or $w$ is a unit. Applying this 
+			we see that, $p/d^k$ is irreducible whenever
+            $p\nmid d$.
+        \end{subproof}
+
+        \begin{subproof}
+			The fact above was what motivated the entire previous claim. 
+			Now it comes to good use. 
+            Let $B_d$ be supplied by the preceding claim so we can get a collection 
+			of 
+            \[
+            \mathcal F_d
+            =\{mS_d^\times:m\in\mathbb N,\ 1\le m<B_d\}.
+            \]
+			Say there is a $x$ that isn't in any of these classes yet is in 
+			$S_d$. We can write $x=m/d^k$ with
+            $m\ge1$ and $k\ge0$. Also $x$ belongs to the
+            associate class $mS_d^\times$ so  $m\ge B_d$.
+            The previous claim is easy to use now, we see that $m$ is
+			the sum of at most $4$ primes, otherwise written as. 
+            \[
+            m=p_1+\cdots+p_j,
+            \qquad
+            1\le j\le4,
+            \qquad
+            p_i\nmid d.
+            \]
+            Dividing by $d^k$ yields
+            \[
+            x=\frac{p_1}{d^k}+\cdots+\frac{p_j}{d^k},
+            \]
+            a sum of at most four irreducibles of $S_d$.
+        \end{subproof}
+
+        We have now proved the goldbach property. 
+    \end{proof}
+
+    Once again this covers all cases, completing the problem. 
+    Hence
+    \keyeq{
+        \mathbb N_0[q]\text{ has the Goldbach property}
+        \quad\Longleftrightarrow\quad
+        q\in\mathbb N\cup\mathbb N^{-1}.
+    }
+\end{soln}
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
@@ -4096,7 +4274,48 @@ Lecture~4}.
 \newblock See Definitions~4.1 and~4.3, p.~1.
 \newblock \url{https://math.mit.edu/classes/18.782/2013fa/LectureNotes4.pdf}.
 \newblock Accessed October~8, 2026.
+\bibitem{p7-shao-density}
+Xuancheng Shao.
+\newblock A density version of the Vinogradov three primes theorem.
+\newblock \emph{Duke Mathematical Journal}, 163(3):489--512, 2014.
+\newblock See Theorem~1.1; numbering verified in arXiv version~2.
+\newblock DOI: \url{https://doi.org/10.1215/00127094-2410176}.
+\newblock arXiv:1206.6139 [math.NT].
+\newblock \url{https://arxiv.org/pdf/1206.6139}.
+\newblock Accessed October~11, 2026.
 
+\bibitem{p7-chapman-gotti-gotti}
+Scott T. Chapman, Felix Gotti, and Marly Gotti.
+\newblock Factorization invariants of Puiseux monoids generated by
+geometric sequences.
+\newblock \emph{Communications in Algebra}, 48(1):380--396, 2020.
+\newblock See Theorem~2.3(3); numbering verified in arXiv version~2.
+\newblock DOI: \url{https://doi.org/10.1080/00927872.2019.1646269}.
+\newblock arXiv:1904.00219 [math.AC].
+\newblock \url{https://arxiv.org/pdf/1904.00219}.
+\newblock Accessed October~11, 2026.
+
+\bibitem{p7-chapman-gotti-gotti}
+Scott T. Chapman, Felix Gotti, and Marly Gotti.
+\newblock Factorization invariants of Puiseux monoids generated by
+geometric sequences.
+\newblock \emph{Communications in Algebra}, 48(1):380--396, 2020.
+\newblock See Theorem~2.3(3) and Lemmas~3.1(1)--(3), 3.2(1)--(4);
+numbering verified in arXiv version~2.
+\newblock DOI: \url{https://doi.org/10.1080/00927872.2019.1646269}.
+\newblock arXiv:1904.00219 [math.AC].
+\newblock \url{https://arxiv.org/pdf/1904.00219}.
+\newblock Accessed October~11, 2026.
+
+\bibitem{p6-goodman}
+Frederick M. Goodman.
+\newblock \emph{Algebra: Abstract and Concrete}.
+\newblock Edition~2.5.
+\newblock SemiSimple Press, Iowa City, IA, 2006.
+\newblock ISBN: 978-0-9799142-0-1.
+\newblock Online revision dated June~7, 2012.
+\newblock \url{https://homepage.math.uiowa.edu/~goodman/algebrabook.dir/bookmt.pdf}.
+\newblock Accessed October~11, 2026.
 \end{thebibliography}
 
 \end{document}
