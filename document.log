@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  12 OCT 2026 19:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  13 OCT 2026 00:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1627,22 +1627,61 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 4103.
  [58]
 Package mdframed Info: Not enough space on this page on input line 4103.
-
-Underfull \hbox (badness 1371) in paragraph at lines 4190--4194
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4137.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4145.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4146.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 4148.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4151.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 4162.
+ [59]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4171.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4188.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4193.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4194.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 4200.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4203.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 4211.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4223.
+ [60]
+Underfull \hbox (badness 1371) in paragraph at lines 4310--4314
 []\OT1/cmr/m/n/10.95 (+20) Wolfgang Kre-it-meier.  Asymp-totic op-ti-mal-ity of scalar Ger-sho quan-tiz-ers.
  []
 
-[59] [60]
-pdfTeX warning (ext4): destination with the same identifier (name{cite.p6-goodman}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.4310 \bibitem{p6-goodman}
-                            [61
+[61] [62
 pdfTeX warning (ext4): destination with the same identifier (name{cite.p7-chapman-gotti-gotti}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.4321 \end{document}
-                     ] (./document.aux)
+l.4429 
+       ]
+pdfTeX warning (ext4): destination with the same identifier (name{cite.p6-goodman}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4430 \bibitem{p6-goodman}
+                            [63] (./document.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -1653,18 +1692,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 36515 strings out of 467525
- 717713 string characters out of 5418982
- 1654835 words of memory out of 5000000
- 64292 multiletter control sequences out of 15000+600000
- 655059 words of font info for 240 fonts, out of 8000000 for 9000
+ 36547 strings out of 467525
+ 718343 string characters out of 5418982
+ 1655339 words of memory out of 5000000
+ 64317 multiletter control sequences out of 15000+600000
+ 655116 words of font info for 241 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  145i,21n,143p,11307b,2359s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/yhmath/yhcmex.pfb>
-Output written on document.pdf (61 pages, 675053 bytes).
+Output written on document.pdf (63 pages, 687713 bytes).
 PDF statistics:
- 930 PDF objects out of 1000 (max. 8388607)
- 791 compressed objects within 8 object streams
- 333 named destinations out of 1000 (max. 500000)
- 54581 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 946 PDF objects out of 1000 (max. 8388607)
+ 804 compressed objects within 9 object streams
+ 338 named destinations out of 1000 (max. 500000)
+ 54589 words of extra memory for PDF output out of 61914 (max. 10000000)
 

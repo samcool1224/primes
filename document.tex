@@ -4102,6 +4102,126 @@ in the previous part.
         q\in\mathbb N\cup\mathbb N^{-1}.
     }
 \end{soln}
+
+\subsection{(c)}
+
+\begin{soln}
+	Our upper bound from the previous problem basically gives us this problem 
+	for free. It seems too simple for a part c (sort of like in the problem set
+	in 2025 with problem 6 part c).
+	Anways, our upper bound gives us that both semirings 
+	in the question have the $4$-Goldbach property.
+    A quick notation, we set $g(S)$ as the Goldbach number of semiring $S$ for
+	all of them that have the goldbach property. 
+	From the previous part we know that
+    \[
+    g(\mathbb N_0[k])\le4,
+    \qquad
+    g(\mathbb N_0[1/k])\le4.
+    \]
+    It remains to rule out $1$ and $2$ in the first case, and
+    $1$ in the second.
+	So we just need to prove $1,2$in the first case and just $1$ in the second one.
+
+
+    \subsubsection*{\vocab{Two and One don't work for the integers}}
+
+    We have that for all of the $k$ in $\mathbb N$.
+    $\mathbb N_0[k]=\mathbb N_0$. We have seen the only unit in this
+	is one, meaning all of its associate classes are just one element. Also,
+	all of its irreducible is just the prime numbers. 
+	So we try and find a counterexample, using that odd sums must contain $2$ and 
+	that we are looking for a sum that must be composite with $2$ we see a obvious
+	example. 
+    \begin{claim*}
+        For every $n\ge1$, the integer
+        \[
+        N_n=5^{2n+1}
+        \]
+        cannot be written as a sum of one or two primes.
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+			Ruling out one, we see that this number $N_n=5\cdot5^{2n}$ has both
+            factors greater than $1$, so $N_n$ is composite.
+        \end{subproof}
+
+        \begin{subproof}
+			For two numbers summing to it, suppose it is
+			the sum of two primes. 
+            One must be $2$ since the number is odd so the other is $5^{2n+1}-2$. 
+            But $5\equiv-1\pmod3$ gives
+            \[
+            N_n-2=5^{2n+1}-2
+            \equiv(-1)^{2n+1}-2
+            \equiv0\pmod3.
+            \]
+            Since $N_n-2\ge123>3$ it is a multiple and not equal to $3$ so it
+			is composite.
+        \end{subproof}
+    \end{proof}
+	So the entire set of the integers $N_n$ are distinct, lying in a infinite
+	number of different associate classes. So not finite collection can produce them, 
+	so the set doesn't have the $2$-Goldbach property.
+    So with our bound from $2$ we complete
+    \keyeq{
+        g(\mathbb N_0[k])\in\{3,4\},
+        \qquad k\in\mathbb N.
+    }
+
+    \subsubsection*{\vocab{For reciprocals one is not enough}}
+	We already proved the $1/k$ for $k=1$ so now set $k>1$ and set  $S_k=\mathbb N_0[1/k]$.
+    We have to also consider that each of the set of numbers we have
+	aren't in the same associate class, which is different then the last case.
+	After sum searching we can set a $p_f$ as a prime that divides $k+1$ which means
+	it doesn't divide $k$. This also means, going back to part~(a), 
+	a positive integer is a
+    unit of $S_k$ exactly when all of its prime factors divide $k$.
+    In particular,
+    \[
+    p^t\notin S_k^\times
+    \qquad(t\ge1).
+    \]
+
+    \begin{claim*}
+        The elements $p^n$, $n\ge2$, are reducible and pairwise
+        nonassociate in $S_k$.
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}
+            For every $n\ge2$, the factorization
+            \[
+            p^n=p\cdot p^{n-1}
+            \]
+            has two nonunit factors,
+            so $p^n$ is not irreducible.
+        \end{subproof}
+
+        \begin{subproof}
+
+            Suppose that $n>m\ge2$ and that $p^n=u p^m$
+            for some unit $u\in S_k^\times$.
+            Then
+            \[
+            u=p^{n-m}\notin S_k^\times,
+            \]
+            contradicting the assumption that $u$ is a unit.
+        \end{subproof}
+    \end{proof}
+
+    None of these elements can be a sum of one irreducible,
+    and their infinitely many different associate classes cannot
+    all belong to a finite exceptional collection.
+	So we have seen none of these elements are irreducible and they are also 
+	in completely different associate classes. These means our $S_k$ doesn't 
+	have the $1$ Goldbach property. This and upper bound from  part~(b), we obtain
+    \keyeq{
+        g(\mathbb N_0[1/k])\in\{2,3,4\},
+        \qquad k\ge2.
+    }
+\end{soln}
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
