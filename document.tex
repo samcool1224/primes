@@ -49,1246 +49,312 @@
 % Part (a)
 % ============================================================
 
+
 \subsection{(a)}
 
 \begin{soln}
-	
-	We prove that the necessary and sufficient condition for the two lines
-	not to lie in a common affine plane is
-	\[
-	\boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
-	\]
-	We first prove the equivalent statement that they lie in a common affine
-	plane if and only if the determinant is zero.
-	
-	\begin{claim*}
-		First we prove that if $\mathcal{L}_1$ and $\mathcal{L}_2$ lie on a plane then
-		\[
-		\det(v_2-v_1,d_1,d_2)=0.
-		\]
-	\end{claim*}
-	
-	\begin{proof}
-		Call the affine plane $P$ the one that contains both
-		$\mathcal{L}_1$ and $\mathcal{L}_2$.
-		
-		We have that since $v_2$ and $v_1$ are affine points lying on
-		$\mathcal{L}_2$ and $\mathcal{L}_1$, subtracting them leads to a vector
-		parallel to $P$.
-		
-		$d_1$ is the direction of $\mathcal{L}_1$ and $d_2$ the direction of
-		$\mathcal{L}_2$ so they are obviously parallel to $P$.
-		
-		Therefore all three vectors are parallel to $P$ so if $P$ exists then
-		the three vectors must lie on a plane which is equivalent to saying that
-		\[
-		\boxed{\det(v_2-v_1,d_1,d_2)=0}.
-		\]
-	\end{proof}
-	
-	
-	\begin{claim*}
-		Next we prove sufficiency if
-		\[
-		\det(v_2-v_1,d_1,d_2)=0.
-		\]
-	\end{claim*}
-	
-	\begin{proof}
-		By this the three vectors $v_2-v_1,d_1,d_2$ are linearly dependent.
-		
-		So let $W$ be a vector plane containing all three of them. If their
-		span has dimension less than two, we extend it to a vector plane.
-		
-		Let $P$ be a affine plane that is
-		\[
-		P=W+v_1.
-		\]
-		
-		We set this up so that we now know that $\mathcal{L}_1$ lies on this
-		affine plane since $d_1\in W$ and it contains the affine point
-		$v_1$.
-		
-		\begin{claim*}
-			We claim $v_2-v_1$ is on $W$.
-		\end{claim*}
-		
-		\begin{subproof}
-			This follows directly from the choice of $W$, since $W$ was chosen
-			to contain all three vectors
+    We prove that the condition for two lines not to lie in the same affine plane, which
+	is necessary and sufficient is
+    \[
+    \boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
+    \]
+	This is equivalent to saying that iff the determinant above is zero, then they
+	lie in a common affine plane. We prove this.
+ 
+    \begin{claim*}
+        The lines $\mathcal L_1$ and $\mathcal L_2$ lie in a common affine
+        plane if and only if
+        \[
+        \det(v_2-v_1,d_1,d_2)=0.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+		From Jia's coplanarity criterion we can set $m_i=v_i\times d_i$.
+        This leads $(d_i,m_i)$ to be the direction--moment coordinates of
+        $\mathcal L_i$. From here, we can cite \cite[Section~1 and Corollary~2]{jia-plucker}
+		to obtain that the lines are coplanar when
+        \[
+        d_1\cdot m_2+d_2\cdot m_1=0
+        \].
+		Using the commonly known
+		scalar triple-product identity, we obtain
+        \begin{align*}
+            d_1\cdot m_2+d_2\cdot m_1
+            &=d_1\cdot(v_2\times d_2)+d_2\cdot(v_1\times d_1)\\
+            &=(v_1-v_2)\cdot(d_1\times d_2)\\
+            &=-\det(v_2-v_1,d_1,d_2).
+        \end{align*}
+		So the criteria in Jia's paper is equivalent to our condition. 
+    \end{proof}
+
+    \subsubsection*{\vocab{Common Perpendicular}}
+	Now we could use convert to the direction--moment coordinates again, 
+	and take the proof directly from Jia's paper. However, just for the fun of it
+	I took the liberty to not invoke the direction--moment cooordinates. 
+	Instead we construct the perpendicular directly.
+    The idea is to express the displacement $v_2-v_1$ using the two
+    line directions and a direction perpendicular to both.
+
+    \begin{claim*}
+        If $\mathcal L_1$ and $\mathcal L_2$ are not coplanar, then
+        there is a unique common perpendicular.
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}[There is one]
+            Define
+            \[
+            n=d_1\times d_2.
+            \]
+			Since our determinant is nonzero, this means that $d_1$ and $d_2$ are
+			linearly independant so $n$ does exist and it isn't $0$.
+
+			The 3 vectors form a basis of the entire $\mathbb R^3$
+            Therefore there are unique real numbers $f,g,c$ such that
+            \[
+            v_2-v_1=-gd_2+fd_1+cn.
+            \]
+			Taking $-g$ since it makes the signs a bit easier. Now we aim to prove 
+			that the two points 
 			\[
-			v_2-v_1,
-			\qquad
-			d_1,
-			\qquad
-			d_2.
-			\]
-			Therefore
-			\[
-			v_2-v_1\in W.
-			\]
-		\end{subproof}
-		
-		Since $v_2=v_1+(v_2-v_1)$, we know that $v_2$ is on $P$. Since $d_2$
-		is on $W$, we know that the
-		affine plane $P$ has $v_2$ and contains the direction vector $d_2$ so
-		it contains $\mathcal{L}_2$.
-		
-		Thus the lines lie in a common affine plane if and only if
-		\[
-		\det(v_2-v_1,d_1,d_2)=0,
-		\]
-		and therefore they do not lie in a common affine plane if and only if
-		\[
-		\boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
-		\]
-	\end{proof}
-	
-	
-	\subsubsection*{\vocab{Perpendicular Section}}
-	
-	Next we move onto the perpendicular section.
-	
-	We first consider the fact that if the two lines $\mathcal{L}_1$ and
-	$\mathcal{L}_2$ are lying in the same plane, then either there is
-	exactly one common perpendicular or infinitely many.
-	
-	If the two lines intersect and are not parallel, then the line through
-	the intersection point in the direction $d_1\times d_2$ is the unique
-	line perpendicular to both. If they are parallel, then there are
-	infinitely many lines that are perpendicular to both.
-	
-	Both of these are easy to see.
-	
-	\begin{claim*}
-		If $\mathcal{L}_1$ and $\mathcal{L}_2$ are not coplanar then
-		there is a unique common perpendicular.
-	\end{claim*}
-	
-	\begin{proof}
-		We first define
-		\[
-		n=d_1\times d_2,
-		\]
-		where $\times$ is the cross product and therefore $n$ is perpendicular
-		to $d_1$ and $d_2$.
-		
-		The vectors $d_1$ and $d_2$ cannot be parallel, since two parallel
-		affine lines always lie in a common affine plane. Therefore $n\neq0$.
-		Since $d_1$ and $d_2$ are linearly independent and $n$ is perpendicular
-		to both of them, the vectors $n,d_1,d_2$ are linearly independent.
-		
-		Therefore, we have that
-		\[
-		v_2-v_1=-d_2g+fd_1+cn
-		\]
-		for only one unique values for $f,g,c$.
-		
-		Furthermore, $c\neq0$. Indeed, taking the dot product with $n$ gives
-		\[
-		(v_2-v_1)\cdot n=c\|n\|^2,
-		\]
-		and the left-hand side is nonzero by the noncoplanarity condition.
-		
-		Rearranging we obtain
-		\[
-		v_2+gd_2-v_1-fd_1=cn.
-		\]
-		
-		Therefore two unique and existing affine points
-		\[
-		\boxed{v_2+gd_2}
-		\qquad\text{and}\qquad
-		\boxed{v_1+fd_1}
-		\]
-		are such that when you subtract them they are in the direction of $n$
-		and obviously lie on $\mathcal{L}_1$ and $\mathcal{L}_2$.
-		
-		Let
-		\[
-		p_1=v_1+fd_1
-		\qquad\text{and}\qquad
-		p_2=v_2+gd_2.
-		\]
-		Then $p_2-p_1=cn$, where $c\neq0$, so the line
-		\[
-		\mathcal M=\{p_1+sn:s\in\mathbb R\}
-		\]
-		passes through both $p_1$ and $p_2$. Since its direction is $n$, it is
-		perpendicular to both $\mathcal L_1$ and $\mathcal L_2$. Thus it is a
-		common perpendicular.
-		
-		It remains to prove uniqueness. Suppose another common perpendicular
-		meets $\mathcal L_1$ and $\mathcal L_2$ at
-		\[
-		v_1+f'd_1
-		\qquad\text{and}\qquad
-		v_2+g'd_2,
-		\]
-		respectively. Its direction must be perpendicular to both $d_1$ and
-		$d_2$, so it must be a nonzero scalar multiple of $n$. Therefore, for
-		some $c'\in\mathbb R$,
-		\[
-		v_2+g'd_2-v_1-f'd_1=c'n,
-		\]
-		or equivalently,
-		\[
-		v_2-v_1=-d_2g'+f'd_1+c'n.
-		\]
-		By the uniqueness of the coordinates of $v_2-v_1$ in the basis
-		$d_1,d_2,n$, we have
-		\[
-		f'=f,
-		\qquad
-		g'=g,
-		\qquad
-		c'=c.
-		\]
-		Thus the second common perpendicular has the same two intersection
-		points, and hence it is the same line $\mathcal M$.
-	\end{proof}
-	
+            p_1=v_1+fd_1,
+            \qquad
+            p_2=v_2+gd_2.
+            \]
+			aren't the same. 
+            Taking the dot product of our original equation with $n$ gives
+            \[
+            c=\frac{(v_2-v_1)\cdot n}{\|n\|^2}
+             =\frac{\det(v_2-v_1,d_1,d_2)}{\|n\|^2}\neq0.
+            \]
+            so they aren't.
+            
+            Also $p_i\in\mathcal L_i$ and $p_2-p_1=cn\neq0$.
+            Hence the line
+            \[
+            \mathcal M=\{p_1+sn:s\in\mathbb R\}
+            \]
+            passes through both points and has direction perpendicular
+            to $d_1$ and $d_2$, so it is a common perpendicular. It passes through 
+			$p_2$ since $p_2=p_1+cn$ so plugging in $s=c$ we can see that it does.
+        \end{subproof}
+
+        \begin{subproof}[Unique?]
+            Any common perpendicular has direction parallel to $n$.
+            If it meets the two lines at $v_1+f'd_1$ and $v_2+g'd_2$,
+            respectively, then for some $c'\in\mathbb R$,
+            \[
+            v_2-v_1=-g'd_2+f'd_1+c'n.
+            \]
+            Since we know it is a basis,
+			uniqueness of coordinates in the basis $d_1,d_2,n$ forces
+            $f'=f$, $g'=g$, and $c'=c$. 
+            Thus its intersection points are the same distinct points
+            $p_1,p_2$, and it is the same line $\mathcal M$.
+        \end{subproof}
+    \end{proof}
 \end{soln}
 
-
-% ============================================================
-% Part (b)
-% ============================================================
 
 \subsection{(b)}
 
 \begin{soln}
+	We have already introduced the notion of direction--moment in the previous
+	part. We once again can use \cite{jia-plucker} throughout this problem.
+    We first show that a line determines a well-defined equivalence
+    class, then recover a unique affine line from each class.
 
-	For where I learned the background on this representation and its invariance under
-	a change of base point and common nonzero scaling, see \cite[Section~1]{jia-plucker}.
-	Overall, the goal of this problem is to encode one affine line into using two vectors.
-	The first vector $\vec d$ should remember the direction of said line while the other
-	vector will remember where exactly the line is located similar to the definition of
-	an affine line.
-	
-	To complete this problem we first prove that this gives a unique well defined singular
-	equivalence class, and then work in the reverse direction to obtain an affine line
-	from a class.
-	
-	As mentioned in the problem we use the same notation of defining an affine line as
-	\[
-	\mathcal L
-	=
-	\{\vec u+t\vec d:t\in\RR\},
-	\qquad
-	\vec d\neq\vec 0.
-	\]
-	
-	Our goal is associate this line with an equivalence class of
-	\[
-	(\vec d,\vec u\times\vec d).
-	\]
-	
-	Before starting anything related to these classes we should check if the problem
-	makes any sense and the pair belongs to the set
-	\[
-	\mathcal P
-	=
-	\left\{
-	(\vec d,\vec m)\in\RR^3\times\RR^3:
-	\vec d\neq\vec 0,\;
-	\vec d\cdot\vec m=0
-	\right\}.
-	\]
-	
-	\begin{claim*}
-		The pair
-		\[
-		(\vec d,\vec u\times\vec d)
-		\]
-		belongs to $\mathcal P$.
-	\end{claim*}
-	
-	\begin{proof}
-		We know
-		\[
-		\vec m=\vec u\times\vec d.
-		\]
-		
-		A cross product is always perpendicular to the two vectors that are
-		being crossed. This means $\vec m$ is perpendicular to both $\vec u$
-		and $\vec d$.
-		
-		Therefore
-		\[
-		\vec d\cdot\vec m=0.
-		\]
-		
-		Hence
-		\[
-		(\vec d,\vec u\times\vec d)\in\mathcal P,
-		\]
-		so it makes sense to consider the equivalence class
-		\[
-		\boxed{[\vec d:\vec u\times\vec d]}.
-		\]
-	\end{proof}
-	
-	
-	\subsubsection*{\vocab{Independence of the Base Point}}
-	
-	The first problem proposed in part (b) is that we have to prove that
-	this class is independent of a chosen base point $\vec u$.
-	
-	\begin{claim*}
-		Choosing a different base point on the same affine line does not change
-		$\vec u\times\vec d$.
-	\end{claim*}
-	
-	\begin{proof}
-		We name a different point on the affine line $\vec u'$.
-		
-		Since this lies on line $\mathcal L$, there must exist some
-		$s\in\RR$ such that
-		\[
-		\vec u'=\vec u+s\vec d.
-		\]
-		
-		We were motivated to do this because it is a natural way to get back
-		some of the terms we know how to handle and we expect to have a
-		$\vec d\times\vec d=0$ term somewhere to clean stuff out.
-		
-		Indeed,
-		\begin{align*}
-			\vec u'\times\vec d
-			&=(\vec u+s\vec d)\times\vec d\\
-			&=\vec u\times\vec d+s(\vec d\times\vec d)\\
-			&=\vec u\times\vec d.
-		\end{align*}
-		
-		Since the two cross products are the same,
-		\[
-		(\vec d,\vec u'\times\vec d)
-		=
-		(\vec d,\vec u\times\vec d).
-		\]
-	\end{proof}
-	
-	
-	\subsubsection*{\vocab{Independence of the Direction Vector}}
-	
-	Next we move onto the harder of the two options regarding the class
-	being independent of the direction vector.
-	
-	\begin{claim*}
-		Choosing a different nonzero direction vector for the same affine line
-		does not change the equivalence class.
-	\end{claim*}
-	
-	\begin{proof}
-		Define $\vec d'$ to be another nonzero direction vector for $\mathcal L$.
-		
-		Since $\vec d$ and $\vec d'$ are directions of the same line, there must
-		exist some
-		\[
-		\lambda\in\RR\setminus\{0\}
-		\]
-		such that
-		\[
-		\vec d'=\lambda\vec d.
-		\]
-		
-		We aim to prove that
-		\[
-		(\vec d',\vec u\times\vec d')
-		\]
-		is in the same equivalence class.
-		
-		Substituting $\vec d'=\lambda\vec d$, we obtain
-		\begin{align*}
-			(\vec d',\vec u\times\vec d')
-			&=
-			(\lambda\vec d,\vec u\times(\lambda\vec d))\\
-			&=
-			(\lambda\vec d,\lambda(\vec u\times\vec d)).
-		\end{align*}
-		
-		By the definition of the equivalence relation,
-		\[
-		(\vec d,\vec m)
-		\sim
-		(\lambda\vec d,\lambda\vec m)
-		\]
-		for every nonzero $\lambda$.
-		
-		Therefore
-		\[
-		[\vec d':\vec u\times\vec d']
-		=
-		[\vec d:\vec u\times\vec d].
-		\]
-	\end{proof}
-	
-	
-	\subsubsection*{\vocab{Conversely}}
-	
-	Now we move onto the more in depth part.
-	
-	We have
-	\[
-	[\vec d:\vec m]\in\mathcal P/\sim.
-	\]
-	
-	We are given by definition that
-	\[
-	\vec d\neq\vec 0
-	\qquad\text{and}\qquad
-	\vec d\cdot\vec m=0.
-	\]
-	
-	To find an affine line the main thing we are missing is our base point
-	$\vec u$.
-	
-	Our main formula containing $\vec u$ was
-	\[
-	\vec m=\vec u\times\vec d.
-	\]
-	
-	This means that in order to recover our specific affine line we need to
-	describe every $\vec u$ that satisfies the above operation.
-	
-	Although there are many well studied ways to complete this problem,
-	the first that came to mind was coordinates.
-	
-	Define
-	\[
-	\vec d=(a,b,c),
-	\qquad
-	\vec m=(p,q,r),
-	\qquad
-	\vec u=(x,y,z).
-	\]
-	
-	Our condition
-	\[
-	\vec d\cdot\vec m=0
-	\]
-	becomes
-	\[
-	\boxed{ap+bq+cr=0}.
-	\tag{1}
-	\]
-	
-	Next,
-	\[
-	\vec u\times\vec d
-	=
-	\begin{vmatrix}
-		\mathbf i & \mathbf j & \mathbf k\\
-		x & y & z\\
-		a & b & c
-	\end{vmatrix}
-	=
-	(yc-zb,\;za-xc,\;xb-ya).
-	\]
-	
-	So
-	\[
-	\vec u\times\vec d=\vec m
-	\]
-	when
-	\[
-	\boxed{
-		\begin{cases}
-			yc-zb=p,\\
-			za-xc=q,\\
-			xb-ya=r.
-	\end{cases}}
-	\tag{2}
-	\]
-	
-	Since
-	\[
-	\vec d=(a,b,c)\neq\vec 0,
-	\]
-	at least one of $a,b,c$ is nonzero.
-	
-	Now we have some casework.
-	
-	
-	\begin{claim*}
-		Case 1 is when $a\neq0$.
-	\end{claim*}
-	
-	\begin{proof}
-		We choose
-		\[
-		x=0.
-		\]
-		
-		Then the second and third equations of (2) become
-		\[
-		za=q
-		\qquad\text{and}\qquad
-		-ya=r.
-		\]
-		
-		Hence
-		\[
-		z=\frac qa,
-		\qquad
-		y=-\frac ra.
-		\]
-		
-		So we try
-		\[
-		\vec u_0
-		=
-		\left(
-		0,-\frac ra,\frac qa
-		\right).
-		\]
-		
-		We only need to check the first equation of (2). We have
-		\begin{align*}
-			yc-zb
-			&=
-			-\frac{rc}{a}
-			-\frac{qb}{a}\\
-			&=
-			-\frac{bq+cr}{a}.
-		\end{align*}
-		
-		But by (1),
-		\[
-		ap+bq+cr=0,
-		\]
-		so
-		\[
-		bq+cr=-ap.
-		\]
-		
-		Therefore
-		\[
-		-\frac{bq+cr}{a}
-		=
-		-\frac{-ap}{a}
-		=
-		p.
-		\]
-		
-		Thus
-		\[
-		\vec u_0\times\vec d=\vec m.
-		\]
-	\end{proof}
-	
-	
-	\begin{claim*}
-		Case 2 is that we have $a=0$ but $b\neq0$.
-	\end{claim*}
-	
-	\begin{proof}
-		Now we can choose
-		\[
-		y=0.
-		\]
-		
-		The first and third equations of (2) become
-		\[
-		-zb=p
-		\qquad\text{and}\qquad
-		xb=r.
-		\]
-		
-		Hence
-		\[
-		z=-\frac pb,
-		\qquad
-		x=\frac rb.
-		\]
-		
-		So we take
-		\[
-		\vec u_0
-		=
-		\left(
-		\frac rb,0,-\frac pb
-		\right).
-		\]
-		
-		The remaining equation requires
-		\[
-		za-xc=q.
-		\]
-		
-		Since $a=0$,
-		\[
-		za-xc
-		=
-		-\frac{rc}{b}.
-		\]
-		
-		But (1), with $a=0$, becomes
-		\[
-		bq+cr=0.
-		\]
-		
-		Therefore
-		\[
-		q=-\frac{cr}{b},
-		\]
-		and hence
-		\[
-		za-xc=q.
-		\]
-		
-		So yet again in this case,
-		\[
-		\vec u_0\times\vec d=\vec m.
-		\]
-	\end{proof}
-	
-	
-	\begin{claim*}
-		Case 3 is that we have $a=b=0$.
-	\end{claim*}
-	
-	\begin{proof}
-		Since
-		\[
-		\vec d\neq\vec 0,
-		\]
-		we must have
-		\[
-		c\neq0.
-		\]
-		
-		We choose
-		\[
-		z=0.
-		\]
-		
-		Then the first two equations of (2) become
-		\[
-		yc=p
-		\qquad\text{and}\qquad
-		-xc=q.
-		\]
-		
-		Therefore
-		\[
-		y=\frac pc,
-		\qquad
-		x=-\frac qc.
-		\]
-		
-		So take
-		\[
-		\vec u_0
-		=
-		\left(
-		-\frac qc,\frac pc,0
-		\right).
-		\]
-		
-		The third equation requires
-		\[
-		xb-ya=r.
-		\]
-		
-		Since $a=b=0$, its left-hand side is $0$.
-		
-		Also, (1) becomes
-		\[
-		cr=0.
-		\]
-		
-		Since $c\neq0$, we obtain
-		\[
-		r=0.
-		\]
-		
-		Thus the third equation also holds, and again
-		\[
-		\vec u_0\times\vec d=\vec m.
-		\]
-	\end{proof}
-	
-	
-	\begin{claim*}
-		All possible solutions $\vec u$ lie on one affine line.
-	\end{claim*}
-	
-	\begin{proof}
-		We have proved that there exists at least one vector $\vec u_0$
-		satisfying
-		\[
-		\vec u_0\times\vec d=\vec m.
-		\]
-		
-		Suppose $\vec u$ is any other solution. Then
-		\[
-		\vec u\times\vec d=\vec m
-		\]
-		and
-		\[
-		\vec u_0\times\vec d=\vec m.
-		\]
-		
-		Subtracting gives
-		\begin{align*}
-			\vec u\times\vec d
-			-
-			\vec u_0\times\vec d
-			&=\vec 0,\\
-			(\vec u-\vec u_0)\times\vec d
-			&=\vec 0.
-		\end{align*}
-		
-		Since $\vec d\neq\vec 0$, the cross product is zero exactly when the
-		two vectors are parallel. Therefore
-		\[
-		\vec u-\vec u_0=t\vec d
-		\]
-		for some $t\in\RR$.
-		
-		Hence
-		\[
-		\boxed{
-			\vec u=\vec u_0+t\vec d
-		}.
-		\]
-		
-		Thus every possible solution lies on the affine line
-		\[
-		\mathcal L
-		=
-		\{\vec u_0+t\vec d:t\in\RR\}.
-		\]
-		
-		Conversely, every point on this line is a solution, because
-		\begin{align*}
-			(\vec u_0+t\vec d)\times\vec d
-			&=
-			\vec u_0\times\vec d
-			+
-			t(\vec d\times\vec d)\\
-			&=
-			\vec m+\vec 0\\
-			&=
-			\vec m.
-		\end{align*}
-	\end{proof}
-	
-	
-	\begin{claim*}
-		Equivalent representatives determine the same affine line.
-	\end{claim*}
-	
-	\begin{proof}
-		Suppose we instead have a representative
-		\[
-		(\lambda\vec d,\lambda\vec m),
-		\qquad
-		\lambda\neq0.
-		\]
-		
-		Then the equation defining the possible base points becomes
-		\[
-		\vec u\times(\lambda\vec d)
-		=
-		\lambda\vec m.
-		\]
-		
-		Pulling out the scalar gives
-		\[
-		\lambda(\vec u\times\vec d)
-		=
-		\lambda\vec m.
-		\]
-		
-		Since $\lambda\neq0$, we may divide by $\lambda$ and obtain
-		\[
-		\vec u\times\vec d=\vec m.
-		\]
-		
-		Thus the same set of base points, and therefore the same affine line,
-		is obtained.
-	\end{proof}
-	
-	We have now proved all necessary parts to complete the problem.
-	
-\begin{remark}
-The representation used here is the direction--moment form of
-Pl\"ucker coordinates: $\vec d$ specifies the direction and
-$\vec m=\vec u\times\vec d$ is the moment vector.
-For background from where I learned on this representation and its invariance under
-a change of base point and common nonzero scaling, see
-\cite[Section~1]{jia-plucker}.
-\end{remark}
-	
+    \subsubsection*{\vocab{Confirming the Classes}}
+
+    Write
+    \[
+    \mathcal L=\{\vec u+t\vec d:t\in\RR\},
+    \qquad \vec d\neq\vec 0.
+    \]
+
+    \begin{claim*}
+        The line $\mathcal L$ determines the class
+        \[
+        \boxed{[\vec d:\vec u\times\vec d]},
+        \]
+        independently of the chosen base point and nonzero direction
+        vector.
+    \end{claim*}
+
+    \begin{proof}
+        Since $\vec d\neq\vec 0$ and
+        $\vec d\cdot(\vec u\times\vec d)=0$, the pair
+        $(\vec d,\vec u\times\vec d)$ belongs to $\mathcal P$.
+
+        Jia proves that the moment $\vec m=\vec u\times\vec d$
+        is unchanged when $\vec u$ is replaced by another point
+        on the line \cite[Section~1, p.~1]{jia-plucker}.
+        Jia also establishes that scaling $\vec d$ by a nonzero
+        scalar scales $\vec m$ by the same scalar
+        \cite[Section~1, p.~2]{jia-plucker}.
+        Every other nonzero direction vector for $\mathcal L$ is
+        $\lambda\vec d$ for some $\lambda\neq0$.
+        Thus changing the direction replaces the pair by
+        $(\lambda\vec d,\lambda\vec m)$, which is equivalent to
+        $(\vec d,\vec m)$ under the relation in the problem.
+        So combining these results we obtain that the class is well-defined.
+    \end{proof}
+
+    \subsubsection*{\vocab{Conversely}}
+	Now we aim to recover a specific line from the $[\vec d:\vec m]$.
+	The main part of this line we are missing is some base point $\vec u_0$ satisfying
+    $\vec u_0\times\vec d=\vec m$.
+    Jia's formula for closest-point provides a candidate for this point. 
+
+    \begin{claim*}
+        Every class $[\vec d:\vec m]\in\mathcal P/\sim$ determines
+        the unique affine line
+        \[
+        \boxed{
+        \mathcal L_{[\vec d:\vec m]}
+        =\left\{
+        \frac{\vec d\times\vec m}{\|\vec d\|^2}
+        +t\vec d:t\in\RR
+        \right\}.
+        }
+        \]
+    \end{claim*}
+	\newpage
+    \begin{proof}
+        \begin{subproof}[Exist?]
+            Choose a representative $(\vec d,\vec m)\in\mathcal P$.
+            Following Jia's formula for the point closest to the
+            origin \cite[Section~1, p.~2]{jia-plucker}, set
+            \[
+            \vec u_0=\frac{\vec d\times\vec m}{\|\vec d\|^2}.
+            \]
+            This is defined well because we know that $\vec d\neq\vec 0$.
+            now use the vector triple product identity. Combined with 
+			
+            $\vec d\cdot\vec m=0$, we check that
+            \[
+            \vec u_0\times\vec d
+            =\frac{(\vec d\times\vec m)\times\vec d}{\|\vec d\|^2}
+            =\frac{\|\vec d\|^2\vec m
+                   -(\vec d\cdot\vec m)\vec d}{\|\vec d\|^2}
+            =\vec m.
+            \]
+            Hence the line through $\vec u_0$ and with a direction of $\vec d$
+			obtains the required class.
+        \end{subproof}
+
+        \begin{subproof}[Unique?]
+            Jia's point-on-line criterion
+            \cite[Section~1, p.~2]{jia-plucker} states that a line
+            with coordinates $(\vec d,\vec m)$ consists exactly
+            of the points satisfying
+            \[
+            \vec u\times\vec d=\vec m.
+            \]
+			This means that every line with these two coordinates must
+			have the same point set which is the same as saying they are
+			the same line. Looking at scaling of $\vec d$ and $\vec m$ we see that
+			when $\lambda\neq0$,
+            \[
+            \vec u\times(\lambda\vec d)=\lambda\vec m
+            \quad\Longleftrightarrow\quad
+            \vec u\times\vec d=\vec m.
+            \]
+			So the reconstructed line is only dependent 
+			on  $[\vec d:\vec m]$ and each reconstructed line is unique.
+        \end{subproof}
+    \end{proof}
+
+    Combine these two we obtain the correspondence.
 \end{soln}
 
-
-% ============================================================
-% Part (c)
-% ============================================================
 
 \subsection{(c)}
 
 \begin{soln}
-	
-	Our first goal is to translate the condition from part (a) into
-	Pl\"ucker coordinates. Once this is done, we will try to construct the
-	common perpendicular directly in Pl\"ucker coordinates as well.
-	
-	The main difficulty is that the vectors $\vec v_1$ and $\vec v_2$ from
-	part (a) no longer appear explicitly, so we need to recover all of the
-	necessary information from $\vec d_i$ and $\vec m_i$.
-	
-	
-	\subsubsection*{\vocab{Coplanarity}}
-	
-	For another time we let
-	\[
-	[\vec d_i:\vec m_i]
-	\]
-	represent $\mathcal L_i$.
-	
-	By part (b), we pick $\vec v_i$ on $\mathcal L_i$ so that
-	\[
-	\vec m_i=\vec v_i\times\vec d_i.
-	\]
-	
-	From part (a), we know $\mathcal L_1$ and $\mathcal L_2$
-	do not lie in a common affine plane precisely when
-	\[
-	\det(\vec v_2-\vec v_1,\vec d_1,\vec d_2)\neq0.
-	\]
-	
-	Put another way we can instead write this as a triple scalar product:
-	\[
-	(\vec v_2-\vec v_1)
-	\cdot
-	(\vec d_1\times\vec d_2)
-	\neq0.
-	\]
-	
-	The problem is that this still involves $\vec v_1$ and $\vec v_2$.
-	We therefore look for an expression involving only the Pl\"ucker
-	coordinates.
-	
-	Something we can look at is
-	\[
-	\vec d_1\cdot\vec m_2
-	+
-	\vec d_2\cdot\vec m_1,
-	\]
-	since each $\vec m_i$ already contains the corresponding $\vec v_i$.
-	
-	
-	\begin{claim*}
-		The two affine lines do not lie in a common affine plane iff
-		\[
-		\boxed{
-			\vec d_1\cdot\vec m_2
-			+
-			\vec d_2\cdot\vec m_1
-			\neq0.
-		}
-		\]
-	\end{claim*}
-	
-	\begin{proof}
-		Using
-		\[
-		\vec m_1=\vec v_1\times\vec d_1
-		\qquad\text{and}\qquad
-		\vec m_2=\vec v_2\times\vec d_2,
-		\]
-		we have
-		\begin{align*}
-			\vec d_1\cdot\vec m_2
-			+
-			\vec d_2\cdot\vec m_1
-			&=
-			\vec d_1\cdot(\vec v_2\times\vec d_2)
-			+
-			\vec d_2\cdot(\vec v_1\times\vec d_1).
-		\end{align*}
-		
-		Rearranging the scalar triple products,
-		\[
-		\vec d_1\cdot(\vec v_2\times\vec d_2)
-		=
-		-\vec v_2\cdot(\vec d_1\times\vec d_2),
-		\]
-		and
-		\[
-		\vec d_2\cdot(\vec v_1\times\vec d_1)
-		=
-		\vec v_1\cdot(\vec d_1\times\vec d_2).
-		\]
-		
-		Therefore
-		\begin{align*}
-			\vec d_1\cdot\vec m_2
-			+
-			\vec d_2\cdot\vec m_1
-			&=
-			\vec v_1\cdot(\vec d_1\times\vec d_2)
-			-
-			\vec v_2\cdot(\vec d_1\times\vec d_2)\\
-			&=
-			-(\vec v_2-\vec v_1)
-			\cdot
-			(\vec d_1\times\vec d_2).
-		\end{align*}
-		
-		Although the sign has changed, zero remains zero in a sign change.
-		
-		There is one small point to check. The vectors $\vec d_i,\vec m_i$
-		are representatives of equivalence classes.
-		
-		Replacing
-		\[
-		(\vec d_1,\vec m_1)
-		\mapsto
-		(\lambda_1\vec d_1,\lambda_1\vec m_1)
-		\]
-		and
-		\[
-		(\vec d_2,\vec m_2)
-		\mapsto
-		(\lambda_2\vec d_2,\lambda_2\vec m_2)
-		\]
-		multiplies the expression by $\lambda_1\lambda_2\neq0$.
-		
-		Therefore its being zero or nonzero does not depend on the chosen
-		representatives.
-	\end{proof}
-	
-	
-	\subsubsection*{\vocab{Two Pl\"ucker Lines}}
-	
-	We quickly prove the other direction of the same calculation.
-	
-	\begin{claim*}
-		Suppose
-		\[
-		[\vec a:\vec b]
-		\qquad\text{and}\qquad
-		[\vec c:\vec e]
-		\]
-		represent two affine lines. Then the two lines are coplanar iff
-		\[
-		\boxed{
-			\vec a\cdot\vec e+\vec c\cdot\vec b=0.
-		}
-		\]
-	\end{claim*}
-	
-	\begin{subproof}
-		We can choose points $\vec x$ and $\vec y$ on the above lines so that
-		\[
-		\vec b=\vec x\times\vec a
-		\qquad\text{and}\qquad
-		\vec e=\vec y\times\vec c.
-		\]
-		
-		Once again using part (a), the two lines are coplanar if and only if
-		\[
-		(\vec y-\vec x)\cdot(\vec a\times\vec c)=0.
-		\]
-		
-		Also,
-		\begin{align*}
-			\vec a\cdot\vec e+\vec c\cdot\vec b
-			&=
-			\vec a\cdot(\vec y\times\vec c)
-			+
-			\vec c\cdot(\vec x\times\vec a)\\
-			&=
-			-\vec y\cdot(\vec a\times\vec c)
-			+
-			\vec x\cdot(\vec a\times\vec c)\\
-			&=
-			-(\vec y-\vec x)\cdot(\vec a\times\vec c).
-		\end{align*}
-		
-		So we have proved our claim.
-	\end{subproof}
-	
-	This is extremely useful in the future steps. Mainly because if the
-	two lines are coplanar and their direction vectors are not parallel, then
-	that will imply that they intersect. Therefore the algebra above will
-	become an intersection condition.
-	
-	
-	\subsubsection*{\vocab{Finding a Direction}}
-	
-	We now assume
-	\[
-	\vec d_1\cdot\vec m_2
-	+
-	\vec d_2\cdot\vec m_1
-	\neq0.
-	\]
-	
-	Hence the two lines are not coplanar.
-	
-	Just the geometry of the problem forces us to make
-	\[
-	\vec n=\vec d_1\times\vec d_2.
-	\]
-	
-	The vectors $\vec d_1$ and $\vec d_2$ cannot be parallel, since two
-	parallel affine lines always lie in a common affine plane.
-	
-	Therefore
-	\[
-	\vec n\neq\vec 0.
-	\]
-	
-	Furthermore,
-	\[
-	\vec n\cdot\vec d_1=0
-	\qquad\text{and}\qquad
-	\vec n\cdot\vec d_2=0.
-	\]
-	
-	Thus any line with direction $\vec n$ is perpendicular to the
-	directions of both $\mathcal L_1$ and $\mathcal L_2$.
-	
-	So the only remaining problem is to determine the second Pl\"ucker
-	coordinate $\vec m$.
-	
-	
-	\subsubsection*{\vocab{Finding \(m\)}}
-	
-	We want
-	\[
-	[\vec n:\vec m].
-	\]
-	
-	For this to be a valid Pl\"ucker coordinate, we need
-	\[
-	\vec n\cdot\vec m=0.
-	\tag{1}
-	\]
-	
-	We also want this line to meet $\mathcal L_1$. Since $\vec n$ is not
-	parallel to $\vec d_1$, this is equivalent to the two lines being
-	coplanar, so our coplanarity test gives
-	\[
-	\vec d_1\cdot\vec m
-	=
-	-\vec n\cdot\vec m_1.
-	\tag{2}
-	\]
-	
-	Similarly, meeting $\mathcal L_2$ is equivalent to being coplanar with
-	$\mathcal L_2$, so
-	\[
-	\vec d_2\cdot\vec m
-	=
-	-\vec n\cdot\vec m_2.
-	\tag{3}
-	\]
-	
-	Thus $\vec m$ must satisfy
-	\[
-	\boxed{
-		\begin{cases}
-			\vec d_1\cdot\vec m=-\vec n\cdot\vec m_1,\\[2mm]
-			\vec d_2\cdot\vec m=-\vec n\cdot\vec m_2,\\[2mm]
-			\vec n\cdot\vec m=0.
-	\end{cases}}
-	\tag{4}
-	\]
-	
-	
-	\begin{claim*}
-		The system above determines exactly one vector $\vec m$.
-	\end{claim*}
-	
-	\begin{proof}
-		Since
-		\[
-		\vec d_1,\vec d_2,\vec n
-		\]
-		form three independent directions in $\RR^3$, write
-		\[
-		\vec m
-		=
-		\alpha\vec d_1
-		+
-		\beta\vec d_2
-		+
-		\gamma\vec n.
-		\]
-		
-		Taking the dot product with $\vec n$ gives
-		\[
-		\gamma\|\vec n\|^2=0.
-		\]
-		
-		Since $\vec n\neq\vec0$,
-		\[
-		\gamma=0.
-		\]
-		
-		Thus
-		\[
-		\vec m=\alpha\vec d_1+\beta\vec d_2.
-		\]
-		
-		Substituting into (2) and (3), we obtain
-		\[
-		\begin{pmatrix}
-			\|\vec d_1\|^2 & \vec d_1\cdot\vec d_2\\
-			\vec d_1\cdot\vec d_2 & \|\vec d_2\|^2
-		\end{pmatrix}
-		\begin{pmatrix}
-			\alpha\\
-			\beta
-		\end{pmatrix}
-		=
-		-
-		\begin{pmatrix}
-			\vec n\cdot\vec m_1\\
-			\vec n\cdot\vec m_2
-		\end{pmatrix}.
-		\]
-		
-		The determinant of the coefficient matrix is
-		\begin{align*}
-			\Delta
-			&=
-			\|\vec d_1\|^2\|\vec d_2\|^2
-			-
-			(\vec d_1\cdot\vec d_2)^2\\
-			&=
-			\|\vec d_1\times\vec d_2\|^2\\
-			&=
-			\|\vec n\|^2>0.
-		\end{align*}
-		
-		Thus the system has exactly one solution $(\alpha,\beta)$ and therefore
-		exactly one $\vec m$.
-	\end{proof}
-	
-	
-	\begin{claim*}
-		The class
-		\[
-		[\vec n:\vec m]
-		=
-		[\vec d_1\times\vec d_2:\vec m]
-		\]
-		represents a common perpendicular to $\mathcal L_1$ and
-		$\mathcal L_2$.
-	\end{claim*}
-	
-	\begin{proof}
-		Equation (1) shows that
-		\[
-		(\vec n,\vec m)\in\mathcal P,
-		\]
-		so it represents an affine line.
-		
-		Equations (2) and (3), together with our coplanarity test, show that
-		this line is coplanar with each $\mathcal L_i$.
-		
-		Its direction $\vec n$ is not parallel to either $\vec d_1$ or
-		$\vec d_2$, so in each of these two affine planes the corresponding
-		lines must intersect.
-		
-		Finally,
-		\[
-		\vec n\perp\vec d_1
-		\qquad\text{and}\qquad
-		\vec n\perp\vec d_2,
-		\]
-		so it is a common perpendicular.
-	\end{proof}
-	
-	
-	\subsubsection*{\vocab{Only One?}}
-	
-	It remains to show that we did not merely construct one common
-	perpendicular, but the only one.
-	
-	\begin{claim*}
-		The class representing the common perpendicular is unique.
-	\end{claim*}
-	
-	\begin{proof}
-		Suppose
-		\[
-		[\vec d':\vec m']
-		\]
-		represents some common perpendicular.
-		
-		Because its direction is perpendicular to both $\vec d_1$ and
-		$\vec d_2$, the only possible direction is a nonzero scalar multiple
-		of their cross product.
-		
-		Thus
-		\[
-		\vec d'=\lambda\vec n
-		\]
-		for some $\lambda\neq0$.
-		
-		Using the equivalence relation, we may write the same class as
-		\[
-		[\vec n:\widetilde{\vec m}],
-		\qquad
-		\widetilde{\vec m}
-		=
-		\frac{1}{\lambda}\vec m'.
-		\]
-		
-		Since this line is valid,
-		\[
-		\vec n\cdot\widetilde{\vec m}=0.
-		\]
-		
-		Since it meets $\mathcal L_1$ and $\mathcal L_2$,
-		\[
-		\vec d_1\cdot\widetilde{\vec m}
-		=
-		-\vec n\cdot\vec m_1
-		\]
-		and
-		\[
-		\vec d_2\cdot\widetilde{\vec m}
-		=
-		-\vec n\cdot\vec m_2.
-		\]
-		
-		Therefore $\widetilde{\vec m}$ satisfies exactly the same system (4)
-		as $\vec m$.
-		
-		But that system has exactly one solution. Hence
-		\[
-		\widetilde{\vec m}=\vec m.
-		\]
-		
-		Therefore
-		\[
-		[\vec d':\vec m']
-		=
-		[\vec n:\vec m].
-		\]
-	\end{proof}
-	
-\begin{remark}
-	Several of the items used in here were inspired by \cite[Section~2]{jia-plucker}. From this I took
-	$\vec d_1\cdot\vec m_2+\vec d_2\cdot\vec m_1$
-	is called the reciprocal product of the Pl\"ucker coordinates
-	The equivalence just proved is the standard coplanarity criterion
-	for these coordinates; see \cite[Corollary~2]{jia-plucker}. Additionally, note that the same article also has a solution to parts of this problem. None of those parts were read by me or were used towards my solution.
-\end{remark}
-	
+   We want to state the noncoplanarity condition using only Plucker coordinates. 
+   We can then use a formula to find the common perpendicular, and finish by
+   using the previous two parts.
+    \subsubsection*{\vocab{Coplanarity}}
+In part~(a), we already established that the two lines are
+noncoplanar if and only if
+\[
+\boxed{
+R:=\vec d_1\cdot\vec m_2+\vec d_2\cdot\vec m_1\neq0.
+}
+\]
+This condition is independent of the values in the class, since if 
+chosed a scaled value by changing $(\vec d_i,\vec m_i)$ to
+$(\lambda_i\vec d_i,\lambda_i\vec m_i)$ multiplies $R$ by
+$\lambda_1\lambda_2\neq0$.
+
+It remains to identify the class representing the common
+perpendicular and prove that it is unique.
+
+    \subsubsection*{\vocab{ Perpendicular}}
+    We know the lines are skew and therefore that $R \neq 0$ as defined in the coplanarity
+	part of this proof.
+    The lines are skew, so their directions are not parallel and
+    \[
+    \vec n=\vec d_1\times\vec d_2\neq\vec0.
+    \]
+    This gives a direction perpendicular to both lines.
+    To determine the moment vector, we can apply Jia's explicit formula.
+
+    \begin{claim*}
+        There is a class representing the common perpendicular. This class 
+		is explicity as 
+        \[
+        \boxed{[\vec n:\vec m_\perp]},
+        \]
+        where
+        \[
+        \vec m_\perp
+        =\vec m_1\times\vec d_2-\vec m_2\times\vec d_1
+        +\frac{R(\vec d_1\cdot\vec d_2)}{\|\vec n\|^2}\,\vec n.
+        \]
+    \end{claim*}
+
+    \begin{proof}
+        \begin{subproof}[Existence]
+            Jia's formula \cite[Theorem~4, equations~(17)--(18)]{jia-plucker}
+            gives these direction--moment coordinates for the common
+            perpendicular of two skew lines.
+            Our lines are skew by the preceding claim, and
+            $\vec n\neq\vec0$ ensures that the denominator of $\vec m_\perp$ is
+			not $0$ so it exists.
+            So we know that $(\vec n,\vec m_\perp)\in\mathcal P$,
+            which represents as line meeting $\mathcal L_i$ and also perpendicular
+			to both $L_i$.
+        \end{subproof}
+
+        \begin{subproof}
+            We also know that if we change using the change above, $\vec n$ is
+            multiplied by $\lambda_1\lambda_2$.
+            So the coefficient of 
+            \[
+            \frac{R(\vec d_1\cdot\vec d_2)}{\|\vec n\|^2}
+            \]
+            is unchanged, since its numerator and denominator are both
+            multiplied by $(\lambda_1\lambda_2)^2$.
+            Consequently every term in $\vec m_\perp$ is multiplied by
+            $\lambda_1\lambda_2$ as well.
+            Both coordinates therefore acquire the same nonzero factor,
+            so the class $[\vec n:\vec m_\perp]$ is unchanged.
+        \end{subproof}
+
+        \begin{subproof}[Unique?]
+            By part~(a), the two skew lines have exactly one common
+            perpendicular as an affine line.
+            By part~(b), that affine line determines exactly one class
+            in $\mathcal P/\sim$.
+            Combining we know that any class representing a common perpendicular must
+            equal $[\vec n:\vec m_\perp]$.
+        \end{subproof}
+    \end{proof}
 \end{soln}
-	
+
 	\section{Problem 2}
 	
 	\subsection{(a)}
