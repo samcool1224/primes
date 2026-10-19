@@ -10,10 +10,9 @@
 \usepackage{xcolor}
 \usepackage{needspace}
 
-% --- STYLE 1: PYTHON ---
 \lstdefinestyle{pythonStyle}{
 	language=Python,
-	basicstyle=\ttfamily\small,
+	basicstyle=\ttfamily\footnotesize, % slightly smaller than \small
 	keywordstyle=\color{blue}\bfseries,
 	commentstyle=\color{gray}\itshape,
 	stringstyle=\color{purple},
@@ -21,7 +20,12 @@
 	numberstyle=\tiny\color{gray},
 	frame=single,
 	breaklines=true,
-	showstringspaces=false
+	showstringspaces=false,
+	tabsize=3,              % <-- the main fix (default is 8)
+	columns=fullflexible,   % tighter character spacing
+	keepspaces=true,        % keeps indentation intact with fullflexible
+	breakatwhitespace=true, % wrap long lines only at spaces
+	postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space} % marks wrapped lines
 }
 
 \lstdefinestyle{pseudoStyle}{
@@ -360,15 +364,14 @@ perpendicular and prove that it is unique.
 	\subsection{(a)}
 	
 	\begin{soln}
-		
-		We have an insane amount of configurations. To analyze them in a good
-		way we sort them only by the number of occupied sites.
+		We have a lot of different configurations. This motivates a 
+        "global" approach instead of a "local" oen where we look at the entire 
+        strucutre of the problem. Also we sort the cases by the number of sites 
+        occupied. 
 		
 		This idea was motivated by the fact that, conditioned on exactly $k$
-		occupied sites, every $k$-element subset of $V_n$ is equally likely.
-		This makes it natural to group configurations according to the number
-		of occupied sites.
-		
+		occupied sites, every $k$-element subset of $V_n$ is equally likely making
+        it much easier to find probabilities. 
 		
 		\subsubsection*{\vocab{Occupancy}}
 		
@@ -400,7 +403,7 @@ perpendicular and prove that it is unique.
 			\]
 		\end{claim*}
 		
-		\begin{subproof}
+		\begin{proof}
 			This almost immediately follows using our definition of $k$.
 			
 			Any configuration with exactly $k$ occupied sites has probability
@@ -424,7 +427,7 @@ perpendicular and prove that it is unique.
 			\sum_{k=0}^{N}
 			c_kp^k(1-p)^{N-k}.
 			\]
-		\end{subproof}
+		\end{proof}
 		
 		
 		Something useful to note is that we can define
@@ -464,12 +467,12 @@ perpendicular and prove that it is unique.
 		\end{claim*}
 		
 		\begin{subproof}
-			Obviously, we know that for every fixed $k$ we have that
+			As detailed in the previous part, we know that for every fixed $k$ we have that
 			\[
 			p^k(1-p)^{N-k}
 			\]
 			is a polynomial in $p$.
-			To prove this rigorously we can just use the fact that by the binomial theorem,
+			This is pretty easy to see, but we can also expand out using binomial thereom 
 			\[
 			(1-p)^{N-k}
 			=
@@ -509,6 +512,7 @@ perpendicular and prove that it is unique.
 		\[
 		\theta_n(p_n)=\frac12.
 		\]
+        This is immediate from IVT.
 		
 		\begin{claim*}
 			There exists a unique $p_n\in(0,1)$ such that
@@ -519,7 +523,7 @@ perpendicular and prove that it is unique.
 		
 		\begin{proof}
 			We know that, from our previous proof, that $\theta_n$ is a polynomial. Therefore, it is continuous on $[0,1]$.
-			We aim to use the intermediate value theorem here. 
+			We use the intermediate value theorem here. 
 			To do this we calculate that at $p=0$ every site must be unoccupied so there is no path so 
 			\[
 			\theta_n(0)=0.
@@ -548,7 +552,7 @@ perpendicular and prove that it is unique.
 			\theta_n(p_n)=\frac12.
 			\]
 			
-			We are (gratefully) given that $\theta_n$ is strictly increasing. Hence two distinct values of $p$ cannot both give the same
+			We also given, without needing justification, that $\theta_n$ is strictly increasing. Hence two distinct values of $p$ cannot both give the same
 			value $\frac12$.
 			
 			Which then gives us that $p_n$ is unique.
@@ -732,7 +736,7 @@ def try_to_find_theta(n, p, M):
 
 
 			\end{lstlisting}
-			
+			\newpage
 			
 			\subsubsection*{\vocab{How Many Sims?}}
 			
@@ -746,15 +750,20 @@ def try_to_find_theta(n, p, M):
 			\le
 			2e^{-2M\varepsilon^2}.
 			\]
-			Doing a bit of researching from where this bound given to use came from, apparently it is a consequence of Hoeffding's inequalily \cite[Theorem~1, equation~(2.3)]{hoeffding}.
-			Indeed, let $X_j$ be the indicator that the $j$th independently
+            \begin{remark}
+                            I was slightly curious where the problem set makers found this random looking boutn. 
+            After some googling, we see it came from a consequence of Hoeffding's inequalily \cite[Theorem~1, equation~(2.3)]{hoeffding}.
+        			Indeed, let $X_j$ be the indicator that the $j$th independently
 			generated grid has a left-to-right crossing. Then
 			$0\le X_j\le1$, $\mathbb E[X_j]=\theta_n(p)$, and
 			\[
 			\widehat{\theta}_n(p)=\frac1M\sum_{j=1}^{M}X_j.
 			\]
 			Applying the inequality to the upper and lower tails and adding
-			their bounds gives the stated two-sided estimate.
+			their bounds gives the stated two-sided estimate.    
+        \end{remark}
+
+
 			The event inside the probabilty is the bad event that occurs when our estimate is different from the actual probabilty by a amount of more than $\varepsilon$.
 			We want this to be at most $\delta$.
 			Therefore it is sufficient to require
@@ -776,46 +785,11 @@ def try_to_find_theta(n, p, M):
 			\end{claim*}
 			
 			\begin{proof}
-				This is simple by using a couple of simple math operations. We can 
-				we divide by $2$ from what we started with to obtain
-				\[
-				e^{-2M\varepsilon^2}
-				\le
-				\frac{\delta}{2}.
-				\]
-				
-			Natural log of each side gets us
-				\[
-				-2M\varepsilon^2
-				\le
-				\ln\left(\frac{\delta}{2}\right).
-				\]
-				
-				Multiplying by $-1$ and reverse the inequality
-				\[
-				2M\varepsilon^2
-				\ge
-				-\ln\left(\frac{\delta}{2}\right)
-				=
-				\ln\left(\frac{2}{\delta}\right).
-				\]
-				
-				Therefore
-				\[
-				M
-				\ge
-				\frac{\ln(2/\delta)}{2\varepsilon^2}.
-				\]
-				
-				Since $M$ must be an integer, one sufficient choice is
-				\[
-				\boxed{
-					M=
-					\left\lceil
-					\frac{\ln(2/\delta)}{2\varepsilon^2}
-					\right\rceil.
-				}
-				\]
+				We can just solve for $M$ in the above equation of \[
+			2e^{-2M\varepsilon^2}
+			\le
+			\delta.
+			\]
 			\end{proof}
 			
 			
@@ -1012,6 +986,8 @@ the cases $n=1$ and $n=2$.
 			
 \end{soln}
 		
+
+\newpage
 \section{Problem 3}
 \subsection{(a)}
 
@@ -1056,9 +1032,15 @@ the cases $n=1$ and $n=2$.
 	\end{proof}
 
     \subsubsection*{\vocab{Figuring out the Points}}
-	Once again looking more at scalar optimization solutions, we get motivated
-	by the fact that each point chosen is simplly responsible for th epart of the graph 
-	it is closest to the $x$. This motivates splitting the interval of $[0,1]$
+
+    As most other mathematicans, we start by looking at simple cases. One simple 
+    case is just spacing the tangents equally apart. 
+    Following that, I took a look at more complex cases. Such as increasing the "density" of tangents
+    when there is more curvature. However, when calculting a few simple examples it turns out the error on those 
+    were greater then the error for equally spaced out tangents.
+    So I looked into proving that equally spaced tangents were, in fact, the correct solution.
+    A method to prove this came from the scalar optimization 
+    solutions, where it motivates splitting the interval of $[0,1]$
 	into each of these intervals and finding how much they contribute to the error seperately.
 	\begin{claim}
 		We need to chose points at, for a value of $n$,     \[
@@ -1067,12 +1049,13 @@ the cases $n=1$ and $n=2$.
 	\end{claim}
 	\begin{proof}
 		
-    We can define the points we chose at 
+    We can define the points we chose as
     \[
     a_1<a_2<\cdots<a_m
     \].
-	Strictly greater since putting two points at the same place is useless. 
     be the distinct chosen points, where $m\le n$
+    They are strictly greater since putting two points at the same place is useless. 
+    
 	Now we can set the intervals by making
     \[
     b_0=0,\qquad b_m=1,\qquad
@@ -1090,8 +1073,8 @@ the cases $n=1$ and $n=2$.
     \sum_{i=1}^m\ell_i=1.
     \]
 
-    Our first observation is that, for an interval of fixed length,
-    its midpoint minimizes this integral. Indeed, since
+    We see that, on said integral for a fixed length, we would want to chose on the midpoint
+    to minimize. Since
     $a_i\in[b_{i-1},b_i]$,
     \[
     \int_{b_{i-1}}^{b_i}|x-a_i|^{2p}\,dx
@@ -1100,7 +1083,7 @@ the cases $n=1$ and $n=2$.
           +(b_i-a_i)^{2p+1}}{2p+1}.
     \]
     The two distances in the numerator sum to $\ell_i$.
-    Strict convexity of $t\mapsto t^{2p+1}$ gives
+    Also we have the convexity that $t\mapsto t^{2p+1}$ gives
     \[
     \int_{b_{i-1}}^{b_i}|x-a_i|^{2p}\,dx
     \ge
@@ -1136,12 +1119,7 @@ the cases $n=1$ and $n=2$.
     Choosing the midpoints of $n$ equal intervals makes every
     inequality an equality. Conversely, equality requires $m=n$,
     all interval lengths to be $1/n$, and each chosen point to be
-    the midpoint of its interval. Thus the unique optimal multiset is
-    \keyeq{
-        \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
-        \frac{2n-1}{2n}\right\}.
-    }
-	The answer is independent of $p$, because the argument holds regardless of the value of $p$.
+    the midpoint of its interval. Thus the unique optimal multiset is as in the claim.
 	\end{proof}
     \subsubsection*{\vocab{Figuring Out the Error}}
 	Finishing from here is straightforward from the way we have set it up.
@@ -1166,7 +1144,10 @@ the cases $n=1$ and $n=2$.
 
 \subsubsection*{\vocab{Looking back earlier at the quadratic case}}
 
-aThe quadratic case suggests comparing a general tangent error with
+Looking back on the quadratic case for a bit of inspiration. We see that we 
+can compare 
+
+The quadratic case suggests comparing a general tangent error with
 $(x-a)^2$. The relevant tools are the first- and second-order
 characterizations of convexity and the quadratic bound for strongly
 convex functions; see Boyd, Vandenberghe, and Nobel
@@ -1443,10 +1424,10 @@ E_{n,p}(f)=\Theta(n^{-2}).
 \subsection{(a)}
 
 \begin{soln}
-    Anonymity suggests fixing the object being scored and asking which
-    edges can be interchanged while that object stays fixed.
-	The orbit sum principle helps convert edge orbits into linear scores. The following
-	viewpoint that helped inspire this is from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
+    We can fix a object, the one being scored, and then look at order combinations of edges. 
+
+	The orbit sum principle helps orbits into linear scores. 
+    Parts of this proof came from as inspiration, not directly, from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
 
     As mentioned in the problem let us fix $i\in[n]$, and let
     \[
@@ -1467,7 +1448,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
     \end{claim*}
 
     \begin{proof}
-		After fixing $i$ any permutation of the vertices will preserve wheter a edge
+		After fixing $i$ any permutation of the vertices will preserve whether a edge
 		contains $i$ since $i$ remains as $i$ in the permutation. This means that the
 		two orbits mentioned in the claims do not overlap, or cannot belong to the same 
 		orbit. Now looking that each orbit can map to each other, we see that in the first
@@ -1478,8 +1459,8 @@ E_{n,p}(f)=\Theta(n^{-2}).
         Hence each set is one orbit. The sizes are easily calculated as
         $n-1$ and $\binom{n-1}{2}$ respectively.
     \end{proof}
-	Now, we want to describe the sums of the two orbits seperately. Instead of doing defining 
-	each as a term we define
+	Now, we want to describe the sums of the two orbits seperately. We could define each separately 
+    as their own variable, however for notation it was easier to see that 
     \[
     D_i(x)=\sum_{j\ne i}x_{ij},
     \qquad
@@ -1487,7 +1468,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
     \qquad
     \mathbf D=(D_1,\ldots,D_n).
     \]
-	The first one is the sum of the first orbit, and the second orbit sum can 
+    Where we have that the first one is the sum of the first orbit, and the second orbit sum can 
 	be expressed as $T-D_i$. Atop of this $T$ stays cosntant under any permutation 
 	of the vertices.
 \Needspace{20\baselineskip}
@@ -1526,7 +1507,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
         displayed form is anonymous and homogeneous of degree one.
     \end{proof}
 
-    \begin{claim*}[Removing the common score]
+    \begin{claim*}
         The class of $\mathbf D$ is a basis of
         $\mathcal A_n^{(1)}/\mathcal C_n^{(1)}$.
     \end{claim*}
@@ -1560,7 +1541,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
     \keyeq{
         D_i(x)=\sum_{j\ne i}x_{ij}.
     }
-    Equivalently, every anonymous linear rule has score differences
+    This is the same as stating that every anonymous linear rule has score differences
     \[
     F_i(x)-F_j(x)=a\bigl(D_i(x)-D_j(x)\bigr).
     \]
@@ -1570,7 +1551,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
 \subsection{(b)}
 
 \begin{soln}
-Following Thi\'ery~\cite[Section~1.3]{p4-thiery}, we view each monomial
+We continue using Thi\'ery~\cite[Section~1.3]{p4-thiery} as inspiration and view each monomial
 in the edge variables as a multigraph, and we use the fact that the
 invariant polynomials are spanned by the orbit sums of monomials. Thus,
 to describe the invariants, it suffices to enumerate the possible graph
@@ -1717,8 +1698,7 @@ two edges.
             \]
         \end{subproof}
 
-        Now we can directly use the quotient dimesion formula from 
-        \cite[3.105]{p4-axler}, and obtain
+        Since we know that $dim(Q/V)=dim Q - dim V$ we obtain, 
         \keyeq{
             \dim(\mathcal Q_n/\mathcal C_n)
             =\dim\mathcal Q_n-\dim\mathcal C_n
@@ -1728,7 +1708,7 @@ two edges.
 
     \subsubsection*{\vocab{The final 4 basis classes}}
 
-    The final part of thios problem is to find the basis. 
+    The final part of this problem is to find the basis. 
 	To do this we express $U,V,W$ using
     $A,B,C,D$ and these common scores.
 
@@ -1759,10 +1739,10 @@ two edges.
         orbit-sum classes, so these relations show that
         $[A],[B],[C],[D]$ span the quotient.
         The quotient has dimension four, so its four spanning classes
-        form a basis by \cite[2.42]{p4-axler}.
+        form a basis.
     \end{proof}
 
-	We can write the same thing in different form by statig that 
+	We can write the same thing in different form by statign that 
 	every anonymous quadratic rule has a form of
     \keyeq{
         F=aA+bB+cC+dD+h\mathbf1_n,
@@ -1772,14 +1752,14 @@ two edges.
 \subsection{(c)}
 
 \begin{soln}
-	This problem seems a bit too easy for a part (c). However we continue
+ We continue
 	and
     write
     \[
     s_v(x)=\sum_{u\ne v}x_{vu}
     \]
 	which is the standard form for the weighted degree of vertex $v$
-	as commonly used, and as used in Thi\'ery \cite[Section~1.1]{p4-thiery}.
+	as commonly used.
     We know, from say part~(a), that equal weighted degrees
 	means that there will be equal scores under all linear anonymous rule.
     Using this information and some trail and error 
@@ -1842,9 +1822,6 @@ two edges.
             A_v(x)=\sum_{u\ne v}x_{vu}^{2}
             \]
             defines an anonymous homogeneous quadratic rule.
-            In the terminology of Puny et al.\
-            \cite[Section~2.1, equation~(4)]{p4-puny}, this is a
-            node-valued equivariant graph polynomial.
         \end{subproof}
 
         \begin{subproof}
@@ -3288,6 +3265,14 @@ in the previous part.
         \qquad k\ge2.
     }
 \end{soln}
+\section{AI Use}
+The only time any sort of AI was used throughout the drafting of this problem 
+set is for LaTeX errors. Attached is a screenshot of a template that I used for every single 
+prompt where the information inside the $[]$ are change from prompt to prompt. I fixed 
+$18$ of the more complicated LaTeX errors using this prompt template. All prompts were sent 
+to Claude's Opus 5.5 on Medium. 
+\newline
+\includegraphics[scale = 0.62]{aiuse.png}
 \begin{thebibliography}{99}
 
 	\bibitem{stanley-ec1}
