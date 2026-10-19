@@ -472,7 +472,7 @@ perpendicular and prove that it is unique.
 			p^k(1-p)^{N-k}
 			\]
 			is a polynomial in $p$.
-			This is pretty easy to see, but we can also expand out using binomial thereom 
+			This is pretty easy to see, but we can also expand out using binomial theorem 
 			\[
 			(1-p)^{N-k}
 			=
@@ -993,7 +993,7 @@ the cases $n=1$ and $n=2$.
 
 \begin{soln}
 	After reading some articles, this problem is related to a known problem 
-	called \emph{scalar quantization} so although no thereoms were directly 
+	called \emph{scalar quantization} so although no theorems were directly 
 	used for this part some of the motivation remains the same. This problem
 	is of choosing $n$ points so that the distance from a typical point of an
     interval to its nearest chosen point is as small as possible.
@@ -1010,7 +1010,7 @@ the cases $n=1$ and $n=2$.
     \]
 	\end{claim}
 	\begin{proof}
-	First, we try to generalize the error made by a singular tangent. To do this is relatively
+	First, we try to generalize the error made by a singule tangent. To do this is relatively
 	simple. For $f(x)=x^2$, we find the equation of the tangent line at $x=a$ to be
     \[
     L_a(x)=a^2+2a(x-a)=2ax-a^2,
@@ -1033,17 +1033,17 @@ the cases $n=1$ and $n=2$.
 
     \subsubsection*{\vocab{Figuring out the Points}}
 
-    As most other mathematicans, we start by looking at simple cases. One simple 
+    As most other mathematicians, we start by looking at simple cases. One simple 
     case is just spacing the tangents equally apart. 
     Following that, I took a look at more complex cases. Such as increasing the "density" of tangents
-    when there is more curvature. However, when calculting a few simple examples it turns out the error on those 
-    were greater then the error for equally spaced out tangents.
+    when there is more curvature. However, when calculating a few simple examples it turns out the error on those 
+    were greater than the error for equally spaced out tangents.
     So I looked into proving that equally spaced tangents were, in fact, the correct solution.
-    A method to prove this came from the scalar optimization 
+    A method to prove this came from the scalar quantization 
     solutions, where it motivates splitting the interval of $[0,1]$
-	into each of these intervals and finding how much they contribute to the error seperately.
+	into each of these intervals and finding how much they contribute to the error separately.
 	\begin{claim}
-		We need to chose points at, for a value of $n$,     \[
+		We need to choose points at, for a value of $n$,     \[
         \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
         \frac{2n-1}{2n}\right\} \].
 	\end{claim}
@@ -1142,34 +1142,10 @@ the cases $n=1$ and $n=2$.
 
 \begin{soln}
 
-\subsubsection*{\vocab{Looking back earlier at the quadratic case}}
+Looking back on the quadratic case for a bit of inspiration. We can actually 
+use the quadratic case for a good upper bound.
 
-Looking back on the quadratic case for a bit of inspiration. We see that we 
-can compare 
-
-The quadratic case suggests comparing a general tangent error with
-$(x-a)^2$. The relevant tools are the first- and second-order
-characterizations of convexity and the quadratic bound for strongly
-convex functions; see Boyd, Vandenberghe, and Nobel
-\cite[PDF pp.~53--54 and~293]{p3-convex-slides}.
-In one dimension, these give the following comparison on an interval $J$:
-\[
-\mu\le f''\le M\text{ on }J
-\quad\Longrightarrow\quad
-\frac{\mu}{2}(x-a)^2
-\le f(x)-L_a(x)
-\le\frac{M}{2}(x-a)^2,
-\qquad a,x\in J.
-\tag{1}\label{eq:p3-curvature}
-\]
-Indeed, the two inequalities are the tangent-support inequalities for
-the convex functions $f(x)-\mu x^2/2$ and $Mx^2/2-f(x)$,
-respectively. The statements extend to the interval endpoints by
-continuity.
-
-We will use the upper comparison on all of $[0,1]$. For the lower
-comparison, it will be enough to find one interval on which the
-curvature is bounded below by a positive constant.
+We will use the upper comparison on all of $[0,1]$.
 
 \subsubsection*{\vocab{Finding the upper bound}}
 
@@ -1184,7 +1160,11 @@ Choose the same tangency points as in part~(a),
 a_i=\frac{2i-1}{2n},
 \qquad 1\le i\le n.
 \]
-By \eqref{eq:p3-curvature},
+Taylor's theorem gives, for all $x,a\in[0,1]$,
+\[
+0\le f(x)-L_a(x)\le \frac M2(x-a)^2.
+\]
+Now we can take the minimum over the chosen tangency points therefore gives
 \[
 0\le f(x)-L_{a_1,\ldots,a_n}(x)
 \le\frac{M}{2}\min_{1\le i\le n}|x-a_i|^2.
@@ -1196,118 +1176,71 @@ E_{n,p}(f)
 }
 Thus equally spaced tangents already achieve the required upper rate.
 
-\subsubsection*{\vocab{Taking a look at a interval}}
 
-Strict convexity does not require $f''$ to be positive everywhere.
-However, $f''$ cannot vanish identically, since that would make $f$
-affine. As $f''\ge0$ and $f''$ is continuous, there are an interval
-\[
-I=[u,v]\subseteq[0,1],
-\qquad \ell:=v-u>0,
-\]
-and a constant $m>0$ such that
-\[
-f''(x)\ge m
-\qquad (x\in I).
-\]
-Both $I$ and $m$ are fixed independently of $n$. An unavoidable error
-on this interval gives a lower bound for the error on the whole domain.
+subsubsection*{\vocab{Working towards a Lower Bound}}
 
-The tangency points may lie outside $I$, so we must first account for
-those tangents. The following observation makes the local curvature
-bound applicable to every choice of tangency points.
 
-\begin{claim*}[Moving an outside tangency point to the boundary]
-For $a\in[0,1]$, define its projection onto $I$ by
-\[
-b=\pi_I(a):=
-\begin{cases}
-u,&a<u,\\
-a,&u\le a\le v,\\
-v,&a>v.
-\end{cases}
-\]
-Then, for every $x\in I$,
-\[
-f(x)-L_a(x)
-\ge f(x)-L_b(x)
-\ge\frac{m}{2}|x-b|^2.
-\]
+
+I wasn't able to find an exact lower bound. I would assume it would be some term $\cdot n^{-2}$ however
+definitively I wasn't able to find it. What follows are a couple of different directions
+I took. 
+
+First we try to reverse the estimate for the upper bound.
+\begin{claim*}
+    If $f''(x)\ge m>0$ on $[0,1]$, then
+    \[
+    E_{n,p}(f)\ge
+    \frac{m}{8(2p+1)^{1/p}}\,n^{-2}.
+    \]
 \end{claim*}
 
 \begin{proof}
-The tangent-support inequality gives $f(b)-L_a(b)\ge0$.
-Also, $f'$ is nondecreasing, so
-\[
-L_b(x)-L_a(x)
-=\bigl(f(b)-L_a(b)\bigr)
-+\bigl(f'(b)-f'(a)\bigr)(x-b)
-\ge0.
-\]
-For the second term, both factors are nonnegative if $a<u$, both are
-nonpositive if $a>v$, and the term is zero if $a\in I$.
-This proves the first inequality. The second follows from
-\eqref{eq:p3-curvature}, since $b,x\in I$ and $f''\ge m$ there.
+    We start by using Taylor's theorem gives
+    $f(x)-L_a(x)\ge \frac m2(x-a)^2$.
+    Consequently, for any choice of tangency points,
+    \[
+    f(x)-L_{a_1,\ldots,a_n}(x)
+    \ge \frac m2\min_{1\le i\le n}|x-a_i|^2.
+    \]
+    Taking the $L^p$ norm and then the infimum over the tangency points,
+    part~(a) gives
+    \[
+    E_{n,p}(f)\ge \frac m2 E_{n,p}(x^2)
+    =\frac{m}{8(2p+1)^{1/p}}\,n^{-2}.
+    \]
 \end{proof}
 
-\subsubsection*{\vocab{Finishing the lower bound}}
+For example, $f(x)=x^2+x^4$ satisfies $f''(x)=2+12x^2\ge2$,
+so the argument applies with $m=2$.
+However, strict convexity alone does not supply such an $m$:
+$f(x)=x^4$ is strictly convex on $[0,1]$, but $f''(0)=0$.
+Using $m=0$ gives only the trivial lower bound.
+Thus the argument settles a special case, while the general lower bound
+remains unresolved here.
 
-Now take any $a_1,\ldots,a_n\in[0,1]$, and put $b_i=\pi_I(a_i)$.
-The claim gives, for $x\in I$,
+Although slightly unrelated, we notice that
+adding an affine function does not change the approximation error.
+Indeed, if $g(x)=f(x)+ux+v$, then its tangent at $a$ is
+$L_a^g(x)=L_a^f(x)+ux+v$, so
 \[
-f(x)-L_{a_1,\ldots,a_n}(x)
-\ge\frac{m}{2}\min_{1\le i\le n}|x-b_i|^2.
+g(x)-\max_i L_{a_i}^g(x)
+=f(x)-\max_i L_{a_i}^f(x).
 \]
-We can therefore reuse the optimal quantization value from part~(a).
-The change of variables $x=u+\ell y$ multiplies the integral of the
-$2p$-th power of distance by $\ell^{2p+1}$, so
-\[
-\inf_{b_1,\ldots,b_n\in I}
-\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx
-=\frac{\ell^{2p+1}}{2^{2p}(2p+1)n^{2p}}.
-\]
-This infimum allows repeated points, as in part~(a), so it also applies
-when several of the projections $b_i$ coincide. It follows that
-\begin{align*}
-\bigl\|f-L_{a_1,\ldots,a_n}\bigr\|_p^p
-&\ge\left(\frac{m}{2}\right)^p
-\int_I\min_{1\le i\le n}|x-b_i|^{2p}\,dx\\
-&\ge\frac{m^p\ell^{2p+1}}{8^p(2p+1)n^{2p}}.
-\end{align*}
-Taking the $p$-th root and then the infimum over all tangency points
-yields
-\keyeq{
-E_{n,p}(f)
-\ge\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}}\,n^{-2}.
-}
-
-Combining the two bounds, we may take
-\[
-c_{f,p}:=\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}},
-\qquad
-C_{f,p}:=\frac{M}{8(2p+1)^{1/p}}.
-\]
-These satisfy $0<c_{f,p}\le C_{f,p}<\infty$ and are independent of $n$.
-Therefore the sharp decay exponent is
-\keyeq{
-\alpha=2,
-\qquad
-E_{n,p}(f)=\Theta(n^{-2}).
-}
-
+Hence $E_{n,p}(g)=E_{n,p}(f)$: changing the height or adding a linear
+tilt leaves the problem unchanged.
 \end{soln}
 \subsection{(c)}
 
 \begin{soln}
     \subsubsection*{\vocab{From One Cell to a Density}}
 
-    The continuum viewpoint also appears in scalar quantization, where
+    The first part of this subsection of the problem also appears in scalar
+    optimization where
     the leading error is expressed through the density of approximation
-    points; see Kreitmeier and Linder
+    points. Specifically, look at Kreitmeier and Linder
     \cite[Proposition~4.2, equation~(16)]{p3-kreitmeier-linder}.
     Here the quadratic approximation reduces each small cell to the
-    midpoint calculation in part~(a). We work throughout under the formal
-    assumptions in the question.
+    midpoint calculation in part~(a). Most of this is algebraic manipulation
 
     Consider a cell centered at a tangency point $x$, with length
     $h=h_n(x)$. The tangent already matches both $f(x)$ and $f'(x)$,
@@ -1316,7 +1249,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
     f(x+u)-L_x(x+u)
     =\frac{f''(x)}2u^2+o(u^2).
     \]
-    Using the centered-cell integral from part~(a), its formal
+    Using the center of each cell method from part~(a), its formal
     contribution to the $p$th power of the error is
     \begin{align*}
         \int_{-h/2}^{h/2}
@@ -1326,7 +1259,7 @@ E_{n,p}(f)=\Theta(n^{-2}).
         &=\frac{(f''(x))^p}{2^{3p}(2p+1)}h^{2p+1}.
     \end{align*}
 
-    To pass from one cell to the whole interval, we must account for
+    Now we move away from just one cell onto the entire graph. We must account for
     how many cells occur near each point. A region of length $dx$ near
     $x$ contains formally $n\rho(x)\,dx$ cells. Multiplying the
     contribution of one cell by this number, and using
@@ -1351,26 +1284,25 @@ E_{n,p}(f)=\Theta(n^{-2}).
     J(\rho)=\int_0^1(f''(x))^p\rho(x)^{-2p}\,dx.
     \]
 
-    \subsubsection*{\vocab{Choosing the Density}}
 
-    Increasing $\rho$ makes cells shorter and reduces the local error,
+    \subsubsection*{\vocab{Choosing the Density}}
+    We are now in a minimization problem of the result in the previous subsubsection.
+    The simple "balance" for this part is increase  $\rho$ makes cells shorter and reduces the local error,
     but the condition $\int_0^1\rho=1$ limits how many tangency points
-    we can allocate. We therefore minimize $J(\rho)$ subject to this
+    we can allocate. Our goal is trivally to minimize $J(\rho)$ subject to this
     normalization.
 
-    This is the same form of density optimization as the fixed-rate
-    case in Kreitmeier and Linder
+    Doing some research, this is extremely similar to the minimization in 
     \cite[Remark~4.12]{p3-kreitmeier-linder}, where the number of
-    approximation points is fixed. The H\"older inequality supplied in
-    the problem gives both the minimum and its equality condition
-    directly. Write
+    approximation points is fixed. Adjusting it to this problem requires some effort. We 
+    can write
     \[
     w(x)=(f''(x))^p,
     \qquad
     A=\int_0^1w(x)^{1/(2p+1)}\,dx.
     \]
-    We split the integrand defining $A$ so that one H\"older factor
-    produces $J(\rho)$ and the other produces $\int_0^1\rho$.
+    A bit more algebraic manipulation to apply H\"older by splitting integrand 
+    defining $A$.
     With conjugate exponents $2p+1$ and $(2p+1)/(2p)$,
     \begin{align*}
         A
@@ -1382,23 +1314,16 @@ E_{n,p}(f)=\Theta(n^{-2}).
         \left(\int_0^1\rho(x)\,dx\right)^{2p/(2p+1)}\\
         &=J(\rho)^{1/(2p+1)}.
     \end{align*}
-    Hence $J(\rho)\ge A^{2p+1}$. Equality holds precisely when
-    $w\rho^{-2p}$ is proportional to $\rho$. Normalizing therefore
-    gives the unique minimizing density
+    Hence $J(\rho)\ge A^{2p+1}$.
+    Now we normalize to find a key equation of
     \keyeq{
         \rho_*(x)
         =\frac{(f''(x))^{p/(2p+1)}}
         {\displaystyle\int_0^1(f''(t))^{p/(2p+1)}\,dt}.
     }
-    Since $f''$ is continuous and strictly positive on $[0,1]$,
-    this density is continuous, positive, and admissible.
-    It places more tangency points where the graph has greater
-    curvature: the smaller cells compensate for the larger quadratic
-    error there.
-
+This density fits all criteria.
     \subsubsection*{\vocab{The Predicted Asymptotic}}
-
-    Substituting $J(\rho_*)=A^{2p+1}$ into the formal leading term
+    The last part of part (c) requires a simple substitution term
     and taking the $p$th root gives the prediction
     \keyeq{
         E_{n,p}(f)\sim\kappa_p(f)n^{-2},
@@ -1409,15 +1334,13 @@ E_{n,p}(f)=\Theta(n^{-2}).
         =\frac{1}{8(2p+1)^{1/p}}
         \left(\int_0^1(f''(x))^{p/(2p+1)}\,dx\right)^{(2p+1)/p}.
     }
-    In particular, $\alpha=2$, agreeing with part~(b).
-    This asymptotic equivalence is the prediction of the stipulated
-    continuum model.
+    This gives us that $\alpha=2$, agreeing with part~(b).
 
     As a check, when $f(x)=x^2$ we have $f''=2$, so $\rho_*=1$ and
     \[
     \kappa_p(x^2)=\frac{1}{4(2p+1)^{1/p}},
     \]
-    recovering the exact constant from part~(a).
+    giving us the confirmation from part~(a).
 \end{soln}
 
 \section{Problem 4}
@@ -1845,15 +1768,8 @@ two edges.
 \subsection{(a)}
 
 \begin{soln}
-	
-	Our three main ideas or references that we will combine in this problem are as follows. The first and most simple comes  as Stanley \cite[Section~1.2]{stanley-ec1}. Second, a local central limit theorem predicts probabilities of order $n^{-1}$ in dimension two; see, for example, Lawler and Limic
-	\cite[Chapter~2]{lawler-limic}. Finally, coefficients of order $1/n$
-	correspond to a logarithmic singularity of the generating function, one
-	of the standard correspondences in singularity analysis
-	\cite[Section~VI.2, Figure~VI.5]{flajolet-sedgewick}.
-	 These 3 therioes I found out after doing a bit of research were the main things that shaped this parts solution.
+    We start with some straightforward simplification.
 	\subsubsection*{\vocab{Staying EXACT}}
-	For now, we just do some nice notation simplification and counting arguments. 
 	We use the fact that 	\[
 	1+\omega+\omega^2=0
 	\] freely.
