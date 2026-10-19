@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  18 OCT 2026 21:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  18 OCT 2026 23:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1277,752 +1277,752 @@ Package mdframed Info: mdframed inside a box
  [26]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1809.
+(mdframed)              on input line 1815.
+ [27]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1821.
+(mdframed)              on input line 1827.
+Package mdframed Info: Not enough space on this page on input line 1837.
 
+Underfull \hbox (badness 10000) in paragraph at lines 1855--1858
 
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on input line 1831.
+ []
 
-Package mdframed Info: You first box width is to small
- mdframed fixed it
-(mdframed)              on input line 1831.
-[27]
-
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last split box is empty
-(mdframed)                You have to change the settings on input line 1831.
-
-[28] [29]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2026.
+(mdframed)              on input line 1858.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2035.
- [30]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2091.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2096.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2099.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2152.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2152.
+(mdframed)              on input line 1861.
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
-(mdframed)              on input line 2153.
- [31] [32]
+(mdframed)              on input line 1924.
+[28]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2192.
+(mdframed)              on input line 1936.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2201.
+(mdframed)              on input line 1941.
+ [29] [30]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2215.
+(mdframed)              on input line 2046.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2224.
- [33]
+(mdframed)              on input line 2055.
+ [31]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2236.
+(mdframed)              on input line 2111.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2254.
+(mdframed)              on input line 2116.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2255.
+(mdframed)              on input line 2119.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2172.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2260.
+ mdframed uses option nobreak mdframed on input line 2172.
+ [32] [33]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2263.
+(mdframed)              on input line 2212.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2221.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2235.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2244.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2256.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2274.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2275.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2289.
+ mdframed uses option nobreak mdframed on input line 2280.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2304.
-
-Overfull \vbox (32.57683pt too high) detected at line 2304
- []
-
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 2304.
-
-Overfull \vbox (33.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (34.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (35.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (36.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (37.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (38.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (39.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (40.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (41.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (42.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (43.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (44.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (45.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (46.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (47.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (48.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (49.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (50.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (51.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (52.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (53.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (54.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (55.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (56.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (57.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (58.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (59.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (60.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (61.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (62.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (63.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (64.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (65.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (66.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (67.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (68.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (69.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (70.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (71.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (72.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (73.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (74.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (75.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (76.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (77.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (78.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (79.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (80.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (81.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (82.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (83.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (84.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (85.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (86.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (87.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (88.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (89.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (90.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (91.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (92.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (93.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (94.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (95.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (96.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (97.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (98.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (99.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (100.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (101.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (102.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (103.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (104.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (105.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (106.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (107.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (108.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (109.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (110.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (111.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (112.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (113.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (114.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (115.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (116.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (117.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (118.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (119.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (120.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (121.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (122.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (123.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (124.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (125.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (126.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (127.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (128.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (129.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (130.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (131.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (132.57683pt too high) detected at line 2304
- []
-
-
-Overfull \vbox (133.57683pt too high) detected at line 2304
- []
-
-
-Package mdframed Warning: correct box splittet fails
- It seems you are using a non splittable contents
-(mdframed)                 on input line 2304.
-
-Package mdframed Info: You first box width is to small
- mdframed fixed it
-(mdframed)              on input line 2304.
-[34]
+(mdframed)              on input line 2283.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2309.
+ [34]
+Package mdframed Info: Not enough space on this page on input line 2310.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2321.
+(mdframed)              on input line 2324.
+ [35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2332.
+(mdframed)              on input line 2341.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2352.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2357.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 2394.
- [35]
+(mdframed)              on input line 2372.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2402.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2408.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2410.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2426.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2429.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2442.
+(mdframed)              on input line 2377.
  [36]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2451.
+(mdframed)              on input line 2422.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2492.
+(mdframed)              on input line 2428.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2498.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2502.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2503.
+(mdframed)              on input line 2430.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2532.
+ mdframed uses option nobreak mdframed on input line 2446.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2535.
+(mdframed)              on input line 2449.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2555.
- [37]
-Package mdframed Info: Not enough space on this page on input line 2556.
+ mdframed uses option nobreak mdframed on input line 2462.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2471.
+
+Overfull \vbox (9.87335pt too high) detected at line 2471
+ []
+
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 2471.
+
+Overfull \vbox (10.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (11.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (12.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (13.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (14.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (15.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (16.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (17.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (18.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (19.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (20.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (21.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (22.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (23.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (24.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (25.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (26.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (27.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (28.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (29.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (30.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (31.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (32.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (33.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (34.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (35.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (36.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (37.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (38.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (39.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (40.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (41.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (42.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (43.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (44.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (45.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (46.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (47.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (48.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (49.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (50.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (51.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (52.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (53.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (54.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (55.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (56.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (57.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (58.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (59.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (60.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (61.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (62.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (63.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (64.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (65.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (66.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (67.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (68.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (69.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (70.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (71.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (72.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (73.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (74.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (75.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (76.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (77.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (78.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (79.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (80.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (81.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (82.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (83.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (84.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (85.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (86.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (87.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (88.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (89.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (90.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (91.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (92.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (93.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (94.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (95.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (96.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (97.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (98.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (99.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (100.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (101.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (102.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (103.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (104.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (105.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (106.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (107.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (108.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (109.87335pt too high) detected at line 2471
+ []
+
+
+Overfull \vbox (110.87335pt too high) detected at line 2471
+ []
+
+
+Package mdframed Warning: correct box splittet fails
+ It seems you are using a non splittable contents
+(mdframed)                 on input line 2471.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 2471.
+[37]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2512.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2518.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2522.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2523.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2552.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2555.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2575.
  [38]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2572.
+(mdframed)              on input line 2592.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2577.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2585.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2630.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2644.
+(mdframed)              on input line 2597.
  [39]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2655.
+(mdframed)              on input line 2605.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2656.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2666.
+(mdframed)              on input line 2650.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2668.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2708.
+(mdframed)              on input line 2664.
  [40]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2719.
+(mdframed)              on input line 2675.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2676.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2686.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2688.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2728.
  [41]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2741.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2747.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2796.
+(mdframed)              on input line 2739.
  [42]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2805.
+(mdframed)              on input line 2761.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2814.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2820.
+(mdframed)              on input line 2767.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2823.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2832.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2844.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2849.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2850.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2855.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2858.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2876.
+(mdframed)              on input line 2816.
  [43]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2884.
+(mdframed)              on input line 2825.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2900.
+(mdframed)              on input line 2834.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2840.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2904.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
-(mdframed)              on input line 2922.
+(mdframed)              on input line 2843.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2852.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2864.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2869.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2870.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2875.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2878.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2896.
  [44]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2934.
+(mdframed)              on input line 2904.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2940.
+(mdframed)              on input line 2920.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2961.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2964.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 2967.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 2983.
+(mdframed)              on input line 2924.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 2942.
  [45]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 3001.
+(mdframed)              on input line 2954.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 3005.
+(mdframed)              on input line 2960.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 3006.
+(mdframed)              on input line 2981.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 3022.
+ mdframed uses option nobreak mdframed on input line 2984.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2987.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3003.
+ [46]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3021.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 3025.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3026.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 3051.
+ mdframed uses option nobreak mdframed on input line 3042.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 3062.
- [46]
-Package mdframed Info: Not enough space on this page on input line 3062.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 3096.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 3104.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 3105.
+(mdframed)              on input line 3045.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 3107.
+ mdframed uses option nobreak mdframed on input line 3071.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 3110.
-Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 3121.
+(mdframed)              on input line 3082.
  [47]
+Package mdframed Info: Not enough space on this page on input line 3082.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3116.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3124.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3125.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3127.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 3130.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 3147.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 3152.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 3153.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 3159.
+ mdframed uses option nobreak mdframed on input line 3141.
+ [48]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 3162.
+(mdframed)              on input line 3150.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3167.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3172.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3173.
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 3170.
+ mdframed uses option nobreak mdframed on input line 3179.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 3182.
-<aiuse.png, id=541, 730.73pt x 235.88126pt>
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 3190.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3202.
+<aiuse.png, id=549, 730.73pt x 235.88126pt>
 File: aiuse.png Graphic file (type png)
 <use aiuse.png>
-Package pdftex.def Info: aiuse.png  used on input line 3191.
+Package pdftex.def Info: aiuse.png  used on input line 3211.
 (pdftex.def)             Requested size: 453.04791pt x 146.24486pt.
 
-Overfull \hbox (34.79236pt too wide) in paragraph at lines 3185--3192
+Overfull \hbox (34.79236pt too wide) in paragraph at lines 3205--3212
 [] 
  []
 
-[48] [49 <./aiuse.png>]
-Underfull \hbox (badness 1371) in paragraph at lines 3277--3281
+[49] [50 <./aiuse.png>]
+Underfull \hbox (badness 1371) in paragraph at lines 3297--3301
 []\OT1/cmr/m/n/10.95 (+20) Wolfgang Kre-it-meier.  Asymp-totic op-ti-mal-ity of scalar Ger-sho quan-tiz-ers.
  []
 
-[50]
+[51]
 pdfTeX warning (ext4): destination with the same identifier (name{cite.p6-goodman}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.3397 \bibitem{p6-goodman}
-                            [51
+l.3417 \bibitem{p6-goodman}
+                            [52
 pdfTeX warning (ext4): destination with the same identifier (name{cite.p7-chapman-gotti-gotti}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.3408 \end{document}
+l.3428 \end{document}
                      ] (./document.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -2034,18 +2034,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 36450 strings out of 467525
- 716323 string characters out of 5418982
- 1644238 words of memory out of 5000000
- 64252 multiletter control sequences out of 15000+600000
+ 36467 strings out of 467525
+ 716652 string characters out of 5418982
+ 1644502 words of memory out of 5000000
+ 64264 multiletter control sequences out of 15000+600000
  657096 words of font info for 245 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  145i,21n,143p,11307b,2384s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on document.pdf (51 pages, 668452 bytes).
+Output written on document.pdf (52 pages, 673474 bytes).
 PDF statistics:
- 876 PDF objects out of 1000 (max. 8388607)
- 743 compressed objects within 8 object streams
- 309 named destinations out of 1000 (max. 500000)
+ 885 PDF objects out of 1000 (max. 8388607)
+ 751 compressed objects within 8 object streams
+ 314 named destinations out of 1000 (max. 500000)
  54602 words of extra memory for PDF output out of 61914 (max. 10000000)
 

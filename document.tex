@@ -1010,7 +1010,7 @@ the cases $n=1$ and $n=2$.
     \]
 	\end{claim}
 	\begin{proof}
-	First, we try to generalize the error made by a singule tangent. To do this is relatively
+	First, we try to generalize the error made by a single tangent. To do this is relatively
 	simple. For $f(x)=x^2$, we find the equation of the tangent line at $x=a$ to be
     \[
     L_a(x)=a^2+2a(x-a)=2ax-a^2,
@@ -1792,7 +1792,12 @@ two edges.
 	\qquad
 	j-\ell=b.
 	\]
-	
+	Now we create some nifty definitions. We want to set some variables, $r,s,u$ to 
+    be the least number of moves in each direction $1,/omega, /omega^2$. 
+    Now we can also set $N$ to be the sum of those as the least numebr of total moves. 
+    So we now try and relate $r,s,u$ to our already defined $a,b$ giving us a least number of
+    moves for any $/alpha$. Doing some experimenting with small alues of $/alpha$ and manually figuring 
+    out the least number of moves we come up with the following definitions. 
 	Define
 	\[
 	h=\max\{0,-a,-b\},
@@ -1803,7 +1808,8 @@ two edges.
 	\[
 	N=r+s+u.
 	\]
-	These are fixed nonnegative integers depending only on $\alpha$. These are extremely important since $N$ is the length of a walk to $\alpha$, $h$ is the least possible value of $\ell$ using our fact thall all of $a,i,\ell,j,b$ must be non-negative.
+	These are fixed nonnegative integers depending only on $\alpha$. 
+    These are pretty important for the rest of the problem.
 	With all of this setup our big counting argument just falls into place.
 	\begin{claim*}
 		The lengths for a possible walk is $N+3k$, where $k\ge0$, and
@@ -1816,7 +1822,7 @@ two edges.
 		\]
 		For every other nonnegative length, the coefficient is zero.
 	\end{claim*}
-	
+	\newpage
 	\begin{proof}
 		By our definitions we have that $i=a+\ell$ and $j=b+\ell$. All three
 		step counts are nonnegative exactly when $\ell\ge h$, therefore that must be the case. Using this we can write that
@@ -1830,8 +1836,7 @@ two edges.
 		To count this, for a fixed $k$ it is equivalent to cou nting the different orderings of a multiset containing $k+r$, $k+s$, and $k+u$ copies of each of the steps. Using the formula as given in Stanley \cite[Section~1.2]{stanley-ec1} we obtain our answer.
 			\end{proof}
 	
-Therefore we can create the series of 
-	\[
+Now we can just set up	\[
 	G_\alpha(t)
 	=\sum_{k=0}^{\infty}
 	\frac{(3k+N)!}{(k+r)!(k+s)!(k+u)!}\,t^{3k+N}.
@@ -1848,9 +1853,16 @@ Therefore we can create the series of
 	{3^{3k+N}(k+r)!(k+s)!(k+u)!}.
 	\tag{3}
 	\]
-	This value of $b_k$ is the probalityh that a random walk lands at  $\alpha$ after $3k+N$ steps.
-	The general local-limit viewpoint predicts the order $k^{-1}$.To get a summable error we use Robbins's refinement of
-	Stirling's formula \cite[equations~(1)--(2)]{robbins-stirling}:
+	This value of $b_k$ is the probality that a random walk lands at  $\alpha$ after $3k+N$ steps.
+    \begin{claim}
+        $b_k=\frac{\sqrt3}{2\pi k}+O_\alpha(k^{-2}).$
+    \end{claim}
+    \begin{proof}
+ 
+    Now we look for ways to estimate the values of the factorials
+	to the order $k^{-1}$.
+    After some work, we find Robbins
+	Stirling's formula \cite[equations~(1)--(2)]{robbins-stirling} : 
 	\[
 	m!=\sqrt{2\pi m}\left(\frac{m}{e}\right)^m e^{\rho_m},
 	\qquad
@@ -1858,8 +1870,8 @@ Therefore we can create the series of
 	\quad(m\ge1).
 	\tag{4}
 	\]
-	Where in particular, $\rho_m=O(m^{-1})$.
-	Now we quickly analyze the case of $\alpha = 0$ and where we take $k$ steps in each direction. This was originally meant to be just for insight into the problem but we can prove that our answer in this turns out not to be so different for this against a general alpha. We have that, applying (4) to
+	Where in particular, $\rho_m=O(m^{-1})$. Now we turn back to some of the analysis I did at the 
+    beginning of the problem. We detail the case when $\alpha = 0$ and where we take $k$ steps in each direction. This was originally meant to be just for insight into the problem but we can prove that our answer in this turns out not to be so different for this against a general alpha. We have that, applying (4) to
 	$(3k)!$ and $k!$ gives
 	\begin{align*}
 		\frac{(3k)!}{3^{3k}(k!)^3}
@@ -1874,11 +1886,10 @@ Therefore we can create the series of
 		&=\frac{\sqrt3}{2\pi k}+O(k^{-2}).
 		\tag{5}
 	\end{align*}
-	The last equality follows because
+	The last equation follows because
 	$\rho_{3k}-3\rho_k=O(k^{-1})$ and therefore
 	$e^{\rho_{3k}-3\rho_k}=1+O(k^{-1})$.
 	
-	Now using this we can figure out the effect of a fixed endpoint
 	\begin{align*}
 		\frac{b_k}{(3k)!/(3^{3k}(k!)^3)}
 		&=
@@ -1896,7 +1907,7 @@ Therefore we can create the series of
 		}.
 		\tag{6}
 	\end{align*}
-	Empty products are interpreted as $1$. Since $r+s+u=N$, all powers
+	In the above all of the empty products are just $1$. By our defn $r+s+u=N$, all powers
 	of $k$ and $3$ have canceled. Each remaining product has a fixed number
 	of factors, so the right side of (6) is
 	\[
@@ -1909,11 +1920,26 @@ Therefore we can create the series of
 	}
 	\tag{7}
 	\]
-	
+	       
+    \end{proof}
+
 	Formula (7) will be quite important for the next steps.
+
+
+
+
+
+
 	\subsubsection*{\vocab{Expansion}}
 	
-	After trying the math without any substituions and having a hard time, we decide to substitute. 
+    \begin{claim}
+       $ G_\alpha(t)
+		=-\frac{\sqrt3}{2\pi}\log(1-3t)+O_\alpha(1)
+		\qquad\text{as }t\to(1/3)^-$.
+    \end{claim}
+    \begin{proof}
+        
+	Substituting for cleanliness, we set. 
 	\[
 	x=3t,
 	\qquad
@@ -1989,21 +2015,15 @@ Taking $y=x^3$ in (10) yields
 	}
 	\tag{14}
 	\]
-	
+	\end{proof}
 	For the radius of convergence, note that $c_{3k+N}(\alpha;S_+)=3^{3k+N}b_k$
 with $b_k\sim\sqrt3/(2\pi k)$ by (7), and every other coefficient is zero.
 Hence $\limsup_{n\to\infty}c_n(\alpha;S_+)^{1/n}=3$, and by the
-Cauchy--Hadamard formula (the radius of convergence is the reciprocal of
-the exponential growth rate of the coefficients; see
+Cauchy--Hadamard formula, see
 \cite[Section~IV.3.2, equation~(17) and Note~IV.14]{flajolet-sedgewick}),
 \[
 \boxed{R_\alpha=\frac13}.
 \]
-	
-	The proof also identifies the source of the endpoint independence:
-	the endpoint affects only the fixed factorial shifts in (6), whereas
-	the logarithmic coefficient is determined by the balanced local-limit
-	term in (5).
 	
 \end{soln}
 
