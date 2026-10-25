@@ -54,10 +54,11 @@
     \boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
     \]
 	This is equivalent to saying that iff the determinant above is zero, then they
-	lie in a common affine plane. We prove this.
+	lie in a common affine plane. We prove this instead.
+
  
     \begin{claim*}
-        The lines $\mathcal L_1$ and $\mathcal L_2$ lie in a common affine
+        The two lines, which are named $\mathcal L_1$ and $\mathcal L_2$ lie in a common affine
         plane if and only if
         \[
         \det(v_2-v_1,d_1,d_2)=0.
@@ -65,22 +66,23 @@
     \end{claim*}
 
     \begin{proof}
-		From Jia's coplanarity criterion we can set $m_i=v_i\times d_i$.
+        This has been previously proven, albeit writing the vectors in a different form.
+        We use the form from Jia's coplanarity work, in which we can set $m_i=v_i\times d_i$.
         This leads $(d_i,m_i)$ to be the direction--moment coordinates of
         $\mathcal L_i$. From here, we can cite \cite[Section~1 and Corollary~2]{jia-plucker}
 		to obtain that the lines are coplanar when
         \[
         d_1\cdot m_2+d_2\cdot m_1=0
         \].
-		Using the commonly known
-		scalar triple-product identity, we obtain
+		To see that this is equivalent to the claim, we use the commonly known
+		scalar triple-product identity, and get
         \begin{align*}
             d_1\cdot m_2+d_2\cdot m_1
             &=d_1\cdot(v_2\times d_2)+d_2\cdot(v_1\times d_1)\\
             &=(v_1-v_2)\cdot(d_1\times d_2)\\
             &=-\det(v_2-v_1,d_1,d_2).
         \end{align*}
-		So the criteria in Jia's paper is equivalent to our condition. 
+        So the proof in Jia's paper is equivalent to our claim.
     \end{proof}
 
     \subsubsection*{\vocab{Common Perpendicular}}
@@ -178,22 +180,31 @@
     \end{claim*}
 
     \begin{proof}
-        Since $\vec d\neq\vec 0$ and
+        We know that, since  $\vec d\neq\vec 0$ and
         $\vec d\cdot(\vec u\times\vec d)=0$, the pair
         $(\vec d,\vec u\times\vec d)$ belongs to $\mathcal P$.
+Now call some $\vec m=\vec u\times\vec d$.
+Any other base point on $\mathcal L$ has the form
+$\vec u'=\vec u+s\vec d$ for some $s\in\RR$. Therefore
+\[
+\vec u'\times\vec d
+=(\vec u+s\vec d)\times\vec d
+=\vec u\times\vec d+s(\vec d\times\vec d)
+=\vec m.
+\]
+So we have proven that if we change the base point, the moment doesn't change. 
 
-        Jia proves that the moment $\vec m=\vec u\times\vec d$
-        is unchanged when $\vec u$ is replaced by another point
-        on the line \cite[Section~1, p.~1]{jia-plucker}.
-        Jia also establishes that scaling $\vec d$ by a nonzero
-        scalar scales $\vec m$ by the same scalar
-        \cite[Section~1, p.~2]{jia-plucker}.
-        Every other nonzero direction vector for $\mathcal L$ is
-        $\lambda\vec d$ for some $\lambda\neq0$.
-        Thus changing the direction replaces the pair by
-        $(\lambda\vec d,\lambda\vec m)$, which is equivalent to
-        $(\vec d,\vec m)$ under the relation in the problem.
-        So combining these results we obtain that the class is well-defined.
+Every other nonzero direction vector for $\mathcal L$ is
+$\vec d'=\lambda\vec d$ for some $\lambda\neq0$, and
+\[
+\vec u\times\vec d'
+=\vec u\times(\lambda\vec d)
+=\lambda(\vec u\times\vec d)
+=\lambda\vec m.
+\]
+Therefore, scaling the direction as above will result in
+$(\lambda\vec d,\lambda\vec m)$, which is equivalent to
+$(\vec d,\vec m)$ so the class is well-defined.
     \end{proof}
 
     \subsubsection*{\vocab{Conversely}}
@@ -240,7 +251,7 @@
         \end{subproof}
 
         \begin{subproof}[Unique?]
-            Jia's point-on-line criterion
+            Jia's criteria when a point is on a line  
             \cite[Section~1, p.~2]{jia-plucker} states that a line
             with coordinates $(\vec d,\vec m)$ consists exactly
             of the points satisfying
@@ -1327,7 +1338,8 @@ This density fits all criteria.
         =\frac{1}{8(2p+1)^{1/p}}
         \left(\int_0^1(f''(x))^{p/(2p+1)}\,dx\right)^{(2p+1)/p}.
     }
-    This gives us that $\alpha=2$, agreeing with part~(b).
+    This gives us that $\alpha=2$, which is what we predict 
+    based on upper bound and the limited work in part~(b).
 
     As a check, when $f(x)=x^2$ we have $f''=2$, so $\rho_*=1$ and
     \[
@@ -1973,10 +1985,10 @@ Now we can just set up	\[
 	By the Maclaurin series of the logarithm \cite[(4.6.1)]{dlmf}
 (with $z=-y$), $\sum_{k=1}^{\infty}y^k/k=-\log(1-y)$ for $0\le y<1$.
 Taking $y=x^3$ in (10) yields
-\begin{align*}
-    G_\alpha(x/3) = -K·x^N·log(1-x³) + O_\alpha(1) 
-    \tag{11}
-\end{align*}
+\[
+G_\alpha(x/3)=-Kx^N\log(1-x^3)+O_\alpha(1).
+\tag{11}
+\]
 	
 	To put this in the form requested in the problem, factor
 	\[
@@ -2092,12 +2104,11 @@ Now our avoidance condition is just that throughout our walk this residue class 
 	\end{cases}
 	\qquad 1\le k\le2n-1.
 	\]
+    
 
-	All other intermediate steps are negative, and the final step must also
-	be negative to take residue $1$ back to $0$. Consequently, there are
-	exactly $n$ positive and $n$ negative positions. This description also
-	includes $n=1$, when the second set of positions is empty.
-	All other steps in the intermediate must be negative and the final step must also be negative. This is almost giving us a exact way to count for the number of paths, however we still have considered one condition. We must still impose
+	The above forces that every even intermediate steps (all but the first and last), like the 2nd, 4th, 6th steps are positive. 
+    The rest of the intermediate steps must be negative. Combining this with the first step being positive and last being negative we see 
+    there must be a equal amount of both negative and positive steps. This is almost giving us a exact way to count for the number of paths, however we still have considered one condition. We must still impose
 	the stronger condition that the final point is the origin
 	not merely some point of $\lambda\mathbb Z[\omega]$.
 	
@@ -2186,6 +2197,15 @@ Richmond and Shallit's asymptotic formula
 \cite[Theorem~4]{richmond-shallit}, specialized to three letters, gives
 \[
 a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
+\]
+Since $p_{2n}=2a(n)$, we have
+\[
+p_{2n}
+=\frac{3^{3/2}}{2\pi n}\,9^n(1+o(1)).
+\]
+Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
+\[
+\boxed{\lim_{n\to\infty}(p_{2n})^{1/(2n)}=3.}
 \]
 \end{soln}
 \section{Problem 6}
@@ -2475,9 +2495,8 @@ a(n)\sim\frac{3^{2n+3/2}}{4\pi n}.
 \begin{soln}
     A monomial has two pieces of data: a coefficient and an exponent.
     We first separate the corresponding operations, and then use the
-    semidirect-product criterion to describe how they combine.
-    Products of maps below mean composition, with the rightmost map
-    applied first.
+    semidirect-product to describe how they combine.
+    We also say below that two products of a map mean we are composing them.
 
 	There are two separate things we have to consider for any monomial. 
 	One is the coefficient it has and the second is it exponent. Now 
@@ -2940,11 +2959,10 @@ Put in a table we can see clearly and compare
     \subsubsection*{\vocab{Tricky Prime Sums}}
 
 	The other case requires much more thought. This is when one of $a,b$ 
-	is $1$. The main reason we cannot use the theorem given in the problem,
-	known as Vinogradov's theorem is due to the fact that we don't know what 
-	primes divide $d$. Luckily, we can calculate a "density" of primes to be $1$
+	is $1$. The main reason we cannot use the Ternary Goldbach theorem given in the problem is due to the fact that we don't know what 
+	primes divide $d$. However, we can calculate a "density" of primes to be $1$
 	and use a previously proven theorem to finish. 
-	First we prove the following claim
+	We prove the following claim
 
     \begin{claim*}
         For every $d\in\mathbb N$, there is an integer $L\ge2$
@@ -3002,6 +3020,13 @@ Put in a table we can see clearly and compare
 		handles both parities and proves
         the claim.
     \end{proof}
+    \begin{remark}
+        I later realized that there was a slightly more simple proof to the above
+        claim using the 
+        second theorem given in the problem, which was about Finite-avoidance corollary of the almost-equal-summands. Nonetheless, I liked this proof more so I decided
+        to keep it in this solutions draft.
+
+    \end{remark}
 
     \subsubsection*{\vocab{Using the claim for fractions}}
 
@@ -3066,7 +3091,7 @@ in the previous part.
             a sum of at most four irreducibles of $S_d$.
         \end{subproof}
 
-        We have now proved the goldbach property. 
+        We have now proved the Goldbach property. 
     \end{proof}
 
     Once again this covers all cases, completing the problem. 
