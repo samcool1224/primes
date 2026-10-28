@@ -2758,19 +2758,20 @@ Put in a table we can see clearly and compare
 \subsection{(a)}
 
 \begin{soln}
-	As always, define $a$ as $a/b$ where each of them are such that $gcd(a,b)=1$
+	As always, define $q$ as $a/b$ where each of them are such that $gcd(a,b)=1$
 	and $a,b \in \mathbb{N}$. We also define the $S$ as $\mathbb{N_0[q]}$.
-	Every positive $q \in \mathbb Q$ will work, we split this into two cases.
-	A easier one and a harder one. We also make use of a couple previous theorems.
-
+	Every positive $q \in \mathbb Q$ will work, we split this into two cases, which turns out that 
+    one is easier then another.
     \subsubsection*{\vocab{Integers and Inverse Integers}}
 	Let's say that one of $a,b$ are $1$. 
 	We can set $S$ as    \[
     S=\mathbb N_0[1/b]
     =\left\{\frac{m}{b^k}:m,k\in\mathbb N_0\right\},
     \]
-	regardless of the case. This is good because if $b=1$ we obtain taht $S=\mathbb{N_0}$
-	which is right and if $a=1$ we have the $q=1/b$ as in the notation.
+	regardless of the case. This notation to represent $N_0[1/b]$ 
+    is convient because if  $b=1$ we obtain taht $S=\mathbb{N}_0$, which 
+    is as expected. Furthermore,  if $a=1$ in the above 
+    notation we have the $q=1/b$ as expected. 
 	We essentially finish this case with the following claim
     \begin{claim*}
         We see that the primes
@@ -2779,8 +2780,7 @@ Put in a table we can see clearly and compare
     \end{claim*}
 
     \begin{proof}
-        Using simple prime factorization rules as in 
-        \cite[Proposition~1.6.4 and Theorem~1.6.18]{p6-goodman}
+        Using simple prime factorization rules as 
         gives, for $m\ge1$,
         \[
         \frac{m}{b^k}\in S^\times
@@ -2788,7 +2788,8 @@ Put in a table we can see clearly and compare
         m\mid b^L\text{ for some }L\in\mathbb N_0.
         \]
 		Where $S^\times$ is the set of units of $S$. 
-		Both ways are easy to see, a reciprocal in $S$ means the $m$ divides
+		Both ways are easy to set. First, if any element 
+        in $S$ has a reciprocal in $S$ it means that $m$ divides
 		a power of $b$ and if $m \mid b^L$ then
         \[
         \left(\frac{m}{b^k}\right)^{-1}
@@ -2810,7 +2811,7 @@ Put in a table we can see clearly and compare
     \end{proof}
 	There are infinite primes, seen in 
     Euclid's theorem \cite[Theorem~1.6.6]{p6-goodman},
-	 and only finitely many divide $b$ completing this case.
+	 and only finitely many divide $b$, since $b$ is finite,  completing this case.
 
     \subsubsection*{\vocab{The other case}}
 
@@ -2826,7 +2827,15 @@ Put in a table we can see clearly and compare
 	sum of two nonzero elements in $S$. 
 	So we can use this to create a polynomial in form of $P(q)$ 
 	which is a factorization, using addition, into these atoms. 
-	Now begin the heart of the problem, proving statements about $1+q^n$. 
+	Now begin the main part of the problem, proving statements about $1+q^n$. 
+    \begin{remark}
+The choice of $1+q^n$ might seem arbitrary to look for 
+irreducibles. However, we note that the
+powers $q^n$ factor as $q\cdot q^{n-1}$ for $n\ge2$. So we take a look 
+at sums of two additive atoms. Elements of form $1+q^n$ make decent sense. 
+Another source of inspiration was (sort of) resembles Euclid 
+proof for infinite primes, which requires adding $1$ to the multiplication of primes. 
+    \end{remark}
     \begin{claim*}
         For $P\in\mathbb N_0[x]$ and $n\ge1$,
         \[
@@ -2837,34 +2846,45 @@ Put in a table we can see clearly and compare
     \end{claim*}
 
     \begin{proof}
-		$1$ is a additive atom meaning $P(x)=x^j$ if $P(q)=1$ for some nonnegative
-		integer $j$. We prove that $j=0$ since $q^j=1$ and $q \ne 1$. 
+		The first part is simple, since $1$ is a additive atom that means $P(x)=x^j$ if $P(q)=1$ for some nonnegative
+		integer $j$. We know that $j=0$ since $q^j=1$ and $q \ne 1$. 
 
 		The second implication is much more intricate. 
-        $1+q^n$ has two terms, so we say it has length $2$,
-		 and all its coefficients are
-        strictly less than both $a$ and $b$.
+        $1+q^n$ has two terms, so we say it has a length of  $2$. Also note that both of 
+        its coefficients are less then $a$ and $b$. We look at two cases.
 
-        \begin{subproof}
-			When $q > 1$ use the
-            Lemma~3.2(1) to (4) of
-            \cite{p7-chapman-gotti-gotti} makes this expansion
-            both shortest and longest, with the shortest expansion
-            unique.
-            Hence it is the only additive factorization.
-        \end{subproof}
+      \begin{subproof}
+    First, assume that $q>1$. In the expansion $1+q^n$, every coefficient
+    is either $0$ or $1$, so every coefficient is strictly less
+    than both $a$ and $b$.
 
-        \begin{subproof}
-			When $q>0$ and $q<1$ we can use
-            Lemma~3.1(1) to (3) of
-            \cite{p7-chapman-gotti-gotti} makes this the unique
-            shortest expansion and bounds all factorization lengths.
-            Any other expansion would be longer, so part~(1)
-            would force one of its positive-degree coefficients
-            to be at least $b>a$.
-            Part~(3), applied to that expansion, would then make
-            the lengths unbounded, a contradiction.
-        \end{subproof}
+    Now we look at some previous work, by  Lemma~3.2(1) of \cite{p7-chapman-gotti-gotti},
+    the coefficients being less than $a$ means that this
+    expansion has minimum length. By part~(3), the
+    positive-degree coefficients being less than $b$ means
+    that it also has maximum length.
+        This means that every factorization of this would have a length of $2$. This is also the shortest
+        length factorization which is unique by Part~(2) states that the minimum-length
+    factorization is unique, so $1+q^n$ is the only expansion.
+\end{subproof}
+
+\begin{subproof}
+    Now requiring some more work, say that $0<q<1$. Every positive-degree coefficient of
+    $1+q^n$ is less than $b$, so Lemma~3.1(1)--(2) of
+    \cite{p7-chapman-gotti-gotti} proves this is the least length expansion. 
+    We also see that its coefficents are less then $a$ so via 
+    part~(3), this means that the lengths of its additive
+    factorizations are bounded.
+
+    Now suppose, for contradiction,  another expansion existed. Since the
+    least-length expansion is unique, this other expansion
+    would be longer. By part~(1), it must therefore have
+    some positive-degree coefficient at least $b$.
+    Since $b>a$, that coefficient is also at least $a$.
+    Applying part~(3) to this expansion would imply
+    unbounded factorization lengths, a contradiction.
+    Hence $1+q^n$ is again the only expansion.
+\end{subproof}
 
         So we have the coefficents of $P$ are the same
 		as of $1+x^n$, proving the claim.
@@ -2904,8 +2924,9 @@ Put in a table we can see clearly and compare
             \qquad
             U(1)V(1)=2.
             \]
-            Thus $U(0)=V(0)=1$, and one of $U(1),V(1)$ equals $1$.
-			Since  $U(0)=V(0)=1$ and know that one of $U(1),V(1)$ equals $1$.
+            Thus $U(0)=V(0)=1$, and one of $U(1),V(1)$ equals $1$. 
+            Since we know the coefficients are nonnegative, combining these two give that
+            one of these must be $1$. 
 			Meaning $1+q^n>1$ is irreducible.
 
         \end{subproof}
