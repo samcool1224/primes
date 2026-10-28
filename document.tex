@@ -1357,11 +1357,11 @@ This density fits all criteria.
 	The orbit sum principle helps orbits into linear scores. 
     Parts of this proof were inspired from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
 
-    As mentioned in the problem let us fix $i\in[n]$, and let
+    W fix $i\in[n]$, and let
     \[
     H_i=\{\pi\in S_n:\pi(i)=i\}
     \]
-    be the subgroup of permutations fixing $i$.
+    be some subset of permutations which fix $i$.
 
     \begin{claim*}
 	
@@ -2234,8 +2234,9 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
     \end{claim*}
 
     \begin{proof}
-		The proof of this isn't too complex, and is also done in a $2017$ paper 
-		(where I originally found it). We know that $M$ is an additive submonoid of $\mathbb Q_{\ge0}$,
+		The claim 
+        has already been proven via past work.
+         We know that $M$ is an additive submonoid of $\mathbb Q_{\ge0}$,
 		which is identical to Gotti's characterization of homomorphisms between Puiseux
         monoids \cite[Proposition~3.2(1)]{p6-gotti}. The proof in the paper provides that
         $\varphi(x)=cx$, where $c=\varphi(1)>0$ for an automorphism. The converse direction
@@ -2949,21 +2950,14 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 	$=1$. Therefore, our first goal was to show why $a,b > 1$ doesn't work.
 	Then we prove the rest. Turns out, this first case is quite a bit easier. 
     \subsubsection*{\vocab{First Case}}
-	Although some might intially think that having infinitely many irreducibles
-	would result in all elements being able to express by sums of them, this part 
-	shows that it isn't necessarily the case. 
+
     \begin{claim*}
         If $a,b>1$, then $S$ does not have the Goldbach property.
     \end{claim*}
 
     \begin{proof}
-        Part~(a) gives $S^\times=\{1\}$. We use additive atoms here, noting every 
-		$q^n$ is one from  \cite[Theorem~2.3(3)]{p7-chapman-gotti-gotti}.
-        We take one example factorization of $q^n$ as 
-        \[
-        q^n=q\cdot q^{n-1}
-        \]
-		This has two not unit factors, so $q^n$ is not irreducible. 
+        Part~(a) gives $S^\times=\{1\}$. We use additive atoms here, defining $q^n$ as in  \cite[Theorem~2.3(3)]{p7-chapman-gotti-gotti}.
+        As mentioned before, $q^n$ is not irreducible. 
 
         Also $q^n$ is an additive atom, it cannot be a sum of
         two or more nonzero elements of $S$. It can't be a sum of just 
@@ -3243,7 +3237,7 @@ in the previous part.
         \qquad k\ge2.
     }
 \end{soln}
-\begin{remark}[Why is there a range?]
+\begin{remark}[Which values actually occur?]
     Although every value must be in one of them in the list, it isn't proven that each of them 
     actually occurs.
     For the integers, ternary Goldbach handles all sufficiently
