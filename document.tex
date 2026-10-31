@@ -65,31 +65,35 @@
         \]
     \end{claim*}
 
-    \begin{proof}
-        This has been previously proven, albeit writing the vectors in a different form.
-        We use the form from Jia's coplanarity work, in which we can set $m_i=v_i\times d_i$.
-        This leads $(d_i,m_i)$ to be the direction--moment coordinates of
-        $\mathcal L_i$. From here, we can cite \cite[Section~1 and Corollary~2]{jia-plucker}
-		to obtain that the lines are coplanar when
-        \[
-        d_1\cdot m_2+d_2\cdot m_1=0
-        \].
-		To see that this is equivalent to the claim, we use the commonly known
-		scalar triple-product identity, and get
-        \begin{align*}
-            d_1\cdot m_2+d_2\cdot m_1
-            &=d_1\cdot(v_2\times d_2)+d_2\cdot(v_1\times d_1)\\
-            &=(v_1-v_2)\cdot(d_1\times d_2)\\
-            &=-\det(v_2-v_1,d_1,d_2).
-        \end{align*}
-        So the proof in Jia's paper is equivalent to our claim.
-    \end{proof}
+\begin{proof}
+    We first prove the direction where if they line on a plane, then the 
+    determinant condition is true. We can assume the two lines lie on a affine plane
+     $p+W$,
+    where $W$ is a two-dimensional vector subspace of $\mathbb R^3$.
+    We have that  $v_1,v_2$ lie in this plane, $v_2-v_1\in W$.
+    Also, $v_i$ and $v_i+d_i$ lie on $\mathcal L_i$, so
+    $d_1,d_2\in W$. This means that all three of the vectors
+    $v_2-v_1,d_1,d_2$ lie in a two-dimensional space and are
+    linearly dependent, which gives us
+    $\det(v_2-v_1,d_1,d_2)=0$.
+
+    Going onto the other direction, suppose this determinant is zero. Then these
+    three vectors are linearly dependent, so the span
+    is as most of dimension $2$. We can take 
+    some two dimensional subspace, call it $W$, which has that span, extending if needed.
+
+    The affine plane $v_1+W$ contains $\mathcal L_1$, since
+    $d_1\in W$. It also contains $\mathcal L_2$, because
+    \[
+    v_2+td_2=v_1+(v_2-v_1)+td_2\in v_1+W
+    \qquad(t\in\mathbb R).
+    \]
+Hence both lie in a common affine plane.
+\end{proof}
 
     \subsubsection*{\vocab{Common Perpendicular}}
-	Now we could convert to the direction--moment coordinates again, 
-	and take the proof directly from Jia's paper. However, just for the fun of it
-	we don't do that.
-	Instead we construct the perpendicular directly!
+
+	We will be constructing this perpendicular directly.
     The idea is to express the displacement $v_2-v_1$ using the two
     line directions and a direction perpendicular to both.
 
@@ -105,9 +109,9 @@
             n=d_1\times d_2.
             \]
 			Since our determinant is nonzero, this means that $d_1$ and $d_2$ are
-			linearly independant so $n$ does exist and it isn't $0$.
+			linearly independent so $n$ does exist and it isn't $0$.
 
-			The 3 vectors form a basis of the entire $\mathbb R^3$
+			The 3 vectors form a basis of the entire $\mathbb R^3$.
             Therefore there are unique real numbers $f,g,c$ such that
             \[
             v_2-v_1=-gd_2+fd_1+cn.
@@ -157,10 +161,10 @@
 \subsection{(b)}
 
 \begin{soln}
-	We have already introduced the notion of direction--moment in the previous
-	part. We once again can use \cite{jia-plucker} throughout this problem.
-    We first show that a line determines a well-defined equivalence
-    class, then recover a unique affine line from each class.
+	We now introduce direction--moment coordinates, as in 
+    the problem statement. We first show that a line determines a
+well-defined equivalence class, then recover a unique affine
+line from each class.
 
     \subsubsection*{\vocab{Confirming the Classes}}
 
@@ -282,20 +286,46 @@ $(\vec d,\vec m)$ so the class is well-defined.
    We want to state the noncoplanarity condition using only Plucker coordinates. 
    We can then use a formula to find the common perpendicular, and finish by
    using the previous two parts.
-    \subsubsection*{\vocab{Coplanarity}}
-In part~(a), we already established that the two lines are
-noncoplanar if and only if
+\subsubsection*{\vocab{Coplanarity}}
+In part~(a), we proved that the two lines are coplanar if and
+only if $\det(v_2-v_1,\vec d_1,\vec d_2)=0$.
+We would want to make a similar condition for 
+ Pl\"ucker coordinates.
+
+We can take a base point $v_i$ on each line. By part~(b),
+$\vec m_i=v_i\times\vec d_i$. Define
+\[
+R:=\vec d_1\cdot\vec m_2+\vec d_2\cdot\vec m_1.
+\]
+Now just use scalar triple product identity to obtain
+\begin{align*}
+R
+&=\vec d_1\cdot(v_2\times\vec d_2)
+  +\vec d_2\cdot(v_1\times\vec d_1)\\
+&=-v_2\cdot(\vec d_1\times\vec d_2)
+  +v_1\cdot(\vec d_1\times\vec d_2)\\
+&=-\det(v_2-v_1,\vec d_1,\vec d_2).
+\end{align*}
+So, our definition for coplanarity in part~(a) gives
 \[
 \boxed{
-R:=\vec d_1\cdot\vec m_2+\vec d_2\cdot\vec m_1\neq0.
+\text{The lines are coplanar}\iff R=0,
+\qquad
+\text{and noncoplanar}\iff R\neq0.
 }
 \]
-This condition is independent of the values in the class, since if we scale a value by changing $(\vec d_i,\vec m_i)$ to
-$(\lambda_i\vec d_i,\lambda_i\vec m_i)$ multiplies $R$ by
-$\lambda_1\lambda_2\neq0$.
+
+This condition is independent of the chosen representatives, meaning that
+if we 
+replace $(\vec d_i,\vec m_i)$ by
+$(\lambda_i\vec d_i,\lambda_i\vec m_i)$, where
+$\lambda_i\neq0$, multiplies $R$ by
+$\lambda_1\lambda_2\neq0$, the fact of whether it is $0$ or not doesn't 
+change.
 
 It remains to identify the class representing the common
 perpendicular and prove that it is unique.
+
 
     \subsubsection*{\vocab{ Perpendicular}}
     We know the lines are skew and therefore that $R \neq 0$ as defined in the coplanarity
@@ -405,7 +435,7 @@ perpendicular and prove that it is unique.
 		\end{claim*}
 		
 		\begin{proof}
-			This almost immediately follows using our definition of $k$.
+			This almost immediately follows using our definition of $c_k$.
 			
 			Any configuration with exactly $k$ occupied sites has probability
 			\[
@@ -467,7 +497,7 @@ perpendicular and prove that it is unique.
 			The function $\theta_n(p)$ is a polynomial in $p$.
 		\end{claim*}
 		
-		\begin{subproof}
+		\begin{proof}
 			As detailed in the previous part, we know that for every fixed $k$ we have that
 			\[
 			p^k(1-p)^{N-k}
@@ -504,7 +534,7 @@ perpendicular and prove that it is unique.
 			}
 			\]
 			is itself a polynomial.
-		\end{subproof}
+		\end{proof}
 		
 		
 		\subsubsection*{\vocab{Finding $\frac{1}{2}$}}
@@ -563,13 +593,13 @@ perpendicular and prove that it is unique.
 		
 		\begin{soln}
 			
-			The goal of the simulation is straightforward. For a fixed $n$ and
-			$p$, we generate many random $n\times n$ grids. For each grid we check
-			whether there is an occupied path connecting the leftmost column to the
-			rightmost column. The proportion of successful grids should then
-			approximate the true probability $\theta_n(p)$.
-			Simulating the problem is pretty straightforward. We can create a $n$ by $n$ grid and use our given $p$ to generate a grid that has some number of occupied squares independently occupying each square with probability $p$. Then using the DFS concept introduced in the reading to find a path from left to right. Then the proportion of these grids that are successful is a good way to estimate our $\theta_n(p)$.
-			\subsubsection*{\vocab{Algo Sim Pseudocode}}
+			Simulating the problem is pretty straightforward. 
+            We can create a $n$ by $n$ grid and use our given $p$ to generate
+             a grid that has some number of occupied squares independently occupying each square
+              with probability $p$. Then using the DFS to find a path from left 
+              to right. Then the proportion of these grids that are successful is a good way to estimate
+               our $\theta_n(p)$.
+			\subsubsection*{\vocab{Algorithm Simulation Pseudocode}}
 			
 			For each generated grid, I search from every occupied site in the
 			leftmost column. There are many depth first implementations that I have learned about but a iterative one seemed like the best fit tor this project (rather than say a recursive one).
@@ -752,8 +782,8 @@ def try_to_find_theta(n, p, M):
 			2e^{-2M\varepsilon^2}.
 			\]
             \begin{remark}
-                            I was slightly curious where the problem set makers found this random looking bound. 
-            After some googling, we see it came from a consequence of Hoeffding's inequalily \cite[Theorem~1, equation~(2.3)]{hoeffding}.
+                            I was slightly curious where the problem set makers found this bound. 
+            After some researc, we see it came from a consequence of Hoeffding's inequality \cite[Theorem~1, equation~(2.3)]{hoeffding}.
         			Indeed, let $X_j$ be the indicator that the $j$th independently
 			generated grid has a left-to-right crossing. Then
 			$0\le X_j\le1$, $\mathbb E[X_j]=\theta_n(p)$, and
@@ -817,7 +847,7 @@ def try_to_find_theta(n, p, M):
 			\[
 			\boxed{M=738}
 			\]
-			simulations are enough
+			simulations are enough.
 			
 			In other words, with $738$ simulations then we have
 			\[
@@ -864,7 +894,8 @@ def try_to_find_theta(n, p, M):
 			\qquad\text{or}\qquad
 			B-D.
 			\]
-			must be occupied for a crossing to exist.
+			must be occupied for a crossing to exist. Conversely, it is clear 
+            such a path exists if one row is filled.
 			
 			\begin{claim*}
 				For $n=2$,
@@ -944,7 +975,7 @@ so that the results are reproducible.
 	\end{tabular}
 \end{center}
 
-In each of these tests, our simluated value is extremely close to the exact probability. One example of this is when $n=2$ and $p=0.70$, the exact value is
+In each of these tests, our simulated value is extremely close to the exact probability. One example of this is when $n=2$ and $p=0.70$, the exact value is
 \[
 \theta_2(0.70)
 =
@@ -2217,7 +2248,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 	, meaning $gcd(a,b)=1$ and 
 	are $\in \mathbb{N}$. We also write $M = M_{S_q}$ just to simplify the 
 	notation. Our generator is positive and since a positive number to a power
-	is always greater than $0$ we know that $M \subseteq \mathbb{Q_{\ge0}}$. We 
+	is always greater than $0$ we know that $M \subseteq \mathbb Q_{\ge 0}$. We 
 	also know that $q^0=1\in M$. Also, commonly defined is a 
 	puiseux monoid, which 
 	is an additive submonoid composed entirely of nonnegative rational numbers
