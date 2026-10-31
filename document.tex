@@ -2255,7 +2255,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 	notation. Our generator is positive and since a positive number to a power
 	is always greater than $0$ we know that $M \subseteq \mathbb Q_{\ge 0}$. We 
 	also know that $q^0=1\in M$. Also, commonly defined is a 
-	puiseux monoid, which 
+	Puiseux monoid, which 
 	is an additive submonoid composed entirely of nonnegative rational numbers
 
     \subsubsection*{\vocab{Looking at the scalings}}
@@ -2268,15 +2268,18 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         =\{\mu_c:c\in\mathbb Q_{>0},\ cM=M\}.
         \]
     \end{claim*}
-
     \begin{proof}
 		The claim 
         has already been proven via past work.
          We know that $M$ is an additive submonoid of $\mathbb Q_{\ge0}$,
-		which is identical to Gotti's characterization of homomorphisms between Puiseux
-        monoids \cite[Proposition~3.2(1)]{p6-gotti}. The proof in the paper provides that
-        $\varphi(x)=cx$, where $c=\varphi(1)>0$ for an automorphism. The converse direction
-		is also mentioned in the paper where if $c>0$ and $cM=M$, multiplication by $c$ is an
+		so $M$ is a Puiseux monoid and Gotti's characterization of homomorphisms between Puiseux
+        monoids \cite[Proposition~3.2(1)]{p6-gotti} applies. This gives that every homomorphism
+        between Puiseux monoids is multiplication by some $c\in\mathbb Q_{\ge0}$.
+        An automorphism $\varphi$ is a type of homomorphism, and also the additivity 
+        of homomorphisms gives $\varphi(0)=0$. Hence $\varphi(x)=cx$, and since
+        $1\in M$ the constant is $c=\varphi(1)$. As $\varphi$ is a bijection and $M\neq\{0\}$,
+        $c\neq0$, so $c>0$. Also, $\varphi=\mu_c$ is surjective, so $cM=M$.
+        Conversely, if $c>0$ and $cM=M$, multiplication by $c$ is an
         additive bijection of $M$, with inverse multiplication by $1/c$.
     \end{proof}
 
@@ -2294,10 +2297,16 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
     \end{claim*}
 
     \begin{proof}
-		This is also done in prior work. Using Gotti's Proposition~3.5 and its proof
-        \cite{p6-gotti} we can identify precisely these automorphisms
-        of $\langle q^k:k\in\mathbb Z\rangle$ in this case.
-        The isomorphism sends $k$ to $\mu_{q^k}$.
+		This is also done in prior work. Gotti's Proposition~3.5
+        \cite[Proposition~3.5]{p6-gotti} gives exactly the monoid
+        $\langle r^n:n\in\mathbb Z\rangle$, where $r\in\mathbb Q_{>0}$ has numerator and
+        denominator both greater than $1$. Taking $r=q$, we obtain the $M$. Since
+        $q^kS_q=S_q$, each $\mu_{q^k}$ is an automorphism with inverse $\mu_{q^{-k}}$.
+        Gotti shows that the atoms of $M$ are exactly the powers $q^n$, $n\in\mathbb Z$.
+        An automorphism must send atoms to atoms, so if $\mu_c\in\operatorname{Aut}(M)$
+        then $cq=q^j$ for some $j\in\mathbb Z$, that is, $c=q^{j-1}$.
+        The isomorphism sends $k$ to $\mu_{q^k}$. It is a homomorphism because
+        $\mu_{q^k}\circ\mu_{q^\ell}=\mu_{q^{k+\ell}}$, and it is injective because $q\neq1$.
     \end{proof}
 
     \subsubsection*{\vocab{Final Two Cases}}
@@ -2310,8 +2319,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         \[
         M=\left\{\frac{u}{m^j}:u,j\in\mathbb N_0\right\}.
         \]
-		Additionally, we prove that if $m>1$ and
-		includes divisors of $p_1,\ldots,p_r$, then
+			Additionally, we prove that if $m>1$ and
+		$p_1,\ldots,p_r$ are the distinct prime divisors of $m$, then
         \[
         \operatorname{Aut}(M)
         =
@@ -2332,26 +2341,34 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 			with the empty sum giving $0$. This means that the description is valid both ways.
         \end{subproof}
 
-        \begin{subproof}
-			Now move onto the second claim we made. Following the proofs 
-			of Gotti, we know that since $1 \in M$ and it is closed under multplication 
-			that            \[
+                \begin{subproof}
+			Now for the second claim.  First, $M$ is closed under
+			multiplication, since
+			\[
+			\frac{u}{m^j}\cdot\frac{v}{m^k}=\frac{uv}{m^{j+k}}\in M.
+			\]
+			Using our first claim, as well as that fact we have 
+            $1$ in $M$ and we have that closure 
+            under multiplication, we obtain 
+             \[
             \mu_c\in\operatorname{Aut}(M)
             \quad\Longleftrightarrow\quad
             c\in M\ \text{and}\ c^{-1}\in M.
             \]
-			Proving this is almost identical as in the previous problems, necessity
+            This is similar to the first claim where  necessity
 			comes from applying $\mu_c$ and its
-            inverse to $1$, while sufficiency follows because
-            multiplication by $c$ and by $c^{-1}$.
+            inverse $\mu_{c^{-1}}$ to $1$, while sufficiency follows because
+            multiplication by $c$ and by $c^{-1}$ both map $M$ into $M$, so
+            $cM\subseteq M$ and $M=c\,(c^{-1}M)\subseteq cM$, giving $cM=M$.
+
 
 			A value $c$ and its inverse only lies in $M$ if every prime in it divides 
 			with $m$. This means that the numerator and the denominator have to use the same 
 			primes of the numerator and denominator of $c$ use only the primes
-            $p_1,\ldots,p_r$. This connects to the paper on positive rational $S$-units for
-            $S=\{p_1,\ldots,p_r\}$ using their standard description
-            \cite[Section~1, opening paragraph]{p6-shparlinski-stewart}
-            it is
+            $p_1,\ldots,p_r$. This connects to the paper on positive rational $S$-units, which 
+            is defined as that the
+            $S$-units of $\mathbb Q$ are the rationals whose numerator and denominator
+            are products of primes from $S$ (up to sign), we get
             \[
             c=p_1^{e_1}\cdots p_r^{e_r},
             \qquad e_1,\ldots,e_r\in\mathbb Z.
@@ -2384,7 +2401,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 \begin{soln}
     Just like in the previous part, we set $M=M_S$.
 	First, consider the case when $S=\varnothing$. Trivally, we know that 
-	$M$ must be $\{0,\}$ and therefore is just a trivial group. Now 
+	$M$ must be $\{0\}$ and therefore is just a trivial group. Now 
 	for the rest of the proof we can take that $S\ne\varnothing$ and therefore
 	$M$ will not be just a zero additive submonoid. We use our proof from 
 	the previous part to motivate and conclude the following. We also 
@@ -2400,13 +2417,14 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         \le (\mathbb Q_{>0},\cdot).
         \]
     \end{claim*}
-
     \begin{proof}
-		This is completely taken from the previous part and just 
+		This is similar to the proof in the previous part and just 
 		adds another group onto it to make notation in the following 
-		parts easier. This comes from since $M$ is a Puiseux monoid, Gotti's
-        Proposition~3.2(1) \cite{p6-gotti} implies that every
-        automorphism is $\mu_c$ for some $c\in\mathbb Q_{>0}$.
+		parts easier. This comes from since $M$ is a Puiseux monoid,by \cite[Proposition~3.2(1)]{p6-gotti}, every automorphism
+of $M$ has the form $\mu_c(x)=cx$ for some
+$c\in\mathbb Q_{\ge0}$. Since $M\neq\{0\}$ and an
+automorphism is injective, $c=0$ is impossible.
+Hence $c>0$.
 		We also have to note, to prove the isomorphism, that composition satisfies and 
 		the multipler must be unique. Also whenever $cM=M$ is true
 		$\mu_c$ is just a additive bijection with an inverse($/mu_{1/c})$. 
@@ -2611,19 +2629,17 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
             =D_{\chi\circ\varphi^{-1}}.
             \]
 
-			So this means the subgroup of  $D_\chi$ is normal and its intersection
-			is empty other than the identiy. With all of this we can call in
-the hypotheses of Goodman's
-            Corollary~3.2.5 \cite{p6-goodman}, which provides 
-			the claim from the displayed conjugation action.
-            In
-            \cite[Proposition~3.2.3]{p6-goodman}, multiplication is 
-            \[
-            (\chi,\varphi)(\eta,\psi)
-            =\bigl(\chi\, (\eta\circ\varphi^{-1}),
-                   \varphi\circ\psi\bigr),
-            \]
-			Each multplication of the characters is point by point.
+Goodman's Corollary~3.2.5 \cite{p6-goodman} identifies a
+group as a semidirect product when it is the product of
+a normal subgroup and another subgroup whose intersection
+with it is trivial.
+Here the $D_\chi$ form the normal subgroup
+(they commute with one another, and the displayed formula
+handles conjugation by $P_\varphi$), while the previous
+unique factorization $\Phi=D_\chi P_\varphi$ gives the intersection and the decomposition
+so  the corollary yields
+$\operatorname{Aut}_{\mathrm{gr}}(F[M])\cong H_M\rtimes A_M$
+with action $\varphi\cdot\chi=\chi\circ\varphi^{-1}$.
         \end{subproof}
     \end{proof}
 
@@ -2969,7 +2985,7 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
         \end{subproof}
     \end{proof}
 	We know that $q$ is not $1$, meaning that as $n$ is changing the value of 
-	$1+q^n$ are different as $n$ changes meaning they are not associate. 
+	$1+q^n$ are different as $n$ changes. Since the set of units are just $1$ they aren't associate.  
 	So combining this information with the information we obtained from the previous
 	case gives us.
 	\keyeq{
@@ -3016,8 +3032,8 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 	We prove the following claim
 
     \begin{claim*}
-        For every $d\in\mathbb N$, there is an integer $L\ge2$
-        such that every integer $N\ge L$ is a sum of at most
+        For every $d\in\mathbb N$, there is an integer $B_d\ge2$
+        such that every integer $N\ge B_d$ is a sum of at most
         four primes, none of which divides $d$.
     \end{claim*}
 
@@ -3053,10 +3069,10 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 			because parity forces us to use $2$, $4$, $6$ or some other even
 			number  primes, since our set only 
 			contains odd primes. The current status of the $2$ prime case hasn't been proved
-			and is the well known binary Goldbach conjecture. So we move onto $4$ odd primes. 
-            We chose some large prime $p_*\in A_d$. 
-            such that  $N\ge T_d+p_*$. Then $N-p_*$ is odd
-            and at least $T_d$, so
+			and is the well known binary Goldbach conjecture. So we move onto $4$ odd primes.
+            Fix, once and for all, a prime $p_*\in A_d$ (not depending on $N$),
+and set $B_d=T_d+p_*$. If $N\ge B_d$ is even, then $N-p_*$ is odd
+and at least $T_d$, so 
             \[
             N-p_*=p_1+p_2+p_3,
             \qquad p_1,p_2,p_3\in A_d.
@@ -3067,9 +3083,9 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
             \]
         \end{subproof}
 
-        Finally we can take a $B_d=T_d+p_*$ which 
-		handles both parities and proves
-        the claim.
+     
+        Since $B_d\ge T_d$, every integer $N\ge B_d$ (odd or even) is
+done.
     \end{proof}
     \begin{remark}
         I later realized that there was a slightly more simple proof to the above
@@ -3087,8 +3103,10 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
     =\left\{\frac{m}{d^k}:m,k\in\mathbb N_0\right\},
     \qquad d\in\mathbb N.
     \]
-This is a valid representaiton for all cases as 
-in the previous part. 
+If $q=1/d$ with $d\in\mathbb N$, then $\mathbb N_0[q]=S_d$. If
+$q\in\mathbb N$, then $\mathbb N_0[q]=\mathbb N_0=S_1$. So in both
+cases $\mathbb N_0[q]=S_b$, where $b$ is the denominator of $q$, so it is a 
+valid representation. 
     \begin{claim*}
         Every $S_d$ has the $4$-Goldbach property.
     \end{claim*}
