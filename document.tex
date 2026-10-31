@@ -1027,11 +1027,11 @@ the cases $n=1$ and $n=2$.
 
 \begin{soln}
 	After reading some articles, this problem is related to a known problem 
-	called \emph{scalar quantization} so although no theorems were directly 
-	used for this part some of the motivation remains the same. This problem
-	is of choosing $n$ points so that the distance from a typical point of an
+	called scalar quantization so although no theorems were directly 
+	used for this part some of the motivation remains the same. We will 
+    show this reduces to choosing $n$ points so that the distance from a typical point of an
     interval to its nearest chosen point is as small as possible.
-	\begin{claim}
+	\begin{claim*}
 	    \[
     L_a(x)=a^2+2a(x-a)=2ax-a^2,
     \qquad
@@ -1042,7 +1042,7 @@ the cases $n=1$ and $n=2$.
     =\inf_{a_1,\ldots,a_n\in[0,1]}
     \int_0^1\min_{1\le i\le n}|x-a_i|^{2p}\,dx.
     \]
-	\end{claim}
+	\end{claim*}
 	\begin{proof}
 	First, we try to generalize the error made by a single tangent. To do this is relatively
 	simple. For $f(x)=x^2$, we find the equation of the tangent line at $x=a$ to be
@@ -1076,11 +1076,11 @@ the cases $n=1$ and $n=2$.
     A method to prove this came from the scalar quantization 
     solutions, where it motivates splitting the interval of $[0,1]$
 	into each of these intervals and finding how much they contribute to the error separately.
-	\begin{claim}
+	\begin{claim*}
 		We need to choose points at, for a value of $n$,     \[
         \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
         \frac{2n-1}{2n}\right\} \].
-	\end{claim}
+	\end{claim*}
 	\begin{proof}
 		
     We can define the points we chose as
@@ -1179,8 +1179,6 @@ the cases $n=1$ and $n=2$.
 Looking back on the quadratic case for a bit of inspiration. We can actually 
 use the quadratic case for a good upper bound.
 
-We will use the upper comparison on all of $[0,1]$.
-
 \subsubsection*{\vocab{Finding the upper bound}}
 
 Convexity and the continuity of $f''$ give
@@ -1211,12 +1209,11 @@ E_{n,p}(f)
 Thus equally spaced tangents already achieve the required upper rate.
 
 
-\subsubsection*{\vocab{Working towards a Lower Bound}}
+\subsubsection*{\vocab{Working towards a lower bound}}
 
 
 
-I wasn't able to find an exact lower bound. I would assume it would be some term $\cdot n^{-2}$ however
-definitively I wasn't able to find it. What follows are the two main directions I took.
+I wasn't able to find an exact lower bound. I would assume it would be some term $\cdot n^{-2}$. What follows are the two main directions I took.
 
 
 First we try to reverse the estimate for the upper bound.
@@ -1229,7 +1226,7 @@ First we try to reverse the estimate for the upper bound.
 \end{claim*}
 
 \begin{proof}
-    We start by using Taylor's theorem gives
+    We start by using Taylor's theorem which gives
     $f(x)-L_a(x)\ge \frac m2(x-a)^2$.
     Consequently, for any choice of tangency points,
     \[
@@ -1268,13 +1265,6 @@ This intuitively makes sense.
 
 \begin{soln}
     \subsubsection*{\vocab{Trying to get a density}}
-
-    The first part of this subsection of the problem also appears in scalar
-    optimization where
-    the leading error is expressed through the density of approximation
-    points. Specifically, take a look at Kreitmeier and Linder
-    \cite[Proposition~4.2, equation~(16)]{p3-kreitmeier-linder}.
-    We can take some motivation from these!
     Most of this is some algebraic manipulation using the density given.
 
     Consider a cell centered at a tangency point $x$, with length
@@ -1350,12 +1340,22 @@ This intuitively makes sense.
         &=J(\rho)^{1/(2p+1)}.
     \end{align*}
     Hence $J(\rho)\ge A^{2p+1}$.
-    Now we normalize to find a key equation of
-    \keyeq{
-        \rho_*(x)
-        =\frac{(f''(x))^{p/(2p+1)}}
-        {\displaystyle\int_0^1(f''(t))^{p/(2p+1)}\,dt}.
-    }
+By the equality case of H\"older's inequality, equality holds exactly when
+$w\rho^{-2p}$ and $\rho$ are proportional, i.e.\ when
+$\rho\propto w^{1/(2p+1)}=(f'')^{p/(2p+1)}$. Normalizing so that $\int_0^1\rho=1$ gives
+\keyeq{
+    \rho_*(x)
+    =\frac{(f''(x))^{p/(2p+1)}}
+    {\displaystyle\int_0^1(f''(t))^{p/(2p+1)}\,dt},
+}
+which is continuous and positive because $f''>0$ is continuous on $[0,1]$.
+It attains the bound, since
+\[
+J(\rho_*)
+=\int_0^1 w\left(\frac{w^{1/(2p+1)}}{A}\right)^{-2p}dx
+=A^{2p}\int_0^1 w^{1/(2p+1)}\,dx
+=A^{2p+1}.
+\]   
 This density fits all criteria.
     \subsubsection*{\vocab{The Predicted Asymptotic}}
     The last part of part (c) requires a simple substitution term
@@ -1428,7 +1428,7 @@ This density fits all criteria.
     \mathbf D=(D_1,\ldots,D_n).
     \]
     Where we have that the first one is the sum of the first orbit, and the second orbit sum can 
-	be expressed as $T-D_i$. Atop of this $T$ stays cosntant under any permutation 
+	be expressed as $T-D_i$. Atop of this $T$ stays constant under any permutation 
 	of the vertices.
 \Needspace{20\baselineskip}
 
@@ -1442,10 +1442,10 @@ This density fits all criteria.
     \end{claim*}
 
     \begin{proof}
-        If $F$ is anonymous, then by the defn given we have that $F_i(\sigma\cdot x)=F_i(x)$ for
+        If $F$ is anonymous, then by the definition given we have that $F_i(\sigma\cdot x)=F_i(x)$ for
         every $\sigma\in H_i$.
-		All things of degree one are just a scalar times $x_e$, 
-		so using the orbit-sum principle we are given we otbain
+		All monomials of degree one are just a scalar times $x_e$, 
+		so using the orbit-sum principle we are given we obtain
         \[
         F_i(x)=uD_i(x)+v\bigl(T(x)-D_i(x)\bigr)
         \qquad(u,v\in\mathbb R).
@@ -1776,7 +1776,7 @@ two edges.
     \begin{proof}
         \begin{subproof}
 			This rule will follow the problem constraints since
-            by defn in part~(b),
+            by definition in part~(b),
             \[
             A_v(x)=\sum_{u\ne v}x_{vu}^{2}
             \]
@@ -1805,7 +1805,7 @@ two edges.
 
 \begin{soln}
     We start with some straightforward simplification.
-	\subsubsection*{\vocab{Staying EXACT}}
+	\subsubsection*{\vocab{Staying Exact}}
 	We use the fact that 	\[
 	1+\omega+\omega^2=0
 	\] freely.
@@ -1890,9 +1890,9 @@ Now we can just set up	\[
 	\tag{3}
 	\]
 	This value of $b_k$ is the probability that a random walk lands at  $\alpha$ after $3k+N$ steps.
-    \begin{claim}
+    \begin{claim*}
         $b_k=\frac{\sqrt3}{2\pi k}+O_\alpha(k^{-2}).$
-    \end{claim}
+    \end{claim*}
     \begin{proof}
  
     Now we look for ways to estimate the values of the factorials
@@ -1943,7 +1943,7 @@ Now we can just set up	\[
 		}.
 		\tag{6}
 	\end{align*}
-	In the above all of the empty products are just $1$. By our defn $r+s+u=N$, all powers
+	In the above all of the empty products are just $1$. By our definition $r+s+u=N$, all powers
 	of $k$ and $3$ have canceled. Each remaining product has a fixed number
 	of factors, so the right side of (6) is
 	\[
@@ -1968,11 +1968,11 @@ Now we can just set up	\[
 
 	\subsubsection*{\vocab{Expansion}}
 	
-    \begin{claim}
+    \begin{claim*}
        $ G_\alpha(t)
 		=-\frac{\sqrt3}{2\pi}\log(1-3t)+O_\alpha(1)
 		\qquad\text{as }t\to(1/3)^-$.
-    \end{claim}
+    \end{claim*}
     \begin{proof}
         
 	Substituting for cleanliness, we set. 
@@ -2145,14 +2145,14 @@ Now our avoidance condition is just that throughout our walk this residue class 
 	
 	\subsubsection*{\vocab{Fixing the end and finishing}}
 		
-	\begin{claim}
+	\begin{claim*}
 		The value of $p_{2n}$, as defined in the problem statement, is 	\keyeq{
 			p_{2n}
 			=2\sum_{\substack{a,b,c\ge0\\a+b+c=n}}
 			\left(\frac{n!}{a!\,b!\,c!}\right)^2,
 			\qquad n\ge1.
 		}
-	\end{claim}
+	\end{claim*}
 	\begin{proof}
 		
 		To get the endpoint to be the origin we can define the number of times we can take each positive and negative step to be
@@ -2702,7 +2702,7 @@ the hypotheses of Goodman's
     \qquad
     \Phi_{z,k}(x^q)=\chi_z(2^kq)x^{2^kq},
     \]
-    \subsubsection*{\vocab{Eval at One}}
+    \subsubsection*{\vocab{Evaluation at One}}
 
     Write $\operatorname{ev}_1(\chi)=\chi(1)$ and let $\mathbf1$ is the one character.
 	This is a group homomorphism.
