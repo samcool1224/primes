@@ -1510,7 +1510,7 @@ This density fits all criteria.
 \subsection{(b)}
 
 \begin{soln}
-We continue using Thi\'ery~\cite[Section~1.3]{p4-thiery} as inspiration and view each monomial
+We can view each monomial
 in the edge variables as a multigraph, and we use the fact that the
 invariant polynomials are spanned by the orbit sums of monomials. Thus,
 to describe the invariants, it suffices to enumerate the possible graph
@@ -1593,7 +1593,7 @@ two edges.
     Having classified the patterns, we now count independent scoring
     rules and the common scores that will be discarded.
 	Now that we have found the orbits, we can find the independent 
-	rules and the comomn score rules. 
+	rules and the common score rules. 
     Write
     \[
     U=(U_1,\ldots,U_n),\qquad
@@ -1622,8 +1622,11 @@ two edges.
             \qquad\text{whenever }\pi(i)=j.
             \]
 			Now we can just use the orbit-sum principle that 
-			will give us a basis of the possible $F_i$. The span of 
-			the row sums and they are independent so  the corresponding rules
+			will give us a basis of the possible $F_i$. We can see that all $7$ rules are anonymous. 
+            The span of 
+			the row gives every possible anonymous rule of degree 
+            $2$. 
+             And they are linearly independent, since they are disjoint, so the corresponding rules
             \[
             A,\ U,\ B,\ C,\ V,\ D,\ W
             \]
@@ -1636,7 +1639,7 @@ two edges.
             permuted. That means there are only $3$ distinct patterns:
 			 a repeated edge,
             adjacent distinct edges, and disjoint edges.
-			We write their oribit sums as
+			We write their orbit sums as
             \begin{align*}
                 q_1(x)&=\sum_{e\in E}x_e^2,\\
                 q_2(x)&=
@@ -1657,7 +1660,7 @@ two edges.
             \]
         \end{subproof}
 
-        Since we know that $dim(Q/V)=dim Q - dim V$ we obtain, 
+        Since we know that $\dim(\mathcal Q_n/\mathcal C_n)=\dim\mathcal Q_n-\dim\mathcal C_n$ we obtain, 
         \keyeq{
             \dim(\mathcal Q_n/\mathcal C_n)
             =\dim\mathcal Q_n-\dim\mathcal C_n
@@ -1701,7 +1704,7 @@ two edges.
         form a basis.
     \end{proof}
 
-	We can write the same thing in different form by statign that 
+	We can write the same thing in different form by stating that 
 	every anonymous quadratic rule has a form of
     \keyeq{
         F=aA+bB+cC+dD+h\mathbf1_n,
@@ -1721,7 +1724,7 @@ two edges.
 	as commonly used.
     We know, from say part~(a), that equal weighted degrees
 	means that there will be equal scores under all linear anonymous rule.
-    Using this information and some trail
+    Using this information and some trial
 	we set $1$ one incident weight of $2$, and
     vertex $2$ two incident weights of $1$. This comes with the goal
 	of just keeping their totals equal and making the sum of their 
@@ -2056,11 +2059,12 @@ G_\alpha(x/3)=-Kx^N\log(1-x^3)+O_\alpha(1).
 	\tag{14}
 	\]
 	\end{proof}
+    The coefficient of the logarithmic term is then $\frac{-\sqrt{3}}{2\pi}$ which is independent of
+    $\alpha$.
 	For the radius of convergence, note that $c_{3k+N}(\alpha;S_+)=3^{3k+N}b_k$
 with $b_k\sim\sqrt3/(2\pi k)$ by (7), and every other coefficient is zero.
 Hence $\limsup_{n\to\infty}c_n(\alpha;S_+)^{1/n}=3$, and by the
-Cauchy--Hadamard formula, see
-\cite[Section~IV.3.2, equation~(17) and Note~IV.14]{flajolet-sedgewick}),
+Cauchy--Hadamard formula
 \[
 \boxed{R_\alpha=\frac13}.
 \]
@@ -2074,7 +2078,8 @@ Cauchy--Hadamard formula, see
 
 	\subsubsection*{\vocab{Remove it}}
 	
-	Our first goal is to turn membership in $\lambda\mathbb Z[\omega]$ into something we can more better work with. This leads us to use that, since $\omega$ is nonreal, there is a value for $a+b\omega$ with $a,b\in\mathbb Z$. Define the additive map
+	Our first goal is to turn membership in $\lambda\mathbb Z[\omega]$ into something we can more better work with.
+     We know since $\omega$ is nonreal, there is a unique values $a,b$ for $a+b\omega$ with $a,b\in\mathbb Z$. Define the additive map
 	\[
 	\chi:\mathbb Z[\omega]\longrightarrow\mathbb Z/3\mathbb Z,
 	\qquad
@@ -2223,7 +2228,7 @@ To finish, define
 a(n)=\sum_{\substack{a,b,c\ge0\\a+b+c=n}}
 \left(\frac{n!}{a!\,b!\,c!}\right)^2.
 \]
-This is OEIS sequence A002893 \cite{oeis_A002893}.
+This is an equivalent form of the OEIS sequence A002893 \cite{oeis_A002893}.
 Richmond and Shallit's asymptotic formula
 \cite[Theorem~4]{richmond-shallit}, specialized to three letters, gives
 \[
@@ -3327,12 +3332,6 @@ to Claude's Opus 5.5 on Medium.
 	\newblock Counting abelian squares.
 	\newblock \emph{The Electronic Journal of Combinatorics}, 16(1):\#R72, 2009.
 	\newblock \url{https://www.combinatorics.org/ojs/index.php/eljc/article/view/v16i1r72}.
-
-	\bibitem{flajolet-sedgewick}
-	Philippe Flajolet and Robert Sedgewick.
-	\newblock \emph{Analytic Combinatorics}.
-	\newblock Cambridge University Press, 2009.
-	\newblock \url{https://ac.cs.princeton.edu/home/}.
 
 	\bibitem{robbins-stirling}
 	Herbert Robbins.
