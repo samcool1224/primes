@@ -53,7 +53,7 @@
     \[
     \boxed{\det(v_2-v_1,d_1,d_2)\neq0}.
     \]
-	This is equivalent to saying that iff the determinant above is zero, then they
+	This is equivalent to saying that if and only if the determinant above is zero, then they
 	lie in a common affine plane. We prove this instead.
 
  
@@ -116,7 +116,8 @@ Hence both lie in a common affine plane.
             \[
             v_2-v_1=-gd_2+fd_1+cn.
             \]
-			Taking $-g$ since it makes the signs a bit easier. Now we aim to prove 
+			Taking $-g$ since it makes the following steps slightly easier to work 
+            with. Now we aim to prove 
 			that the two points 
 			\[
             p_1=v_1+fd_1,
@@ -196,7 +197,7 @@ $\vec u'=\vec u+s\vec d$ for some $s\in\RR$. Therefore
 =\vec u\times\vec d+s(\vec d\times\vec d)
 =\vec m.
 \]
-So we have proven that if we change the base point, the moment doesn't change. 
+So we have proven that if we change the base point, the moment vector doesn't change. 
 
 Every other nonzero direction vector for $\mathcal L$ is
 $\vec d'=\lambda\vec d$ for some $\lambda\neq0$, and
@@ -362,9 +363,12 @@ perpendicular and prove that it is unique.
 			to both $L_i$.
         \end{subproof}
 
-        \begin{subproof}
-            We also know that if we change using the change above, $\vec n$ is
-            multiplied by $\lambda_1\lambda_2$.
+        \begin{subproof}[Well - defined]
+            We also see that if we change each
+    $(\vec d_i,\vec m_i)$ to
+$(\lambda_i\vec d_i,\lambda_i\vec m_i)$,
+where $\lambda_i\neq0$, then $\vec n$ is
+multiplied by $\lambda_1\lambda_2$.
             So the coefficient of 
             \[
             \frac{R(\vec d_1\cdot\vec d_2)}{\|\vec n\|^2}
@@ -398,9 +402,11 @@ perpendicular and prove that it is unique.
         structure of the problem. Also we sort the cases by the number of sites 
         occupied. 
 		
-		This idea was motivated by the fact that, conditioned on exactly $k$
-		occupied sites, every $k$-element subset of $V_n$ is equally likely making
-        it much easier to find probabilities. 
+		This idea was motivated by the fact that, doing cases on exactly $k$
+		occupied sites, leads to each subcase having 
+        equally likely chance of occuring, 
+        since they are $k$-element subsets of $V_n$.
+        This makes it much easier to find probabilities. 
 		
 		\subsubsection*{\vocab{Occupancy}}
 		
@@ -539,11 +545,11 @@ perpendicular and prove that it is unique.
 		
 		\subsubsection*{\vocab{Finding $\frac{1}{2}$}}
 		
-		Our goal of this section is to find some value of $p_n$that has 
+		Our goal of this section is to find some value of $p_n$ that has 
 		\[
 		\theta_n(p_n)=\frac12.
 		\]
-        This is immediate from IVT.
+        This is immediate from Intermediate Value Theorem.
 		
 		\begin{claim*}
 			There exists a unique $p_n\in(0,1)$ such that
@@ -584,9 +590,7 @@ perpendicular and prove that it is unique.
 			\]
 			
 			We also given, without needing justification, that $\theta_n$ is strictly increasing. Hence two distinct values of $p$ cannot both give the same
-			value $\frac12$.
-			
-			Which then gives us that $p_n$ is unique.
+			value $\frac12$. Which then gives us that $p_n$ is unique.
 		\end{proof}
 	\end{soln}
 		\subsection{(b)}
@@ -597,7 +601,7 @@ perpendicular and prove that it is unique.
             We can create a $n$ by $n$ grid and use our given $p$ to generate
              a grid that has some number of occupied squares independently occupying each square
               with probability $p$. Then using the DFS to find a path from left 
-              to right. Then the proportion of these grids that are successful is a good way to estimate
+              to right. The proportion of these grids that are successful is a good way to estimate
                our $\theta_n(p)$.
 			\subsubsection*{\vocab{Algorithm Simulation Pseudocode}}
 			
@@ -774,7 +778,7 @@ def try_to_find_theta(n, p, M):
 			\end{lstlisting}
 			\newpage
 			
-			\subsubsection*{\vocab{How Many Sims?}}
+			\subsubsection*{\vocab{Number of Simulations Needed}}
 			
 			We get the bound from the problem that we have that
 			\[
@@ -788,15 +792,15 @@ def try_to_find_theta(n, p, M):
 			\]
             \begin{remark}
                             I was slightly curious where the problem set makers found this bound. 
-            After some researc, we see it came from a consequence of Hoeffding's inequality \cite[Theorem~1, equation~(2.3)]{hoeffding}.
-        			Indeed, let $X_j$ be the indicator that the $j$th independently
+            After some research, we see it came from a consequence of Hoeffding's inequality \cite[Theorem~1, equation~(2.3)]{hoeffding}.
+        			In which we can let $X_j$ be the indicator that the $j$th independently
 			generated grid has a left-to-right crossing. Then
 			$0\le X_j\le1$, $\mathbb E[X_j]=\theta_n(p)$, and
 			\[
 			\widehat{\theta}_n(p)=\frac1M\sum_{j=1}^{M}X_j.
 			\]
 			Applying the inequality to the upper and lower tails and adding
-			their bounds gives the stated two-sided estimate. I included this here for completeness.   
+			their bounds gives the stated two-sided estimate.
         \end{remark}
 
 
@@ -932,18 +936,16 @@ occupied is $(1-p^2)^2$. Taking the complement gives that
 \subsubsection*{\vocab{Testing the Implementation}}
 
 To test our mathematical analysis with our coding simulation we use exactly
-\[
+$
 M=738,
-\]
+$
 which was the amount we obtained with values of
-\[
+$
 \varepsilon=\delta=0.05.
-\]
+$
 
-I used the fixed random seed
-\[
-20260919
-\]
+I used the fixed random seed of $
+20260919$
 so that the results are reproducible.
 
 \begin{center}
@@ -997,29 +999,28 @@ while the simulation returned
 0.73984.
 \]
 So the error we saw was
-\[
+$
 \left|
 0.73984-0.73990
 \right|
 \approx
 0.00006.
-\]
+$
 
 Also, the largest error out of all of these tests was 
 for $n=1$ and $p=0.70$, where
-\[
+$
 \left|
 0.68835-0.70000
 \right|
 \approx
 0.01165.
-\]
+$
 
 All of these are well below the tolerance of
-\[
+$
 \varepsilon=0.05.
-\]
-
+$
 Thus the implementation behaves consistently with the exact values in
 the cases $n=1$ and $n=2$.
 			
@@ -1072,15 +1073,16 @@ the cases $n=1$ and $n=2$.
 
     \subsubsection*{\vocab{Figuring out the Points}}
 
-    As most other mathematicians, we start by looking at simple cases. One simple 
+    To begin to understand the problem, we start by looking at simple cases. One simple 
     case is just spacing the tangents equally apart. 
     Following that, I took a look at more complex cases. Such as increasing the "density" of tangents
     when there is more curvature. However, when calculating a few simple examples it turns out the error on those 
     were greater than the error for equally spaced out tangents.
     So I looked into proving that equally spaced tangents were, in fact, the correct solution.
-    A method to prove this came from the scalar quantization 
-    solutions, where it motivates splitting the interval of $[0,1]$
-	into each of these intervals and finding how much they contribute to the error separately.
+    A method to prove this is just to split the interval of $[0,1]$
+	into smaller interval where a singular tangent
+    is the maximum throughout the interval.
+    Then we can find how much they contribute to the error separately, and sum.
 	\begin{claim*}
 		We need to choose points at, for a value of $n$,     \[
         \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
@@ -1091,8 +1093,8 @@ the cases $n=1$ and $n=2$.
     We can define the points we chose as
     \[
     a_1<a_2<\cdots<a_m
-    \].
-    be the distinct chosen points, where $m\le n$
+    \]
+    be the distinct chosen points, where $m\le n$. 
     They are strictly greater since putting two points at the same place is useless. 
     
 	Now we can set the intervals by making
@@ -1180,8 +1182,7 @@ the cases $n=1$ and $n=2$.
 \subsection{(b)}
 
 \begin{soln}
-
-Looking back on the quadratic case for a bit of inspiration. We can actually 
+ We can actually 
 use the quadratic case for a good upper bound.
 
 \subsubsection*{\vocab{Finding the upper bound}}
@@ -1215,12 +1216,6 @@ Thus equally spaced tangents already achieve the required upper rate.
 
 
 \subsubsection*{\vocab{Working towards a lower bound}}
-
-
-
-I wasn't able to find an exact lower bound. I would assume it would be some term $\cdot n^{-2}$. What follows is some partial directions I took.
-
-
 First we try to reverse the estimate for the upper bound.
 \begin{claim*}
     If $f''(x)\ge m>0$ on $[0,1]$, then
@@ -1246,32 +1241,89 @@ First we try to reverse the estimate for the upper bound.
     \]
 \end{proof}
 
-For example, $f(x)=x^2+x^4$ satisfies $f''(x)=2+12x^2\ge2$,
+An example of the above argument is that 
+ $f(x)=x^2+x^4$ satisfies $f''(x)=2+12x^2\ge2$,
 so the argument applies with $m=2$.
-However, strict convexity alone does not supply such an $m$:
-$f(x)=x^4$ is strictly convex on $[0,1]$, but $f''(0)=0$.
-Using $m=0$ gives only the trivial lower bound.
-Thus the argument settles a special case, while the general lower bound
-remains unresolved here.
-
-Although slightly unrelated, we notice that
-adding an affine function does not change the approximation error.
-Indeed, if $g(x)=f(x)+ux+v$, then its tangent at $a$ is
-$L_a^g(x)=L_a^f(x)+ux+v$, so
-\[
-g(x)-\max_i L_{a_i}^g(x)
-=f(x)-\max_i L_{a_i}^f(x).
+However, the strict convexity of the function gives only $m=0$ 
+which is a trivial case, so it doesn't apply to all functions. One such example 
+where this bound is weak is when
+$f(x)=x^4$ is strictly convex on $[0,1]$, but $f''(0)=0$, so the bound gives that the
+error is greater then $0$. This does settle some special cases, however a general bound is 
+still unresolved. Yet, we can finish from here with another argument. 
+\begin{claim*}
+    We find a lower bound as
+    \[{
+c_{f,p}n^{-2}\le E_{n,p}(f)\le C_{f,p}n^{-2},
+\qquad \alpha=2,
+}
 \]
-Hence $E_{n,p}(g)=E_{n,p}(f)$. This means that even if we change 
-the height or add a sort of tilt in some linear way we obtain the same problem.
-This intuitively makes sense.
+\end{claim*}
+\begin{proof}
+    
+
+Since $f$ is convex, $f''\ge0$. Also 
+it cannot be $f''$ cannot be identically $0$ since then $f$ would be 
+affine and not strictly convex. By continuity, there is therefore an interval
+$I=[u,v]\subseteq[0,1]$ of length $\ell=v-u>0$ and a constant
+$m>0$ with the property that $f''\ge m$ on $I$.
+
+We first check that any tangent with its tangency point outside $I$
+can be replaced by the tangent at the nearest endpoint of $I$
+without increasing the approximation error anywhere on $I$. Given any $a\in[0,1]$, move it to
+$b=\min\{v,\max\{u,a\}\}\in I$. For $x\in I$,
+\[
+L_b(x)-L_a(x)
+=f(b)-L_a(b)+(f'(b)-f'(a))(x-b)\ge0.
+\]
+We know the first term is not negative via convexity. The product is
+also nonnegative. We can see that because if $a<u$, both factors are nonnegative,
+if $a>v$ both are nonpositive, and if $a\in I$, it is zero.
+Thus moving every tangency point into $I$ can only decrease
+the error there.
+
+Now rescale $I$ to $[0,1]$ by defining
+$g(t)=f(u+\ell t)$. Then
+\[
+g''(t)=\ell^2 f''(u+\ell t)\ge m\ell^2.
+\]
+The tangents that correspond under this change are that $L_t^g(s)=L_{u+\ell t}^f(u+\ell s)$.
+Then we can restrict our interval to $I$, moving tangency points
+into $I$, and substituting $x=u+\ell t$ therefore gives
+\[
+E_{n,p}(f)\ge \ell^{1/p}E_{n,p}(g).
+\]
+Applying our first claim to $g$, we obtain
+\[
+E_{n,p}(f)\ge
+\frac{m\ell^{2+1/p}}{8(2p+1)^{1/p}}\,n^{-2}.
+\]
+\end{proof}
+Together with the upper bound already proved, this yields
+\[
+\boxed{
+c_{f,p}n^{-2}\le E_{n,p}(f)\le C_{f,p}n^{-2},
+\qquad \alpha=2,
+}
+\]
+where
+$c_{f,p}=m\ell^{2+1/p}/(8(2p+1)^{1/p})>0$ and
+$C_{f,p}=\max_{[0,1]}f''/(8(2p+1)^{1/p})<\infty$.
+Both constants are independent of $n$.
 \end{soln}
 \subsection{(c)}
 
 \begin{soln}
     \subsubsection*{\vocab{Trying to get a density}}
     Most of this is some algebraic manipulation using the density given.
-
+\begin{claim*}
+     We have that \[
+        \bigl\|f-L_{a_1,\ldots,a_n}\bigr\|_p^p
+        =\frac{n^{-2p}}{2^{3p}(2p+1)}J(\rho)
+        +o(n^{-2p}),
+    \]
+\end{claim*}
+\begin{proof}
+    
     Consider a cell centered at a tangency point $x$, with length
     $h=h_n(x)$. The tangent already matches both $f(x)$ and $f'(x)$,
     so the first error term is quadratic:
@@ -1313,6 +1365,7 @@ This intuitively makes sense.
     \[
     J(\rho)=\int_0^1(f''(x))^p\rho(x)^{-2p}\,dx.
     \]
+\end{proof}
 
 
     \subsubsection*{\vocab{Choosing the Density}}
@@ -1324,7 +1377,10 @@ This intuitively makes sense.
 
     Doing some research, this is extremely similar to the minimization in 
     \cite[Remark~4.12]{p3-kreitmeier-linder}, where the number of
-    approximation points is fixed. Adjusting it to this problem requires some effort. We 
+    approximation points is fixed. Kreitmeier and Linder study how to distribute approximation
+points to minimize the average power of the distance between
+a value and its representative point.
+Our functional $J(\rho)$ has the similar form, but adjusting it to this problem requires some effort. We 
     can write
     \[
     w(x)=(f''(x))^p,
@@ -1375,7 +1431,7 @@ This density fits all criteria.
         \left(\int_0^1(f''(x))^{p/(2p+1)}\,dx\right)^{(2p+1)/p}.
     }
     This gives us that $\alpha=2$, which is what we predict 
-    based on upper bound and the limited work in part~(b).
+    based on upper bound and lower bound in part~(b).
 
     As a check, when $f(x)=x^2$ we have $f''=2$, so $\rho_*=1$ and
     \[
@@ -1383,6 +1439,7 @@ This density fits all criteria.
     \]
     giving us the confirmation from part~(a).
 \end{soln}
+\newpage
 
 \section{Problem 4}
 \subsection{(a)}
@@ -1599,8 +1656,6 @@ two edges.
 
     \subsubsection*{\vocab{More counting and scoring}}
 
-    Having classified the patterns, we now count independent scoring
-    rules and the common scores that will be discarded.
 	Now that we have found the orbits, we can find the independent 
 	rules and the common score rules. 
     Write
@@ -1713,7 +1768,7 @@ two edges.
         form a basis.
     \end{proof}
 
-	We can write the same thing in different form by stating that 
+	We can write an equivalent statement, stating that 
 	every anonymous quadratic rule has a form of
     \keyeq{
         F=aA+bB+cC+dD+h\mathbf1_n,
@@ -1732,8 +1787,8 @@ two edges.
     \]
 	which is the standard form for the weighted degree of vertex $v$
 	as commonly used. We rename it from $D_v$, which was in 
-    part $a$, here to avoid conflicting with part $b$
-    We know, from say part~(a), that equal weighted degrees
+    part~(a), here to avoid conflicting with part~(b).
+    We know that equal weighted degrees
 	means that there will be equal scores under all linear anonymous rule.
     Using this information and some trial
 	we set $1$ one incident weight of $2$, and
@@ -1807,13 +1862,15 @@ two edges.
             A_1(x)=2^2=4,\qquad
             A_2(x)=1^2+1^2=2,
             \]
-            so
+            meaning that 
             \keyeq{
                 A_1(x)\ne A_2(x).
             }
         \end{subproof}
     \end{proof}
 \end{soln}
+\newpage
+
 \section{Problem 5}
 \subsection{(a)}
 
@@ -2253,6 +2310,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 \boxed{\lim_{n\to\infty}(p_{2n})^{1/(2n)}=3.}
 \]
 \end{soln}
+\newpage
+
 \section{Problem 6}
 \subsection{(a)}
 
@@ -2657,7 +2716,7 @@ with action $\varphi\cdot\chi=\chi\circ\varphi^{-1}$.
     \right\},
     \]
 
-	This satisfies propeties that we can see throughout the dyadics.
+	This satisfies properties that we can see throughout the dyadics.
 
     \begin{claim*}
         Create a correspondance of 
@@ -2810,6 +2869,8 @@ Put in a table we can see clearly and compare
     }
 
 \end{soln}
+\newpage
+
 \section{Problem 7}
 \subsection{(a)}
 
@@ -3182,7 +3243,7 @@ valid representation.
 	Our upper bound from the previous problem basically gives us this problem 
 	for free. It seems too simple for a part c (sort of like in the problem set
 	in 2025 with problem 6 part c).
-	Anways, our upper bound gives us that both semirings 
+	Anyways, our upper bound gives us that both semirings 
 	in the question have the $4$-Goldbach property.
     A quick notation, we set $g(S)$ as the Goldbach number of semiring $S$ for
 	all of them that have the goldbach property. 
@@ -3192,8 +3253,7 @@ valid representation.
     \qquad
     g(\mathbb N_0[1/k])\le4.
     \]
-    It remains to rule out $1$ and $2$ in the first case, and
-    $1$ in the second.
+  
 	So we just need to prove $1,2$in the first case and just $1$ in the second one.
 
 
@@ -3283,9 +3343,7 @@ valid representation.
         \end{subproof}
     \end{proof}
 
-    None of these elements can be a sum of one irreducible,
-    and their infinitely many different associate classes cannot
-    all belong to a finite exceptional collection.
+  
 	So we have seen none of these elements are irreducible and they are also 
 	in completely different associate classes. These means our $S_k$ doesn't 
 	have the $1$ Goldbach property. This and upper bound from  part~(b), we obtain
