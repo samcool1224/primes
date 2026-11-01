@@ -1,26 +1,24 @@
-% https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty %
+% https\://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty %
 %                                                                              %
 %                                                       |  \                   %
 %      ______  __     __  ______  _______      _______ _| ▓▓_   __    __       %
-%     /      \|  \   /  \|      \|       \    /       \   ▓▓ \ |  \  |  \      %
-%    |  ▓▓▓▓▓▓\\▓▓\ /  ▓▓ \▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\  |  ▓▓▓▓▓▓▓\▓▓▓▓▓▓ | ▓▓  | ▓▓      %
+%     /      \\|  \   /  \\|      \\|       \    /       \   ▓▓ \ |  \  |  \      %
+%    |  ▓▓▓▓▓▓\\\▓▓\ /  ▓▓ \▓▓▓▓▓▓\ ▓▓▓▓▓▓▓\  |  ▓▓▓▓▓▓▓\▓▓▓▓▓▓ | ▓▓  | ▓▓      %
 %    | ▓▓    ▓▓ \▓▓\  ▓▓ /      ▓▓ ▓▓  | ▓▓   \▓▓    \  | ▓▓ __| ▓▓  | ▓▓      %
 %    | ▓▓▓▓▓▓▓▓  \▓▓ ▓▓ |  ▓▓▓▓▓▓▓ ▓▓  | ▓▓__ _\▓▓▓▓▓▓\ | ▓▓|  \ ▓▓__/ ▓▓      %
 %     \▓▓     \   \▓▓▓   \▓▓    ▓▓ ▓▓  | ▓▓  \       ▓▓  \▓▓  ▓▓\▓▓    ▓▓      %
 %      \▓▓▓▓▓▓▓    \▓     \▓▓▓▓▓▓▓\▓▓   \▓▓\▓▓\▓▓▓▓▓▓▓    \▓▓▓▓ _\▓▓▓▓▓▓▓      %
-%                                                              |  \__| ▓▓      %
+%                                                              |  \\__| ▓▓      %
 %                                                               \▓▓    ▓▓      %
 %                                                                \▓▓▓▓▓▓       %
 %                                                                              %
-% https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty %
-
-
+% https\://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty %
 % ░█▄█░▄▀▄░█░░▒█░░░▀█▀░▄▀▄░░░█▒█░▄▀▀▒██▀
 % ▒█▒█░▀▄▀░▀▄▀▄▀▒░░▒█▒░▀▄▀▒░░▀▄█▒▄██░█▄▄
 %
 % If you don't know how to use this file, read:
 % +--------------------------------------------+
-% | https://web.evanchen.cc/faq-latex.html#L-4 |
+% | https\://web.evanchen.cc/faq-latex.html#L-4 |
 % +--------------------------------------------+
 %
 % TL;DR of the Boost license conditions are as follows:
@@ -28,16 +26,15 @@
 % 1. Any SOURCE VERSIONS must cite evan.sty and the Boost license below.
 % 2. For COMPILED PDF OUTPUT, attribution of evan.sty is OPTIONAL (but nice).
 % 3. NO OTHER REQUIREMENTS; you may modify, redistribute, sell freely.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % BOOST SOFTWARE LICENSE - VERSION 1.0 - 17 AUGUST 2003
 %
 % Copyright (c) 2025 Samaksh Bhargav [evan at evanchen.cc]
-% https://web.evanchen.cc/ || github.com/vEnhance
+% https\://web.evanchen.cc/ || github.com/vEnhance
 %
 % Available for download at:
-% https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty
+% https\://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty
 %
 % Permission is hereby granted, free of charge, to any person or organization
 % obtaining a copy of the software and accompanying documentation covered by
@@ -61,7 +58,6 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 % DEALINGS IN THE SOFTWARE.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \ProvidesPackage{evan}
 %%fakesection Argument processing
 % Default Arguments
@@ -87,37 +83,30 @@
 \newif\ifevanbritish\evanbritishtrue
 \newif\ifevanbib\evanbibfalse
 \newif\ifevanextras\evanextrasfalse
-
 %Receive Arguments
 \DeclareOption{chinese}{\evanchinesetrue} % Chinese support
 % allow href to override this one
-
 \DeclareOption{sexy}{\evansecthmtrue\evanmdthmtrue\evancolorsectrue} % long docs
-
 \DeclareOption{fancy}{\evanfancytrue}
 \DeclareOption{nofancy}{\evanfancyfalse}
 \DeclareOption{hdr}{\evanhdrtrue}
 \DeclareOption{nohdr}{\evanhdrfalse}
 \DeclareOption{href}{\evanhreftrue}
 \DeclareOption{nohref}{\evanhreffalse}
-
 \DeclareOption{nosetup}{\evansetupfalse}
 \DeclareOption{thm}{\evanthmtrue}
 \DeclareOption{nothm}{\evanthmfalse}
 \DeclareOption{secthm}{\evansecthmtrue}
 \DeclareOption{nosecthm}{\evansecthmfalse}
-
 \DeclareOption{nopdf}{\evanpdffalse}
 \DeclareOption{nopkg}{\evanpkgfalse}
 \DeclareOption{noauthor}{\evanauthorfalse}
 \DeclareOption{titlemark}{\evantitlemarktrue} % Sets title in ohead, not \rightmark
 \DeclareOption{sectionmark}{\evantitlemarkfalse} % Uses \rightmark not title in ohead
-
 \DeclareOption{mdthm}{\evanmdthmtrue}
 \DeclareOption{nomdthm}{\evanmdthmfalse}
 \DeclareOption{colorsec}{\evancolorsectrue}
 \DeclareOption{nocolorsec}{\evancolorsecfalse}
-
 \DeclareOption{patchasy}{\evanpatchasytrue\evanasytrue}
 \DeclareOption{asy}{\evanasytrue}
 \DeclareOption{noasy}{\evanasyfalse}
@@ -125,25 +114,18 @@
 \DeclareOption{noextras}{\evanextrasfalse}
 \DeclareOption{hints}{\evanhintstrue}
 \DeclareOption{von}{\evanvonenabledtrue}
-
 \DeclareOption{british}{\evanbritishtrue}
 \DeclareOption{american}{\evanbritishfalse}
-
 \DeclareOption{bib}{\evanbibtrue}
-
 % legacy diagrams option, for backwards compatibility
 \DeclareOption{diagrams}{}
 \DeclareOption{nodiagrams}{}
-
 \ProcessOptions\relax
-
 % if packages not loaded, turn off mdthm and asy
 \ifevanpkg\else\evanmdthmfalse\fi
 \ifevanpkg\else\evanasyfalse\fi
-
 % If no setup, turn off theorems
 \ifevansetup\else\evanthmfalse\fi
-
 %%fakesection Some macros
 %Small commands
 \usepackage{amsmath,amssymb}
@@ -152,7 +134,7 @@
 % Keep the lightweight math extension used by \arc.
 \usepackage[minimal]{yhmath}
 % The derivative package is convenient but comparatively expensive and is
-% not needed by the PRIMES write-up. Load it only with the `extras` option.
+% not needed by the PRIMES write-up. Load it only with the \`extras\` option.
 \ifevanextras
 \usepackage{derivative}
 \fi
@@ -167,47 +149,42 @@
 \newcommand{\wh}{\widehat}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\vocab}[1]{%
-	\begingroup
-	\setlength{\fboxsep}{3.2pt}%
-	\colorbox{RoyalBlue!13}{\textbf{\color{MidnightBlue!95!black}\sffamily #1}}%
-	\endgroup
+    \begingroup
+    \setlength{\fboxsep}{3.2pt}%
+    \colorbox{RoyalBlue!13}{\textbf{\color{MidnightBlue!95!black}\sffamily #1}}%
+    \endgroup
 }
 \providecommand{\alert}{\vocab}
 \providecommand{\half}{\frac{1}{2}}
 \newcommand{\catname}{\mathsf}
 \newcommand{\hrulebar}{%
-	\par\vspace{0.35\baselineskip}
-	\noindent\hspace{\fill}%
-	{\color{Violet!55!black}\rule{0.20\linewidth}{1.1pt}}%
-	\hspace{0.8em}%
-	{\color{RoyalBlue!65!black}\rule{0.48\linewidth}{1.1pt}}%
-	\hspace{0.8em}%
-	{\color{Violet!55!black}\rule{0.20\linewidth}{1.1pt}}%
-	\hspace{\fill}\par\nointerlineskip
-	\vspace{0.8\baselineskip}
+    \par\vspace{0.35\baselineskip}
+    \noindent\hspace{\fill}%
+    {\color{Violet!55!black}\rule{0.20\linewidth}{1.1pt}}%
+    \hspace{0.8em}%
+    {\color{RoyalBlue!65!black}\rule{0.48\linewidth}{1.1pt}}%
+    \hspace{0.8em}%
+    {\color{Violet!55!black}\rule{0.20\linewidth}{1.1pt}}%
+    \hspace{\fill}\par\nointerlineskip
+    \vspace{0.8\baselineskip}
 }
 \providecommand{\arc}[1]{\wideparen{#1}}
-
 %For use in author command
-\newcommand{\plusemail}[1]{\\ \normalfont \texttt{\mailto{#1}}}
-
+\newcommand{\plusemail}[1]{\\\ \normalfont \texttt{\mailto{#1}}}
 %More commands and math operators
 \DeclareMathOperator{\cis}{cis}
 \DeclareMathOperator*{\lcm}{lcm}
 \DeclareMathOperator*{\argmin}{arg min}
 \DeclareMathOperator*{\argmax}{arg max}
-
 %Convenient Environments
 \newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
 \newenvironment{parlist}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
 \newenvironment{gobble}{\setbox\z@\vbox\bgroup}{\egroup}
-
 %Inequalities
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\symsum}{\sum_{\mathrm{sym}}}
 \newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
 \newcommand{\symprod}{\prod_{\mathrm{sym}}}
-
 %From H113 "Introduction to Abstract Algebra" at UC Berkeley
 \newcommand{\CC}{\mathbb C}
 \newcommand{\FF}{\mathbb F}
@@ -224,34 +201,28 @@
 \DeclareMathOperator{\GL}{GL} % General linear group
 \DeclareMathOperator{\SL}{SL} % Special linear group
 \DeclareMathOperator{\Vol}{Vol} % Special linear group
-
 %From Kiran Kedlaya's "Geometry Unbound"
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 \newcommand{\dang}{\measuredangle} %% Directed angle
 \newcommand{\ray}[1]{\overrightarrow{#1}}
 \newcommand{\seg}[1]{\overline{#1}}
-
 %From M275 "Topology" at SJSU
 \DeclareMathOperator{\id}{id}
 \newcommand{\taking}[1]{\xrightarrow{#1}}
 \newcommand{\inv}{^{-1}}
-
 %From M170 "Introduction to Graph Theory" at SJSU
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\ord}{ord}
 \newcommand{\defeq}{\overset{\mathrm{def}}{=}}
-
 %From the USAMO .tex files
 \newcommand{\ts}{\textsuperscript}
 \newcommand{\dg}{^\circ}
 \newcommand{\ii}{\item}
-
 % From Math 55 and Math 145 at Harvard
 \newenvironment{subproof}[1][Proof]{%
-	\begin{proof}[#1] \renewcommand{\qedsymbol}{$\blacksquare$}}%
-	{\end{proof}}
-
+    \begin{proof}[#1] \renewcommand{\qedsymbol}{$\blacksquare$}}%
+    {\end{proof}}
 \newcommand{\liff}{\leftrightarrow}
 \newcommand{\lthen}{\rightarrow}
 \newcommand{\opname}{\operatorname}
@@ -274,7 +245,6 @@
 \DeclareMathOperator{\Hom}{Hom} % homomorphism
 \DeclareMathOperator{\Mor}{Mor} % morphisms
 \DeclareMathOperator{\End}{End} % endomorphism
-
 % Things Lie
 \newcommand{\kb}{\mathfrak b}
 \newcommand{\kg}{\mathfrak g}
@@ -286,7 +256,6 @@
 \DeclareMathOperator{\Tor}{Tor} % Tor functor
 \newcommand{\gl}{\opname{\mathfrak{gl}}} % frak gl group
 \def\sl{\opname{\mathfrak{sl}}} % frak sl group chktex 6
-
 % More script letters etc.
 \newcommand{\SA}{\mathcal A}
 \newcommand{\SB}{\mathcal B}
@@ -295,7 +264,6 @@
 \newcommand{\SG}{\mathcal G}
 \newcommand{\SH}{\mathcal H}
 \newcommand{\OO}{\mathcal O}
-
 \newcommand{\SCA}{\mathscr A}
 \newcommand{\SCB}{\mathscr B}
 \newcommand{\SCC}{\mathscr C}
@@ -304,12 +272,10 @@
 \newcommand{\SCF}{\mathscr F}
 \newcommand{\SCG}{\mathscr G}
 \newcommand{\SCH}{\mathscr H}
-
 % Mathfrak primes
 \newcommand{\km}{\mathfrak m}
 \newcommand{\kp}{\mathfrak p}
 \newcommand{\kq}{\mathfrak q}
-
 %%fakesection Asymptote setup
 \ifevanasy
 \ifevanpatchasy
@@ -318,55 +284,53 @@
 \usepackage{asymptote}
 \fi
 \begin{asydef}
-	defaultpen(fontsize(10pt));
-	size(8cm); // set a reasonable default
-	usepackage("amsmath");
-	usepackage("amssymb");
-	settings.tex="pdflatex";
-	settings.outformat="pdf";
-	// Replacement for olympiad+cse5 which is not standard
-	import geometry;
-	// recalibrate fill and filldraw for conics
-	void filldraw(picture pic = currentpicture, conic g, pen fillpen=defaultpen, pen drawpen=defaultpen)
-	{ filldraw(pic, (path) g, fillpen, drawpen); }
-	void fill(picture pic = currentpicture, conic g, pen p=defaultpen)
-	{ filldraw(pic, (path) g, p); }
-	// some geometry
-	pair foot(pair P, pair A, pair B) { return foot(triangle(A,B,P).VC); }
-	pair centroid(pair A, pair B, pair C) { return (A+B+C)/3; }
-	// cse5 abbreviations
-	path CP(pair P, pair A) { return circle(P, abs(A-P)); }
-	path CR(pair P, real r) { return circle(P, r); }
-	pair IP(path p, path q) { return intersectionpoints(p,q)[0]; }
-	pair OP(path p, path q) { return intersectionpoints(p,q)[1]; }
-	path Line(pair A, pair B, real a=0.6, real b=a) { return (a*(A-B)+A)--(b*(B-A)+B); }
-	// cse5 more useful functions
-	picture CC() {
-		picture p=rotate(0)*currentpicture;
-		currentpicture.erase();
-		return p;
-	}
-	pair MP(Label s, pair A, pair B = plain.S, pen p = defaultpen) {
-		Label L = s;
-		L.s = "$"+s.s+"$";
-		label(L, A, B, p);
-		return A;
-	}
-	pair Drawing(Label s = "", pair A, pair B = plain.S, pen p = defaultpen) {
-		dot(MP(s, A, B, p), p);
-		return A;
-	}
-	path Drawing(path g, pen p = defaultpen, arrowbar ar = None) {
-		draw(g, p, ar);
-		return g;
-	}
+    defaultpen(fontsize(10pt));
+    size(8cm); // set a reasonable default
+    usepackage("amsmath");
+    usepackage("amssymb");
+    settings.tex="pdflatex";
+    settings.outformat="pdf";
+    // Replacement for olympiad+cse5 which is not standard
+    import geometry;
+    // recalibrate fill and filldraw for conics
+    void filldraw(picture pic = currentpicture, conic g, pen fillpen=defaultpen, pen drawpen=defaultpen)
+    { filldraw(pic, (path) g, fillpen, drawpen); }
+    void fill(picture pic = currentpicture, conic g, pen p=defaultpen)
+    { filldraw(pic, (path) g, p); }
+    // some geometry
+    pair foot(pair P, pair A, pair B) { return foot(triangle(A,B,P).VC); }
+    pair centroid(pair A, pair B, pair C) { return (A+B+C)/3; }
+    // cse5 abbreviations
+    path CP(pair P, pair A) { return circle(P, abs(A-P)); }
+    path CR(pair P, real r) { return circle(P, r); }
+    pair IP(path p, path q) { return intersectionpoints(p,q)[0]; }
+    pair OP(path p, path q) { return intersectionpoints(p,q)[1]; }
+    path Line(pair A, pair B, real a=0.6, real b=a) { return (a*(A-B)+A)--(b*(B-A)+B); }
+    // cse5 more useful functions
+    picture CC() {
+        picture p=rotate(0)*currentpicture;
+        currentpicture.erase();
+        return p;
+    }
+    pair MP(Label s, pair A, pair B = plain.S, pen p = defaultpen) {
+        Label L = s;
+        L.s = "$"+s.s+"$";
+        label(L, A, B, p);
+        return A;
+    }
+    pair Drawing(Label s = "", pair A, pair B = plain.S, pen p = defaultpen) {
+        dot(MP(s, A, B, p), p);
+        return A;
+    }
+    path Drawing(path g, pen p = defaultpen, arrowbar ar = None) {
+        draw(g, p, ar);
+        return g;
+    }
 \end{asydef}
 \fi
-
 %%fakesection BEGIN MAIN SETUP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \ifevansetup
 %%fakesection Set up author and date
 \ifevanauthor
@@ -386,8 +350,8 @@
 \usepackage[backend=biber,backref=true,style=alphabetic]{biblatex}
 \DeclareFieldFormat{labelalpha}{\textbf{\small #1}} % citation ID's in small-bold
 \DefineBibliographyStrings{english}{%
-	backrefpage  = {cited p.}, % for single page number
-	backrefpages = {cited pp.} % for multiple page numbers
+    backrefpage  = {cited p.}, % for single page number
+    backrefpages = {cited pp.} % for multiple page numbers
 }
 \DeclareFieldFormat{journaltitle}{\mkbibemph{#1},} % italic journal title with comma
 \DeclareFieldFormat[inbook,thesis]{title}{\mkbibemph{#1}\addperiod} % italic title with period
@@ -410,7 +374,6 @@
 \fi
 \usepackage[nameinlink]{cleveref}
 \fi
-
 %%fakesection New theorem styles
 \ifevanthm
 \usepackage{amsthm}
@@ -428,7 +391,6 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{eso-pic}
 \usetikzlibrary{shadows,calc}
-
 % ------------------------------------------------------------------
 % Richer PRIMES palette: more filled color, higher contrast, but still
 % formal enough for a mathematical write-up.
@@ -451,89 +413,36 @@
 \definecolor{EvanPeach}{HTML}{FBE8D8}
 \definecolor{EvanRose}{HTML}{A94E70}
 \definecolor{EvanRosePale}{HTML}{F8E3EC}
-
 % ------------------------------------------------------------------
 % Page template: soft lavender paper with decorative margin shapes.
 % Ordinary exposition stays directly on the page. Only actual proof
 % environments receive the blue filled proof treatment below.
 % ------------------------------------------------------------------
-\AtBeginDocument{\pagecolor{EvanLavender!72!white}}
-\AddToShipoutPictureBG{%
-	\begin{tikzpicture}[remember picture,overlay]
-		% Upper-right cluster.
-		\fill[EvanPurpleDeep,opacity=0.22]
-		([xshift=-0.22cm,yshift=-0.30cm]current page.north east) circle[radius=1.95cm];
-		\fill[EvanBlueDeep,opacity=0.17]
-		([xshift=-1.78cm,yshift=-0.08cm]current page.north east) circle[radius=1.10cm];
-		\fill[Orchid,opacity=0.20]
-		([xshift=-0.08cm,yshift=-2.18cm]current page.north east) circle[radius=0.78cm];
-		\fill[TealBlue,opacity=0.15]
-		([xshift=-2.66cm,yshift=-0.68cm]current page.north east) circle[radius=0.43cm];
-		
-		% Lower-left cluster.
-		\fill[EvanBlueDeep,opacity=0.16]
-		([xshift=0.00cm,yshift=0.12cm]current page.south west) circle[radius=1.70cm];
-		\fill[EvanPurple,opacity=0.20]
-		([xshift=1.48cm,yshift=0.00cm]current page.south west) circle[radius=0.87cm];
-		\fill[TealBlue,opacity=0.14]
-		([xshift=2.33cm,yshift=0.34cm]current page.south west) circle[radius=0.49cm];
-		\fill[Orchid,opacity=0.16]
-		([xshift=0.54cm,yshift=1.78cm]current page.south west) circle[radius=0.34cm];
-		
-		% Dot strings: enough decoration to feel templated, but kept in margins.
-		\foreach \yy/\rr/\cc/\oo in {
-			-4.15/0.13/EvanPurpleDeep/0.25,
-			-4.72/0.085/EvanBlueDeep/0.19,
-			-5.25/0.16/TealBlue/0.20,
-			-5.83/0.075/Orchid/0.17,
-			-6.36/0.12/EvanPurple/0.16,
-			-6.91/0.07/EvanBlue/0.14}
-		\fill[\cc,opacity=\oo]
-		([xshift=-0.28cm,yshift=\yy cm]current page.north east) circle[radius=\rr cm];
-		
-		\foreach \yy/\rr/\cc/\oo in {
-			4.95/0.095/EvanPurpleDeep/0.16,
-			5.47/0.07/EvanBlueDeep/0.13,
-			5.98/0.13/TealBlue/0.15,
-			6.55/0.08/Orchid/0.14}
-		\fill[\cc,opacity=\oo]
-		([xshift=0.27cm,yshift=\yy cm]current page.south west) circle[radius=\rr cm];
-		
-		% Two faint curved accents, deliberately outside the main text block.
-		\draw[EvanPurpleDeep,opacity=0.09,line width=4pt]
-		([xshift=-0.12cm,yshift=-3.0cm]current page.north east)
-		.. controls ++(-0.9cm,-0.6cm) and ++(0.6cm,0.8cm) ..
-		([xshift=-0.10cm,yshift=-5.0cm]current page.north east);
-		\draw[EvanBlueDeep,opacity=0.08,line width=4pt]
-		([xshift=0.10cm,yshift=3.0cm]current page.south west)
-		.. controls ++(0.8cm,0.5cm) and ++(-0.5cm,-0.8cm) ..
-		([xshift=0.12cm,yshift=5.0cm]current page.south west);
-	\end{tikzpicture}%
-}
-% https://tex.stackexchange.com/a/292090/76888
-% https://github.com/marcodaniel/mdframed/issues/12
+\AtBeginDocument{\pagecolor{white}}
+% Decorative page-corner shapes omitted in this version.
+% https\://tex.stackexchange.com/a/292090/76888
+% https\://github.com/marcodaniel/mdframed/issues/12
 \usepackage{xpatch}
 \xpatchcmd{\endmdframed}
-{\aftergroup\endmdf@trivlist\color@endgroup}
-{\endmdf@trivlist\color@endgroup\@doendpe}
+{\aftergroup\endmdf\@trivlist\color\@endgroup}
+{\endmdf\@trivlist\color\@endgroup\@doendpe}
 {}{}
-
 % Theorem / proposition / lemma boxes.
 \mdfdefinestyle{mdbluebox}{%
-	roundcorner=7pt,
-	linewidth=1.25pt,
-	skipabove=11pt,
-	skipbelow=9pt,
-	innertopmargin=8pt,
-	innerbottommargin=9pt,
-	innerleftmargin=10pt,
-	innerrightmargin=10pt,
-	linecolor=EvanBlueDeep,
-	backgroundcolor=EvanSkyDeep!64!white,
-	shadow=true,
-	shadowsize=2pt,
-	shadowcolor=EvanBlue!22!black,
-	nobreak=true,
+    roundcorner=7pt,
+    linewidth=1.25pt,
+    skipabove=11pt,
+    skipbelow=9pt,
+    innertopmargin=8pt,
+    innerbottommargin=9pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    linecolor=EvanBlueDeep,
+    backgroundcolor=EvanSkyDeep!64!white,
+    shadow=true,
+    shadowsize=2pt,
+    shadowcolor=EvanBlue!22!black,
+    nobreak=true,
 }
 \declaretheoremstyle[
 headfont=\sffamily\bfseries\color{EvanNavy},
@@ -542,20 +451,19 @@ mdframed={style=mdbluebox},
 headpunct={.},
 postheadspace={0.55em}
 ]{thmbluebox}
-
 % Examples: coral / rose.
 \mdfdefinestyle{mdredbox}{%
-	roundcorner=7pt,
-	linewidth=1.15pt,
-	skipabove=11pt,
-	skipbelow=9pt,
-	innertopmargin=8pt,
-	innerbottommargin=9pt,
-	innerleftmargin=10pt,
-	innerrightmargin=10pt,
-	nobreak=true,
-	backgroundcolor=EvanRosePale,
-	linecolor=EvanRose,
+    roundcorner=7pt,
+    linewidth=1.15pt,
+    skipabove=11pt,
+    skipbelow=9pt,
+    innertopmargin=8pt,
+    innerbottommargin=9pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    nobreak=true,
+    backgroundcolor=EvanRosePale,
+    linecolor=EvanRose,
 }
 \declaretheoremstyle[
 headfont=\bfseries\sffamily\color{EvanRose!78!black},
@@ -563,23 +471,22 @@ mdframed={style=mdredbox},
 headpunct={.},
 postheadspace={0.5em},
 ]{thmredbox}
-
 % Claims: stronger mint fill and dark emerald border for obvious contrast.
 \mdfdefinestyle{mdgreenbox}{%
-	roundcorner=7pt,
-	skipabove=10pt,
-	skipbelow=9pt,
-	linewidth=1.4pt,
-	linecolor=EvanGreenDeep,
-	backgroundcolor=EvanMintDeep!82!white,
-	innertopmargin=8pt,
-	innerbottommargin=9pt,
-	innerleftmargin=10pt,
-	innerrightmargin=10pt,
-	shadow=true,
-	shadowsize=2pt,
-	shadowcolor=EvanGreen!22!black,
-	nobreak=true,
+    roundcorner=7pt,
+    skipabove=10pt,
+    skipbelow=9pt,
+    linewidth=1.4pt,
+    linecolor=EvanGreenDeep,
+    backgroundcolor=EvanMintDeep!82!white,
+    innertopmargin=8pt,
+    innerbottommargin=9pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    shadow=true,
+    shadowsize=2pt,
+    shadowcolor=EvanGreen!22!black,
+    nobreak=true,
 }
 \declaretheoremstyle[
 headfont=\bfseries\sffamily\color{EvanGreenDeep},
@@ -588,20 +495,19 @@ mdframed={style=mdgreenbox},
 headpunct={.},
 postheadspace={0.5em},
 ]{thmgreenbox}
-
 % Remarks / motivation: warm orange.
 \mdfdefinestyle{mdremarkbox}{%
-	roundcorner=7pt,
-	skipabove=9pt,
-	skipbelow=9pt,
-	linewidth=1.2pt,
-	linecolor=EvanOrangeDeep,
-	backgroundcolor=EvanPeach,
-	innertopmargin=8pt,
-	innerbottommargin=9pt,
-	innerleftmargin=10pt,
-	innerrightmargin=10pt,
-	nobreak=true,
+    roundcorner=7pt,
+    skipabove=9pt,
+    skipbelow=9pt,
+    linewidth=1.2pt,
+    linecolor=EvanOrangeDeep,
+    backgroundcolor=EvanPeach,
+    innertopmargin=8pt,
+    innerbottommargin=9pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    nobreak=true,
 }
 \declaretheoremstyle[
 headfont=\bfseries\sffamily\color{EvanOrangeDeep},
@@ -610,23 +516,22 @@ mdframed={style=mdremarkbox},
 headpunct={.},
 postheadspace={0.5em},
 ]{thmremarkbox}
-
 % Final answers: vivid but restrained lavender/purple.
 \mdfdefinestyle{mdanswerbox}{%
-	roundcorner=8pt,
-	skipabove=12pt,
-	skipbelow=11pt,
-	linewidth=1.5pt,
-	linecolor=EvanPurpleDeep,
-	backgroundcolor=EvanLavenderDeep!82!white,
-	innertopmargin=9pt,
-	innerbottommargin=10pt,
-	innerleftmargin=11pt,
-	innerrightmargin=11pt,
-	shadow=true,
-	shadowsize=2pt,
-	shadowcolor=EvanPurple!22!black,
-	nobreak=true,
+    roundcorner=8pt,
+    skipabove=12pt,
+    skipbelow=11pt,
+    linewidth=1.5pt,
+    linecolor=EvanPurpleDeep,
+    backgroundcolor=EvanLavenderDeep!82!white,
+    innertopmargin=9pt,
+    innerbottommargin=10pt,
+    innerleftmargin=11pt,
+    innerrightmargin=11pt,
+    shadow=true,
+    shadowsize=2pt,
+    shadowcolor=EvanPurple!22!black,
+    nobreak=true,
 }
 \declaretheoremstyle[
 headfont=\bfseries\sffamily\color{EvanPurpleDeep},
@@ -635,130 +540,250 @@ mdframed={style=mdanswerbox},
 headpunct={.},
 postheadspace={0.55em},
 ]{thmanswerbox}
-
 % Actual mathematical proofs: dark navy border, light  fill.
 % These boxes are intentionally much stronger than ordinary exposition.
 \mdfdefinestyle{mdproofbox}{%
-	roundcorner=9pt,
-	linewidth=1.9pt,
-	skipabove=10pt,
-	skipbelow=11pt,
-	innertopmargin=10pt,
-	innerbottommargin=11pt,
-	innerleftmargin=12pt,
-	innerrightmargin=12pt,
-	linecolor=EvanNavy,
-	backgroundcolor=EvanSkyDeep!74!white,
-	shadow=true,
-	shadowsize=3pt,
-	shadowcolor=EvanNavy!25!black,
-	splittopskip=10pt,
-	splitbottomskip=10pt,
+    roundcorner=9pt,
+    linewidth=1.9pt,
+    skipabove=10pt,
+    skipbelow=11pt,
+    innertopmargin=10pt,
+    innerbottommargin=11pt,
+    innerleftmargin=12pt,
+    innerrightmargin=12pt,
+    linecolor=EvanNavy,
+    backgroundcolor=EvanSkyDeep!74!white,
+    shadow=false,
+    shadowsize=3pt,
+    shadowcolor=EvanNavy!25!black,
+    splittopskip=10pt,
+    splitbottomskip=10pt,
 }
-
 % Subproofs get a related but slightly lighter treatment.
 \mdfdefinestyle{mdsubproofbox}{%
-	roundcorner=7pt,
-	linewidth=1.35pt,
-	skipabove=8pt,
-	skipbelow=9pt,
-	innertopmargin=8pt,
-	innerbottommargin=9pt,
-	innerleftmargin=10pt,
-	innerrightmargin=10pt,
-	linecolor=EvanBlueDeep,
-	backgroundcolor=EvanSky!82!white,
-	shadow=true,
-	shadowsize=2pt,
-	shadowcolor=EvanBlue!20!black,
+    roundcorner=7pt,
+    linewidth=1.35pt,
+    skipabove=8pt,
+    skipbelow=9pt,
+    innertopmargin=8pt,
+    innerbottommargin=9pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    linecolor=EvanBlueDeep,
+    backgroundcolor=EvanSky!82!white,
+    shadow=false,
+    shadowsize=2pt,
+    shadowcolor=EvanBlue!20!black,
 }
-
 % Important equations: purple fill so they stand apart from the blue proof.
 \mdfdefinestyle{mdequationbox}{%
-	roundcorner=6pt,
-	linewidth=1.2pt,
-	linecolor=EvanPurpleDeep,
-	backgroundcolor=EvanLavenderDeep!80!white,
-	skipabove=9pt,
-	skipbelow=9pt,
-	innertopmargin=6pt,
-	innerbottommargin=6pt,
-	innerleftmargin=9pt,
-	innerrightmargin=9pt,
+    roundcorner=6pt,
+    linewidth=1.2pt,
+    linecolor=EvanPurpleDeep,
+    backgroundcolor=EvanLavenderDeep!80!white,
+    skipabove=9pt,
+    skipbelow=9pt,
+    innertopmargin=6pt,
+    innerbottommargin=6pt,
+    innerleftmargin=9pt,
+    innerrightmargin=9pt,
 }
 \newcommand{\keyeq}[1]{%
-	\begin{mdframed}[style=mdequationbox]
-		\[\displaystyle #1\]
-	\end{mdframed}%
+    \begin{mdframed}[style=mdequationbox]
+        \[\displaystyle #1\]
+    \end{mdframed}%
 }
-
 \mdfdefinestyle{mdpurplebox}{%
-	roundcorner=10pt,
-	linewidth=1.25pt,
-	skipabove=12pt,
-	skipbelow=12pt,
-	innertopmargin=9pt,
-	innerbottommargin=9pt,
-	linecolor=EvanPurpleDeep,
-	nobreak=true,
-	backgroundcolor=EvanLavenderDeep!72!white,
-	shadow=true,
-	shadowsize=5pt,
-	shadowcolor=EvanPurple!24!black,
-	frametitleaboveskip=8pt,
-	frametitlebelowskip=8pt,
-	frametitlebackgroundcolor=EvanPurpleDeep,
-	frametitlefont=\bfseries\sffamily\color{white},
-	frametitlerule=true,
+    roundcorner=10pt,
+    linewidth=1.25pt,
+    skipabove=12pt,
+    skipbelow=12pt,
+    innertopmargin=9pt,
+    innerbottommargin=9pt,
+    linecolor=EvanPurpleDeep,
+    nobreak=true,
+    backgroundcolor=EvanLavenderDeep!72!white,
+    shadow=true,
+    shadowsize=5pt,
+    shadowcolor=EvanPurple!24!black,
+    frametitleaboveskip=8pt,
+    frametitlebelowskip=8pt,
+    frametitlebackgroundcolor=EvanPurpleDeep,
+    frametitlefont=\bfseries\sffamily\color{white},
+    frametitlerule=true,
 }
 \newcommand{\listhack}{$\empty$\vspace{-2em}}
-
 % ------------------------------------------------------------------
 % Solution is only a structural label; it does not create a box.
 % Blue fill is reserved for actual proof/subproof environments.
 % ------------------------------------------------------------------
 \renewenvironment{soln}[1][Solution]{%
-	\par\medskip
-	\noindent{\sffamily\bfseries\color{EvanNavy}#1.}\enspace
-	\ignorespaces
+    \par\medskip
+    \noindent{\sffamily\bfseries\color{EvanNavy}#1.}\enspace
+    \ignorespaces
 }{%
-	\par\medskip
+    \par\medskip
 }
-
 \@ifundefined{solution}{%
-	\newenvironment{solution}[1][Solution]{\begin{soln}[##1]}{\end{soln}}%
+    \newenvironment{solution}[1][Solution]{\begin{soln}[##1]}{\end{soln}}%
 }{}
-
 % Re-style amsthm's proof so only genuine proofs receive the blue box.
 \renewenvironment{proof}[1][Proof]{%
-	\begin{mdframed}[style=mdproofbox]
-		\pushQED{\qed}%
-		\noindent{\sffamily\bfseries\color{EvanNavy}#1.}\enspace
-		\normalfont\ignorespaces
-	}{%
-		\popQED
-	\end{mdframed}
+    \begin{mdframed}[style=mdproofbox]
+        \pushQED{\qed}%
+        \noindent{\sffamily\bfseries\color{EvanNavy}#1.}\enspace
+        \normalfont\ignorespaces
+    }{%
+        \popQED
+    \end{mdframed}
 }
-
 \renewenvironment{subproof}[1][Proof]{%
-	\begin{mdframed}[style=mdsubproofbox]
-		\pushQED{\ensuremath{\blacksquare}}%
-		\noindent{\sffamily\bfseries\color{EvanBlueDeep}#1.}\enspace
-		\normalfont\ignorespaces
-	}{%
-		\popQED
-	\end{mdframed}
+    \begin{mdframed}[style=mdsubproofbox]
+        \pushQED{\ensuremath{\blacksquare}}%
+        \noindent{\sffamily\bfseries\color{EvanBlueDeep}#1.}\enspace
+        \normalfont\ignorespaces
+    }{%
+        \popQED
+    \end{mdframed}
 }
+% Page-flow proof frames.  Text is never collected into a nested vbox:
+% zref records the boundaries and TikZ draws each visible page fragment.
+% Recompile until labels settle (normally two or three runs).
+\RequirePackage{zref-savepos}
+\RequirePackage{zref-abspage}
+\RequirePackage{needspace}
+\newcount\evan@framecount
+\newcount\evan@framedepth
+\newdimen\evan@framewidth
+\newdimen\evan@framepad
+\newdimen\evan@frametop
+\newdimen\evan@framebottom
+\newdimen\evan@frameabove
+\newdimen\evan@framebelow
+\def\evan@oldframecount{0}
+\zref@newprop{evanwidth}[0]{\number\evan@framewidth}
+\zref@newprop{evankind}[0]{\evan@framekind}
+\zref@newprop{evandepth}[0]{\the\evan@framedepth}
+\zref@addprops{savepos}{abspage,evanwidth,evankind,evandepth}
+\AtEndDocument{%
+  \immediate\write\@auxout{\string\gdef\string\evan@oldframecount{\the\evan@framecount}}%
+}
+\def\evan@framemarker#1{%
+  \nobreak\nointerlineskip
+  \hbox to\z@{\kern\@totalleftmargin\kern-\evan@framepad\zsavepos{#1}\hss}%
+  \nobreak\nointerlineskip
+}
+\def\evan@flowbegin#1#2{%
+  \par\begingroup
+  \global\advance\evan@framecount\@ne
+  \edef\evan@frameid{\the\evan@framecount}%
+  \def\evan@framekind{#1}%
+  \advance\evan@framedepth\@ne
+  \evan@framewidth=\linewidth
+  \ifnum#1=0
+    \evan@framepad=13.9pt
+    \evan@frametop=11.9pt \evan@framebottom=12.9pt
+    \evan@frameabove=10pt \evan@framebelow=11pt
+    \def\evan@headingcolor{EvanNavy}%
+    \pushQED{\qed}%
+  \else
+    \evan@framepad=11.35pt
+    \evan@frametop=9.35pt \evan@framebottom=10.35pt
+    \evan@frameabove=8pt \evan@framebelow=9pt
+    \def\evan@headingcolor{EvanBlueDeep}%
+    \pushQED{\ensuremath{\blacksquare}}%
+  \fi
+  \addvspace{\evan@frameabove}%
+  \Needspace{5\baselineskip}%
+  \list{}{%
+    \leftmargin=\evan@framepad \rightmargin=\evan@framepad
+    \topsep=0pt \partopsep=0pt \itemsep=0pt
+    \parsep=\parskip \listparindent=\parindent
+    \labelwidth=0pt \labelsep=0pt \itemindent=0pt
+  }%
+  \item[]\relax
+  \evan@framemarker{evan-frame-\evan@frameid-start}%
+  \nobreak\vskip\evan@frametop\nobreak
+  \clubpenalty=10000 \widowpenalty=10000
+  \noindent{\sffamily\bfseries\color{\evan@headingcolor}#2.}\enspace
+  \normalfont\ignorespaces
+}
+\def\evan@flowend{%
+  % Use the ordinary QED placement; no special ending protection.
+  \popQED\par
+  \vskip\evan@framebottom
+  \evan@framemarker{evan-frame-\evan@frameid-end}%
+  \endlist
+  \par\addvspace{\evan@framebelow}%
+  \endgroup\ignorespacesafterend
+}
+\renewenvironment{proof}[1][Proof]
+  {\evan@flowbegin{0}{#1}}{\evan@flowend}
+\renewenvironment{subproof}[1][Proof]
+  {\evan@flowbegin{1}{#1}}{\evan@flowend}
+\def\evan@drawflowframes{%
+  \ifnum\evan@oldframecount>0
+  \begin{tikzpicture}[remember picture,overlay]
+    \coordinate (evan-page-origin) at (current page.south west);
+    \foreach \evan@i in {1,...,\evan@oldframecount}{%
+      \edef\evan@startlabel{evan-frame-\evan@i-start}%
+      \edef\evan@endlabel{evan-frame-\evan@i-end}%
+      \edef\evan@firstpage{\zref@extractdefault{\evan@startlabel}{abspage}{0}}%
+      \edef\evan@lastpage{\zref@extractdefault{\evan@endlabel}{abspage}{0}}%
+      \ifnum\evan@firstpage>0
+      \ifnum\c@abspage<\evan@firstpage\else
+      \ifnum\c@abspage>\evan@lastpage\else
+        \edef\evan@kind{\zref@extractdefault{\evan@startlabel}{evankind}{0}}%
+        \edef\evan@depth{\zref@extractdefault{\evan@startlabel}{evandepth}{1}}%
+        \ifnum\evan@kind=0
+          \def\evan@edge{EvanNavy}\def\evan@fill{EvanSkyDeep!74!white}%
+          \def\evan@shadow{EvanNavy!25!black}%
+          \def\evan@rule{1.9pt}\def\evan@radius{9pt}\def\evan@shiftsize{3pt}%
+        \else
+          \def\evan@edge{EvanBlueDeep}\def\evan@fill{EvanSky!82!white}%
+          \def\evan@shadow{EvanBlue!20!black}%
+          \def\evan@rule{1.35pt}\def\evan@radius{7pt}\def\evan@shiftsize{2pt}%
+        \fi
+        \pgfmathsetlengthmacro\evan@xleft{\zposx{\evan@startlabel}sp}%
+        \pgfmathsetlengthmacro\evan@xright{\evan@xleft+\zref@extractdefault{\evan@startlabel}{evanwidth}{0}sp}%
+        \ifnum\c@abspage=\evan@firstpage
+          \pgfmathsetlengthmacro\evan@ytop{\zposy{\evan@startlabel}sp}%
+          \def\evan@extendtop{0pt}%
+        \else
+          \pgfmathsetlengthmacro\evan@ytop{\paperheight-1in-\voffset-\topmargin-\headheight-\headsep}%
+          \let\evan@extendtop\evan@radius
+        \fi
+        \ifnum\c@abspage=\evan@lastpage
+          \pgfmathsetlengthmacro\evan@ybottom{\zposy{\evan@endlabel}sp}%
+          \def\evan@extendbottom{0pt}%
+        \else
+          \pgfmathsetlengthmacro\evan@ybottom{\paperheight-1in-\voffset-\topmargin-\headheight-\headsep-\textheight}%
+          \let\evan@extendbottom\evan@radius
+        \fi
+        \begin{scope}[shift={(evan-page-origin)}]
+          \clip (\evan@xleft-\evan@rule,\evan@ybottom-\evan@shiftsize-\evan@rule)
+             rectangle (\evan@xright+\evan@shiftsize+\evan@rule,\evan@ytop+\evan@rule);
+          \path[fill=\evan@fill,draw=\evan@edge,line width=\evan@rule,rounded corners=\evan@radius]
+            (\evan@xleft,\evan@ybottom-\evan@extendbottom)
+            rectangle (\evan@xright,\evan@ytop+\evan@extendtop);
+        \end{scope}%
+      \fi\fi\fi
+    }%
+  \end{tikzpicture}%
+  \fi
+}
+% Registered after the existing lavender page decoration: outer frames are
+% drawn first, then inner frames; all remain behind the document text.
+\AddToShipoutPictureBG{\evan@drawflowframes}
 
 % Ordinary \boxed results also get a true filled color treatment.
 \renewcommand{\boxed}[1]{%
-	\begingroup
-	\setlength{\fboxsep}{5pt}%
-	\fcolorbox{EvanPurpleDeep}{EvanLavenderDeep!82!white}{$\displaystyle #1$}%
-	\endgroup
+    \begingroup
+    \setlength{\fboxsep}{5pt}%
+    \fcolorbox{EvanPurpleDeep}{EvanLavenderDeep!82!white}{$\displaystyle #1$}%
+    \endgroup
 }
 \fi
-
 %%fakesection Theorem setup
 \ifevanthm
 \theoremstyle{definition}
@@ -794,7 +819,6 @@ postheadspace={0.55em},
 \declaretheorem[name=Corollary,numbered=no]{corollary*}
 \declaretheorem[name=Assumption,numbered=no]{assume*}
 \fi
-
 \ifevanmdthm
 \declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
 \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
@@ -806,7 +830,6 @@ postheadspace={0.55em},
 \declaretheorem[name=Claim,sibling=theorem]{claim}
 \declaretheorem[name=Claim,numbered=no]{claim*}
 \fi
-
 \ifevanmdthm
 \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
 \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
@@ -814,7 +837,6 @@ postheadspace={0.55em},
 \declaretheorem[name=Example,sibling=theorem]{example}
 \declaretheorem[name=Example,numbered=no]{example*}
 \fi
-
 % Remark-style theorems
 \ifevanmdthm
 \declaretheorem[style=thmremarkbox,name=Remark,sibling=theorem]{remark}
@@ -823,7 +845,6 @@ postheadspace={0.55em},
 \declaretheorem[name=Remark,sibling=theorem]{remark}
 \declaretheorem[name=Remark,numbered=no]{remark*}
 \fi
-
 \ifevanmdthm
 \declaretheoremstyle[
 headfont=\color{blue!40!black}\normalfont\bfseries,
@@ -834,7 +855,6 @@ bodyfont=\normalfont
 \else
 \declaretheoremstyle[spaceabove=6pt,spacebelow=6pt]{basehead}
 \fi
-
 \ifevanmdthm
 \declaretheorem[style=thmanswerbox,name=Answer,sibling=theorem]{answer}
 \declaretheorem[style=thmanswerbox,name=Answer,numbered=no]{answer*}
@@ -854,7 +874,6 @@ bodyfont=\normalfont
 \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
 \declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
-
 \ifevanpkg
 \Crefname{answer}{Answer}{Answers}
 \Crefname{assume}{Assumption}{Assumptions}
@@ -866,43 +885,40 @@ bodyfont=\normalfont
 \Crefname{ques}{Question}{Questions}
 \fi
 \fi
-
 %%fakesection Fancy section and chapter heads
 \ifevancolorsec
 \@ifundefined{KOMAClassName}{}{
-	\@ifundefined{chapter}{}{
-		\addtokomafont{partprefix}{\rmfamily}
-		\renewcommand*{\partformat}{\color{purple}
-			\scalebox{2.5}{\thepart}\enlargethispage{2em}}
-		\addtokomafont{chapterprefix}{\raggedleft}
-		\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
-		\renewcommand*{\chapterformat}{\mbox{%
-				\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
-				\scalebox{2.718}{\color{purple}\thechapter}\enskip}}
-	}
-	\renewcommand*{\sectionformat}%
-	{\color{EvanPurpleDeep}\S\thesection\enskip}
-	\renewcommand*{\subsectionformat}%
-	{\color{EvanPurple}\S\thesubsection\enskip}
-	\renewcommand*{\subsubsectionformat}%
-	{\color{EvanBlueDeep}\S\thesubsubsection\enskip}
-	\addtokomafont{section}{\sffamily\bfseries\color{EvanNavy}}
-	\addtokomafont{subsection}{\sffamily\bfseries\color{EvanPurpleDeep}}
-	\addtokomafont{subsubsection}{\sffamily\bfseries\color{EvanBlueDeep}}
-	\addtokomafont{paragraph}{\color{BurntOrange!70!black}\P\ }
-	\RedeclareSectionCommand[beforeskip=1.15em,afterskip=0.55em]{subsection}
-	\RedeclareSectionCommand[beforeskip=0.95em,afterskip=0.35em]{subsubsection}
-	\KOMAoptions{numbers=noenddot}
-	%\usetocstyle{KOMAlike}
+    \@ifundefined{chapter}{}{
+        \addtokomafont{partprefix}{\rmfamily}
+        \renewcommand*{\partformat}{\color{purple}
+            \scalebox{2.5}{\thepart}\enlargethispage{2em}}
+        \addtokomafont{chapterprefix}{\raggedleft}
+        \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+        \renewcommand*{\chapterformat}{\mbox{%
+                \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+                \scalebox{2.718}{\color{purple}\thechapter}\enskip}}
+    }
+    \renewcommand*{\sectionformat}%
+    {\color{EvanPurpleDeep}\S\thesection\enskip}
+    \renewcommand*{\subsectionformat}%
+    {\color{EvanPurple}\S\thesubsection\enskip}
+    \renewcommand*{\subsubsectionformat}%
+    {\color{EvanBlueDeep}\S\thesubsubsection\enskip}
+    \addtokomafont{section}{\sffamily\bfseries\color{EvanNavy}}
+    \addtokomafont{subsection}{\sffamily\bfseries\color{EvanPurpleDeep}}
+    \addtokomafont{subsubsection}{\sffamily\bfseries\color{EvanBlueDeep}}
+    \addtokomafont{paragraph}{\color{BurntOrange!70!black}\P\ }
+    \RedeclareSectionCommand[beforeskip=1.15em,afterskip=0.55em]{subsection}
+    \RedeclareSectionCommand[beforeskip=0.95em,afterskip=0.35em]{subsubsection}
+    \KOMAoptions{numbers=noenddot}
+    %\usetocstyle{KOMAlike}
 }
 \fi
-
 %%fakesection Lightweight package set + optional extras
 \ifevanpkg
 \ifevanvonenabled
 \IfFileExists{von.sty}{\usepackage{von}}{}
 \fi
-
 % Packages actually used by the current PRIMES solution document.
 % Keeping this core small has a noticeable effect on compile time.
 \usepackage{mathrsfs}
@@ -912,44 +928,43 @@ bodyfont=\normalfont
 \usepackage{microtype}
 \usepackage{xstring}
 \allowdisplaybreaks
-
 % Heavy / specialist packages are still available, but only when the
 % package is loaded with \usepackage[...,extras]{evan}.
 \ifevanextras
 \usepackage{listings}
 \lstset{basicstyle=\ttfamily\small,
-	backgroundcolor=\color{yellow!3!white},
-	breakatwhitespace=true,
-	breaklines=true,
-	columns=fullflexible,
-	commentstyle=\color{red!70!black},
-	frame=shadowbox,
-	frame=single,
-	framerule=1pt,
-	identifierstyle=\color{green!40!black},
-	keywordstyle=\bfseries\color{blue!80!black},
-	numbers=left,
-	numbersep=8pt,
-	numberstyle=\scriptsize\sffamily\itshape\color{black!80},
-	rulecolor=\color{blue!70!black},
-	rulesepcolor=\color{blue!30!black},
-	showstringspaces=false,
-	stringstyle=\color{orange},
-	tabsize=4,
-	xleftmargin=15pt,
-	xrightmargin=15pt,
-	resetmargins=true,
+    backgroundcolor=\color{yellow!3!white},
+    breakatwhitespace=true,
+    breaklines=true,
+    columns=fullflexible,
+    commentstyle=\color{red!70!black},
+    frame=shadowbox,
+    frame=single,
+    framerule=1pt,
+    identifierstyle=\color{green!40!black},
+    keywordstyle=\bfseries\color{blue!80!black},
+    numbers=left,
+    numbersep=8pt,
+    numberstyle=\scriptsize\sffamily\itshape\color{black!80},
+    rulecolor=\color{blue!70!black},
+    rulesepcolor=\color{blue!30!black},
+    showstringspaces=false,
+    stringstyle=\color{orange},
+    tabsize=4,
+    xleftmargin=15pt,
+    xrightmargin=15pt,
+    resetmargins=true,
 }
 \lstdefinelanguage{gitcommit}{
-	alsoletter={:},
-	morecomment=[l]{|},
-	morekeywords={commit,Author:,Date:,chore,doc,edit,feat,fix,polish,style,tests,},
-	sensitive=true,
+    alsoletter={:},
+    morecomment=[l]{|},
+    morekeywords={commit,Author:,Date:,chore,doc,edit,feat,fix,polish,style,tests,},
+    sensitive=true,
 }
 \lstdefinelanguage{gitlog}{
-	morekeywords={chore,doc,edit,feat,fix,polish,style,tests,},
-	morecomment=[s]{[}{]},
-	sensitive=true,
+    morekeywords={chore,doc,edit,feat,fix,polish,style,tests,},
+    morecomment=[s]{[}{]},
+    sensitive=true,
 }
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage{multirow}
@@ -962,83 +977,78 @@ bodyfont=\normalfont
 \usepackage{tikz-cd}
 \usetikzlibrary{decorations.pathmorphing}
 \fi
-
 % Inline list used by the original style file, implemented with enumitem
 % so we do not need a separate paralist package.
 \renewenvironment{parlist}{\begin{enumerate*}[label=(\roman*)]}{\end{enumerate*}}
-
 % a list I like for walkthrough's --- Drew-style parts
 \newlist{walk}{enumerate}{3}
 \setlist[walk]{label=\bfseries (\alph*)}
 % list item for MO style rubrics
 \newcommand{\worth}[1]{\def\hfill{\hskip 20pt plus 1fill}\dotfill%
-	\IfEq{#1}{0}{\textbf{0~points}}%
-	{\textbf{\color{blue}#1~point\IfEndWith{#1}{1}{}{s}}}%
-	\par}
+    \IfEq{#1}{0}{\textbf{0~points}}%
+    {\textbf{\color{blue}#1~point\IfEndWith{#1}{1}{}{s}}}%
+    \par}
 \newcommand{\subworth}[1]{\def\hfill{\hskip 20pt plus 1fill}\dotfill%
-	\IfEq{#1}{0}{{\footnotesize0~points}}%
-	{\textbf{\footnotesize#1~point\IfEndWith{#1}{1}{}{s}}}%
-	\par}
+    \IfEq{#1}{0}{{\footnotesize0~points}}%
+    {\textbf{\footnotesize#1~point\IfEndWith{#1}{1}{}{s}}}%
+    \par}
 \newlist{rubric}{enumerate}{2}
 \setlist[rubric,1]{label=\Roman*.}
 \setlist[rubric,2]{label=(\Roman{rubrici}.\alph*)}
 \fi
-
 %%fakesection \maketitle configuration
 \@ifundefined{KOMAClassName}%
 {} % do nothing outside KOMA class
 {% If KOMA exists. . .
-	\addtokomafont{title}{\sffamily\bfseries\color{MidnightBlue!95!black}}
-	\addtokomafont{subtitle}{\Large\sffamily\bfseries\color{TealBlue!80!black}}
-	\setkomafont{author}{\Large\scshape\color{Violet!65!black}}
-	\setkomafont{date}{\Large\normalsize\color{MidnightBlue!70!black}}
+    \addtokomafont{title}{\sffamily\bfseries\color{MidnightBlue!95!black}}
+    \addtokomafont{subtitle}{\Large\sffamily\bfseries\color{TealBlue!80!black}}
+    \setkomafont{author}{\Large\scshape\color{Violet!65!black}}
+    \setkomafont{date}{\Large\normalsize\color{MidnightBlue!70!black}}
 }
 \providecommand{\thetitle}{\@title}
 \providecommand{\theauthor}{\@author}
 \providecommand{\thedate}{\@date}
-
 %%fakesection Page setup
 \ifevanfancy
 \@ifundefined{KOMAClassName}
 {
-	\usepackage{fancyhdr}
-	\setlength{\headheight}{0.75in}
-	\setlength{\oddsidemargin}{0in}
-	\setlength{\evensidemargin}{0in}
-	\setlength{\voffset}{-1.0in}
-	\setlength{\headsep}{10pt}
-	\setlength{\textwidth}{6.5in}
-	\setlength{\headwidth}{6.5in}
-	\setlength{\textheight}{8.75in}
-	\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
-	\setlength{\footskip}{0.3in}
-	\ifevanhdr
-	\renewcommand{\headrulewidth}{0.5pt}
-	\renewcommand{\footrulewidth}{0.0pt}
-	\pagestyle{fancy}
-	\lhead{Samaksh Bhargav}
-	\chead{}
-	\rhead{\nouppercase{\leftmark}}
-	\lfoot{}
-	\cfoot{\thepage}
-	\rfoot{}
-	\fi
+    \usepackage{fancyhdr}
+    \setlength{\headheight}{0.75in}
+    \setlength{\oddsidemargin}{0in}
+    \setlength{\evensidemargin}{0in}
+    \setlength{\voffset}{-1.0in}
+    \setlength{\headsep}{10pt}
+    \setlength{\textwidth}{6.5in}
+    \setlength{\headwidth}{6.5in}
+    \setlength{\textheight}{8.75in}
+    \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+    \setlength{\footskip}{0.3in}
+    \ifevanhdr
+    \renewcommand{\headrulewidth}{0.5pt}
+    \renewcommand{\footrulewidth}{0.0pt}
+    \pagestyle{fancy}
+    \lhead{Samaksh Bhargav}
+    \chead{}
+    \rhead{\nouppercase{\leftmark}}
+    \lfoot{}
+    \cfoot{\thepage}
+    \rfoot{}
+    \fi
 }
 {
-	\usepackage[headsepline]{scrlayer-scrpage}
-	\renewcommand{\headfont}{}
-	\addtolength{\textheight}{3.14cm}
-	\setlength{\footskip}{0.5in}
-	\setlength{\headsep}{10pt}
-	\ihead{\footnotesize\color{MidnightBlue!80!black}\textbf{\theauthor} --- \thedate}
-	\automark{section}
-	\chead{}
-	\ohead{\footnotesize\color{MidnightBlue!80!black}\textbf{\thetitle}}
-	\cfoot{\color{Violet!65!black}\pagemark}
-	\setkomafont{headsepline}{\color{RoyalBlue!45!black}}
+    \usepackage[headsepline]{scrlayer-scrpage}
+    \renewcommand{\headfont}{}
+    \addtolength{\textheight}{3.14cm}
+    \setlength{\footskip}{0.5in}
+    \setlength{\headsep}{10pt}
+    \ihead{\footnotesize\color{MidnightBlue!80!black}\textbf{\theauthor} --- \thedate}
+    \automark{section}
+    \chead{}
+    \ohead{\footnotesize\color{MidnightBlue!80!black}\textbf{\thetitle}}
+    \cfoot{\color{Violet!65!black}\pagemark}
+    \setkomafont{headsepline}{\color{RoyalBlue!45!black}}
 }
 \fi
-
 %%fakesection Unicode
 \ifevanpkg
 \ifluatex
@@ -1047,7 +1057,7 @@ bodyfont=\normalfont
 \else
 \usepackage{fontspec}
 \fi
-% https://tex.stackexchange.com/a/572220/76888
+% https\://tex.stackexchange.com/a/572220/76888
 \directlua{luaotfload.add_fallback
 ("evans_fallbacks",
 {
@@ -1083,7 +1093,6 @@ RawFeature={fallback=evans_fallbacks}
 \fi
 \fi
 \fi
-
 %%fakesection Hints
 \ifevanhints
 \usepackage{answers}

@@ -1086,7 +1086,7 @@ the cases $n=1$ and $n=2$.
 	\begin{claim*}
 		We need to choose points at, for a value of $n$,     \[
         \left\{\frac{1}{2n},\frac{3}{2n},\ldots,
-        \frac{2n-1}{2n}\right\} \].
+        \frac{2n-1}{2n}\right\} \]
 	\end{claim*}
 	\begin{proof}
 		
@@ -2876,7 +2876,7 @@ Put in a table we can see clearly and compare
 
 \begin{soln}
 	As always, define $q$ as $a/b$ where each of them are such that $gcd(a,b)=1$
-	and $a,b \in \mathbb{N}$. We also define the $S$ as $\mathbb{N_0[q]}$.
+	and $a,b \in \mathbb{N}$. We also define the $S$ as $\mathbb N_0[q]$.
 	Every positive $q \in \mathbb Q$ will work, we split this into two cases, which turns out that 
     one is easier then another.
     \subsubsection*{\vocab{Integers and Inverse Integers}}
@@ -2886,7 +2886,7 @@ Put in a table we can see clearly and compare
     =\left\{\frac{m}{b^k}:m,k\in\mathbb N_0\right\},
     \]
 	regardless of the case. This notation to represent $N_0[1/b]$ 
-    is convenient because if  $b=1$ we obtain taht $S=\mathbb{N}_0$, which 
+    is convenient because if  $b=1$ we obtain that $S=\mathbb{N}_0$, which 
     is as expected. Furthermore,  if $a=1$ in the above 
     notation we have the $q=1/b$ as expected. 
 	We essentially finish this case with the following claim
@@ -2913,7 +2913,7 @@ Put in a table we can see clearly and compare
         =\frac{b^{k+L}/m}{b^L}\in S.
         \]
 		Moving onto the irreducible part of the question. 
-		A prime that doesn't divide $b$ is not a unit we have that
+		A prime that doesn't divide $b$ is not a unit, meaning we have that
         \[
         p=\frac{m}{b^k}\frac{n}{b^\ell},
         \qquad m,n\in\mathbb N,\quad k,\ell\in\mathbb N_0,
@@ -2921,7 +2921,7 @@ Put in a table we can see clearly and compare
         from which we get $mn=pb^{k+\ell}$.
 		We know that $p$ is prime so either $m$ or $n$ contains the prime factor of $p$.
 		WLOG say it is $n$. Then we know that $m$ must divide $b^{k+l}$. This means 
-		$m$ is a unit meaning the $p$ is irreducible. Additionally, any two primes $p$ and 
+		$m$ is a unit meaning that $p$ is irreducible. Additionally, any two primes $p$ and 
 		$p_2$ don't divide $b$, so if we take $p/{p_2}$ we see that the denominator
 		is $p_2$ which means it is not in $S$ and is therefore not in the same 
 		associate class.
@@ -2932,15 +2932,13 @@ Put in a table we can see clearly and compare
 
     \subsubsection*{\vocab{The other case}}
 
-	We now assume the other case, which is when $a,b >1$.
-
-    We can use Theorem~2.3(3) of Chapman, Gotti, and Gotti
+	We now assume the other case, which is when $a,b >1$. We can use Theorem~2.3(3) of Chapman, Gotti, and Gotti
     \cite{p7-chapman-gotti-gotti} which states that additive atoms in our 
 	definition of $S$ is just 
     \[
     \{q^j:j\in\mathbb N_0\}.
     \]
-	where a additive atom is defined as a element that can't be written as A
+	where a additive atom is defined as a element that can't be written as a
 	sum of two nonzero elements in $S$. 
 	So we can use this to create a polynomial in form of $P(q)$ 
 	which is a factorization, using addition, into these atoms. 
@@ -3034,8 +3032,7 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
             \[
             U(x)V(x)=1+x^n.
             \]
-            Comparing and evaluate at $x=1$
-            to give
+            Comparing and evaluate at $x=1$ and $x=0$ to give
             \[
             U(0)V(0)=1,
             \qquad
@@ -3045,7 +3042,6 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
             Since we know the coefficients are nonnegative, combining these two give that
             one of these must be $1$. 
 			Meaning $1+q^n>1$ is irreducible.
-
         \end{subproof}
     \end{proof}
 	We know that $q$ is not $1$, meaning that as $n$ is changing the value of 
@@ -3060,10 +3056,8 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 \subsection{(b)}
 
 \begin{soln}
-	$q=a/b$ in lowest terms and set $S=\mathbb N_0[q]$.
-
-	Now we will show that the property only holds when one of $a,b$ is 
-	$=1$. Therefore, our first goal was to show why $a,b > 1$ doesn't work.
+	$q=a/b$ in lowest terms and set $S=\mathbb N_0[q]$. Now we will show that the property only holds when one of $a,b$ is 
+	$=1$. Therefore, our first goal is to show why $a,b > 1$ doesn't work.
 	Then we prove the rest. Turns out, this first case is quite a bit easier. 
     \subsubsection*{\vocab{First Case}}
 
@@ -3072,17 +3066,16 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
     \end{claim*}
 
     \begin{proof}
-        Part~(a) gives $S^\times=\{1\}$. We use additive atoms here, defining $q^n$ as in  \cite[Theorem~2.3(3)]{p7-chapman-gotti-gotti}.
-        As mentioned before, $q^n$ is not irreducible. 
+        Part~(a) gives $S^\times=\{1\}$. We use additive atoms here, knowing 
+        that all $q^n$ are additive atoms via \cite[Theorem~2.3(3)]{p7-chapman-gotti-gotti}.
+        $q^n$ for $n\geq 2$ can't be a sum of multiplicative irreducibles.
+        This is because that since $q^n$ is an additive atom, it cannot be a sum of
+        two or more nonzero elements of $S$, and we know that $q^n$ is reducible. 
 
-        Also $q^n$ is an additive atom, it cannot be a sum of
-        two or more nonzero elements of $S$. It can't be a sum of just 
-		itself since it is reducible. 
-        Thus none of the elements $q^n$, $n\ge2$, is a sum of
-        any positive number of multiplicative irreducibles.
-		All of these are distinct, because $q$ is not $1$ and also we 
-		know the set of units in $S$ is just $1$. That means that each of $q^n$
-		is their own associate class. There are infinite number of these associate 
+
+		All of the values $q^n$ when $n$ varies are distinct because $q$ is not $1$.
+        Combined with the fact that the set of units in $S$ is just $1$, 
+        we know that each of $q^n$ is their own associate class. There are infinite number of these associate 
 		classes, therefore no finite collection of associate classes will be able to hold
 		 them all. This means that the Goldbach property doesn't hold.
     \end{proof}
@@ -3091,7 +3084,8 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 
 	The other case requires much more thought. This is when one of $a,b$ 
 	is $1$. The main reason we cannot use the Ternary Goldbach theorem given in the problem is due to the fact that we don't know what 
-	primes divide $d$. However, we can calculate a "density" of primes to be $1$
+	primes divide $d$. However, we can calculate a "density" of primes that 
+    don't divide $d$ to be $1$
 	and use a previously proven theorem to finish. 
 	We prove the following claim
 
@@ -3133,8 +3127,7 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 			For even integers this requires a bit more calculations. This is 
 			because parity forces us to use $2$, $4$, $6$ or some other even
 			number  primes, since our set only 
-			contains odd primes. The current status of the $2$ prime case hasn't been proved
-			and is the well known binary Goldbach conjecture. So we move onto $4$ odd primes.
+			contains odd primes. We look at the sum of $4$ odd primes.
             Fix, once and for all, a prime $p_*\in A_d$ (not depending on $N$),
 and set $B_d=T_d+p_*$. If $N\ge B_d$ is even, then $N-p_*$ is odd
 and at least $T_d$, so 
@@ -3197,8 +3190,6 @@ valid representation.
         \end{subproof}
 
         \begin{subproof}
-			The fact above was what motivated the entire previous claim. 
-			Now it comes to good use. 
             Let $B_d$ be supplied by the preceding claim so we can get a collection 
 			of 
             \[

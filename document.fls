@@ -283,6 +283,8 @@ INPUT /usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryfad
 OUTPUT document.pdf
 INPUT /usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 INPUT /usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/zref/zref-savepos.sty
+INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/zref/zref-savepos.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 INPUT /usr/local/texlive/2026/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
