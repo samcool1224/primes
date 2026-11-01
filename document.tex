@@ -66,7 +66,7 @@
     \end{claim*}
 
 \begin{proof}
-    We first prove the direction where if they line on a plane, then the 
+    We first prove the direction where if they lie on a plane, then the 
     determinant condition is true. We can assume the two lines lie on a affine plane
      $p+W$,
     where $W$ is a two-dimensional vector subspace of $\mathbb R^3$.
@@ -215,7 +215,6 @@ $(\vec d,\vec m)$ so the class is well-defined.
 	Now we aim to recover a specific line from the $[\vec d:\vec m]$.
 	The main part of this line we are missing is some base point $\vec u_0$ satisfying
     $\vec u_0\times\vec d=\vec m$.
-    Jia's formula for closest-point provides a candidate for this point. 
 
     \begin{claim*}
         Every class $[\vec d:\vec m]\in\mathcal P/\sim$ determines
@@ -241,7 +240,6 @@ $(\vec d,\vec m)$ so the class is well-defined.
             \]
             This is defined well because we know that $\vec d\neq\vec 0$.
             now use the vector triple product identity. Combined with 
-			
             $\vec d\cdot\vec m=0$, we check that
             \[
             \vec u_0\times\vec d
@@ -330,7 +328,7 @@ perpendicular and prove that it is unique.
     \subsubsection*{\vocab{ Perpendicular}}
     We know the lines are skew and therefore that $R \neq 0$ as defined in the coplanarity
 	part of this proof.
-    The lines are skew, so their directions are not parallel and
+     Also, their directions are not parallel and
     \[
     \vec n=\vec d_1\times\vec d_2\neq\vec0.
     \]
@@ -460,8 +458,8 @@ perpendicular and prove that it is unique.
 			\]
 		\end{proof}
 		
-		
-		Something useful to note is that we can define
+		\begin{remark}
+            Just something useful to note is that we can define
 		\[
 		a_k=\frac{c_k}{\binom Nk}.
 		\]
@@ -491,6 +489,8 @@ perpendicular and prove that it is unique.
 		sites. Here, the quantities being averaged are precisely the
 		conditional crossing probabilities $a_k$.
 		
+        \end{remark}
+	
 		
 		Next we finish the first part of this part by proving it is a polynomial.
 		\begin{claim*}
@@ -609,54 +609,59 @@ perpendicular and prove that it is unique.
 			between horizontal or vertical neighbors. The search determines
 			whether any occupied site in the rightmost column is reachable
 			from the occupied sites in the leftmost column.
-			\begin{lstlisting}[style=pseudoStyle]
+
+\begin{lstlisting}[style=pseudoStyle]
 FUNCTION TryToFindTheta(n, p, M)
 
-numofsuccess = 0
+    numofsuccess = 0
 
-REPEAT M times:
+    REPEAT M times:
 
-Create a empty n by n grid
-Loop through each square and occupy it independently with probability p
-visited = n by n array filled with FALSE
-crossing =FALSE
+        Create an empty n by n grid
+        Loop through each square and occupy it independently with probability p
+        visited = n by n array filled with FALSE
+        crossing = FALSE
 
-FOR each square in leftmost column
+        FOR each square in leftmost column
 
-IF site (r, 0) is occupied AND not visited:
+            IF site (r, 0) is occupied AND not visited:
 
-stack = [(r, 0)]
-mark (r, 0) visited
+                stack = [(r, 0)]
+                mark (r, 0) visited
 
-WHILE stack not = []
+                WHILE stack not = []
 
-remove last site in stack call it (x,y)
+                    remove last site in stack call it (x,y)
 
-IF y = n - 1:
-crossing = TRUE
-BREAK
+                    IF y = n - 1:
+                        crossing = TRUE
+                        BREAK
 
-IF (x+1, y) is inside the grid AND occupied AND not visited:
-mark (x+1, y) visited
-add (x+1, y) to stack
-IF (x, y+1) is inside the grid AND occupied AND not visited:
-mark (x, y+1) visited
-add (x, y+1) to stack
-IF (x-1, y) is inside the grid AND occupied AND not visited:
-mark (x-1, y)  visited
-add (x-1, y)  to stack
-IF (x, y-1) is inside the grid AND occupied AND not visited:
-mark (x, y-1) visited
-add (x, y-1) to stack
+                    IF (x+1, y) is inside the grid AND occupied AND not visited:
+                        mark (x+1, y) visited
+                        add (x+1, y) to stack
 
-IF crossing:
-BREAK
+                    IF (x, y+1) is inside the grid AND occupied AND not visited:
+                        mark (x, y+1) visited
+                        add (x, y+1) to stack
 
-IF crossing:
-numofsuccess = numofsuccess + 1
+                    IF (x-1, y) is inside the grid AND occupied AND not visited:
+                        mark (x-1, y) visited
+                        add (x-1, y) to stack
 
-RETURN successes / M
-			\end{lstlisting}
+                    IF (x, y-1) is inside the grid AND occupied AND not visited:
+                        mark (x, y-1) visited
+                        add (x, y-1) to stack
+
+                IF crossing:
+                    BREAK
+
+        IF crossing:
+            numofsuccess = numofsuccess + 1
+
+    RETURN numsuccess / M
+\end{lstlisting}
+
 			
 			The returned value of our above code is our estimator of the function which we will denote as
 			\[
@@ -826,7 +831,7 @@ def try_to_find_theta(n, p, M):
 			
 			\subsubsection*{\vocab{Specific Values}}
 			
-			We are given to specialize to values that are useful which are
+			We are given to specialize to values which are
 			\[
 			\varepsilon=\delta=0.05.
 			\]
@@ -1213,7 +1218,7 @@ Thus equally spaced tangents already achieve the required upper rate.
 
 
 
-I wasn't able to find an exact lower bound. I would assume it would be some term $\cdot n^{-2}$. What follows are the two main directions I took.
+I wasn't able to find an exact lower bound. I would assume it would be some term $\cdot n^{-2}$. What follows is some partial directions I took.
 
 
 First we try to reverse the estimate for the upper bound.
@@ -1385,10 +1390,16 @@ This density fits all criteria.
 \begin{soln}
     We can fix a object, the one being scored, and then look at order combinations of edges. 
 
-	The orbit sum principle helps orbits into linear scores. 
-    Parts of this proof were inspired from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
-
-    W fix $i\in[n]$, and let
+	The orbit sum principle turns orbits into linear scores. 
+    \begin{remark}
+            Parts of this proof were inspired from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
+    Inluding, that  monomials in the edge variables correspond to multigraphs, and since
+the group acts by permuting variables, the orbit sums of monomials form
+a basis of the invariants (\S1.3(i)). Also we use that how Section~1.1 also identifies the
+functionals $D_i=\sum_{j\ne i}x_{ij}$ as the duals of the star
+graphs, which is why weighted degree appears in part~(a).
+    \end{remark}
+    We fix $i\in[n]$, and let
     \[
     H_i=\{\pi\in S_n:\pi(i)=i\}
     \]
@@ -1526,14 +1537,12 @@ two edges.
     as in part~(a).
 
 	We now classify all the sums in a table. $4$ are given in the 
-	question, the rest we classify ourselves based on the fact
-	that $7$ is the dimension we are looking for. 
+	question, we find $3$ more to classify ourselves.
     Each orbit sum contains each distinct monomial exactly once.
 
     \begin{claim*}
         Quadratic monomials have the $7$ $H_i$-orbits listed in the 
 		table
-        $H_i$-orbits:
         \begin{center}
             \begingroup
             \small
@@ -1709,6 +1718,7 @@ two edges.
     \keyeq{
         F=aA+bB+cC+dD+h\mathbf1_n,
     }
+    where, $h$ is a polynomial,
     with uniquely determined real coefficients $a,b,c,d$.
 \end{soln}
 \subsection{(c)}
@@ -1721,7 +1731,8 @@ two edges.
     s_v(x)=\sum_{u\ne v}x_{vu}
     \]
 	which is the standard form for the weighted degree of vertex $v$
-	as commonly used.
+	as commonly used. We rename it from $D_v$, which was in 
+    part $a$, here to avoid conflicting with part $b$
     We know, from say part~(a), that equal weighted degrees
 	means that there will be equal scores under all linear anonymous rule.
     Using this information and some trial
@@ -1928,7 +1939,8 @@ Now we can just set up	\[
 	The last equation follows because
 	$\rho_{3k}-3\rho_k=O(k^{-1})$ and therefore
 	$e^{\rho_{3k}-3\rho_k}=1+O(k^{-1})$.
-	
+	Dividing (3) by the left side of (5) and
+cancelling the common factorials gives
 	\begin{align*}
 		\frac{b_k}{(3k)!/(3^{3k}(k!)^3)}
 		&=
@@ -2202,9 +2214,6 @@ Now our avoidance condition is just that throughout our walk this residue class 
 		ways. Independently, the negative positions can be filled in the same
 		number of ways. Due to our previous setup each of these walks are $\lambda$ primitive.
 		
-		Finally, negating every vertex gives a bijection between the primitive
-		walks whose first step is positive and those whose first step is
-		negative. These two classes are disjoint and exhaust all possibilities.
 		To finish off, we can negate every vertex and this will give a bijection between primitive walks whose first step is positive and ones whose first step is negative. These two classes are disjoint and are exhaustive of all possible possibilities.
 		Combining all of this we obtain the equality
 		\keyeq{
@@ -2302,7 +2311,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         $\langle r^n:n\in\mathbb Z\rangle$, where $r\in\mathbb Q_{>0}$ has numerator and
         denominator both greater than $1$. Taking $r=q$, we obtain the $M$. Since
         $q^kS_q=S_q$, each $\mu_{q^k}$ is an automorphism with inverse $\mu_{q^{-k}}$.
-        Gotti shows that the atoms of $M$ are exactly the powers $q^n$, $n\in\mathbb Z$.
+        Gotti shows that the atoms, which are elements that cannot be 
+        written as the sum of two others, of $M$ are exactly the powers $q^n$, $n\in\mathbb Z$.
         An automorphism must send atoms to atoms, so if $\mu_c\in\operatorname{Aut}(M)$
         then $cq=q^j$ for some $j\in\mathbb Z$, that is, $c=q^{j-1}$.
         The isomorphism sends $k$ to $\mu_{q^k}$. It is a homomorphism because
@@ -2364,8 +2374,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 
 			A value $c$ and its inverse only lies in $M$ if every prime in it divides 
 			with $m$. This means that the numerator and the denominator have to use the same 
-			primes of the numerator and denominator of $c$ use only the primes
-            $p_1,\ldots,p_r$. This connects to the paper on positive rational $S$-units, which 
+			primes. This means that the numerator and denominator of $c$ use only the primes
+            $p_1,\ldots,p_r$. We can also use $S$-units, which 
             is defined as that the
             $S$-units of $\mathbb Q$ are the rationals whose numerator and denominator
             are products of primes from $S$ (up to sign), we get
@@ -2373,8 +2383,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
             c=p_1^{e_1}\cdots p_r^{e_r},
             \qquad e_1,\ldots,e_r\in\mathbb Z.
             \]
-			The fact that each prime factorization is unique and composition
-			work finish this since 
+			The fact that each prime factorization is unique and using composition
+            we can finish this, using 
             $\mu_c\circ\mu_d=\mu_{cd}$.
         \end{subproof}
     \end{proof}
@@ -2458,8 +2468,7 @@ Hence $c>0$.
         \qquad
         c\longmapsto (v_p(c))_{p\in\mathcal P}.
         \]
-        Here the direct sum consists of integer families having only
-        finitely many nonzero coordinates.
+
 		The direct sum will just have finitely many nonzero coordinates which 
 		corresponds to that each number has finitely number of primes in its factorization.
 
@@ -2470,10 +2479,10 @@ Hence $c>0$.
         \]
         Meaning it is a homomorphisms on the group.
 		
-		We also know that the ambient group is free abelian. This is because 
-		its basis is countably infinite. Its basis is just all elements consisting 
+		We also know that the ambient group is free abelian. Its basis is just all elements consisting 
 		of all $0$'s other than one element. which is a $1$. Meaning it
-		is free abelian on a basis indexed by the primes.
+		is free abelian on a basis indexed by the primes. There are infinitely many primes, thus 
+        its basis is infinite.
 		Now we can use the theorem, found in 
         \cite[Theorem~13.6]{p6-drutu-kapovich}, that every subgroup of a free
 		abelian is
@@ -2548,16 +2557,12 @@ Hence $c>0$.
 \subsection{(c)}
 
 \begin{soln}
-    A monomial has two pieces of data: a coefficient and an exponent.
-    We first separate the corresponding operations, and then use the
-    semidirect-product to describe how they combine.
-    We also say below that two products of a map mean we are composing them.
 
 	There are two separate things we have to consider for any monomial. 
 	One is the coefficient it has and the second is it exponent. Now 
 	these are relatively independent from each other so we form two separate
 	transformations for each of them as then combine them to form one overall 
-	transformation. This turns out to be a well known way to combine called A
+	transformation. This turns out to be a well known way to combine called a
 	semi-direct product. 
 
     \subsubsection*{\vocab{Looking at separation}}
@@ -2605,9 +2610,7 @@ Hence $c>0$.
             c(q+r)=c(q)c(r),\quad
             \varphi(q+r)=\varphi(q)+\varphi(r).
             \]
-            Injectivity of $\Phi$ forces $\varphi$ to be injective,
-            since otherwise two distinct basis monomials would have
-            proportional images.
+
 			We also know that injectivity and surjectivity of $\Phi$ will also force 
 			$\varphi$ to be injective and surjective as well. The first is easy to see
 			and the second comes from every image being a linear combination of monomials , and
@@ -2646,7 +2649,7 @@ with action $\varphi\cdot\chi=\chi\circ\varphi^{-1}$.
     \subsubsection*{\vocab{Dyadic}}
 	We can see that every dyadic rational is just some multiple of  $2^{-m}$.
 	This means that any character will just be determined by its values on
-	all o these elements. We create a group as 
+	all of these elements. We create a group as 
 	    \[
     H=\left\{
         (z_m)_{m\ge0}\in(\mathbb C^\times)^{\mathbb N_0}:
@@ -2822,7 +2825,7 @@ Put in a table we can see clearly and compare
     =\left\{\frac{m}{b^k}:m,k\in\mathbb N_0\right\},
     \]
 	regardless of the case. This notation to represent $N_0[1/b]$ 
-    is convient because if  $b=1$ we obtain taht $S=\mathbb{N}_0$, which 
+    is convenient because if  $b=1$ we obtain taht $S=\mathbb{N}_0$, which 
     is as expected. Furthermore,  if $a=1$ in the above 
     notation we have the $q=1/b$ as expected. 
 	We essentially finish this case with the following claim
@@ -2998,7 +3001,7 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 \begin{soln}
 	$q=a/b$ in lowest terms and set $S=\mathbb N_0[q]$.
 
-	Now we are given that the property only holds when one of $a,b$ is 
+	Now we will show that the property only holds when one of $a,b$ is 
 	$=1$. Therefore, our first goal was to show why $a,b > 1$ doesn't work.
 	Then we prove the rest. Turns out, this first case is quite a bit easier. 
     \subsubsection*{\vocab{First Case}}
@@ -3055,8 +3058,9 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 		for all values above $d$, and since there is a infinite number of primes it approaches 
 		$1$. With 
 		this condition 
-		we can use Shao's theorem \cite[Theorem~1.1]{p7-shao-density} to finish the claim 
-		we states
+		we can use Shao's theorem \cite[Theorem~1.1]{p7-shao-density} to finish the claim.
+        The hypotheses we use from it is that the relative lower density must be at least $5/8$.
+        which we have proven above. 
 
         \begin{subproof}
             The theorem gives an integer $T_d\ge2$ such that
@@ -3199,10 +3203,9 @@ valid representation.
     $\mathbb N_0[k]=\mathbb N_0$. We have seen the only unit in this
 	is one, meaning all of its associate classes are just one element. Also,
 	all of its irreducible is just the prime numbers. 
-	So we try and find a counterexample, using that odd sums must contain $2$ and 
-	that we are looking for a sum that must be composite with $2$ we see a obvious
-	example. 
-    \begin{claim*}
+	So we try and find a counterexample, using that odd sums must contain $2$ we
+    look for two numbers such that $N$ and $N-2$ are both odd composite.
+        \begin{claim*}
         For every $n\ge1$, the integer
         \[
         N_n=5^{2n+1}
@@ -3417,15 +3420,6 @@ Journal of Algebra \textbf{516} (2018), 95--114.
 \url{https://arxiv.org/pdf/1709.01693}.
 Proposition numbering follows arXiv:1709.01693v2;
 see Propositions~3.2(1) and~3.5.
-
-\bibitem{p6-shparlinski-stewart}
-I.~E.~Shparlinski and C.~L.~Stewart,
-\emph{Counting solvable $S$-unit equations},
-Proceedings of the American Mathematical Society
-\textbf{149} (2021), 5119--5129.
-\href{https://uwaterloo.ca/pure-mathematics/sites/default/files/uploads/documents/countingsunitsr.pdf}
-{Author's preprint}.
-See Section~1, opening paragraph.
 
 \bibitem{p6-drutu-kapovich}
 Cornelia Dru{\c t}u and Michael Kapovich.
