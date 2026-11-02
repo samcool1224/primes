@@ -1244,8 +1244,8 @@ First we try to reverse the estimate for the upper bound.
 An example of the above argument is that 
  $f(x)=x^2+x^4$ satisfies $f''(x)=2+12x^2\ge2$,
 so the argument applies with $m=2$.
-However, the strict convexity of the function gives only $m=0$ 
-which is a trivial case, so it doesn't apply to all functions. One such example 
+However, the strict convexity of the function gives only $m=0$ for all functions,
+which gives a trivial bound. One such example 
 where this bound is weak is when
 $f(x)=x^4$ is strictly convex on $[0,1]$, but $f''(0)=0$, so the bound gives that the
 error is greater then $0$. This does settle some special cases, however a general bound is 
@@ -1445,9 +1445,7 @@ This density fits all criteria.
 \subsection{(a)}
 
 \begin{soln}
-    We can fix a object, the one being scored, and then look at order combinations of edges. 
-
-	The orbit sum principle turns orbits into linear scores. 
+    We can fix a object, the one being scored, and then look at order combinations of edges. The orbit sum principle turns orbits into linear scores. 
     \begin{remark}
             Parts of this proof were inspired from Thi\'ery \cite[Sections~1.1 and~1.3]{p4-thiery}.
     Inluding, that  monomials in the edge variables correspond to multigraphs, and since
@@ -1673,7 +1671,6 @@ two edges.
         \dim(\mathcal Q_n/\mathcal C_n)=4.
         \]
     \end{claim*}
-	\newpage
     \begin{proof}
         \begin{subproof}
             From part~(a), we know that
@@ -1903,7 +1900,7 @@ two edges.
     be the least number of moves in each direction $1,\omega, \omega^2$. 
     Now we can also set $N$ to be the sum of those as the least number of total moves. 
     So we now try and relate $r,s,u$ to our already defined $a,b$ giving us a least number of
-    moves for any $/alpha$. Doing some experimenting with small values of $\alpha$ and manually figuring 
+    moves for any $\alpha$. Doing some experimenting with small values of $\alpha$ and manually figuring 
     out the least number of moves we come up with the following definitions. 
 	Define
 	\[
@@ -1916,7 +1913,7 @@ two edges.
 	N=r+s+u.
 	\]
 	These are fixed nonnegative integers depending only on $\alpha$. 
-    These are pretty important for the rest of the problem.
+    These are important for the rest of the problem.
 	With all of this setup our big counting argument just falls into place.
 	\begin{claim*}
 		The lengths for a possible walk is $N+3k$, where $k\ge0$, and
@@ -2153,9 +2150,7 @@ Cauchy--Hadamard formula
 	\chi:\mathbb Z[\omega]\longrightarrow\mathbb Z/3\mathbb Z,
 	\qquad
 	\chi(a+b\omega)=a+b\pmod 3.
-	\]
-		Obviously, since it is modulo $3$ it can only output values $0,1,2$.
-	
+	\]	
 	\begin{claim*}
 		The "forbidden" part of the lattice is just the residue class that
 		\[
@@ -2213,8 +2208,9 @@ Now our avoidance condition is just that throughout our walk this residue class 
 
 	The above forces that every even intermediate steps (all but the first and last), like the 2nd, 4th, 6th steps are positive. 
     The rest of the intermediate steps must be negative. Combining this with the first step being positive and last being negative we see 
-    there must be a equal amount of both negative and positive steps. This is almost giving us a exact way to count for the number of paths, however we still have considered one condition. We must still impose
-	the stronger condition that the final point is the origin
+    there must be a equal amount of both negative and positive steps.
+    This is almost giving us a exact way to count for the number of paths,
+     however we still haven't considered one condition: that the final point is the origin
 	not merely some point of $\lambda\mathbb Z[\omega]$.
 	
 	\subsubsection*{\vocab{Fixing the end and finishing}}
@@ -2317,8 +2313,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 
 \begin{soln}
 	We are dealing with the group $\mathbb{Q}$ so inherently we define 
-	$q = a/b$ where each of $a$ and $b$ are both in the lowest terms
-	, meaning $gcd(a,b)=1$ and 
+	$q = a/b$ where each of $a$ and $b$ are both in the lowest terms, meaning $gcd(a,b)=1$ and 
 	are $\in \mathbb{N}$. We also write $M = M_{S_q}$ just to simplify the 
 	notation. Our generator is positive and since a positive number to a power
 	is always greater than $0$ we know that $M \subseteq \mathbb Q_{\ge 0}$. We 
@@ -2337,8 +2332,6 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         \]
     \end{claim*}
     \begin{proof}
-		The claim 
-        has already been proven via past work.
          We know that $M$ is an additive submonoid of $\mathbb Q_{\ge0}$,
 		so $M$ is a Puiseux monoid and Gotti's characterization of homomorphisms between Puiseux
         monoids \cite[Proposition~3.2(1)]{p6-gotti} applies. This gives that every homomorphism
@@ -2365,7 +2358,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
     \end{claim*}
 
     \begin{proof}
-		This is also done in prior work. Gotti's Proposition~3.5
+        Gotti's Proposition~3.5
         \cite[Proposition~3.5]{p6-gotti} gives exactly the monoid
         $\langle r^n:n\in\mathbb Z\rangle$, where $r\in\mathbb Q_{>0}$ has numerator and
         denominator both greater than $1$. Taking $r=q$, we obtain the $M$. Since
@@ -2379,10 +2372,10 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
     \end{proof}
 
     \subsubsection*{\vocab{Final Two Cases}}
-	Now we go into the unique part of this problem. We have to consider the 
+	We also have to consider the 
 	part when $a=1$ or $b=1$ (not both yet). To analyze this set $m$ to be the 
 	maximum value of $a,b$. We know that $q=m$ or that $q=1/m$. Using this 
-	we can define the monoid in a simple manner.
+	we can define the monoid in a manner such as
     \begin{claim*}
         We can write the monoid as 
         \[
@@ -2406,7 +2399,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 			We start with justifying that we can write the monoid in this
 			fashion. We know that every sum of integers powers of $m$ can be
 			written as a sum with a common denominator of $m^j$. We also know that
-			$u/m^j$ lies in our monoid since it is just simply summing $m^-j$ $u$ times,
+			$u/m^j$ lies in our monoid since it is just simply summing $m^{-j}$ $u$ times,
 			with the empty sum giving $0$. This means that the description is valid both ways.
         \end{subproof}
 
@@ -3231,8 +3224,8 @@ valid representation.
 \subsection{(c)}
 
 \begin{soln}
-	Our upper bound from the previous problem basically gives us this problem 
-	for free. Anyways, our upper bound gives us that both semirings 
+	Our upper bound from the previous part basically gives us this problem 
+	for free. Our upper bound gives us that both semirings 
 	in the question have the $4$-Goldbach property.
     A quick notation, we set $g(S)$ as the Goldbach number of semiring $S$ for
 	all of them that have the goldbach property. 
