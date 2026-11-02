@@ -83,6 +83,8 @@
 \newif\ifevanbritish\evanbritishtrue
 \newif\ifevanbib\evanbibfalse
 \newif\ifevanextras\evanextrasfalse
+\newif\ifevanhideauthor\evanhideauthorfalse
+\newif\ifevanshowauthor\evanshowauthortrue
 %Receive Arguments
 \DeclareOption{chinese}{\evanchinesetrue} % Chinese support
 % allow href to override this one
@@ -101,6 +103,7 @@
 \DeclareOption{nopdf}{\evanpdffalse}
 \DeclareOption{nopkg}{\evanpkgfalse}
 \DeclareOption{noauthor}{\evanauthorfalse}
+\DeclareOption{hideauthor}{\evanauthorfalse\evanhideauthortrue}
 \DeclareOption{titlemark}{\evantitlemarktrue} % Sets title in ohead, not \rightmark
 \DeclareOption{sectionmark}{\evantitlemarkfalse} % Uses \rightmark not title in ohead
 \DeclareOption{mdthm}{\evanmdthmtrue}
@@ -341,6 +344,8 @@
 \author{Samaksh Bhargav}
 \fi
 \date{\today}
+\else
+\author{} % no author unless the document sets one
 \fi
 %%fakesection Hyperref
 \ifevanpkg
@@ -1008,6 +1013,49 @@ bodyfont=\normalfont
 \providecommand{\thetitle}{\@title}
 \providecommand{\theauthor}{\@author}
 \providecommand{\thedate}{\@date}
+%%fakesection Optional author
+% True if the argument is empty
+\long\def\evan@ifblank#1{%
+  \if\relax\detokenize{#1}\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+% KOMA-style title block with no author line (so no gap)
+\newcommand{\evan@maketitle@noauthor}[1][]{%
+  \par\begingroup
+  \thispagestyle{\titlepagestyle}%
+  \null\vskip 2em%
+  \begin{center}%
+    {\usekomafont{title}{\huge \@title\par}}%
+    \vskip .5em
+    \expandafter\evan@ifblank\expandafter{\@subtitle}{}%
+      {{\usekomafont{subtitle}{\@subtitle\par}}}%
+    \vskip 1em
+    \expandafter\evan@ifblank\expandafter{\@date}{}%
+      {{\usekomafont{date}{\@date\par}}}%
+  \end{center}%
+  \par\vskip 2em
+  \endgroup
+  \global\let\maketitle\relax
+}
+% Left header: "Author --- Date", or just "Date" when hidden
+\newcommand{\evan@headerleft}{%
+  \ifevanshowauthor
+    \textbf{\theauthor}%
+    \expandafter\evan@ifblank\expandafter{\@date}{}{ --- \thedate}%
+  \else
+    \thedate
+  \fi}
+% Decide at \begin{document}, after the preamble has set \author
+\AddToHook{begindocument/before}{%
+  \ifevanhideauthor\gdef\@author{}\fi
+  \expandafter\evan@ifblank\expandafter{\@author}%
+    {\global\evanshowauthorfalse
+     \@ifundefined{KOMAClassName}{}%
+       {\global\let\maketitle\evan@maketitle@noauthor}}%
+    {\global\evanshowauthortrue}%
+}
 %%fakesection Page setup
 \ifevanfancy
 \@ifundefined{KOMAClassName}
@@ -1027,7 +1075,7 @@ bodyfont=\normalfont
     \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0.0pt}
     \pagestyle{fancy}
-    \lhead{Samaksh Bhargav}
+    \lhead{\ifevanshowauthor\theauthor\fi}
     \chead{}
     \rhead{\nouppercase{\leftmark}}
     \lfoot{}
@@ -1041,7 +1089,7 @@ bodyfont=\normalfont
     \addtolength{\textheight}{3.14cm}
     \setlength{\footskip}{0.5in}
     \setlength{\headsep}{10pt}
-    \ihead{\footnotesize\color{MidnightBlue!80!black}\textbf{\theauthor} --- \thedate}
+    \ihead{\footnotesize\color{MidnightBlue!80!black}\evan@headerleft}
     \automark{section}
     \chead{}
     \ohead{\footnotesize\color{MidnightBlue!80!black}\textbf{\thetitle}}

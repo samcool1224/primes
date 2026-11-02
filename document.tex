@@ -36,7 +36,6 @@
 
 \title{PRIMES - USA Problem Set 2027}
 \subtitle{Solutions}
-\author{By : Samaksh Bhargav}
 
 \begin{document}
 	
@@ -2140,8 +2139,8 @@ Cauchy--Hadamard formula
 \subsection{(b)}
 
 \begin{soln}
-	We have a restriction on the sublattice which suggests to take a walk which has$\pmod \lambda=1-\omega$. 
-
+The walk must avoid a sublattice, so it is natural to track each point of the walk
+modulo $\lambda$.
 	\subsubsection*{\vocab{Remove it}}
 	
 	Our first goal is to turn membership in $\lambda\mathbb Z[\omega]$ into something we can more better work with.
@@ -2364,7 +2363,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         denominator both greater than $1$. Taking $r=q$, we obtain the $M$. Since
         $q^kS_q=S_q$, each $\mu_{q^k}$ is an automorphism with inverse $\mu_{q^{-k}}$.
         Gotti shows that the atoms, which are elements that cannot be 
-        written as the sum of two others, of $M$ are exactly the powers $q^n$, $n\in\mathbb Z$.
+        written as the sum of two other non-zero elements, of $M$ are exactly the powers $q^n$, $n\in\mathbb Z$.
         An automorphism must send atoms to atoms, so if $\mu_c\in\operatorname{Aut}(M)$
         then $cq=q^j$ for some $j\in\mathbb Z$, that is, $c=q^{j-1}$.
         The isomorphism sends $k$ to $\mu_{q^k}$. It is a homomorphism because
@@ -2425,8 +2424,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 
 
 			A value $c$ and its inverse only lies in $M$ if every prime in it divides 
-			with $m$. This means that the numerator and the denominator have to use the same 
-			primes. This means that the numerator and denominator of $c$ use only the primes
+			with $m$. Therefore, the numerator and denominator of $c$, in lowest terms, can contain only primes dividing $m$. 
+            Meaning that the numerator and denominator of $c$ use only the primes
             $p_1,\ldots,p_r$. We can also use $S$-units, which 
             is defined as that the
             $S$-units of $\mathbb Q$ are the rationals whose numerator and denominator
@@ -2486,9 +2485,10 @@ of $M$ has the form $\mu_c(x)=cx$ for some
 $c\in\mathbb Q_{\ge0}$. Since $M\neq\{0\}$ and an
 automorphism is injective, $c=0$ is impossible.
 Hence $c>0$.
-		We also can see 
-        that composition satisfies and 
-        multipler is unique, which proves the isomorphism. Also whenever $cM=M$ is true
+		Since $\mu_c$ is surjective onto $M$, we have $cM=M$, so $c\in\Gamma_M$.
+The multiplier is unique, since $c=\varphi(x)/x$ for any nonzero
+$x\in M$, and composition corresponds to multiplication, since
+$\mu_c\circ\mu_d=\mu_{cd}$. Also whenever $cM=M$ is true
 		$\mu_c$ is just a additive bijection with an inverse($\mu_{1/c})$. 
 
         Thus sending an automorphism to its multiplier gives the
@@ -2510,7 +2510,7 @@ Hence $c>0$.
 		We set $\mathcal P$ as the primes 
 		and make the notation of $v_p(c)$ be the exponent of the prime $p$
 		when $c$ is put into its prime factorization. Negative exponents are allowed
-		since we are working with the group $\mathbb{Q}$. It is a known
+		since we are working with the multiplicative group $\mathbb{Q}_{\geq0}$. It is a known
 		rule that the prime factorization for any number is unique. This results
 		in a isomorphism 
         \[
@@ -2651,16 +2651,16 @@ $\operatorname{Aut}(M)\cong\Gamma_M$ by the previous claim.
 
     \begin{proof}
         \begin{subproof}
-            The uniqueness property of automorphism proves to be
-			extremely useful while trying to solve this. We 
+            The key fact we use is that a this automorphism sends each basis
+monomial $x^q$ to a scalar multiple of another monomial that is not $0$. We 
 			create some 
             $\Phi\in\operatorname{Aut}_{\mathrm{gr}}(F[M])$. And notice that this will have a unique notation for each basis monomial. It will come in the form
             \[
             \Phi(x^q)=c(q)x^{\varphi(q)},
             \qquad c(q)\in F^\times,\quad\varphi(q)\in M.
             \]
-            We know that $\Phi(1)=1$. Using this and multiplicative and 
-			comparison of some simple cases we can find a couple of useful properties of the individual operations. Including that
+            We know that $\Phi(1)=1$. Using this and $\Phi(x^qx^r)=\Phi(x^q)\Phi(x^r)$, comparing
+coefficients and exponents on both sides gives useful properties of the individual operations. Including that
             \[
             c(0)=1,\quad\varphi(0)=0,\qquad
             c(q+r)=c(q)c(r),\quad
@@ -3111,7 +3111,7 @@ proof for infinite primes, which requires adding $1$ to the multiplication of pr
 		$1$. With 
 		this condition 
 		we can use Shao's theorem \cite[Theorem~1.1]{p7-shao-density} to finish the claim.
-        The hypotheses we use from it is that the relative lower density must be at least $5/8$.
+        The hypotheses we use from it is that the relative lower density must be strictly greater than $5/8$.
         which we have proven above. 
 
         \begin{subproof}
@@ -3240,7 +3240,7 @@ valid representation.
     g(\mathbb N_0[1/k])\le4.
     \]
   
-	So we just need to prove $1,2$ in the first case and just $1$ in the second one.
+	So we just need to rule out $1,2$ in the first case and just $1$ in the second one.
 
 
     \subsubsection*{\vocab{Two and One don't work for the integers}}
