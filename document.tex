@@ -1244,11 +1244,11 @@ First we try to reverse the estimate for the upper bound.
 An example of the above argument is that 
  $f(x)=x^2+x^4$ satisfies $f''(x)=2+12x^2\ge2$,
 so the argument applies with $m=2$.
-However, the strict convexity of the function gives only $m=0$ for all functions,
-which gives a trivial bound. One such example 
+However, the strict convexity of the function only guarantees $m \geq 0$.
+One such example 
 where this bound is weak is when
 $f(x)=x^4$ is strictly convex on $[0,1]$, but $f''(0)=0$, so the bound gives that the
-error is greater then $0$. This does settle some special cases, however a general bound is 
+error is greater than or equal to $0$. This does settle some special cases, however a general bound is 
 still unresolved. Yet, we can finish from here with another argument. 
 \begin{claim*}
     We find a lower bound as
@@ -1262,7 +1262,7 @@ c_{f,p}n^{-2}\le E_{n,p}(f)\le C_{f,p}n^{-2},
     
 
 Since $f$ is convex, $f''\ge0$. Also 
-it cannot be $f''$ cannot be identically $0$ since then $f$ would be 
+it $f''$ cannot be identically $0$ since then $f$ would be 
 affine and not strictly convex. By continuity, there is therefore an interval
 $I=[u,v]\subseteq[0,1]$ of length $\ell=v-u>0$ and a constant
 $m>0$ with the property that $f''\ge m$ on $I$.
@@ -2314,7 +2314,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 \begin{soln}
 	We are dealing with the group $\mathbb{Q}$ so inherently we define 
 	$q = a/b$ where each of $a$ and $b$ are both in the lowest terms, meaning $gcd(a,b)=1$ and 
-	are $\in \mathbb{N}$. We also write $M = M_{S_q}$ just to simplify the 
+	are in $\mathbb{N}$. We also write $M = M_{S_q}$ just to simplify the 
 	notation. Our generator is positive and since a positive number to a power
 	is always greater than $0$ we know that $M \subseteq \mathbb Q_{\ge 0}$. We 
 	also know that $q^0=1\in M$. Also, commonly defined is a 
@@ -2443,8 +2443,8 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 
 	We are done with all cases except the trivial one 
 	where $q=1$, which would mean that $m=1$ and $M=\mathbb N_0$.
-	Our condition that we have derived results in $c=1$ so the only automorphism
-	for this case would just be the identity one.
+	The conditions above require $c=1$ in this case, so the only automorphism
+	for this case would just be the identity.
 	To put it all together we can write the equation of
     \keyeq{
         \operatorname{Aut}(M_{S_q})\cong
@@ -2467,7 +2467,7 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
 	for the rest of the proof we can take that $S\ne\varnothing$ and therefore
 	$M$ will not be just a zero additive submonoid. We use our proof from 
 	the previous part to motivate and conclude the following. We also 
-	use the known theorem (basically a hint) as motivation as well.
+	use the theorem given in the problem statement as motivation as well.
 
     \begin{claim*}
         We once again write that $\mu_c(x)=cx$. Using this we can 
@@ -2480,16 +2480,16 @@ Taking $2n$-th roots, and using $n^{1/(2n)}\to1$, gives
         \]
     \end{claim*}
     \begin{proof}
-		This is similar to the proof in the previous part and just 
-		adds another group onto it to make notation in the following 
-		parts easier. This comes from since $M$ is a Puiseux monoid,by \cite[Proposition~3.2(1)]{p6-gotti}, every automorphism
+		This is similar to the proof in the previous part.
+        Since $M$ is a Puiseux monoid, by \cite[Proposition~3.2(1)]{p6-gotti}, every automorphism
 of $M$ has the form $\mu_c(x)=cx$ for some
 $c\in\mathbb Q_{\ge0}$. Since $M\neq\{0\}$ and an
 automorphism is injective, $c=0$ is impossible.
 Hence $c>0$.
-		We also have to note, to prove the isomorphism, that composition satisfies and 
-		the multipler must be unique. Also whenever $cM=M$ is true
-		$\mu_c$ is just a additive bijection with an inverse($/mu_{1/c})$. 
+		We also can see 
+        that composition satisfies and 
+        multipler is unique, which proves the isomorphism. Also whenever $cM=M$ is true
+		$\mu_c$ is just a additive bijection with an inverse($\mu_{1/c})$. 
 
         Thus sending an automorphism to its multiplier gives the
         claimed group isomorphism.
@@ -2498,9 +2498,9 @@ Hence $c>0$.
     Once again, we turn to prime factorization here to determine a couple of
 	things.
 
-    \subsubsection*{\vocab{Good use of the hint}}
-	After doing some research on free abelian groups and reading through
-	proofs of the given theorem the following 
+    \subsubsection*{\vocab{Proving Free Abelian}}
+	We want to use the given theorem in some way, so we aim to prove 
+    some group is free abelian which gives the following claim : 
     \begin{claim*}
         The group $\operatorname{Aut}(M)$ is free abelian, meaning it has a 
 		basis. Additionally, that basis is either finite or countably infinite.
@@ -2510,7 +2510,7 @@ Hence $c>0$.
 		We set $\mathcal P$ as the primes 
 		and make the notation of $v_p(c)$ be the exponent of the prime $p$
 		when $c$ is put into its prime factorization. Negative exponents are allowed
-		since we are working with the group $\mathbb{Q}$. It is a well known
+		since we are working with the group $\mathbb{Q}$. It is a known
 		rule that the prime factorization for any number is unique. This results
 		in a isomorphism 
         \[
@@ -2522,27 +2522,31 @@ Hence $c>0$.
         \]
 
 		The direct sum will just have finitely many nonzero coordinates which 
-		corresponds to that each number has finitely number of primes in its factorization.
+		corresponds to each number having finitely number of primes in its factorization.
 
         $\Theta$ is bijective, once again due to the unique prime factorization
 		rule, and
         \[
         v_p(cd)=v_p(c)+v_p(d)
         \]
-        Meaning it is a homomorphisms on the group.
+        Meaning it is a homomorphism on the group.
 		
 		We also know that the ambient group is free abelian. Its basis is just all elements consisting 
-		of all $0$'s other than one element. which is a $1$. Meaning it
-		is free abelian on a basis indexed by the primes. There are infinitely many primes, thus 
-        its basis is infinite.
+		of all $0$'s other than one element, which is a $1$. Meaning it
+		is free abelian on a basis indexed by the primes. There are countably infinite many primes, thus 
+        its basis is countably infinite.
 		Now we can use the theorem, found in 
         \cite[Theorem~13.6]{p6-drutu-kapovich}, that every subgroup of a free
 		abelian is
         free abelian of rank at most that of the ambient group,
-        including when the rank is infinite. Where the rank here is defined as
-		the size of the groups basis.
-        Applying this to $\Theta(\Gamma_M)$ proves the claim combining it with the
-		previous claim.
+        including when the rank is countably infinite, where the rank is defined as
+		the size of the groups basis. Since $\Gamma_M$ is a subgroup of $\mathbb Q_{>0}$, its image
+$\Theta(\Gamma_M)$ is a subgroup of
+$\bigoplus_{p\in\mathcal P}\mathbb Z$, so it is free abelian of
+finite or countably infinite rank.
+         Since $\Theta$ is an isomorphism,
+the same holds for $\Gamma_M$, and hence for
+$\operatorname{Aut}(M)\cong\Gamma_M$ by the previous claim.
     \end{proof}
 	This gives us a form for all the $Aut(M)$. However, we need to make sure that
 	the reverse direction of $M$ exists. Meaning that every element in this form is 
@@ -2557,7 +2561,7 @@ Hence $c>0$.
     \end{claim*}
 
     \begin{proof}
-		We split this into the two obvious cases
+		We split this into the two cases
         \begin{subproof}
 			First we take the finite rank. Rank $0$ comes from $S=\varnothing$.
 			For another other value of $r$ which is $\ge1$ take $r$ number of distinct 
@@ -2594,7 +2598,7 @@ Hence $c>0$.
         \end{subproof}
     \end{proof}
 
-	The previous cases, restrictions and all of the constructions
+	The previous cases, including the restrictions and all of the constructions
 	show that our list, up to isomorphism, is
     \keyeq{
         \mathbb Z^r\quad(r\in\mathbb N_0),
@@ -2647,7 +2651,7 @@ Hence $c>0$.
 
     \begin{proof}
         \begin{subproof}
-            The uniqueness property of automorphism prove to be
+            The uniqueness property of automorphism proves to be
 			extremely useful while trying to solve this. We 
 			create some 
             $\Phi\in\operatorname{Aut}_{\mathrm{gr}}(F[M])$. And notice that this will have a unique notation for each basis monomial. It will come in the form
@@ -2665,7 +2669,7 @@ Hence $c>0$.
 
 			We also know that injectivity and surjectivity of $\Phi$ will also force 
 			$\varphi$ to be injective and surjective as well. The first is easy to see
-			and the second comes from every image being a linear combination of monomials , and
+			and the second comes from every image being a linear combination of monomials, and
 			each of those monomials have a exponent in  $\varphi(M)$.
             Now we can just put
             $\chi=c\circ\varphi^{-1}$, which comes from the notion 
@@ -2748,7 +2752,7 @@ with action $\varphi\cdot\chi=\chi\circ\varphi^{-1}$.
 
     \subsubsection*{\vocab{Dyadic Automorphisms}}
 
-	This is pretty simple, using our information from part a. Just setting
+	This is pretty simple, using our information from part~(a). Just setting
 	$q=2$, gives
     \[
     \operatorname{Aut}(D_2)
@@ -2812,7 +2816,7 @@ with action $\varphi\cdot\chi=\chi\circ\varphi^{-1}$.
 			Our sequence description of the dyadics really come to use 
 			here. While evaluating at $1$ we note that it returns just the value
 			of the first number in our sequence definition, an extremely useful property. 
-			It is a projection from a  $z\mapsto z_0$. This is pretty easy to see. Now 
+			It is a projection from a  $z\mapsto z_0$. Now 
 			we first find the image. Take some value of $w=re^{i\theta}\in\mathbb C^\times$, with
             $r>0$, set $\theta$ and set
             \[
